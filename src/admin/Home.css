@@ -16,6 +16,16 @@
   .home-container p {
     font-size: 18px;
   }
+  .danger{
+    background-color: rgb(254, 94, 13);
+    color: black;
+    border: 1px solid black;
+  }
+  .warning{
+    background-color: rgb(211, 211, 58);
+    color: black;
+    border: 1px solid black;
+  }
   
   @media (max-width: 768px) {
     .page-content {

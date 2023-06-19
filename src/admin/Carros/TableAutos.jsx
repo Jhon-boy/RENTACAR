@@ -1,4 +1,4 @@
-
+import '../Home.css'
 import { useState, useEffect } from 'react';
 
 import Table from '@mui/material/Table';
@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 
 import { URL } from '../data/URL';
 export const TableAutos = () => {
-    const [cars, setCars] = useState([]);
+        const [cars, setCars] = useState([]);
 
 
     useEffect(() => {
@@ -32,7 +32,10 @@ export const TableAutos = () => {
                         <TableCell>MODELO</TableCell>
                         <TableCell>AÑO</TableCell>
                         <TableCell>ESTADO</TableCell>
+                        <TableCell>TIPO</TableCell>
+                        <TableCell>PRECIO</TableCell>
                         <TableCell>OPCIONES</TableCell>
+                        
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -44,10 +47,12 @@ export const TableAutos = () => {
                             <TableCell>{car.modelo}</TableCell>
                             <TableCell>{car.anio}</TableCell>
                             <TableCell>{car.estado}</TableCell>
+                            <TableCell>{car.tipo}</TableCell>
+                            <TableCell>{car.precio}</TableCell>
                             <TableCell>
                                 <div>
-                                <Button variant="danger">Eliminar</Button>{' '}
-                                <Button variant="warning">Editar</Button>
+                                <Button className="danger">Eliminar</Button>{' '}
+                                <Button className="warning">Editar</Button>
                                 </div>
                             </TableCell>
                         </TableRow>

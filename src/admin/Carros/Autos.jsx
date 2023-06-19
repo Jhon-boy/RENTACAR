@@ -1,5 +1,5 @@
 
-import '../Home.css'
+  import '../Home.css'
 import { TableAutos } from './TableAutos'
 const Autos = () => {
   return (
