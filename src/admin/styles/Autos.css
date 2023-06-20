@@ -1,0 +1,16 @@
+.Mostrar{
+    display: flex;
+}
+.slider-container{
+    width: 75%;
+    height: auto;
+}
+.portada{
+    width: 55%;
+}
+.slider-image-container img{
+    width: 600px;
+    height: 500px;
+    margin-left: 25px;
+    margin-right: 100px;
+}

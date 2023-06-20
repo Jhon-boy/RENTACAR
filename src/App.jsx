@@ -4,6 +4,7 @@ import Error from './pages/Error'
 import Home from './admin/Home'
 import Autos from './admin/Carros/autos'
 import Clientes from './admin/clientes/clientes'
+import { CardAutos } from './admin/Carros/CardAutos'
 function App() {
 
 
@@ -13,9 +14,11 @@ function App() {
         <Route path='/' element={<Sidebar />}>
           <Route index path='/Home' element={<Home />} />
           <Route path='/Autos' element={<Autos />} />
+          <Route path='/Autos/:id' element={<CardAutos/>} />
           <Route path='/Clientes' element={<Clientes />} />
         </Route>
       </Route>
+
       <Route path='*' element={<Error />} />
     </Routes>
 

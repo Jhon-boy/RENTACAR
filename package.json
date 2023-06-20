@@ -24,6 +24,7 @@
     "react-circular-progressbar": "^2.0.4",
     "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.9.0",
     "react-router-dom": "^6.11.2"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 .page-content {
     padding-left: 170px;
     height: 100vh;
-    width: 85%;
+    width: 100%;
   }
   
   .home-container {
@@ -17,7 +17,7 @@
     font-size: 18px;
   }
   .danger{
-    background-color: rgb(254, 94, 13);
+    background-color: rgb(252, 78, 78);
     color: black;
     border: 1px solid black;
   }
@@ -26,7 +26,26 @@
     color: black;
     border: 1px solid black;
   }
-  
+  .icon{
+    height: 25px;
+    font-size: 100px;
+    width: 100px;
+
+  }
+  .sucess{
+    background-color: rgb(26, 194, 246);
+  }
+  .activeP{
+    color: rgb(82, 239, 106);
+  }
+  .noactive{
+   color: red;
+  }
+  .options{
+    display: flex;
+    width: auto;
+    min-width: 150px;
+  }
   @media (max-width: 768px) {
     .page-content {
       padding-left: 20px;
