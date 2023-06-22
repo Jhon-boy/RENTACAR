@@ -3,9 +3,7 @@ import { useParams } from 'react-router-dom';
 import '../Home.css';
 import '../styles/Autos.css';
 import { URL } from '../data/URL';
-import DIMAX from '../../assets/DIMAX.jpg';
-import MAZDA from '../../assets/Mazda_cx-7.jpg';
-
+import { IMAGE } from '../data/URL';
 // eslint-disable-next-line react/prop-types
 const Slider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,7 +46,6 @@ export const CardAutos = () => {
       .catch((error) => console.log(error));
   }, [id]);
 
-  const images = [DIMAX, MAZDA];
 
   return (
     <div className="page-content">
@@ -56,7 +53,8 @@ export const CardAutos = () => {
         <h1>EL ID DEL AUTO ES: {id}</h1>
         <div className="Mostrar">
           <div className="portada">
-            <Slider images={images} />
+          <img src={`${IMAGE}/${cars.fotos}`} />
+            
             <div>
               <h1>Marca: {cars.modelo}</h1>
               <h3>Precio por Dia: {cars.precio}</h3>

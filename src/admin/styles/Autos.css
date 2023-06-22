@@ -14,3 +14,161 @@
     margin-left: 25px;
     margin-right: 100px;
 }
+.CrearAuto{
+    margin-left: 230px;
+    width: 100%;
+}
+.ContenidoAuto{
+    margin-left: 15px;
+}
+.DatosP{
+    display: flex;
+}
+.DatosP div{
+    display: flex;
+}
+.Errores{
+    color: red;
+    font-size: 10px;
+}
+/* Estilos para el formulario */
+.formulario {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 20px;
+    width: min-content;
+    margin: 0 auto;
+  }
+  
+  .formulario label {
+    font-weight: bold;
+    color: #333;
+    font-size: 22px;
+  }
+  .formulario input[type="number"]{
+     width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .formulario select{
+    background-color: white;
+    color: black;
+    width: 110%;
+    padding: 17px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .formulario input[type="text"]{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .formulario textarea {
+    margin-left: 20px;
+    width: 100vh;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  }
+  .input[type="text"]:hover{
+    cursor: pointer;
+    border: 2px solid black;
+  }
+  .textarea:hover{
+    cursor: pointer;
+    border: 2px solid black;
+  }
+  
+  .formulario input[type="file"] {
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+  
+  .formulario button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+  
+  .formulario button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .formulario .mb-3 {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .formulario .mb-3:last-child {
+    margin-bottom: 0;
+  }
+  .ingresoD{
+    margin-left: 15px;
+    width: 250px;
+    margin-top: 25px;
+  }
+  /* Estilos alternativos para el input de tipo file */
+.fileinput {
+  position: relative;
+  display:inline-table;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.fileinput input[type="file"] {
+  position: absolute;
+  border-radius: 10px;
+   margin-left: 5px;
+   background-color: #d4d3d3;
+   height: 49px;
+}
+
+.fileinput label {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-left: 25px;
+  background-color: #a9a6a6;
+  color: rgb(47, 46, 46);
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.fileinput label:hover {
+  background-color: #808386;
+}
+.fileinput input[type="file"]:focus + label:before {
+  outline: 2px solid #007bff;
+}
+
+.fileinput input[type="file"]:valid + label:before {
+  content: attr(data-file-name);
+}
+
+.fileinput input[type="file"]::file-selector-button {
+  display: none;
+}
+.ErroresInput{
+  margin-top: -10px;
+  color:red;
+  font-weight:bold;
+  font-size:12px;
+}

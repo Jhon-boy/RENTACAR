@@ -7,6 +7,7 @@ import { MdEditNote } from "react-icons/md"
 import { Link } from 'react-router-dom'
 
 import { URL } from '../data/URL';
+import { eliminarAuto } from '../database/controller';
 export const TableAutos = () => {
     const [cars, setCars] = useState([]);
 
@@ -18,9 +19,16 @@ export const TableAutos = () => {
                 .catch(error => console.log(error));
         }, []);
 
-    const handleDelete = (placas) => {
+    const handleDelete = async (id_auto) => {
         // Aquí puedes implementar la lógica para eliminar un auto con las placas proporcionadas
-        alert('Eliminar auto con placas: ' + placas);
+       
+        try {
+            await eliminarAuto(id_auto);
+             alert('Eliminar auto con placas: ' + id_auto);
+        } catch (error) {
+            alert('SOMETHING WAS WRONG' + error)
+        }
+        
     };
 
     const handleEdit = (placas) => {
@@ -73,7 +81,7 @@ export const TableAutos = () => {
             name: 'OPCIONES',
             cell: (row) => (
                 <div className='options'>
-                    <Button className="danger" onClick={() => handleDelete(row.placas)}><MdRestoreFromTrash /> </Button>{'-  '}
+                    <Button className="danger" onClick={() => handleDelete(row.id_auto)}><MdRestoreFromTrash /> </Button>{'-  '}
                     <Button className="warning" onClick={() => handleEdit(row.placas)}><MdEditNote /></Button>
                 </div>
             ),

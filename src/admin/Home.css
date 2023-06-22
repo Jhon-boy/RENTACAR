@@ -46,6 +46,18 @@
     width: auto;
     min-width: 150px;
   }
+  .Registro{
+    border:  1px solid black;
+    height: auto;
+    width: auto;
+    background-color: azure;
+  }
+  .form-control{
+    background-color: white;
+    color: black;
+    height: 35px;
+    width: 275px;
+  }
   @media (max-width: 768px) {
     .page-content {
       padding-left: 20px;

@@ -114,7 +114,7 @@ const Clientes = () => {
     <div className='page-content'>
       <div className='home-container'>
         <div> ADMINISTRAR CLIENTES</div>
-        <h1>HOLA BEBE</h1>
+        <h1>HOLA ADMIN</h1>
         <DataTable
           columns={columns}
           data={datosCombinados}
