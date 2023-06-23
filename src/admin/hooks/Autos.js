@@ -21,8 +21,6 @@ const tipo = [
     'CAMIÓN PESADO'
 ];
 
-
-
 export const Formato = (placa) => {
     if (placa.length !== 8) {
         return false;
@@ -90,7 +88,7 @@ export const verificarAnio = (anio) => {
     const anioActual = new Date().getFullYear();
     const anioIngresado = parseInt(anio);
 
-    if (!Number.isInteger(anioIngresado) || anioIngresado < 2000 || anioIngresado > anioActual) {
+    if (!Number.isInteger(anioIngresado) || anioIngresado < 1980 || anioIngresado > anioActual + 1) {
         return false;
     }
 
@@ -127,3 +125,16 @@ export const verificarPrecio = (precio) =>{
     }
     return true;
 }
+export const verificarPlaca = (placa) => {
+    const esFormatoValido = Formato(placa);
+    const esPrimerLetraValida = PrimerLetra(placa);
+    const esSegundaLetraValida = segundaLetra(placa);
+  
+    return esFormatoValido && esPrimerLetraValida && esSegundaLetraValida;
+  };
+  export const  campoEstaVacio = (valor)  =>{
+   if(valor != null || valor.length <= 1){
+    return false
+   }
+    return true;
+  }

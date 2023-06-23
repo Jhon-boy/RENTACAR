@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const obtenerModelosAutos = async () => {
     try {
-        const response = await axios.get('https://www.carqueryapi.com/api/0.3/?cmd=getModels');
+        const response = await axios.get('https://api.carsapi.com/v1/models');
         const data = response.data;
     
         if (data.Models) {

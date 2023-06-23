@@ -5,7 +5,7 @@ import Home from './admin/Home'
 import Autos from './admin/Carros/autos'
 import Clientes from './admin/clientes/clientes'
 import { CardAutos } from './admin/Carros/CardAutos'
-import { CreateCar } from './admin/forms/CreateCar'
+import { CreateCar } from './admin/components/forms/CreateCar'
 function App() {
 
 

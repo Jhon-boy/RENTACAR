@@ -12,7 +12,19 @@
     font-size: 24px;
     margin-bottom: 10px;
   }
-  
+  .ErroresInput{
+    color:  red;
+    font-size: 12px;
+  }
+  .fotoError{
+    margin-left: 25px;
+    padding-top: 10px;
+  }
+  .SucessInput{
+    color: green;
+    margin-top: -10%;
+    font-size: 10px;
+  }
   .home-container p {
     font-size: 18px;
   }
