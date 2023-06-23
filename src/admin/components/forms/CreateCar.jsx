@@ -97,62 +97,62 @@ export const CreateCar = () => {
 
     return (
         <div className="CrearAuto">
-                <div className="ContenidoAuto">
-                    <Form onSubmit={crearAuto} method="POST" encType='multipart/form-data' className="formulario" >
-                        <Row className="mb-3">
-                            <Form.Group className='ingresoD' controlId="forMarca">
-                                <Form.Label>Marca</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Mazda"
-                                    value={marca}
-                                    onChange={(e) => {
-                                        setMarca(e.target.value)
-                                        setMarcaValida(e.target.value.trim() !== '')
-                                    }}
-                                    onBlur={() => setMarcaValida(marca.trim() !== '')}
-                                    required
-                                />
-                                {!esMarcaValida && (
-                                    <div>
-                                        <h6 className="ErroresInput">* Campo obligatorio</h6>
-                                    </div>
-                                )}
-                            </Form.Group>
+            <div className="ContenidoAuto">
+                <Form onSubmit={crearAuto} method="POST" encType='multipart/form-data' className="formulario" >
+                    <Row className="mb-3">
+                        <Form.Group className='ingresoD' controlId="forMarca">
+                            <Form.Label>Marca</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Mazda"
+                                value={marca}
+                                onChange={(e) => {
+                                    setMarca(e.target.value)
+                                    setMarcaValida(e.target.value.trim() !== '')
+                                }}
+                                onBlur={() => setMarcaValida(marca.trim() !== '')}
+                                required
+                            />
+                            {!esMarcaValida && (
+                                <div>
+                                    <h6 className="ErroresInput">* Campo obligatorio</h6>
+                                </div>
+                            )}
+                        </Form.Group>
 
-                            <Form.Group className='ingresoD' controlId="formModelo">
-                                <Form.Label>Modelo</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Raptor"
-                                    value={modelo}
-                                    onChange={(e) => {
-                                        setModelo(e.target.value);
-                                        setModeloValida(e.target.value.trim() !== '')
-                                    }}
-                                    onBlur={() => setModeloValida(modelo.trim() !=='')}
-                                    required
-                                />
-                                {!esModeloValida && (
-                                    <div>
-                                        <h6 className="ErroresInput">* Campo obligatorio</h6>
-                                    </div>
+                        <Form.Group className='ingresoD' controlId="formModelo">
+                            <Form.Label>Modelo</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Raptor"
+                                value={modelo}
+                                onChange={(e) => {
+                                    setModelo(e.target.value);
+                                    setModeloValida(e.target.value.trim() !== '')
+                                }}
+                                onBlur={() => setModeloValida(modelo.trim() !== '')}
+                                required
+                            />
+                            {!esModeloValida && (
+                                <div>
+                                    <h6 className="ErroresInput">* Campo obligatorio</h6>
+                                </div>
 
-                                )}
-                            </Form.Group>
-                        </Row>
+                            )}
+                        </Form.Group>
+                    </Row>
 
-                        <Row className="mb-3">
-                            <Form.Group className='ingresoD' controlId="formPlacas">
-                                <Form.Label>Placas</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="CHW-2015"
-                                    value={placas}
-                                    onChange={(e) => {
+                    <Row className="mb-3">
+                        <Form.Group className='ingresoD' controlId="formPlacas">
+                            <Form.Label>Placas</Form.Label>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder="CHW-2015"
+                                value={placas}
+                                onChange={(e) => {
                                     const nuevaPlaca = e.target.value;
-                                    setPlacas(nuevaPlaca);
+                                    setPlacas(e.target.value);
                                     setEsPlacaValida(verificarPlaca(nuevaPlaca));
                                 }}
 
@@ -287,10 +287,9 @@ export const CreateCar = () => {
                                     type="file"
                                     name='fotos'
                                     id="images"
-                                    accept="image/*"
                                     onChange={(e) => {
                                         const archivo = e.target.files[0];
-                                        setFotos(archivo);
+                                        setFotos(e.target.files[0]);
                                         setExtension(verificarExtensionFoto(archivo.name));
                                     }}
                                     size="lg" />
@@ -321,7 +320,7 @@ export const CreateCar = () => {
 
                                 rows={3} />
                             {!esDetallesValida && (
-                                <div>   
+                                <div>
                                     <h6 className="ErroresInput fotoError">* Campo obligatorio</h6>
                                 </div>
                             )}
