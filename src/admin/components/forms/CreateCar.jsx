@@ -27,14 +27,13 @@ export const CreateCar = () => {
     const [fotos, setFotos] = useState('');
     const [estado, setEstado] = useState('');
 
-    const [mostrarError, setMostrarError] = useState(false);
     const [esPlacaValida, setEsPlacaValida] = useState(true);
     const [esExtension, setExtension] = useState(true);
     const [esPrecioValida, setPrecioValida] = useState(true);
     const [esAnioValida, setAnioValida] = useState(true);
-    const [esMarcaValida, setMarcaValida] = useState(false);
-    const [esModeloValida, setModeloValida] = useState(false);
-    const [esEstadoValida, setEstadoValida] = useState(false);
+    const [esMarcaValida, setMarcaValida] = useState(true);
+    const [esModeloValida, setModeloValida] = useState(true);
+    const [esEstadoValida, setEstadoValida] = useState(true);
     const [esDetallesValida, setDetallesValida] = useState(true);
     const [esTipoValida, setTipoValida] = useState(true);
 
@@ -98,60 +97,60 @@ export const CreateCar = () => {
 
     return (
         <div className="CrearAuto">
-            <div className="ContenidoAuto">
-                <Form onSubmit={crearAuto} method="POST" encType='multipart/form-data' className="formulario" >
-                    <Row className="mb-3">
-                        <Form.Group className='ingresoD' controlId="forMarca">
-                            <Form.Label>Marca</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Mazda"
-                                value={marca}
-                                onChange={(e) => {
-                                    setMarca(e.target.value)
-                                    setMarcaValida(true)
-                                }}
-                                onBlur={() => setMarcaValida(true)}
-                                required
-                            />
-                            {esMarcaValida && (
-                                <div>
-                                    <h6 className="ErroresInput">* Campo obligatorio</h6>
-                                </div>
-                            )}
-                        </Form.Group>
+                <div className="ContenidoAuto">
+                    <Form onSubmit={crearAuto} method="POST" encType='multipart/form-data' className="formulario" >
+                        <Row className="mb-3">
+                            <Form.Group className='ingresoD' controlId="forMarca">
+                                <Form.Label>Marca</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Mazda"
+                                    value={marca}
+                                    onChange={(e) => {
+                                        setMarca(e.target.value)
+                                        setMarcaValida(e.target.value.trim() !== '')
+                                    }}
+                                    onBlur={() => setMarcaValida(marca.trim() !== '')}
+                                    required
+                                />
+                                {!esMarcaValida && (
+                                    <div>
+                                        <h6 className="ErroresInput">* Campo obligatorio</h6>
+                                    </div>
+                                )}
+                            </Form.Group>
 
-                        <Form.Group className='ingresoD' controlId="formModelo">
-                            <Form.Label>Modelo</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Raptor"
-                                value={modelo}
-                                onChange={(e) => {
-                                    setModelo(e.target.value);
-                                    setModeloValida(true)
-                                }}
-                                onBlur={() => setModeloValida(true)}
-                                required
-                            />
-                            {esModeloValida && (
-                                <div>
-                                    <h6 className="ErroresInput">* Campo obligatorio</h6>
-                                </div>
+                            <Form.Group className='ingresoD' controlId="formModelo">
+                                <Form.Label>Modelo</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Raptor"
+                                    value={modelo}
+                                    onChange={(e) => {
+                                        setModelo(e.target.value);
+                                        setModeloValida(e.target.value.trim() !== '')
+                                    }}
+                                    onBlur={() => setModeloValida(modelo.trim() !=='')}
+                                    required
+                                />
+                                {!esModeloValida && (
+                                    <div>
+                                        <h6 className="ErroresInput">* Campo obligatorio</h6>
+                                    </div>
 
-                            )}
-                        </Form.Group>
-                    </Row>
+                                )}
+                            </Form.Group>
+                        </Row>
 
-                    <Row className="mb-3">
-                        <Form.Group className='ingresoD' controlId="formPlacas">
-                            <Form.Label>Placas</Form.Label>
-                            <Form.Control
-                                required
-                                type="text"
-                                placeholder="CHW-2015"
-                                value={placas}
-                                onChange={(e) => {
+                        <Row className="mb-3">
+                            <Form.Group className='ingresoD' controlId="formPlacas">
+                                <Form.Label>Placas</Form.Label>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="CHW-2015"
+                                    value={placas}
+                                    onChange={(e) => {
                                     const nuevaPlaca = e.target.value;
                                     setPlacas(nuevaPlaca);
                                     setEsPlacaValida(verificarPlaca(nuevaPlaca));
@@ -202,6 +201,7 @@ export const CreateCar = () => {
                             {!esTipoValida && (
                                 <div>
                                     <h6 className="ErroresInput">* Campo obligatorio</h6>
+                                    <h6 className="SucessInput">- Seleccione una</h6>
                                 </div>
 
                             )}
@@ -217,15 +217,25 @@ export const CreateCar = () => {
                                 type="text"
                                 placeholder="Ingrese el Estado"
                                 value={estado}
-                                onChange={(e) => setEstado(e.target.value)}
+                                onChange={(e) => {
+                                    const estadoAux = e.target.value;
+                                    setEstado(e.target.value)
+                                    setEstadoValida(estados(estadoAux));
+                                }}
                                 defaultValue="INFUERA DE SERVICIOACTIVO"
                             >
-                                <option value="">Seleccione</option>
+                                <option value=""></option>
                                 <option value="DISPONIBLE">Disponible</option>
                                 <option value="OCUPADO">Ocupado</option>
                                 <option value="FUERA DE SERVICIO">Fuera de servicio</option>
                                 <option value="MANTENIMIENTO">Mantenimiento </option>
                             </Form.Select>
+                            {!esEstadoValida && (
+                                <div>
+                                    <h6 className="ErroresInput">* Campo obligatorio: </h6>
+                                    <h6 className="SucessInput">- Seleccione una</h6>
+                                </div>
+                            )}
                         </Form.Group>
                         <Form.Group className='ingresoD price' controlId="formAnio">
                             <Form.Label>Año</Form.Label>
@@ -303,14 +313,15 @@ export const CreateCar = () => {
                                 placeholder=""
                                 value={detalles}
                                 onChange={(e) => {
-                                    const detallesAux = e.target.value;
-
                                     setDetalles(e.target.value)
-                                    setDetallesValida(campoEstaVacio(detallesAux))
+                                    setDetallesValida(e.target.value.trim() !== '')
                                 }}
+
+                                onBlur={() => setDetallesValida(detalles.trim() !== '')}
+
                                 rows={3} />
                             {!esDetallesValida && (
-                                <div>
+                                <div>   
                                     <h6 className="ErroresInput fotoError">* Campo obligatorio</h6>
                                 </div>
                             )}
