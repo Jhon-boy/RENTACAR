@@ -1,0 +1,35 @@
+.slider-bar {
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-bottom: 2px solid black;
+    border-radius: 10px;
+  }
+  
+  .slider-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    margin-left: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .slider-item:hover {
+    background-color: #eaeaea;
+  }
+  
+  .slider-item.active {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .slider-item.active:hover {
+    background-color: #333;
+  }
+  

@@ -1,0 +1,244 @@
+.user-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  .user-card-header {
+    position: relative;
+    height: 190px;
+    overflow: hidden;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size:smaller;
+  }
+  
+  .user-card-image {
+    margin-top: 10px;
+    width: 310px;
+    height: 150px;
+    object-fit: cover;
+  }
+  .user-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .user-card-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  
+  .user-card-column {
+    flex-basis: 33%;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+  
+  .user-card-title {
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  .user-card-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .user-card-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .user-card-info {
+    margin-bottom: 5px;
+  }
+  
+  .user-card-title  {
+    transform: translateY(-50%);
+    font-size: 20px;
+    margin-top: 0;
+  }
+  
+  .user-card-info {
+    margin-bottom: 8px;
+  }
+  .slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slide {
+    display: none;
+    width: 100%;
+  }
+  
+  .active {
+    display: block;
+  }
+
+/* Estilos para el contenedor del carousel */
+.SliderImages {
+  position: relative;
+  width: 90%;
+  overflow: hidden;
+}
+
+/* Estilos para los botones laterales */
+ .carousel-button {
+  background-color: white;
+  width: 40px;
+  height: 30px;
+  border: none;
+  color: gray;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.carousel-button-left {
+  margin-left: 30px;  
+}
+
+.carousel-button-right {
+  margin-right:  35px;
+  max-height: fit-content;
+
+}
+
+/* Estilos para el contenedor de los slides */
+.SliderImages .carousel-content {
+  display: flex;
+  flex-wrap: nowrap;
+  transition: transform 0.3s;
+}
+
+/* Estilos para cada slide del carousel */
+.SliderImages .carousel-item {
+  flex: 0 0 100%;
+  padding: 0 10px;
+  text-align: center;
+}
+
+/* Estilos para las imágenes del carousel */
+.SliderImages img {
+  max-width: 100%;
+  height: auto;
+  margin-left: -15%;
+}
+
+/* Estilos para las leyendas del carousel */
+.SliderImages .legend {
+  margin-top: 10px;
+  font-weight: bold;
+  color: gray;
+  font-size: 12px;
+  margin-top: -5px;
+}
+
+  .btnSlider {
+  display: flex;
+  justify-content:center; 
+  margin-left: 25px;
+  margin-bottom: 10px;
+  }
+  .btnClient{
+    margin-top: 4%;
+  }
+  
+  .icon-habilitado {
+    color: green;
+  }
+  
+  .icon-no-habilitado {
+    color: red;
+  }
+  
+  .icon-pendiente {
+    color: orange;
+  }
+  .ConteidoClient{
+    width:  max-content;
+    height: max-content;
+    display: flex;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #f3f0f0;
+    border: 2px solid rgb(211, 209, 209);
+    border-radius: 7px;
+    font-size: 18px;
+    color: black;
+  }
+  .ClienteFotos{
+    margin: 4rem 0px 0px 2rem ;
+    width: min-content;
+    border-radius: 7px;
+  }
+  .InfoClient {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 7px;
+    border: 2px solid black;
+    margin-top: 5%;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+  }
+  
+  .InfoSection {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+  }
+  
+  .ClientInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  input {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: min-content;
+    background-color: transparent;
+    font-size: 16px;
+    padding: 5px;
+    outline: none;
+    margin-right: 10px;
+  }
+  
+  input[readonly] {
+    color: #555555;
+  }
+  
+  .ClienteInfo{
+    display: flex;
+  }
+  .portada2{
+    margin: 0px 3rem 30px 2rem;
+    width: 350px;
+    height: auto;
+    border-radius: 7px;
+    box-shadow: 7px 12px 6px 4px rgba(15, 15, 15, 0.1)
+  }

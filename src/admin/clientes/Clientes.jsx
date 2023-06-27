@@ -4,36 +4,41 @@ import { URL } from '../data/URL';
 import '../Home.css';
 import { MdToggleOff } from "react-icons/md";
 import { MdToggleOn } from "react-icons/md";
+import { SliderBar } from './SliderBar';
+import { Link } from 'react-router-dom';
+
 
 const Clientes = () => {
-    const [clientes, setClientes] = useState([]);
-    const [usuarios, setUsuarios] = useState([]);
-    const [datosCombinados, setDatosCombinados] = useState([]);
+  const [clientes, setClientes] = useState([]);
+  const [usuarios, setUsuarios] = useState([]);
+  const [datosCombinados, setDatosCombinados] = useState([]);
+  const [activeTab, setActiveTab] = useState('all');
 
-    useEffect(() => {
-      fetch(`${URL}/clientes`)
-        .then(response => response.json())
-        .then(data => setClientes(data))
-        .catch(error => console.log(error));
 
-        fetch(`${URL}/user`)
-        .then(response => response.json())
-        .then(data => setUsuarios(data))
-        .catch(error => console.log(error));
-        
-    }, []);
+  useEffect(() => {
+    fetch(`${URL}/clientes`)
+      .then(response => response.json())
+      .then(data => setClientes(data))
+      .catch(error => console.log(error));
 
-    useEffect(() => {
-      // Combinar los datos de clientes y usuarios basándose en el campo id_usuario
-      const datosCombinados = clientes.map(cliente => {
-        const usuarioCorrespondiente = usuarios.find(usuario => usuario.id_usuario === cliente.id_usuario);
-        return {
-          ...cliente,
-          ...usuarioCorrespondiente
-        };
-      });
-      setDatosCombinados(datosCombinados);
-    }, [clientes, usuarios]);
+    fetch(`${URL}/user`)
+      .then(response => response.json())
+      .then(data => setUsuarios(data))
+      .catch(error => console.log(error));
+
+  }, []);
+
+  useEffect(() => {
+    // Combinar los datos de clientes y usuarios basándose en el campo id_usuario
+    const datosCombinados = clientes.map(cliente => {
+      const usuarioCorrespondiente = usuarios.find(usuario => usuario.id_usuario === cliente.id_usuario);
+      return {
+        ...cliente,
+        ...usuarioCorrespondiente
+      };
+    });
+    setDatosCombinados(datosCombinados);
+  }, [clientes, usuarios]);
 
   const handleDelete = (cedula) => {
     // Aquí puedes implementar la lógica para eliminar un cliente con la cédula proporcionada
@@ -42,7 +47,7 @@ const Clientes = () => {
 
   const handleEdit = (id_cliente) => {
     // Aquí puedes implementar la lógica para editar un cliente con el ID proporcionado
-    alert('Editar cliente con ID: '+ id_cliente);
+    alert('Editar cliente con ID: ' + id_cliente);
   };
 
   const columns = [
@@ -73,11 +78,11 @@ const Clientes = () => {
     },
     {
       name: 'Estado',
-      cell:(row) =>{
-        if(row.estado === "CONECTADO"){
-          return <MdToggleOn  className='icon activeP'/>
-        }else{
-          return <MdToggleOff  className='icon noactive'/>
+      cell: (row) => {
+        if (row.estado === "CONECTADO") {
+          return <MdToggleOn className='icon activeP' />
+        } else {
+          return <MdToggleOff className='icon noactive' />
         }
       },
       sortable: true,
@@ -104,16 +109,18 @@ const Clientes = () => {
     {
       name: 'Ver Perfil',
       cell: (row) => (
-        <button onClick={() => handleEdit(row.id_cliente)}>Editar</button>
+        <Link to={`/InfoClient/${row.id_cliente}`}>
+           <button>Editar</button>
+        </Link>
       ),
       button: true,
     },
   ];
-
   return (
     <div className='page-content'>
       <div className='home-container'>
         <div> ADMINISTRAR CLIENTES</div>
+        <SliderBar activeTab={activeTab} setActiveTab={setActiveTab} />
         <h1>HOLA ADMIN</h1>
         <DataTable
           columns={columns}

@@ -209,3 +209,47 @@
   color: black;
   border-radius: 10px;
 }
+.editAuto{
+  display: flex;
+  border-radius: 5px;
+  
+}
+.portadaImagen{
+  width: 350px;
+  height: 400px;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: 25px , 15px , 25px, 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ejemplo de sombra */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.InfoAuto{
+  display: block;
+  border: 0.5px solid black;
+  margin-right: 15px;
+  margin-left: 30px;
+}
+.btns{
+  display: flex;  
+}
+.AutoPortada{
+  width: 100%;
+  height: 310px;
+  border-radius: 10px;
+}
+.drop-container2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 320px;
+  border-radius: 10px;
+  border: 2px dashed #555;
+  color: #444;
+  cursor: pointer;
+  margin: 10px 10px 10px 5px;
+  width: 95%;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}

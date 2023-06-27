@@ -4,7 +4,7 @@ import '../Home.css';
 import '../styles/Autos.css';
 import { URL } from '../data/URL';
 import { IMAGE } from '../data/URL';
-// eslint-disable-next-line react/prop-types
+// eslint-disable-next-line react/prop-types, no-unused-vars
 const Slider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   // eslint-disable-next-line react/prop-types

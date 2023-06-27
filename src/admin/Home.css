@@ -12,6 +12,10 @@
     font-size: 24px;
     margin-bottom: 10px;
   }
+  .home-client{
+    margin-left: 30px;
+    width: 70%;
+  }
   .ErroresInput{
     color:  red;
     font-size: 12px;
@@ -76,4 +80,6 @@
       padding-right: 20px;
     }
   }
-  
+  .ModalP{
+    background-color: transparent;
+  }

@@ -38,6 +38,6 @@ export const SidebarData = [
   },
   {
     icon: UilSetting,
-    heading: 'Configuración'
+    heading: 'Configuracion'
   },
 ];
