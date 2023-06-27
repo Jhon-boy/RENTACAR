@@ -12,12 +12,6 @@ export const Config = () => {
     const [precioMinimo, setPrecioMinimo] = useState('');
     const [errorPrecioMinimo, setErrorPrecioMinimo] = useState('');
 
-
-    const handleInputChange = (e, setter) => {
-        const value = e.target.value.replace(/\D/g, ''); // Elimina cualquier carácter que no sea un número
-        setter(value);
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         // Realiza alguna acción con los valores ingresados, como enviarlos a una API o realizar un cálculo
