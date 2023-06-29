@@ -10,6 +10,11 @@ import { CardClientes } from './admin/clientes/CardClientes'
 import Clientes from './admin/clientes/Clientes'
 import { InfoClien } from './admin/clientes/InfoClien'
 import  {Config } from './admin/components/config/Config'
+import { Reservas } from './admin/components/Reservas.js/Reservas'
+import { InfoReserva } from './admin/components/Reservas.js/InfoReserva'
+import { CardsReservas } from './admin/components/Reservas.js/CardsReservas'
+import { TablePending } from './admin/components/Reservas.js/TablePending'
+import { TableConcret } from './admin/components/Reservas.js/TableConcret'
 
 function App() {
 
@@ -26,11 +31,15 @@ function App() {
           <Route path='/CardClient' element={<CardClientes />} />
           <Route path='/InfoClient/:id' element={<InfoClien />} />
           <Route path='/Configuracion' element={<Config />} />
+          <Route path='/Reservas' element={<Reservas />} />
+          <Route path='/InfoReserva/:id' element={<InfoReserva />} />
+          <Route path='/ReservaCard' element={<CardsReservas />} />
+          <Route path='/ReservasPendientes' element={<TablePending />} /> 
+          <Route path='/ReservasConcretas' element={<TableConcret />} /> 
         </Route>
       </Route>
       <Route path='*' element={<Error />} />
     </Routes>
-
   )
 }
 

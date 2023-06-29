@@ -82,7 +82,13 @@ export const EditCar = () => {
 
         try {
           await editarAutoController(id, formData);
-          alert('DATOS INSERTADOS CORRECTAMENTE');
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'EDIT EXITOSO',
+            showConfirmButton: false,
+            timer: 1500
+          })
           history(`/EditCar/${id}`);
         } catch (error) {
           Swal.fire({

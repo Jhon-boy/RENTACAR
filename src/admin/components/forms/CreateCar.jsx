@@ -44,8 +44,6 @@ export const CreateCar = () => {
     const navigateTo = (path) => {
         history(path);
     }
-
-
     // valores iniciales 
 
     const crearAuto = async (e) => {
@@ -59,7 +57,6 @@ export const CreateCar = () => {
             });
             return;
         }
-
 
         const formData = new FormData()
         formData.append('placas', placas)
@@ -76,7 +73,13 @@ export const CreateCar = () => {
             // alert('DATOS RECIBIDOS: ')
             await registrarAuto(formData);
             // console.log('DATOS RECIBIDOS'+ car.detalles + ' FOTO:' + car.fotos);
-            alert('DATOS INSERTADO CORRECTAMENTE');
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+              })
             history('/Autos');
         } catch (error) {
             alert('SOMETHING WAS WRONG' + error.message)
@@ -304,7 +307,7 @@ export const CreateCar = () => {
 
                     </Row>
                     <Row className="mb-3">
-                        <Form.Group yclassName='ingresoD' controlId="fileDetalles">
+                        <Form.Group className='ingresoD' controlId="fileDetalles">
                             <Form.Label>Detalles del Auto</Form.Label>
                             <Form.Control
                                 required
@@ -328,7 +331,7 @@ export const CreateCar = () => {
 
                     </Row>
 
-                    <Button variant="primary" onClick={crearAuto}>
+                    <Button variant="primary" className='btnSend' onClick={crearAuto}>
                         Registrar Auto
                     </Button>
                 </Form>

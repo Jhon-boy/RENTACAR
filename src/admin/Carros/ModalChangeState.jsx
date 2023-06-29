@@ -36,7 +36,7 @@ export const ModalChangeState = ({ idAuto, estado }) => {
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Your work has been saved',
+                title: 'Se han realizado los Cambios',
                 showConfirmButton: false,
                 timer: 1500
             })
