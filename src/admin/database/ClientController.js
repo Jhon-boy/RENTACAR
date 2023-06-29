@@ -5,7 +5,7 @@ export const eliminarCliente = async (id) => {
         const response = await axios.delete(`${URL}/clientes/${id}`);
         return response.data;
       } catch (error) {
-        alert('Error al eliminar el auto:', error);
+        console.log('Error al eliminar al cliente:', error);
         throw error;
       }
 }

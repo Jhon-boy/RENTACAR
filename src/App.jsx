@@ -15,6 +15,10 @@ import { InfoReserva } from './admin/components/Reservas.js/InfoReserva'
 import { CardsReservas } from './admin/components/Reservas.js/CardsReservas'
 import { TablePending } from './admin/components/Reservas.js/TablePending'
 import { TableConcret } from './admin/components/Reservas.js/TableConcret'
+import { ClientsPending } from './admin/clientes/ClientsPending'
+import { ClientsNo } from './admin/clientes/ClientsNo'
+import { Pagos } from './admin/components/pagos/pagos'
+
 
 function App() {
 
@@ -36,6 +40,9 @@ function App() {
           <Route path='/ReservaCard' element={<CardsReservas />} />
           <Route path='/ReservasPendientes' element={<TablePending />} /> 
           <Route path='/ReservasConcretas' element={<TableConcret />} /> 
+          <Route path='/clientesPending' element={<ClientsPending />} /> 
+          <Route path='/clientesNo' element={<ClientsNo />} /> 
+          <Route path='/Pagos' element={<Pagos />} /> 
         </Route>
       </Route>
       <Route path='*' element={<Error />} />

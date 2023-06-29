@@ -6,6 +6,8 @@ import { MdToggleOff } from "react-icons/md";
 import { MdToggleOn } from "react-icons/md";
 import { SliderBar } from './SliderBar';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { eliminarCliente } from '../database/ClientController';
 
 
 const Clientes = () => {
@@ -40,9 +42,37 @@ const Clientes = () => {
     setDatosCombinados(datosCombinados);
   }, [clientes, usuarios]);
 
-  const handleDelete = (cedula) => {
+  const handleDelete = async (id) => {
     // Aquí puedes implementar la lógica para eliminar un cliente con la cédula proporcionada
-    alert('Eliminar cliente con Cédula V2: ' + cedula);
+    Swal.fire({
+      title: 'Esta seguro de eliminar los datos del cliente?',
+      text: "Puedes modificar los datos despues!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Eliminar'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await eliminarCliente(id);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Cliente elimnado',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo Salio mal',
+            text: 'Error: ' + error.message,
+          });
+        }
+      }
+    });
+
   };
 
   const handleEdit = (id_cliente) => {
@@ -100,9 +130,9 @@ const Clientes = () => {
       button: true,
     },
     {
-      name: 'Editar',
+      name: 'Ver Historial',
       cell: (row) => (
-        <button className='warning' onClick={() => handleEdit(row.id_cliente)}>Editar</button>
+        <button className='warning' onClick={() => handleEdit(row.id_cliente)}>Historial</button>
       ),
       button: true,
     },
@@ -110,7 +140,7 @@ const Clientes = () => {
       name: 'Ver Perfil',
       cell: (row) => (
         <Link to={`/InfoClient/${row.id_cliente}`}>
-           <button>Editar</button>
+          <button>Editar</button>
         </Link>
       ),
       button: true,

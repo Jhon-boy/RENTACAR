@@ -6,9 +6,11 @@ import '../styles/Cliente.css'
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-
+import Chip from '@mui/material/Chip';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 import { URL } from '../data/URL';
 import { IMAGE } from '../data/URL'
@@ -72,8 +74,8 @@ export const InfoClien = () => {
     }, [id]);
     useEffect(() => {
         setEstado(clientes.estado);
-    },[clientes.estado])
-    
+    }, [clientes.estado])
+
     return (
         <div className="page-content">
             <div className="EditClientP">
@@ -83,6 +85,9 @@ export const InfoClien = () => {
                         <img src={`${IMAGE}/${licencias.fotolicencia}`} className="portada2" />
                     </div>
                     <div className='InfoClient'>
+                        <Divider textAlign="left" component="div" role="presentation">
+                            <Chip color="primary" label="Informacion del Cliente" />
+                        </Divider>
                         <div className='InfoSection'>
                             <div className='ClientInfo'>
                                 <label htmlFor='nombre'>Nombre:</label>
@@ -113,7 +118,9 @@ export const InfoClien = () => {
                                 <input type='text' id='estado' value={estado} readOnly />
                             </div>
                         </div>
-                        <Divider />
+                        <Divider textAlign="left" component="div" role="presentation">
+                            <Chip color="primary" label="Informacion de su Licencia" />
+                        </Divider>
                         <div className='InfoSection'>
                             <div className='ClientInfo'>
                                 <label htmlFor='licencia'>Licencia:</label>
@@ -132,18 +139,18 @@ export const InfoClien = () => {
                             </div>
                             <div className='ClientInfo'>
                                 <label htmlFor='licencia_estado'>Estado:</label>
-                                <input type='text' id='licencia_estado' value={licencias.estado} readOnly />
+                                {licencias.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div className='btnSlider btnClient'>
-                        <Stack spacing={10} direction="row">
-                            <Button variant="text" onClick={() => editarEstado(id, 'NO HABILITADO')}>DESHABILITAR CUENTA</Button>
-                            <Button variant="contained" onClick={() => editarEstado(id, 'HABILITADO')}>HABILITAR CUENTA</Button>
-                            <Button variant="outlined" onClick={() => editarEstado(id, 'PENDIENTE')}>MANTENER EN PENDIENTE</Button>
-                        </Stack>
+                    <Stack spacing={10} direction="row">
+                        <Button variant="text" onClick={() => editarEstado(id, 'NO HABILITADO')}>DESHABILITAR CUENTA</Button>
+                        <Button variant="contained" onClick={() => editarEstado(id, 'HABILITADO')}>HABILITAR CUENTA</Button>
+                        <Button variant="outlined" onClick={() => editarEstado(id, 'PENDIENTE')}>MANTENER EN PENDIENTE</Button>
+                    </Stack>
                 </div>
                 <div>
                 </div>

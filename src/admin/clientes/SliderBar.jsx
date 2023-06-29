@@ -18,28 +18,26 @@ export const SliderBar = ({ activeTab, setActiveTab }) => {
                     className={`slider-item ${activeTab === 'all' ? 'active' : ''}`}
                     onClick={() => setActiveTab('all')}
                 >
-                    Todos los Clientes
+                    Perfil de los clientes
                 </div>
             </Link>
 
-            <div
+            <Link to={`/clientesPending`}>
+                 <div
                 className={`slider-item ${activeTab === 'pending' ? 'active' : ''}`}
-                onClick={() => setActiveTab('pending')}
-            >
+                onClick={() => setActiveTab('pending')}>
                 Clientes Pendientes
             </div>
-            <div
-                className={`slider-item ${activeTab === 'active' ? 'active' : ''}`}
-                onClick={() => setActiveTab('active')}
-            >
-                Clientes Activos
-            </div>
-            <div
+            </Link>
+           <Link to={`/clientesNo`}>
+             <div
                 className={`slider-item ${activeTab === 'No' ? 'active' : ''}`}
                 onClick={() => setActiveTab('No')}
             >
                 Clientes  No Habilitados
             </div>
+           </Link>
+           
         </div>
     )
 }
