@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import '../../Home.css';
 import '../../styles/Cliente.css'
-import { useParams, useNavigate, Link    } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { URL } from '../../data/URL';
 import { IMAGE } from '../../data/URL'
@@ -20,8 +20,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 import Swal from 'sweetalert2';
 import { CompletarPago, editarEstadoReserva } from '../../database/Pagos.Controller';
+import { CambioStadoAuto } from '../../database/controller';
+import { crearHistorial } from '../../database/History.Controller';
 
 export const InfoReserva = () => {
     const { id } = useParams();
@@ -31,10 +34,11 @@ export const InfoReserva = () => {
     const [licencias, setLicencias] = useState([]);
     const [tipoPago, setTipoPago] = useState('');
     // eslint-disable-next-line no-unused-vars
-    const [sinIva, setsinIva] = useState([]);
+    const [comentario, setComentario] = useState('SIN COMENTARIOS');
     const [costoTotal, setcostoTotal] = useState([]);
+    const [estadoAuto, setEstadoAuto] = useState('');
     const [pagos, setPagos] = useState({ fecha_pago: '', tipo: '', monto: '', id_cliente: '', id_auto: '' });
-
+    const [historial, setHistorial] = useState({ fecha_renta: '', comentario: '', id_cliente: '', id_pago: '' });
 
     const history = useNavigate();
 
@@ -55,6 +59,10 @@ export const InfoReserva = () => {
         pagos.monto = reservas.monto;
         pagos.id_cliente = clientes.id_cliente;
         pagos.id_auto = autos.id_auto;
+
+        historial.id_cliente = clientes.id_cliente;
+        historial.fecha_renta = año + '-' + mes + '-' + dia;
+        historial.comentario = comentario;
 
         if (!pagos.tipo || !reservas.monto || !pagos.id_cliente || !pagos.id_auto) {
             Swal.fire({
@@ -77,7 +85,20 @@ export const InfoReserva = () => {
             if (result.isConfirmed) {
                 try {
                     await CompletarPago(pagos);
-                    await editarEstadoReserva(reservas.id_reserva, estadoP)
+                    await editarEstadoReserva(reservas.id_reserva, estadoP);
+                    setEstadoAuto('OCUPADO');
+                    await CambioStadoAuto(autos.id_auto, 'OCUPADO')
+                    const pagosResponse = await axios.get(`${URL}/pagos`);
+                    const pagoEncontrado = pagosResponse.data.find(pago =>
+                        pago.id_cliente === clientes.id_cliente &&
+                        pago.id_auto === autos.id_auto &&
+                        pago.monto === reservas.monto
+                      );
+                  
+                      if (pagoEncontrado) {
+                        historial.id_pago = pagoEncontrado.id_pago;
+                       await crearHistorial(historial)
+                      }
                     history(`/Reservas`);
                     Swal.fire(
                         'Datos actualizados',
@@ -92,7 +113,6 @@ export const InfoReserva = () => {
                         'error'
                     );
                 }
-
             }
         })
     }
@@ -110,6 +130,10 @@ export const InfoReserva = () => {
                 if (result.isConfirmed) {
                     try {
                         await editarEstadoReserva(reservas.id_reserva, estadoP)
+                        if (estadoP === 'CANCELADO') {
+                            setEstadoAuto('DISPONIBLE');
+                            await CambioStadoAuto(autos.id_auto, 'DISPONIBLE')
+                        }
                         history(`/Reservas`);
                         Swal.fire(
                             'Datos actualizados',
@@ -204,10 +228,10 @@ export const InfoReserva = () => {
                                 {licencias.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
                             </div>
                             <div className='ClientInfo'>
-                            <Link to={`/InfoClient/${clientes.id_cliente}`}>
-                                  <Button variant="outlined">Ver Perfil</Button>
-                            </Link>
-                              
+                                <Link to={`/InfoClient/${clientes.id_cliente}`}>
+                                    <Button variant="outlined">Ver Perfil</Button>
+                                </Link>
+
                             </div>
                         </div>
                         <Divider textAlign="left" component="div" role="presentation">
@@ -241,7 +265,7 @@ export const InfoReserva = () => {
                                 {autos.estado === 'OCUPADO' && <BusinessIcon color='primary' className='IconsP' />}
                             </div>
                             <Link to={`/Autos/${autos.id_auto}`}>
-                                  <Button variant="outlined">Ver Perfil</Button>
+                                <Button variant="outlined">Ver Perfil</Button>
                             </Link>
                         </div>
                         <Divider textAlign="left" component="div" role="presentation">
@@ -286,24 +310,25 @@ export const InfoReserva = () => {
                                                 <em>None</em>
                                             </MenuItem>
                                             <MenuItem value="FISICO">Pago Fisico</MenuItem>
-                                            <MenuItem value="TRANSFERENCIA">Transferencia</MenuItem>
+                                            <MenuItem value="TRASNFERENCIA">Transferencia</MenuItem>
                                             <MenuItem value="OTRO">Otro</MenuItem>
                                         </Select>
                                         <FormHelperText>Seleccione el tipo de Pago</FormHelperText>
                                     </FormControl>
                                 ) : (
                                     reservas.estado === 'CANCELADO' ? (
-                                        <label style={{  color: 'red' }}>No se llevó a cabo la Reserva</label>
+                                        <label style={{ color: 'red' }}>No se llevó a cabo la Reserva</label>
                                     ) : (
-                                        <label style={{  color: 'green' }}>Pago Confirmado</label>
+                                        <label style={{ color: 'green' }}>Pago Confirmado</label>
                                     )
                                 )}
-
-
-
                             </div>
                         </div>
-
+                        <label htmlFor='fecha_caducidad'>Añade un comentario:</label>
+                        <TextareaAutosize
+                            minRows={1} style={{ background: 'white', color: 'black', width: '300px' }}
+                            value={comentario}
+                            onChange={(e) => setComentario(e.target.value)} />
                     </div>
 
                 </div>

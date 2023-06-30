@@ -18,6 +18,7 @@ import { TableConcret } from './admin/components/Reservas.js/TableConcret'
 import { ClientsPending } from './admin/clientes/ClientsPending'
 import { ClientsNo } from './admin/clientes/ClientsNo'
 import { Pagos } from './admin/components/pagos/pagos'
+import { Historial } from './admin/components/historial/Historial'
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path='/clientesPending' element={<ClientsPending />} /> 
           <Route path='/clientesNo' element={<ClientsNo />} /> 
           <Route path='/Pagos' element={<Pagos />} /> 
+          <Route path='/Historial/:id' element={<Historial />} /> 
         </Route>
       </Route>
       <Route path='*' element={<Error />} />

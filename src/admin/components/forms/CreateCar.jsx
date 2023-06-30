@@ -84,7 +84,6 @@ export const CreateCar = () => {
         } catch (error) {
             alert('SOMETHING WAS WRONG' + error.message)
         }
-
     }
 
     // useEffect(() => {
@@ -96,7 +95,6 @@ export const CreateCar = () => {
 
     //     obtenerDatos();
     // }, []);
-
 
     return (
         <div className="CrearAuto">

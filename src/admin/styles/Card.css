@@ -1,0 +1,49 @@
+.card {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .avatar-container {
+    margin-right: 10px;
+  }
+  
+  .avatar,
+  .car-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .info {
+    color: #333;
+  }
+  
+  .nombre {
+    color: #ff0000;
+    margin: 0;
+  }
+  
+  .auto {
+    color: #00ff00;
+    margin: 0;
+  }
+  
+  .placas {
+    color: #800080;
+    margin: 0;
+  }
+  
+  .fechas {
+    color: #0000ff;
+    margin: 0;
+  }
+  
+  .costo {
+    color: #ffa500;
+    margin: 0;
+  }
+  

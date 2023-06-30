@@ -75,11 +75,6 @@ const Clientes = () => {
 
   };
 
-  const handleEdit = (id_cliente) => {
-    // Aquí puedes implementar la lógica para editar un cliente con el ID proporcionado
-    alert('Editar cliente con ID: ' + id_cliente);
-  };
-
   const columns = [
     {
       name: 'Id',
@@ -132,7 +127,10 @@ const Clientes = () => {
     {
       name: 'Ver Historial',
       cell: (row) => (
-        <button className='warning' onClick={() => handleEdit(row.id_cliente)}>Historial</button>
+        <Link to={`/historial/${row.id_cliente}`}>
+           <button className='warning'>Historial</button>
+        </Link>
+       
       ),
       button: true,
     },
