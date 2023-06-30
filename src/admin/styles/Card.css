@@ -1,49 +1,57 @@
 .card {
-    display: flex;
-    align-items: center;
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .avatar-container {
-    margin-right: 10px;
-  }
-  
-  .avatar,
-  .car-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-  
-  .info {
-    color: #333;
-  }
-  
-  .nombre {
-    color: #ff0000;
-    margin: 0;
-  }
-  
-  .auto {
-    color: #00ff00;
-    margin: 0;
-  }
-  
-  .placas {
-    color: #800080;
-    margin: 0;
-  }
-  
-  .fechas {
-    color: #0000ff;
-    margin: 0;
-  }
-  
-  .costo {
-    color: #ffa500;
-    margin: 0;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #dbd6d6;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: min-content;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.subTitle{
+  font-size: 9px;
+  color: black;
+}
+.title {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.avatar {
+  width: 230px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 3%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.car-avatar {
+  width: 170px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.columnInfo{
+  display: flex;
+}
+.subTitleCar{
+  margin-top: 4%;
+  font-size: 15px;
+}
+.Paper{
+  display: flex;
+}

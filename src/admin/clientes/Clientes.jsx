@@ -127,7 +127,7 @@ const Clientes = () => {
     {
       name: 'Ver Historial',
       cell: (row) => (
-        <Link to={`/historial/${row.id_cliente}`}>
+        <Link to={`/Historial/${row.id_cliente}`}>
            <button className='warning'>Historial</button>
         </Link>
        
