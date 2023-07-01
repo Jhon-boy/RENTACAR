@@ -1,0 +1,32 @@
+.card-autos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 75px;
+    padding-top: 20px;
+  }
+  
+  .Buscador {
+    padding-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search {
+    width: 500px;
+  }
+  
+  .contenedor-house {
+    width: 100vw;
+    height: 100vw;
+  }
+  
+  .footer-wrapper {
+    position: relative;
+    top: 1500px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  

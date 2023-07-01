@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import '../styles/Home.css'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -9,8 +8,8 @@ import CardMedia from '@mui/material/CardMedia';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
-
 import { IMAGE } from '../data/URL';
+import { Link } from 'react-router-dom';
 
 export const CardAuto = ({ auto }) => {
     const renderButton = () => {
@@ -40,14 +39,15 @@ export const CardAuto = ({ auto }) => {
             return <CloseIcon />;
         }
     };
-
     if (auto.estado === 'FUERA DE SERVICIO') {
         return null;
     }
 
+
+
     return (
         <div className='home-content'>
-            <div>
+            <div style={{borderRadius:'10px'}}>
                 <Card sx={{ width: 345 }}>
                     <CardMedia
                         component="img"
@@ -59,17 +59,19 @@ export const CardAuto = ({ auto }) => {
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                             Disponible Ahora
                         </Typography>
-                        <Typography variant="h7" component="div">
+                        <Typography variant="h5" component="div">
                             {auto.marca} - {auto.modelo}
                         </Typography>
+                        <Typography sx={{ fontSize: 12 }} color="text.secondary" component="div">
+                            {auto.detalles}
+                        </Typography>
                         <Typography variant="h6">
-                            {auto.precio} - {auto.estado}
+                            ${auto.precio} - {auto.estado}
                         </Typography>
                     </CardContent>
-                    <CardActions>
-                        {renderIcon()}
-                        {renderButton()}
-                    </CardActions>
+                    <Link  to={`/cliente/vehiculos/${auto.id_auto}`} className='boton-renta' style={{marginBottom: '10px'}}>
+                        {renderButton()}{renderIcon()}
+                    </Link>
                 </Card>
 
             </div>
