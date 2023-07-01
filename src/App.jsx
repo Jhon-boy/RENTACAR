@@ -22,7 +22,7 @@ import { Historial } from './admin/components/historial/Historial'
 import Navbar from './client/components/Navbar'
 import { HomeClient } from './client/components/HomeClient'
 import { Cars } from './client/components/Cars'
-
+import InformacionAuto from './client/components/InformacionAuto'
 function App() {
 
   return (
@@ -62,6 +62,7 @@ function App() {
               <Route path='/cliente' element={<Navbar />} >
                 <Route index element={<HomeClient />} />
                 <Route path='/cliente/vehiculos' element={<Cars />} />
+                <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto/>}/>
               </Route>
             </Route>
           </Route>

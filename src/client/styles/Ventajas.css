@@ -1,0 +1,44 @@
+.ventajas{
+    background-color: #e9dcaafd;
+    width: 100vw;
+    height: 400px;
+    box-shadow: 4px 2px 4px rgba(0.9, 0.9, 0.9, 0.9);
+}
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    font-size: 25px;
+}
+.item1{
+    margin: 15px;
+}
+.container-ventajas{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px 0 45px;
+}
+.icon-ven{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.text-ven{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+.info-vent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: medium;
+}

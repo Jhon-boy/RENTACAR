@@ -1,42 +1,41 @@
-
-import { Link,  Outlet, } from 'react-router-dom';
+import { Link, Outlet, } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material/';
 import { Home, DirectionsCar, Contacts, EventNote, Business, AccountCircle } from '@mui/icons-material';
 
 export default function Navbar() {
     return (
         <div className='NavBar'>
-            <AppBar className='NavBar' style={{height: '100px'}}>
-                <Toolbar  style={{marginTop: '1%'}}>
-                    <Typography variant="h6" style={{ flexGrow: 17, fontWeight: 'bold' }}>
-                        <b>R</b>enta<b>C</b>ar
-                    </Typography>
-                    <Link to="/cliente" style={{ color: 'white', textDecoration: 'none', marginRight: '96px' }}>
-                        <Home />
-                        <Typography variant="subtitle1" style={{ marginLeft: '4px' }}>Home</Typography>
-                    </Link>
-                    <Link to="/cliente/vehiculos" style={{ color: 'white', textDecoration: 'none', marginRight: '96px' }}>
-                        <DirectionsCar />
-                        <Typography variant="subtitle1" style={{ marginLeft: '4px' }}>Vehiculos</Typography>
-                    </Link>
-                    <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '96px' }}>
-                        <Contacts />
-                        <Typography variant="subtitle1" style={{ marginLeft: '4px' }}>Contactos</Typography>
-                    </Link>
-                    <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '96px' }}>
-                        <EventNote />
-                        <Typography variant="subtitle1" style={{ marginLeft: '4px' }}>Reserva</Typography>
-                    </Link>
-                    <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '96px' }}>
-                        <Business />
-                        <Typography variant="subtitle1" style={{ marginLeft: '4px' }}>Oficina</Typography>
-                    </Link>
-                    <div style={{ marginLeft: '76px', display: 'flex'}}>
-                        <Link to="/login" component={Button} variant="outlined" color="red" style={{ marginRight: '88px' }}>
-                            <AccountCircle style={{color: 'white'}} />
+            <AppBar className='NavBar' style={{ height: '100px', backgroundColor:'#0194be',  display: 'flex' , justifyContent: 'space-between' }}>
+                <Toolbar style={{ marginTop: '1%', display: 'flex' , justifyContent: 'space-between'  }}>
+                    <div className="nombre-empresa">
+                        <Typography variant="h6" style={{ flexGrow: 40, fontWeight: 'bold' }}>
+                            <b>R</b>enta<b>C</b>ar
+                        </Typography>
+                    </div>
+                        <Link to="/cliente" style={{ color: 'white', textDecoration: 'none', display: 'flex', marginLeft: '200px', marginRight: '30px', alignItems: 'center' }}>
+                            <Home style={{ marginRight: '4px' }} />
+                            <Typography variant="subtitle1">Home</Typography>
+                        </Link>
+                        <Link to="/cliente/vehiculos" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
+                            <DirectionsCar style={{ marginRight: '4px' }} />
+                            <Typography variant="subtitle1">Vehiculos</Typography>
+                        </Link>
+                        <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
+                            <Contacts style={{ marginRight: '4px' }} />
+                            <Typography variant="subtitle1">Contactos</Typography>
+                        </Link>
+                        <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
+                            <EventNote style={{ marginRight: '4px' }} />
+                            <Typography variant="subtitle1">Reserva</Typography>
+                        </Link>
+                        <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '30px',  display: 'flex', alignItems: 'center' }}>
+                            <Business style={{ marginRight: '4px' }} />
+                            <Typography variant="subtitle1">Oficina</Typography>
+                        </Link>
+                        <Link to="/login" style={{alignItems: 'center', display:'flex', marginLeft: '150px', border: '1px solid white', borderRadius: '5px', padding:'5px'}} component={Button} variant="outlined" >
+                            <AccountCircle style={{ color: 'white' }} />
                             <Typography variant="outlined" style={{ marginLeft: '4px', color: 'white' }}>Login</Typography>
                         </Link>
-                    </div>
                 </Toolbar>
             </AppBar>
             <Outlet />
