@@ -1,7 +1,7 @@
 
 import './Home.css';
 
-export default function Home() {
+export default function HomeAdmin() {
   return (
     <div className="page-content">
     <div className="home-container">
