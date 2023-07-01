@@ -1,0 +1,58 @@
+.LoginIngreso{
+    margin-left: 120%;
+
+}
+.Ingreso{
+    height: 350px;
+    width: 400px;
+    border: 2px black solid;
+    border-radius: 5px;
+}
+.Ingreso button{
+    margin-left: -1%;
+}
+.mb-3{
+    margin-top: 7%;
+    width: 300px;
+
+}
+.Errores{
+    font-size: 10px;
+    color: red;
+}
+.NewCount {
+    color: rgb(100, 98, 98);
+
+}
+.NewCount:hover{
+    cursor: pointer;
+    color: black;
+}
+.Demo{
+    margin-left: 35%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 6%;
+    width:fit-content;
+}
+#Demo1{
+   margin-bottom: 10px;
+}
+#Demo1 h5{
+    font-size: 13px;
+    font-weight: bolder;
+}
+#Demo2 div{
+    display: flex;
+    text-align: center;
+
+}
+#Demo2 h6{
+    display: flex;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 11px;
+}
+#Demo2 p{
+    font-weight: lighter;
+    margin-left: 15px;
+}

@@ -77,21 +77,7 @@ export const Config = () => {
                 }
             }
         });
-        // try {
-        //     await EditConfig(data);
-        //     Swal.fire(
-        //         'Datos actualizados',
-        //         'Puedes revisar las configuraciones',
-        //         'success'
-        //     );
-        // } catch (error) {
-        //     console.error(error);
-        //     Swal.fire(
-        //         'Error',
-        //         'Ocurrió un error al actualizar los datos',
-        //         'error'
-        //     );
-        // }
+
         setData('');
     };
 

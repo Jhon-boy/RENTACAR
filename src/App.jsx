@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation   } from 'react-router-dom'
 import Sidebar from './admin/menu/Sidebar'
 import Error from './pages/Error'
 import HomeAdmin from './admin/HomeAdmin'
@@ -22,9 +22,15 @@ import { Historial } from './admin/components/historial/Historial'
 import Navbar from './client/components/Navbar'
 import { HomeClient } from './client/components/HomeClient'
 import { Cars } from './client/components/Cars'
+import { Login } from './pages/Login'
+import { Inicio } from './pages/Inicio'
 
 function App() {
 
+ 
+  const location = useLocation();
+  const credentials = JSON.parse(localStorage.getItem('credentials'));
+  const usuario = credentials?.usuario || null;
   return (
     <>
       {/* ================= ADMINISTRADOR ============0z */}
@@ -66,6 +72,8 @@ function App() {
             </Route>
           </Route>
           <Route path='*' element={<Error />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/homeUser' index element={<Inicio />} />
       </Routes>
     </>
 
