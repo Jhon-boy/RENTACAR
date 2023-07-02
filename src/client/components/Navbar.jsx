@@ -1,8 +1,15 @@
+/* eslint-disable react/prop-types */
 import { Link, Outlet, } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material/';
 import { Home, DirectionsCar, Contacts, EventNote, Business, AccountCircle } from '@mui/icons-material';
+import { useEffect } from 'react';
 
-export default function Navbar() {
+export default function Navbar({usuario}) {
+
+    useEffect(() => {
+      console.log(usuario);
+    })
+    
     return (
         <div className='NavBar'>
             <AppBar className='NavBar' style={{ height: '100px', backgroundColor:'#0194be',  display: 'flex' , justifyContent: 'space-between' }}>
@@ -32,9 +39,9 @@ export default function Navbar() {
                             <Business style={{ marginRight: '4px' }} />
                             <Typography variant="subtitle1">Oficina</Typography>
                         </Link>
-                        <Link to="/login" style={{alignItems: 'center', display:'flex', marginLeft: '150px', border: '1px solid white', borderRadius: '5px', padding:'5px'}} component={Button} variant="outlined" >
+                        <Link to="/cliente" style={{alignItems: 'center', display:'flex', marginLeft: '150px', border: '1px solid white', borderRadius: '5px', padding:'5px'}} component={Button} variant="outlined" >
                             <AccountCircle style={{ color: 'white' }} />
-                            <Typography variant="outlined" style={{ marginLeft: '4px', color: 'white' }}>Login</Typography>
+                            <Typography variant="outlined" style={{ marginLeft: '4px', color: 'white' }}>{usuario}</Typography>
                         </Link>
                 </Toolbar>
             </AppBar>

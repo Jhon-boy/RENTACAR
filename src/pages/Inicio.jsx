@@ -25,9 +25,9 @@ export const Inicio = () => {
         <div className='home-content'>
             <NavBar />
             <div className='home-container'>
-                <Grid container spacing={-20}>
+                <Grid container spacing={-30} style={{marginTop: '150px'}}>
                     {autos.map(auto => (
-                        <Card key={auto.id_auto} sx={{ width: 345 }}>
+                        <Card key={auto.id_auto} sx={{ width: 325 }} style={{marginTop: '40px', marginRight: '30px'}}>
                             <CardMedia
                                 component="img"
                                 height="204"
@@ -46,18 +46,9 @@ export const Inicio = () => {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                {auto.estado === 'DISPONIBLE' ? (
-                                    <Button variant="contained" size="large">
-                                        Alquilar
-                                    </Button>
-                                ) : (
-                                    <>
-                                        <Typography variant="h6">{auto.estado}</Typography>
-                                        <Button variant="contained" size="large" disabled>
-                                            Próximamente
-                                        </Button>
-                                    </>
-                                )}
+                                <Button variant="contained" size="large">
+                                    Ver detalles
+                                </Button>
                             </CardActions>
                         </Card>
                     ))}

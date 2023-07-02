@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import './Sidebar.css';
 import { Outlet, Link } from 'react-router-dom'
@@ -6,7 +7,7 @@ import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import { SidebarData } from "../data/Data";
 
-export default function Sidebar() {
+export default function Sidebar({usuario}) {
   const [expanded, setExpaned] = useState(true)
   const [selected, setSelected] = useState(0);
 
@@ -50,6 +51,7 @@ export default function Sidebar() {
           <div className="menuItem">
             <UilSignOutAlt />
           </div>
+          <h5>Hola: {usuario}</h5>
         </div>
       </motion.div>
       <Outlet />
