@@ -26,6 +26,8 @@ import { Login } from './pages/Login'
 import { Inicio } from './pages/Inicio'
 import InformacionAuto from './client/components/InformacionAuto'
 import { useEffect } from 'react';
+import { ProtectedRoute } from './Router/ProtectedRoutes';
+import { ProtectedRouteClient } from './Router/ProtectedRouteClient';
 
 function App() {
   // Obtener el usuario del almacenamiento local
