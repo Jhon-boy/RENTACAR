@@ -26,7 +26,8 @@ import { Login } from './pages/Login'
 import { Inicio } from './pages/Inicio'
 import { useEffect } from 'react';
 import InformacionAuto from './client/components/InformacionAuto'
-
+import { ProtectedRoute } from './Router/ProtectedRoutes';
+import { ProtectedRouteClient } from './Router/ProtectedRouteClient';
 
 
 function App() {
@@ -62,43 +63,48 @@ function App() {
     <>
       {/* ================= ADMINISTRADOR ============0z */}
       <Routes>
-        <Route path='/' element={<Sidebar usuario={correo} />}>
-          {isUserLoggedIn && (
-            <>
-              <Route path='/Home' element={<HomeAdmin />} />
-              <Route path='/Autos' element={<Autos />} />
-              <Route path='/Autos/:id' element={<CardAutos />} />
-              <Route path='/Clientes' element={<Clientes />} />
-              <Route path='/crearAuto' element={<CreateCar />} />
-              <Route path='/EditCar/:id' element={<EditCar />} />
-              <Route path='/CardClient' element={<CardClientes />} />
-              <Route path='/InfoClient/:id' element={<InfoClien />} />
-              <Route path='/Configuracion' element={<Config />} />
-              <Route path='/Reservas' element={<Reservas />} />
-              <Route path='/InfoReserva/:id' element={<InfoReserva />} />
-              <Route path='/ReservaCard' element={<CardsReservas />} />
-              <Route path='/ReservasPendientes' element={<TablePending />} />
-              <Route path='/ReservasConcretas' element={<TableConcret />} />
-              <Route path='/clientesPending' element={<ClientsPending />} />
-              <Route path='/clientesNo' element={<ClientsNo />} />
-              <Route path='/Pagos' element={<Pagos />} />
-              <Route path='/Historial/:id' element={<Historial />} />
-            </>
-          )}
+        <Route element={<ProtectedRoute usuario={correo} />}>
+          <Route path='/' element={<Sidebar usuario={correo} />}>
+            {isUserLoggedIn && (
+              <>
+                <Route path='/Home' element={<HomeAdmin />} />
+                <Route path='/Autos' element={<Autos />} />
+                <Route path='/Autos/:id' element={<CardAutos />} />
+                <Route path='/Clientes' element={<Clientes />} />
+                <Route path='/crearAuto' element={<CreateCar />} />
+                <Route path='/EditCar/:id' element={<EditCar />} />
+                <Route path='/CardClient' element={<CardClientes />} />
+                <Route path='/InfoClient/:id' element={<InfoClien />} />
+                <Route path='/Configuracion' element={<Config />} />
+                <Route path='/Reservas' element={<Reservas />} />
+                <Route path='/InfoReserva/:id' element={<InfoReserva />} />
+                <Route path='/ReservaCard' element={<CardsReservas />} />
+                <Route path='/ReservasPendientes' element={<TablePending />} />
+                <Route path='/ReservasConcretas' element={<TableConcret />} />
+                <Route path='/clientesPending' element={<ClientsPending />} />
+                <Route path='/clientesNo' element={<ClientsNo />} />
+                <Route path='/Pagos' element={<Pagos />} />
+                <Route path='/Historial/:id' element={<Historial />} />
+              </>
+            )}
+          </Route>
+
+          {/* ========================CLIENT ===========================000 */}
+
+          <Route>
+            {isUserLoggedIn && (
+              <Route element={<ProtectedRouteClient usuario={correo} />}>
+                <Route path='/cliente' element={<Navbar usuario={correo} />}>
+                  <Route index element={<HomeClient />} />
+                  <Route path='/cliente/vehiculos' element={<Cars />} />
+                  <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto />} />
+                </Route>
+              </Route>
+
+            )}
+          </Route>
+
         </Route>
-
-        {/* ========================CLIENT ===========================000 */}
-
-        <Route>
-          {isUserLoggedIn && (
-            <Route path='/cliente' element={<Navbar usuario={correo} />}>
-              <Route index element={<HomeClient />} />
-              <Route path='/cliente/vehiculos' element={<Cars />} />
-              <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto />} />
-            </Route>
-          )}
-        </Route>
-
         <Route path='/login' element={<Login />} />
         <Route path='/inicio' index element={<Inicio />} />
         <Route path='*' element={<Error />} />
