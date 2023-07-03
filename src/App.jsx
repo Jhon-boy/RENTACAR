@@ -22,13 +22,13 @@ import { Historial } from './admin/components/historial/Historial'
 import Navbar from './client/components/Navbar'
 import { HomeClient } from './client/components/HomeClient'
 import { Cars } from './client/components/Cars'
-<<<<<<< HEAD
+
 import { Login } from './pages/Login'
 import { Inicio } from './pages/Inicio'
 
-=======
+
 import InformacionAuto from './client/components/InformacionAuto'
->>>>>>> 8f0787a1417d46e730a74c2e1938e991dde4c8af
+
 function App() {
 
  
