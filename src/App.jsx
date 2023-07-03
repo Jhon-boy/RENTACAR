@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation   } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Sidebar from './admin/menu/Sidebar'
 import Error from './pages/Error'
 import HomeAdmin from './admin/HomeAdmin'
@@ -22,67 +22,92 @@ import { Historial } from './admin/components/historial/Historial'
 import Navbar from './client/components/Navbar'
 import { HomeClient } from './client/components/HomeClient'
 import { Cars } from './client/components/Cars'
-
 import { Login } from './pages/Login'
 import { Inicio } from './pages/Inicio'
-
-
 import InformacionAuto from './client/components/InformacionAuto'
+import { useEffect } from 'react';
 
 function App() {
+  // Obtener el usuario del almacenamiento local
+  const storedCredentials = localStorage.getItem('credentials');
+  const { correo, rol } = storedCredentials ? JSON.parse(storedCredentials) : {};
 
- 
-  const location = useLocation();
-  const credentials = JSON.parse(localStorage.getItem('credentials'));
-  const usuario = credentials?.usuario || null;
+  // Verificar si el usuario está logeado
+  const isUserLoggedIn = correo && rol;
+
+  // Navegación programática
+  const navigate = useNavigate();
+
+  // Función para redirigir al sistema correspondiente
+  const redirectToSystem = () => {
+    if (isUserLoggedIn) {
+      if (rol === 1) {
+        navigate('/Home');
+      } else if (rol === 2) {
+        navigate('/cliente');
+      }
+    } else {
+      navigate('/inicio');
+    }
+  };
+
+  // Redireccionar al sistema si el usuario ya está logeado
+  useEffect(() => {
+    redirectToSystem();
+  }, []);
+
   return (
     <>
       {/* ================= ADMINISTRADOR ============0z */}
       <Routes>
-        <Route>
-          <Route path='/' element={<Sidebar />}>
-            <Route path='/Home' element={<HomeAdmin />} />
-            <Route path='/Autos' element={<Autos />} />
-            <Route path='/Autos/:id' element={<CardAutos />} />
-            <Route path='/Clientes' element={<Clientes />} />
-            <Route path='/crearAuto' element={<CreateCar />} />
-            <Route path='/EditCar/:id' element={<EditCar />} />
-            <Route path='/CardClient' element={<CardClientes />} />
-            <Route path='/InfoClient/:id' element={<InfoClien />} />
-            <Route path='/Configuracion' element={<Config />} />
-            <Route path='/Reservas' element={<Reservas />} />
-            <Route path='/InfoReserva/:id' element={<InfoReserva />} />
-            <Route path='/ReservaCard' element={<CardsReservas />} />
-            <Route path='/ReservasPendientes' element={<TablePending />} />
-            <Route path='/ReservasConcretas' element={<TableConcret />} />
-            <Route path='/clientesPending' element={<ClientsPending />} />
-            <Route path='/clientesNo' element={<ClientsNo />} />
-            <Route path='/Pagos' element={<Pagos />} />
-            <Route path='/Historial/:id' element={<Historial />} />
+        <Route element={<ProtectedRoute usuario={correo} />}>
+          <Route path='/' element={<Sidebar usuario={correo} />}>
+            {isUserLoggedIn && (
+              <>
+                <Route path='/Home' element={<HomeAdmin />} />
+                <Route path='/Autos' element={<Autos />} />
+                <Route path='/Autos/:id' element={<CardAutos />} />
+                <Route path='/Clientes' element={<Clientes />} />
+                <Route path='/crearAuto' element={<CreateCar />} />
+                <Route path='/EditCar/:id' element={<EditCar />} />
+                <Route path='/CardClient' element={<CardClientes />} />
+                <Route path='/InfoClient/:id' element={<InfoClien />} />
+                <Route path='/Configuracion' element={<Config />} />
+                <Route path='/Reservas' element={<Reservas />} />
+                <Route path='/InfoReserva/:id' element={<InfoReserva />} />
+                <Route path='/ReservaCard' element={<CardsReservas />} />
+                <Route path='/ReservasPendientes' element={<TablePending />} />
+                <Route path='/ReservasConcretas' element={<TableConcret />} />
+                <Route path='/clientesPending' element={<ClientsPending />} />
+                <Route path='/clientesNo' element={<ClientsNo />} />
+                <Route path='/Pagos' element={<Pagos />} />
+                <Route path='/Historial/:id' element={<Historial />} />
+              </>
+            )}
           </Route>
-        </Route>
-        <Route>
-        </Route>
 
-
-        {/* ========================CLIENT ===========================000 */}
+          {/* ========================CLIENT ===========================000 */}
 
           <Route>
-            <Route>
-              <Route path='/cliente' element={<Navbar />} >
-                <Route index element={<HomeClient />} />
-                <Route path='/cliente/vehiculos' element={<Cars />} />
-                <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto/>}/>
+            {isUserLoggedIn && (
+              <Route element={<ProtectedRouteClient usuario={correo} />}>
+                <Route path='/cliente' element={<Navbar usuario={correo} />}>
+                  <Route index element={<HomeClient />} />
+                  <Route path='/cliente/vehiculos' element={<Cars />} />
+                  <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto />} />
+                </Route>
               </Route>
-            </Route>
+
+            )}
           </Route>
-          <Route path='*' element={<Error />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/homeUser' index element={<Inicio />} />
+
+        </Route>
+        <Route path='/login' element={<Login />} />
+        <Route path='/inicio' index element={<Inicio />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </>
-
-  )
+  );
 }
 
-export default App
+export default App;

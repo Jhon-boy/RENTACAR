@@ -40,36 +40,36 @@ export const Login = (props) => {
                 const { usuario, token } = response;
                 localStorage.setItem('credentials', JSON.stringify({ correo: usuario.correo, rol: usuario.rol, token }));
 
-
-                // Redirigir al usuario en función de su id_rol
+                // Redirigir al usuario en función de su rol
                 if (usuario.rol === 1) {
                     history('/Home');
-                    
                 } else if (usuario.rol === 2) {
                     history('/cliente');
                 } else {
-                    // Redirigir a una ruta por defecto si el id_rol no coincide con ninguna condición
+                    // Redirigir a una ruta por defecto si el rol no coincide con ninguna condición
                     history('/homeUser');
-                }                
-                    Swal.fire({
+                }
+
+                Swal.fire({
                     position: 'top-end',
                     icon: 'success',
                     title: 'Bienvenido',
                     showConfirmButton: false,
                     timer: 2500,
                     timerProgressBar: true
+                });
 
-                })
                 setUsuario('');
-                setData('')
+                setData('');
             }
         } catch (error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Verifique correo o contraseña',
-            })
+            });
         }
+
         //Aqui haremos la verificacion bro :3
     }
     useEffect(() => {
@@ -87,6 +87,7 @@ export const Login = (props) => {
                             //Yup Validaciones esquemas
                             validationSchema={loginSchema}
                             onSubmit={
+                                // eslint-disable-next-line no-unused-vars
                                 async (values) => {
                                     await new Promise((r) => setTimeout(r, 500));
                                     // alert(JSON.stringify(values, null, 2));

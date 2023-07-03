@@ -39,9 +39,5 @@ export const SidebarData = [
   {
     icon: UilSetting,
     heading: 'Configuracion'
-  },
-  {
-    icon: UilSetting,
-    heading: 'cliente'
-  },
+  }
 ];
