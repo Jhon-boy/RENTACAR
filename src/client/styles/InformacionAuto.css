@@ -1,0 +1,43 @@
+.container-auto {
+    position: relative;
+    top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-img {
+    margin: 75px 70px 25px 75px;
+}
+
+img {
+    border-radius: 10px;
+}
+
+.container-info {
+    margin-top: 50px;
+}
+
+.fechas {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.fechas>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.metodo-pago{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.metodo-pago label,
+.metodo-pago input[type="radio"] {
+  margin-right: 10px;
+}

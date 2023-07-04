@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { URL } from '../data/URL';
-
+import '../styles/InformacionAuto.css'
+import { IMAGE } from '../data/URL';
 export default function Product() {
     const { id_auto } = useParams();
     const [data, setAutos] = useState([]);
@@ -87,50 +88,41 @@ export default function Product() {
 
     const ShowProduct = () => {
         return (
-            <>
-                <div className="col-md-5">
-                    <img src={data.fotos} alt={data.title} height="300px" width="300px" />
+            <div className="container-auto">
+                <div className='container-img'>
+                    <img src={`${IMAGE}/${data.fotos}`} alt={data.title} height="300px" width="300px" />
                 </div>
-                <div className="col md-6">
-                    <h4 className="text-uppercase text-black-50">{data.marca}</h4>
-                    <h1 className="display-5">{data.modelo}</h1>
+                <div className="container-info">
+                    <h4 className="text-uppercase text-black-50">Marca: {data.marca}</h4>
+                    <h4 className="text-uppercase text-black-50">Modelo: {data.modelo}</h4>
                     <div className="fechas">
-                        <div className="form-floating" style={{ width: '200px' }}>
-                            <input className="form-control" type="date" value={startDate} onChange={handleStartDateChange} placeholder="Fecha de inicio"
-                                min={minDate}
-                            />
+                        <div>
                             <label htmlFor="startDate" className="text">Fecha Alquiler</label>
+                            <input className="form-control" type="date" value={startDate} onChange={handleStartDateChange} placeholder="Fecha de inicio" min={minDate} />
                         </div>
-                        <div className="form-floating" style={{ width: '200px', marginTop: '10px' }}>
-                            <input type="date" className="form-control" value={endDate} onChange={handleEndDateChange} placeholder="Fecha de fin"
-                                min={startDate}
-                                max={maxEndDate}
-                            />
+                        <div>
                             <label htmlFor="endDate" className="text">Fecha Devolución</label>
+                            <input type="date" className="form-control" value={endDate} onChange={handleEndDateChange} placeholder="Fecha de fin" min={startDate} max={maxEndDate} />
                         </div>
                     </div>
-
-                    <h3 className="display-6 fw-bold my-4">${data.precio}</h3>
-                    <h4 className="display-6 fw-bold">Total: ${totalPrice}</h4>
-                    <p className="lead">{data.detalles}</p>
-                    <p className="lead">{data.estado}</p>
-                    <p className="lead">{data.tipo}</p>
-
-                    <div>
-                        <label className="form-label" style={{ marginRight: '5px' }}>Reserva</label>
-                        <input style={{ marginRight: '10px' }} type="radio" name="opciones1" value="Masculino" id="opcion1" />
-                        <label className="form-label" style={{ marginRight: '5px' }}>Transferencia</label>
-                        <input style={{ marginRight: '10px' }} type="radio" name="opciones1" value="Femenino" id="opcion2" />
-                        <label className="form-label" style={{ marginRight: '5px' }}>Efectivo</label>
-                        <input style={{ marginRight: '10px' }} type="radio" name="opciones1" value="Efectivo" id="opcion2" />
-                        <label className="form-label" style={{ marginRight: '5px' }}>Mercado Pago</label>
-                        <input style={{ marginRight: '10px' }} type="radio" name="opciones1" value="Efectivo" id="opcion2" />
+                    <h3 className="display-6 fw-bold my-4">Precio diario: ${data.precio}</h3>
+                    <h4 className="display-6 fw-bold"> Total: ${totalPrice}</h4>
+                    <p className="lead">Detalles vehiculo: {data.detalles}</p>
+                    <p className="lead">Estado: {data.estado}</p>
+                    <p className="lead">Tipo Vehiculo: {data.tipo}</p>
+                    <div className='metodo-pago'>
+                        <label >Reservar</label>
+                        <input type="radio" name="opciones1" value="Masculino" id="opcion1" />
+                        <label >Transferencia</label>
+                        <input type="radio" name="opciones1" value="Femenino" id="opcion2" />
+                        <label >Efectivo</label>
+                        <input type="radio" name="opciones1" value="Efectivo" id="opcion3" />
                     </div>
                     <button className="btn btn-outline-dark ms-2" onClick={Pagar}>
                         Pagar
                     </button>
                 </div>
-            </>
+            </div>
         );
     }
 
