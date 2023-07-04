@@ -38,7 +38,7 @@ export const Login = (props) => {
             const response = await LoginUser(data);
             if (response) {
                 const { usuario, token } = response;
-                localStorage.setItem('credentials', JSON.stringify({ correo: usuario.correo, rol: usuario.rol, token }));
+                localStorage.setItem('credentials', JSON.stringify({ correo: usuario.correo, rol: usuario.rol, id_user: usuario.id, token }));
 
                 // Redirigir al usuario en función de su rol
                 if (usuario.rol === 1) {
@@ -51,7 +51,7 @@ export const Login = (props) => {
                 }
 
                 Swal.fire({
-                    position: 'top-end',
+                    position: 'center',
                     icon: 'success',
                     title: 'Bienvenido',
                     showConfirmButton: false,

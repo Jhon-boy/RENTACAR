@@ -7,6 +7,7 @@
     width: 400px;
     border: 2px black solid;
     border-radius: 5px;
+    box-shadow: 1px 3px 7px 2px rgb(100, 98, 98); 
 }
 .Ingreso button{
     margin-left: -1%;
@@ -14,7 +15,6 @@
 .mb-3{
     margin-top: 7%;
     width: 300px;
-
 }
 .Errores{
     font-size: 10px;
@@ -55,4 +55,7 @@
 #Demo2 p{
     font-weight: lighter;
     margin-left: 15px;
+}
+.btn-primary{
+    background-color: rgb(44, 112, 239);
 }

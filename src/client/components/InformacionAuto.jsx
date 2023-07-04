@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -19,7 +19,9 @@ export default function Product() {
     const [maxEndDate, setMaxEndDate] = useState('');
     const [config, setConfig] = useState('');
     const [selectedPayment, setSelectedPayment] = useState(null);
-    const [reserva, setReserva] = useState({id_cliente: '', id_auto: '', fecha_entrega: '', fecha_devolucion: '', monto: '', estado: ''});
+    // eslint-disable-next-line no-unused-vars
+    const [reserva, setReserva] = useState({ id_cliente: '', id_auto_: '', fecha_entrega: '', fecha_devolucion: '', monto: '', estado: '' });
+
     const handlePaymentSelection = (event) => {
         setSelectedPayment(event.target.value);
     };
@@ -83,14 +85,14 @@ export default function Product() {
 
     //funcion de pagar 
     const Pagar = () => {
-        reserva.id_auto = data.id_auto;
+        reserva.id_auto_ = data.id_auto;
         reserva.fecha_devolucion = startDate;
         reserva.fecha_devolucion = endDate;
         reserva.monto = IvaPrice;
         reserva.estado = 'PENDIENTE';
         Swal.fire({
             title: 'Estas seguro de realizar el alquiler?',
-            text: 'Auto: ' + data.marca +'  ' + data.modelo + ' Valor: $' + IvaPrice +'',
+            text: 'Auto: ' + data.marca + '  ' + data.modelo + ' Valor: $' + IvaPrice + '',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -135,6 +137,7 @@ export default function Product() {
                     <h4 className="display-6 fw-bold"> Total: ${totalPrice}</h4>
                     <h4 className="display-6 fw-bold"> Total incluido iva({config.iva}): ${IvaPrice}</h4>
                     <p className="lead">Detalles vehiculo: {data.detalles}</p>
+
                     <p className="lead">Estado: {data.estado}</p>
                     <p className="lead">Tipo Vehiculo: {data.tipo}</p>
                     <div>
@@ -142,24 +145,24 @@ export default function Product() {
                             <label>Elige el tipo de pago</label>
                         </div>
                         <div className='metodo-pago'>
-                            <input type="radio" name="tipo-pago" value="TRASNFERENCIA" id="TRASNFERENCIA" onChange={handlePaymentSelection} />
+                            <input type="radio" name="tipo-pago" value="TRASNFERENCIA" id="TRASNFERENCIA" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
                             <label>Transferencia</label>
-                            <input type="radio" name="tipo-pago" value="FISICO" id="FISICO" onChange={handlePaymentSelection} />
+                            <input type="radio" name="tipo-pago" value="FISICO" id="FISICO" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
                             <label>Efectivo</label>
-                            <input type="radio" name="tipo-pago" value="OTRO" id="OTRO" onChange={handlePaymentSelection} />
+                            <input type="radio" name="tipo-pago" value="OTRO" id="OTRO" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
                             <label>Otro</label>
-                            <input type="radio" name="tipo-pago" value="PAYPAL" id="PAYPAL" onChange={handlePaymentSelection} />
+                            <input type="radio" name="tipo-pago" value="Paypal" id="Paypal" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
                             <label>PayPal</label>
                         </div>
                         <div className='OpcionesPago'>
-                            {selectedPayment !== "Paypal" && (
+                            {selectedPayment !== "Paypal" && data.estado === "DISPONIBLE" && (
                                 <button className="btn btn-outline-dark ms-2" onClick={Pagar}>
                                     Pagar
                                 </button>
                             )}
-                            {selectedPayment === "Paypal" && (
+                            {selectedPayment === "Paypal" && data.estado === "DISPONIBLE" && (
                                 <div className='PayPal'>
-                                    <PaypalButton totalValue={totalPrice} invoice={`Por alquiler de: ${data.marca} - ${data.modelo}`} />
+                                    <PaypalButton totalValue={IvaPrice} invoice={`Por alquiler de: ${data.marca} - ${data.modelo}`} />
                                 </div>
                             )}
                         </div>

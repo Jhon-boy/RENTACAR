@@ -15,7 +15,7 @@ export const CardAuto = ({ auto }) => {
     const renderButton = () => {
         if (auto.estado === 'OCUPADO' || auto.estado === 'MATENIMIENTO') {
             return (
-                <Button variant="contained" size="large" >
+                <Button variant="contained" size="large"  disabled>
                     Próximamente
                 </Button>
             );

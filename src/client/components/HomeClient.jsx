@@ -42,7 +42,7 @@ export const HomeClient = () => {
                 </div>
             </div>
             <div className="ventajas">
-                <Ventaja/>
+                <Ventaja />
             </div>
             <div className="footer">
                 <Footer />
