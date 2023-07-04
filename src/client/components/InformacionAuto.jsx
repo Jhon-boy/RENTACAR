@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { URL } from '../data/URL';
 import '../styles/InformacionAuto.css'
 import { IMAGE } from '../data/URL';
+import PaypalButton from './PaypalButon';
+
+
 export default function Product() {
     const { id_auto } = useParams();
     const [data, setAutos] = useState([]);
@@ -11,7 +15,14 @@ export default function Product() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [totalPrice, setTotalPrice] = useState(0);
+    const [IvaPrice, setIvaPrice] = useState(0);
     const [maxEndDate, setMaxEndDate] = useState('');
+    const [config, setConfig] = useState('');
+    const [selectedPayment, setSelectedPayment] = useState(null);
+    const [reserva, setReserva] = useState({id_cliente: '', id_auto: '', fecha_entrega: '', fecha_devolucion: '', monto: '', estado: ''});
+    const handlePaymentSelection = (event) => {
+        setSelectedPayment(event.target.value);
+    };
 
     const currentDate = new Date();
     const minDate = currentDate.toISOString().slice(0, 10); // Fecha actual
@@ -36,7 +47,9 @@ export default function Product() {
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                 const pricePerDay = parseFloat(data.precio);
                 const totalPrice = diffDays * pricePerDay;
+                const precioIva = totalPrice + (totalPrice * config.iva);
                 setTotalPrice(totalPrice);
+                setIvaPrice(precioIva);
             }
         };
 
@@ -50,7 +63,7 @@ export default function Product() {
 
         // Actualizar la fecha máxima seleccionable en el campo de Fecha Devolución
         const selectedStart = new Date(selectedStartDate);
-        const maxEndDate = new Date(selectedStart.getTime() + 3 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+        const maxEndDate = new Date(selectedStart.getTime() + config.diasMaximo * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
         setMaxEndDate(maxEndDate);
     };
 
@@ -61,15 +74,28 @@ export default function Product() {
     const Loading = () => {
         return <div>Loading....</div>;
     };
+    useEffect(() => {
+        fetch(`${URL}/config`)
+            .then(response => response.json())
+            .then(data => setConfig(data))
+            .catch(error => console.log(error));
+    }, [])
 
     //funcion de pagar 
     const Pagar = () => {
+        reserva.id_auto = data.id_auto;
+        reserva.fecha_devolucion = startDate;
+        reserva.fecha_devolucion = endDate;
+        reserva.monto = IvaPrice;
+        reserva.estado = 'PENDIENTE';
         Swal.fire({
-            title: 'Confirmar',
-            showDenyButton: true,
+            title: 'Estas seguro de realizar el alquiler?',
+            text: 'Auto: ' + data.marca +'  ' + data.modelo + ' Valor: $' + IvaPrice +'',
+            icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Pagar',
-            denyButtonText: `Cancelar`,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, confirmar!'
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
@@ -107,25 +133,42 @@ export default function Product() {
                     </div>
                     <h3 className="display-6 fw-bold my-4">Precio diario: ${data.precio}</h3>
                     <h4 className="display-6 fw-bold"> Total: ${totalPrice}</h4>
+                    <h4 className="display-6 fw-bold"> Total incluido iva({config.iva}): ${IvaPrice}</h4>
                     <p className="lead">Detalles vehiculo: {data.detalles}</p>
                     <p className="lead">Estado: {data.estado}</p>
                     <p className="lead">Tipo Vehiculo: {data.tipo}</p>
-                    <div className='metodo-pago'>
-                        <label >Reservar</label>
-                        <input type="radio" name="opciones1" value="Masculino" id="opcion1" />
-                        <label >Transferencia</label>
-                        <input type="radio" name="opciones1" value="Femenino" id="opcion2" />
-                        <label >Efectivo</label>
-                        <input type="radio" name="opciones1" value="Efectivo" id="opcion3" />
+                    <div>
+                        <div>
+                            <label>Elige el tipo de pago</label>
+                        </div>
+                        <div className='metodo-pago'>
+                            <input type="radio" name="tipo-pago" value="TRASNFERENCIA" id="TRASNFERENCIA" onChange={handlePaymentSelection} />
+                            <label>Transferencia</label>
+                            <input type="radio" name="tipo-pago" value="FISICO" id="FISICO" onChange={handlePaymentSelection} />
+                            <label>Efectivo</label>
+                            <input type="radio" name="tipo-pago" value="OTRO" id="OTRO" onChange={handlePaymentSelection} />
+                            <label>Otro</label>
+                            <input type="radio" name="tipo-pago" value="PAYPAL" id="PAYPAL" onChange={handlePaymentSelection} />
+                            <label>PayPal</label>
+                        </div>
+                        <div className='OpcionesPago'>
+                            {selectedPayment !== "Paypal" && (
+                                <button className="btn btn-outline-dark ms-2" onClick={Pagar}>
+                                    Pagar
+                                </button>
+                            )}
+                            {selectedPayment === "Paypal" && (
+                                <div className='PayPal'>
+                                    <PaypalButton totalValue={totalPrice} invoice={`Por alquiler de: ${data.marca} - ${data.modelo}`} />
+                                </div>
+                            )}
+                        </div>
                     </div>
-                    <button className="btn btn-outline-dark ms-2" onClick={Pagar}>
-                        Pagar
-                    </button>
+
                 </div>
             </div>
         );
     }
-
     return (
         <div>
             <div className="container-product">
