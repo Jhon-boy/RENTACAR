@@ -104,15 +104,15 @@ export default function Sidebar({ usuario }) {
                     </div>
                   );
                 })}
-                <Typography style={{ marginLeft: '4px', color: 'black' }}> <div>
+                <Typography style={{ color: 'black' }}> <div>
                   <Button
-                    variant="outlined"
                     id="basic-button"
+                    variant="outlined"
                     aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
-                    style={{ marginLeft: '4px', color: 'black' }}
+                    style={{ color: 'black' , fontSize: '10px' }}
                   >
                     {usuario}
                   </Button>

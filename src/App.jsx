@@ -1,4 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import Sidebar from './admin/menu/Sidebar'
 import Error from './pages/Error'
 import HomeAdmin from './admin/HomeAdmin'
@@ -25,17 +26,17 @@ import { Cars } from './client/components/Cars'
 import { Login } from './pages/Login'
 import { Inicio } from './pages/Inicio'
 import InformacionAuto from './client/components/InformacionAuto'
-import { useEffect } from 'react';
 import { ProtectedRoute } from './Router/ProtectedRoutes';
 import { ProtectedRouteClient } from './Router/ProtectedRouteClient';
 
 function App() {
   // Obtener el usuario del almacenamiento local
   const storedCredentials = localStorage.getItem('credentials');
-  const { correo, rol } = storedCredentials ? JSON.parse(storedCredentials) : {};
+  const { correo, rol, id_user, cliente } = storedCredentials ? JSON.parse(storedCredentials) : {};
+
 
   // Verificar si el usuario está logeado
-  const isUserLoggedIn = correo && rol;
+  const isUserLoggedIn = correo && rol && id_user;
 
   // Navegación programática
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ function App() {
       navigate('/inicio');
     }
   };
+
 
   // Redireccionar al sistema si el usuario ya está logeado
   useEffect(() => {
@@ -96,7 +98,7 @@ function App() {
                 <Route path='/cliente' element={<Navbar usuario={correo} />}>
                   <Route index element={<HomeClient />} />
                   <Route path='/cliente/vehiculos' element={<Cars />} />
-                  <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto />} />
+                  <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto cliente={cliente} />} />
                 </Route>
               </Route>
 

@@ -14,5 +14,16 @@ export const Salir = async () => {
         console.error(error.response.data.message); // Mensaje de error
     }
 };
-
+export const fetchClientes = () => {
+    const options = { method: 'GET' };
+  
+    return fetch('http://localhost:4000/apiCar/clientes', options)
+      .then(response => response.json())
+      .then(response => response)
+      .catch(err => {
+        console.error(err);
+        return null;
+      });
+  };
+  
   

@@ -3,6 +3,7 @@ import '../styles/login.css';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
+import { URL } from '../client/data/URL';
 import Swal from 'sweetalert2'
 import { LoginUser } from './Controller/Login.controller';
 
@@ -23,7 +24,8 @@ const CredencialesInicial = {
 export const Login = (props) => {
 
     const [usuario, setUsuario] = React.useState(null);
-    const [data, setData] = useState({ correo: '', contrasena: '' })
+    const [data, setData] = useState({ correo: '', contrasena: '' });
+    const [clientes, setClientes] = useState();
 
     const history = useNavigate();
 
@@ -38,7 +40,13 @@ export const Login = (props) => {
             const response = await LoginUser(data);
             if (response) {
                 const { usuario, token } = response;
-                localStorage.setItem('credentials', JSON.stringify({ correo: usuario.correo, rol: usuario.rol, id_user: usuario.id, token }));
+
+                // Filtrar los datos del cliente utilizando usuario.id
+                const clienteFiltrado = clientes.find(cliente => cliente.id_usuario === usuario.id);
+
+                console.log(clienteFiltrado);
+                // Guardar los datos del cliente junto con los demás en el localStorage
+                localStorage.setItem('credentials', JSON.stringify({  correo: usuario.correo, rol: usuario.rol, id_user: usuario.id, token , cliente: clienteFiltrado }));
 
                 // Redirigir al usuario en función de su rol
                 if (usuario.rol === 1) {
@@ -73,8 +81,18 @@ export const Login = (props) => {
         //Aqui haremos la verificacion bro :3
     }
     useEffect(() => {
+        const cargarCliente = async () => {
+            try {
+                const responseClientes = await fetch(`${URL}/clientes`);
+                const clientesData = await responseClientes.json();
+                setClientes(clientesData);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        cargarCliente();
+    }, []);
 
-    });
     return (
 
         <>

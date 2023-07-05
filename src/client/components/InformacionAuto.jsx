@@ -1,4 +1,4 @@
-
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -6,9 +6,9 @@ import { URL } from '../data/URL';
 import '../styles/InformacionAuto.css'
 import { IMAGE } from '../data/URL';
 import PaypalButton from './PaypalButon';
+import { CrearReserva } from '../controllers/reserva.controller';
 
-
-export default function Product() {
+export default function Product(props) {
     const { id_auto } = useParams();
     const [data, setAutos] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -19,8 +19,8 @@ export default function Product() {
     const [maxEndDate, setMaxEndDate] = useState('');
     const [config, setConfig] = useState('');
     const [selectedPayment, setSelectedPayment] = useState(null);
-    // eslint-disable-next-line no-unused-vars
-    const [reserva, setReserva] = useState({ id_cliente: '', id_auto_: '', fecha_entrega: '', fecha_devolucion: '', monto: '', estado: '' });
+    const [reserva, setReserva] = useState({ fecha_entrega: '', fecha_devolucion: '', monto: '', estado: '', id_auto: '', id_cliente: '' });
+    const cliente = props.cliente;
 
     const handlePaymentSelection = (event) => {
         setSelectedPayment(event.target.value);
@@ -30,13 +30,14 @@ export default function Product() {
     const minDate = currentDate.toISOString().slice(0, 10); // Fecha actual
 
     useEffect(() => {
-        const getProduct = async () => {
+        const fetchData = async () => {
             setLoading(true);
-            const response = await fetch(`${URL}/autos/${id_auto}`);
-            setAutos(await response.json());
+            const responseAutos = await fetch(`${URL}/autos/${id_auto}`);
+            setAutos(await responseAutos.json());
             setLoading(false);
         };
-        getProduct();
+
+        fetchData();
     }, [id_auto]);
 
 
@@ -56,7 +57,7 @@ export default function Product() {
         };
 
         calculateTotalPrice();
-    }, [startDate, endDate, data.precio]);
+    }, [startDate, endDate, data.precio, config.iva]);
 
     const handleStartDateChange = (event) => {
         const selectedStartDate = event.target.value;
@@ -82,37 +83,51 @@ export default function Product() {
             .then(data => setConfig(data))
             .catch(error => console.log(error));
     }, [])
-
-    //funcion de pagar 
-    const Pagar = () => {
-        reserva.id_auto_ = data.id_auto;
-        reserva.fecha_devolucion = startDate;
+    // Función de pagar
+    const Pagar = async () => {
+        reserva.fecha_entrega = startDate;
         reserva.fecha_devolucion = endDate;
         reserva.monto = IvaPrice;
+        reserva.id_auto = id_auto;
+        reserva.id_cliente = cliente.id_cliente;
         reserva.estado = 'PENDIENTE';
+
         Swal.fire({
-            title: 'Estas seguro de realizar el alquiler?',
+            title: '¿Estás seguro de realizar el alquiler?',
             text: 'Auto: ' + data.marca + '  ' + data.modelo + ' Valor: $' + IvaPrice + '',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, confirmar!'
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
+            confirmButtonText: 'Sí, confirmar!'
+        }).then(async (result) => {
             if (result.isConfirmed) {
-                Swal.fire({
-                    position: 'center',
-                    icon: '¡Exito!',
-                    title: 'Se ha guardado correctamente',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+                try {
+                    await CrearReserva(reserva);
+                    console.log(reserva);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Se ha guardado correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    setReserva(null);
+                } catch (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Algo salió mal',
+                        footer: '<a href="">Contactarse con el administrador</a>'
+                    });
+                }
             } else if (result.isDenied) {
-                Swal.fire('Changes are not saved', '', 'info')
+                Swal.fire('No se realizó el Pago', '', 'info');
             }
-        })
-    }
+        });
+    };
+
 
     const ShowProduct = () => {
         return (
@@ -121,6 +136,7 @@ export default function Product() {
                     <img src={`${IMAGE}/${data.fotos}`} alt={data.title} height="300px" width="300px" />
                 </div>
                 <div className="container-info">
+                    <h4 className="text-uppercase text-black-50">CLIENTE: {cliente.id_cliente}</h4>
                     <h4 className="text-uppercase text-black-50">Marca: {data.marca}</h4>
                     <h4 className="text-uppercase text-black-50">Modelo: {data.modelo}</h4>
                     <div className="fechas">
@@ -162,7 +178,7 @@ export default function Product() {
                             )}
                             {selectedPayment === "Paypal" && data.estado === "DISPONIBLE" && (
                                 <div className='PayPal'>
-                                    <PaypalButton totalValue={IvaPrice} invoice={`Por alquiler de: ${data.marca} - ${data.modelo}`} />
+                                    <PaypalButton totalValue={IvaPrice} invoice={`Por alquiler de: ${data.marca} - ${data.modelo}`} id_auto={data.id_auto} id_cliente={cliente.id_cliente} />
                                 </div>
                             )}
                         </div>
