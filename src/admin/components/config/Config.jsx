@@ -149,6 +149,7 @@ export const Config = () => {
             .then(data => setConfig(data))
             .catch(error => console.log(error));
     }, [])
+    
     useEffect(() => {
         const ivaAux = config.iva * 100;
         setIVA(ivaAux);

@@ -95,7 +95,7 @@ export default function Navbar({ usuario }) {
                                     <Business style={{ marginRight: '4px' }} />
                                     <Typography variant="subtitle1">Oficina</Typography>
                                 </Link>
-                                <Link to="/cliente" style={{
+                                <Link style={{
                                     alignItems: 'center', display: 'flex', marginLeft: '150px', border: '1px solid white', borderRadius: '5px', padding: '5px'
                                 }} component={Button} variant="outlined" >
                                     <AccountCircle style={{ color: 'white' }} />
@@ -120,8 +120,8 @@ export default function Navbar({ usuario }) {
                                                 'aria-labelledby': 'basic-button',
                                             }}
                                         >
-                                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                            <MenuItem onClick={handleClose}>My account</MenuItem>
+                                            <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                                            <MenuItem onClick={handleClose}>Configuraciones</MenuItem>
                                             <MenuItem onClick={logOut}>Logout</MenuItem>
                                         </Menu>
                                     </div></Typography>
@@ -135,7 +135,6 @@ export default function Navbar({ usuario }) {
             }
 
         </>
-
 
     );
 }
