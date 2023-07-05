@@ -1,0 +1,54 @@
+.container-registro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+  }
+.Formulario{
+    align-items: center;
+    text-align: center;
+    width: 450px;
+    border-style: solid;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.144);
+}
+.entrada{
+    margin-bottom: 15px;
+    display: flex;
+    justify-content:space-around;
+    flex-direction:row;
+}
+ 
+select{
+    padding: 0 35px;
+}
+.error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.licencia{
+    border-style: solid;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .input-label .form-label {
+    width: 120px; /* Ajusta el ancho según sea necesario */
+  }
+  .btn1{
+    margin-left: 20px;
+    background-color: green;
+  }
+  .btn2{
+    margin-left: 20px;
+    background-color: red;
+  }
