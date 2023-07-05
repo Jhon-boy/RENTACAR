@@ -28,7 +28,7 @@ import { Inicio } from './pages/Inicio'
 import InformacionAuto from './client/components/InformacionAuto'
 import { ProtectedRoute } from './Router/ProtectedRoutes';
 import { ProtectedRouteClient } from './Router/ProtectedRouteClient';
-
+import Registro from './client/components/Registro'
 function App() {
   // Obtener el usuario del almacenamiento local
   const storedCredentials = localStorage.getItem('credentials');
@@ -108,7 +108,7 @@ function App() {
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/inicio' index element={<Inicio />} />
-        <Route path='*' element={<Error />} />
+        <Route path='/registro' element={<Registro />} />
       </Routes>
     </>
   );

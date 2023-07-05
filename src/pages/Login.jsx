@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import '../styles/login.css';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom'
 import { URL } from '../client/data/URL';
+=======
+import { Link, useNavigate } from 'react-router-dom'
+>>>>>>> e4ef0588d4b239a77fc6945f7a37db5ca225ce7c
 import Swal from 'sweetalert2'
 import { LoginUser } from './Controller/Login.controller';
 
@@ -159,7 +163,7 @@ export const Login = (props) => {
                                             <button type='submit' className='btn btn-primary mb-3'>Ingresar</button>
                                             {isSubmitting ? (<p>Sending....</p>) : null}
                                             <br></br>
-                                            <span className='NewCount' onClick={() => navigateTo('/register')}> ¿No tienes Cuenta? Crea una! </span>
+                                            <Link to="/registro" className='NewCount'> ¿No tienes Cuenta? Crea una! </Link>
                                         </div>
                                     </center>
 
