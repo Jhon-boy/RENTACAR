@@ -7,43 +7,50 @@ import '../Home.css';
 import '../styles/Cliente.css'
 import { useState, useEffect } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { FaChevronLeft, FaChevronRight, FaCheck, FaTimes } from 'react-icons/fa';
+import {   FaCheck, FaTimes } from 'react-icons/fa';
 import { BsFillExclamationTriangleFill, BsFillPersonCheckFill, BsFillPersonXFill } from 'react-icons/bs';
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import MobileStepper from '@mui/material/MobileStepper';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+
+
 /* Agrega estilos personalizados si es necesario */
 
 
 
 const UserCard = ({ cliente }) => {
   const [licencias, setLicencias] = useState([]);
-  const [translateValue, setTranslateValue] = useState(0);
+  // =====================00 MATERIAL UI =================
 
-  const handlePrevSlide = () => {
-    const carouselContent = document.querySelector('.carousel-content');
-    const slideWidth = carouselContent.clientWidth;
-    const numSlides = carouselContent.childElementCount;
-    const maxTranslateValue = slideWidth * (numSlides - 1);
+  const images = [
+    {
+      label: 'Foto de la licencia',
+      imgPath: `${IMAGE}/${licencias.fotolicencia}`,
+    },
+    {
+      label: 'Cedula',
+      imgPath: `${IMAGE}/${cliente.foto}`,
+    },
+  ];
 
-    if (translateValue === 0) {
-      setTranslateValue(maxTranslateValue);
-    } else {
-      setTranslateValue(translateValue + slideWidth);
-    }
+  const theme = useTheme();
+  const [activeStep, setActiveStep] = useState(0);
+  const maxSteps = images.length;
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const handleNextSlide = () => {
-    const carouselContent = document.querySelector('.carousel-content');
-    const slideWidth = carouselContent.clientWidth;
-    const numSlides = carouselContent.childElementCount;
-    const maxTranslateValue = slideWidth * (numSlides - 1);
-
-    if (translateValue === maxTranslateValue) {
-      setTranslateValue(0);
-    } else {
-      setTranslateValue(translateValue - slideWidth);
-    }
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+
 
   const VerLicencia = async (id) => {
     const response = await axios.get(`${URL}/licencia/${id}`);
@@ -62,7 +69,7 @@ const UserCard = ({ cliente }) => {
         return null;
     }
   };
-  const estadoLicencia= (estado) => {
+  const estadoLicencia = (estado) => {
     if (estado) {
       return <FaCheck className="icon-habilitado" />;
     } else {
@@ -79,33 +86,57 @@ const UserCard = ({ cliente }) => {
       <div className='home-container'>
         <div className="user-card">
           <center>
-            <div className="SliderImages">
-              <div className="carousel-content" style={{ transform: `translateX(${translateValue}px)` }}>
-                <div className="carousel-item">
-                  <img src={`${IMAGE}/${cliente.foto}`} alt="Portada" className="user-card-image" />
-                  <p className="legend">Cliente</p>
-                </div>
-                <div className="carousel-item">
-                  <img src={`${IMAGE}/${licencias.fotolicencia}`} alt="Portada" className="user-card-image" />
-                  <p className="legend">Licencia</p>
-                </div>
-              </div>
-            </div>
-            <div className='btnSlider'>
-              <div>
-                <FaChevronRight className="carousel-button carousel-button-right" onClick={handleNextSlide} />
-              </div>
-              <div>
-                <FaChevronLeft className="carousel-button carousel-button-left" onClick={handlePrevSlide} />
-              </div>
-            </div>
+            <Box sx={{ maxWidth: 270, flexGrow: 1 }}>
+              <Paper
+                square
+                elevation={0}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  height: 30,
+                  pl: 3,
+                  bgcolor: 'background.default',
+                }}
+              >
+                <Typography>{images[activeStep].label}</Typography>
+              </Paper>
+              <Box
+                component="img"
+                sx={{
+                  height: 205,
+                  display: 'block',
+                  maxWidth: 400,
+                  overflow: 'hidden',
+                  width: '100%',
+                }}
+                src={images[activeStep].imgPath}
+                alt={images[activeStep].label}
+              />
+              <MobileStepper
+                steps={maxSteps}
+                position="static"
+                activeStep={activeStep}
+                nextButton={
+                  <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+                    Next
+                    {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                  </Button>
+                }
+                backButton={
+                  <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                    {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                    Back
+                  </Button>
+                }
+              />
+            </Box>
           </center>
 
           <div className="user-card-content">
             <div className="user-card-row">
               <h2 className="user-card-title">
                 {cliente.nombre} {cliente.apellido} {' - '}
-                 <span>{getStatusIcon(cliente.estado)}</span>
+                <span>{getStatusIcon(cliente.estado)}</span>
               </h2>
             </div>
             <div className="user-card-row">
@@ -174,11 +205,11 @@ const UserCard = ({ cliente }) => {
               </div>
             </div>
             <div className='btnSlider'>
-              <Button variant="contained"   endIcon={<SendIcon />}>Detalles </Button> 
-              <span> { ' - '}</span>
-            <Button  variant="contained" >Ver Historial</Button>
+              <Button variant="contained" endIcon={<SendIcon />}>Detalles </Button>
+              <span> {' - '}</span>
+              <Button variant="contained" >Ver Historial</Button>
             </div>
-            
+
           </div>
 
         </div>

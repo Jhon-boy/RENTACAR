@@ -2,12 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../styles/login.css';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
-<<<<<<< HEAD
-import { useNavigate } from 'react-router-dom'
 import { URL } from '../client/data/URL';
-=======
 import { Link, useNavigate } from 'react-router-dom'
->>>>>>> e4ef0588d4b239a77fc6945f7a37db5ca225ce7c
 import Swal from 'sweetalert2'
 import { LoginUser } from './Controller/Login.controller';
 
