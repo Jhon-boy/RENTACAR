@@ -1,0 +1,16 @@
+.container{
+    margin-top: 11%;
+    margin-left: 27%;
+    width: 70% ;
+    position: absolute;
+}
+.Table{
+    margin-top: 10%;
+    margin-left: 8%;
+    margin-bottom: 5%;
+    position:static;
+}
+.Portadas{
+    display: flex;
+    justify-content:space-evenly;
+}

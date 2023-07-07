@@ -1,8 +1,15 @@
+.container-general{
+    display: flex;
+    margin: 10px 10px 10px 30px;
+}
+
 .container-auto {
     position: relative;
     top: 20px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5%;
+    margin-top: 3%;
 }
 
 .container-img {
@@ -41,3 +48,41 @@ img {
 .metodo-pago input[type="radio"] {
   margin-right: 10px;
 }
+.fechas_date{
+    width: 150px;
+}
+
+.cliente {
+    border: 2px solid black;
+    box-shadow: 2px 2px 2px 3px rgb(87, 86, 86);
+    border-radius: 5px;
+    min-width:  250px;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    height:fit-content;
+    margin-right: auto;
+    margin-left: 20%;
+    background-color: white;
+  }
+  .btn-outline-danger{
+    background-color: rgb(222, 149, 13);
+    color:black;
+    
+  }
+  /* Media query para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .cliente {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  /* Media query para pantallas más pequeñas aún */
+  @media (max-width: 480px) {
+    .cliente {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }

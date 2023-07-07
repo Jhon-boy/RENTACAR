@@ -29,6 +29,8 @@ import InformacionAuto from './client/components/InformacionAuto'
 import { ProtectedRoute } from './Router/ProtectedRoutes';
 import { ProtectedRouteClient } from './Router/ProtectedRouteClient';
 import Registro from './client/components/Registro'
+import { PagosC } from './client/components/PagosC';
+import { ReservasC } from './client/components/ReservasC';
 function App() {
   // Obtener el usuario del almacenamiento local
   const storedCredentials = localStorage.getItem('credentials');
@@ -95,9 +97,11 @@ function App() {
           <Route>
             {isUserLoggedIn && (
               <Route element={<ProtectedRouteClient usuario={correo} />}>
-                <Route path='/cliente' element={<Navbar usuario={correo} />}>
+                <Route path='/cliente' element={<Navbar usuario={correo} cliente={cliente}/>}>
                   <Route index element={<HomeClient />} />
                   <Route path='/cliente/vehiculos' element={<Cars />} />
+                  <Route path='/cliente/misPagos' element={<PagosC cliente={cliente}/>} />
+                  <Route path='/cliente/misReservas' element={<ReservasC cliente={cliente}/>} />
                   <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto cliente={cliente} />} />
                 </Route>
               </Route>
@@ -109,6 +113,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/inicio' index element={<Inicio />} />
         <Route path='/registro' element={<Registro />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </>
   );

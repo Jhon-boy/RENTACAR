@@ -7,6 +7,7 @@ import '../styles/InformacionAuto.css'
 import { IMAGE } from '../data/URL';
 import PaypalButton from './PaypalButon';
 import { CrearReserva } from '../controllers/reserva.controller';
+import { CardClient } from './CardClient';
 
 export default function Product(props) {
     const { id_auto } = useParams();
@@ -131,63 +132,75 @@ export default function Product(props) {
 
     const ShowProduct = () => {
         return (
-            <div className="container-auto">
-                <div className='container-img'>
-                    <img src={`${IMAGE}/${data.fotos}`} alt={data.title} height="300px" width="300px" />
-                </div>
-                <div className="container-info">
-                    <h4 className="text-uppercase text-black-50">CLIENTE: {cliente.id_cliente}</h4>
-                    <h4 className="text-uppercase text-black-50">Marca: {data.marca}</h4>
-                    <h4 className="text-uppercase text-black-50">Modelo: {data.modelo}</h4>
-                    <div className="fechas">
-                        <div>
-                            <label htmlFor="startDate" className="text">Fecha Alquiler</label>
-                            <input className="form-control" type="date" value={startDate} onChange={handleStartDateChange} placeholder="Fecha de inicio" min={minDate} />
-                        </div>
-                        <div>
-                            <label htmlFor="endDate" className="text">Fecha Devolución</label>
-                            <input type="date" className="form-control" value={endDate} onChange={handleEndDateChange} placeholder="Fecha de fin" min={startDate} max={maxEndDate} />
-                        </div>
+            <div className='container-general'>
+                <div className="container-auto">
+                    <div className='container-img'>
+                        <img src={`${IMAGE}/${data.fotos}`} alt={data.title} height="300px" width="300px" />
                     </div>
-                    <h3 className="display-6 fw-bold my-4">Precio diario: ${data.precio}</h3>
-                    <h4 className="display-6 fw-bold"> Total: ${totalPrice}</h4>
-                    <h4 className="display-6 fw-bold"> Total incluido iva({config.iva}): ${IvaPrice}</h4>
-                    <p className="lead">Detalles vehiculo: {data.detalles}</p>
+                    <div className="container-info">
+                        <h4 className="text-uppercase text-black-50">Marca: {data.marca}</h4>
+                        <h4 className="text-uppercase text-black-50">Modelo: {data.modelo}</h4>
+                        <div className="fechas">
+                            <div>
+                                <label htmlFor="startDate" className="text">Fecha Alquiler</label>
+                                <input className="form-control fechas_date" type="date" value={startDate} onChange={handleStartDateChange} placeholder="Fecha de inicio" min={minDate} />
+                            </div>
+                            <div>
+                                <label htmlFor="endDate" className="text">Fecha Devolución</label>
+                                <input type="date" className="form-control fechas_date" value={endDate} onChange={handleEndDateChange} placeholder="Fecha de fin" min={startDate} max={maxEndDate} />
+                            </div>
+                        </div>
+                        <h3 className="display-6 fw-bold my-4">Precio diario: ${data.precio}</h3>
+                        <h4 className="display-6 fw-bold"> Total: ${totalPrice}</h4>
+                        <h4 className="display-6 fw-bold"> Total incluido iva({config.iva}): ${IvaPrice}</h4>
+                        <p className="lead">Detalles vehiculo: {data.detalles}</p>
 
-                    <p className="lead">Estado: {data.estado}</p>
-                    <p className="lead">Tipo Vehiculo: {data.tipo}</p>
-                    <div>
+                        <p className="lead">Estado: {data.estado}</p>
+                        <p className="lead">Tipo Vehiculo: {data.tipo}</p>
                         <div>
-                            <label>Elige el tipo de pago</label>
-                        </div>
-                        <div className='metodo-pago'>
-                            <input type="radio" name="tipo-pago" value="TRASNFERENCIA" id="TRASNFERENCIA" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
-                            <label>Transferencia</label>
-                            <input type="radio" name="tipo-pago" value="FISICO" id="FISICO" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
-                            <label>Efectivo</label>
-                            <input type="radio" name="tipo-pago" value="OTRO" id="OTRO" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
-                            <label>Otro</label>
-                            <input type="radio" name="tipo-pago" value="Paypal" id="Paypal" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
-                            <label>PayPal</label>
-                        </div>
-                        <div className='OpcionesPago'>
-                            {selectedPayment !== "Paypal" && data.estado === "DISPONIBLE" && (
-                                <button className="btn btn-outline-dark ms-2" onClick={Pagar}>
-                                    Pagar
+                            {cliente.estado === 'HABILITADO' ? (
+                                <div>
+                                    <div>
+                                        <label>Elige el tipo de pago</label>
+                                    </div>
+                                    <div className='metodo-pago'>
+                                        <input type="radio" name="tipo-pago" value="TRASNFERENCIA" id="TRASNFERENCIA" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
+                                        <label>Transferencia</label>
+                                        <input type="radio" name="tipo-pago" value="FISICO" id="FISICO" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
+                                        <label>Efectivo</label>
+                                        <input type="radio" name="tipo-pago" value="OTRO" id="OTRO" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
+                                        <label>Otro</label>
+                                        <input type="radio" name="tipo-pago" value="Paypal" id="Paypal" onChange={handlePaymentSelection} disabled={data.estado !== "DISPONIBLE"} />
+                                        <label>PayPal</label>
+                                    </div>
+                                    <div className='OpcionesPago'>
+                                        {selectedPayment !== "Paypal" && data.estado === "DISPONIBLE" && (
+                                            <button className="btn btn-outline-dark ms-2" onClick={Pagar}>
+                                                Pagar
+                                            </button>
+                                        )}
+                                        {selectedPayment === "Paypal" && data.estado === "DISPONIBLE" && (
+                                            <div className='PayPal'>
+                                                <PaypalButton totalValue={IvaPrice} invoice={`Por alquiler de: ${data.marca} - ${data.modelo}`} id_auto={data.id_auto} id_cliente={cliente.id_cliente} />
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            ) : (
+                                <button className="btn btn-outline-danger">
+                                    No estas habilitado para alquilar este vehiculo
                                 </button>
                             )}
-                            {selectedPayment === "Paypal" && data.estado === "DISPONIBLE" && (
-                                <div className='PayPal'>
-                                    <PaypalButton totalValue={IvaPrice} invoice={`Por alquiler de: ${data.marca} - ${data.modelo}`} id_auto={data.id_auto} id_cliente={cliente.id_cliente} />
-                                </div>
-                            )}
                         </div>
                     </div>
-
+                </div>
+                <div className='cliente'>
+                    <CardClient cliente={cliente} />
                 </div>
             </div>
         );
     }
+
     return (
         <div>
             <div className="container-product">

@@ -9,8 +9,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Swal from 'sweetalert2';
 import { Salir } from '../controllers/User.controller';
 import { Loader } from '../../pages/Loaders';
+import { Estado } from './Estado';
 
-export default function Navbar({ usuario }) {
+export default function Navbar({ usuario, cliente }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [showLoader, setShowLoader] = React.useState(false);
     const open = Boolean(anchorEl);
@@ -87,7 +88,7 @@ export default function Navbar({ usuario }) {
                                     <Contacts style={{ marginRight: '4px' }} />
                                     <Typography variant="subtitle1">Contactos</Typography>
                                 </Link>
-                                <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
+                                <Link to="/cliente/misReservas" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
                                     <EventNote style={{ marginRight: '4px' }} />
                                     <Typography variant="subtitle1">Reserva</Typography>
                                 </Link>
@@ -126,7 +127,9 @@ export default function Navbar({ usuario }) {
                                         </Menu>
                                     </div></Typography>
                                 </Link>
-
+                                <Typography style={{ marginLeft: '4px', color: 'white' }}>
+                                    <Estado estado={cliente.estado}/>
+                                </Typography>
                             </Toolbar>
                         </AppBar>
                         <Outlet />
