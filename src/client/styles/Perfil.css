@@ -5,6 +5,7 @@
 }
 .client-container{
     display: flex;
+    margin-top: 20px;
 }
 .EditPerfil{
     border: 2px solid rgb(68, 65, 65);
@@ -26,7 +27,7 @@
   .EditUser{
     margin-top: 50px;
     border: 2px solid black;
-    width: 45%;
+    width: 30%;
     height: fit-content;
     border-radius: 7px;
     box-shadow: 7px 7px 6px rgb(94, 93, 93);
@@ -34,3 +35,6 @@
   .EditUser div { 
     margin-top: 10px;
   }
+.Info{
+    display: flex;
+}

@@ -179,11 +179,12 @@ export const EditPerfil = (props) => {
                 </div>
             </div>
             <div className='EditUser'>
-                <Divider textAlign="left" >
-                    <Chip label="Tu informacion Personal" color="primary" />
-                </Divider>
                 <Box p={1}>
-                    <Grid container spacing={1} alignItems="">
+                <Divider textAlign="left">
+                        <Chip label="Tu credenciales" color="primary" />
+                    </Divider>
+                    <Grid container spacing={0} alignItems="">
+
                         <Grid item xs={12} md={8} lg={5}>
                         <Grid item xs={1} md={0} lg={3}>
                                 <CardMedia
