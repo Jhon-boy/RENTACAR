@@ -124,7 +124,7 @@ export const EditPerfil = (props) => {
 
     return (
         <div className='Perfil-Container'>
-            <div className="home-container">
+            <div className="client-container">
                 <div className='EditPerfil'>
                     <Divider textAlign="left">
                         <Chip label="Tu credenciales" color="primary" />

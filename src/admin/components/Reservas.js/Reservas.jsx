@@ -9,9 +9,14 @@ export const Reservas = () => {
     return (
         <div className="page-content">
             <div className="home-container">
-             <SliderBar activeTab={activeTab} setActiveTab={setActiveTab} />
-            <TableReservas />
+                <div>
+                    <SliderBar activeTab={activeTab} setActiveTab={setActiveTab} />
+                </div>
+                <div>
+                    <TableReservas />
+                </div>
+
             </div>
         </div>
-    )   
+    )
 }

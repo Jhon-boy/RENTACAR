@@ -163,7 +163,7 @@ export const TableConcret = () => {
                 <SliderBar activeTab={activeTab} setActiveTab={setActiveTab} />
             </div>
             <div>
-                <div className="home-container">
+                <div className="">
                     {filteredReservas.length > 0 && (
                         <DataTable
                             title="Reservas Pendientes por confirmar"
