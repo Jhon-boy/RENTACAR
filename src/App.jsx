@@ -1,7 +1,7 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import Sidebar from './admin/menu/Sidebar'
-import Error from './pages/Error'
+import  { Error } from './pages/Error'
 import HomeAdmin from './admin/HomeAdmin'
 import Autos from './admin/Carros/autos'
 import { CardAutos } from './admin/Carros/CardAutos'
@@ -31,6 +31,9 @@ import { ProtectedRouteClient } from './Router/ProtectedRouteClient';
 import Registro from './client/components/Registro'
 import { PagosC } from './client/components/PagosC';
 import { ReservasC } from './client/components/ReservasC';
+import { ContactForm } from './client/components/ContactForm';
+import { Profile } from './admin/components/Profile/Profile';
+import { EditPerfil } from './client/components/EditPerfil';
 function App() {
   // Obtener el usuario del almacenamiento local
   const storedCredentials = localStorage.getItem('credentials');
@@ -87,6 +90,7 @@ function App() {
                 <Route path='/clientesPending' element={<ClientsPending />} />
                 <Route path='/clientesNo' element={<ClientsNo />} />
                 <Route path='/Pagos' element={<Pagos />} />
+                <Route path='/Perfil' element={<Profile id={id_user}/>} />
                 <Route path='/Historial/:id' element={<Historial />} />
               </>
             )}
@@ -101,7 +105,9 @@ function App() {
                   <Route index element={<HomeClient />} />
                   <Route path='/cliente/vehiculos' element={<Cars />} />
                   <Route path='/cliente/misPagos' element={<PagosC cliente={cliente}/>} />
+                  <Route path='/cliente/contactos' element={<ContactForm />} />
                   <Route path='/cliente/misReservas' element={<ReservasC cliente={cliente}/>} />
+                  <Route path='/cliente/editPerfil' element={<EditPerfil id={id_user}  cliente={cliente} />} />
                   <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto cliente={cliente} />} />
                 </Route>
               </Route>

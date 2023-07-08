@@ -77,6 +77,27 @@
     height: 35px;
     width: 275px;
   }
+  .EditPerfil{
+    border: 2px solid rgb(68, 65, 65);
+  
+    width: 90%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 7px;
+    margin-left: 50px;
+    margin-top: 30px;
+  }
+  .EditPerfil div {
+    margin-top: 20px;
+  }
+  .EditPerfil Button{
+    margin-left: 20px;
+  }
+  .btnEdit{
+ padding-left: 17%;
+  }
   @media (max-width: 768px) {
     .page-content {
       padding-left: 20px;

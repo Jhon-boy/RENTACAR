@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import { Tooltip, Typography } from '@mui/material/';
 import { CheckCircle, Block, Pending } from '@mui/icons-material/';

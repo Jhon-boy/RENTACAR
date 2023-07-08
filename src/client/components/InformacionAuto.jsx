@@ -24,6 +24,7 @@ export default function Product(props) {
     const cliente = props.cliente;
 
     const handlePaymentSelection = (event) => {
+ 
         setSelectedPayment(event.target.value);
     };
 
@@ -180,7 +181,7 @@ export default function Product(props) {
                                             </button>
                                         )}
                                         {selectedPayment === "Paypal" && data.estado === "DISPONIBLE" && (
-                                            <div className='PayPal'>
+                                            <div className='PayPal' style={{width: '450px'}}>
                                                 <PaypalButton totalValue={IvaPrice} invoice={`Por alquiler de: ${data.marca} - ${data.modelo}`} id_auto={data.id_auto} id_cliente={cliente.id_cliente} />
                                             </div>
                                         )}

@@ -14,6 +14,7 @@ export const Salir = async () => {
         console.error(error.response.data.message); // Mensaje de error
     }
 };
+
 export const fetchClientes = () => {
     const options = { method: 'GET' };
   
@@ -26,4 +27,14 @@ export const fetchClientes = () => {
       });
   };
   
+  export const ActualizarCredencial = async (id_Admin, user) => {
+    try {
+        const response = await axios.put(`${URL}/user/${id_Admin}`, user);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
   

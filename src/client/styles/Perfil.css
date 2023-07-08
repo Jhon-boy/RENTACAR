@@ -1,0 +1,36 @@
+
+.Perfil-Container{
+    margin-top: 70px;
+    display: flex;
+}
+.home-container{
+    display: flex;
+}
+.EditPerfil{
+    border: 2px solid rgb(68, 65, 65);
+    border-radius: 7px;
+    box-shadow: 7px 7px 6px rgb(94, 93, 93);
+    width:max-content;
+    height: fit-content;
+    margin-right: 70px;
+  }
+  .EditPerfil div { 
+    margin-top: 20px;
+  }
+  .EditPerfil Button{
+    margin-left: 20px;
+  }
+  .btnEdit{
+ padding-left: 17%;
+  }
+  .EditUser{
+    margin-top: 50px;
+    border: 2px solid black;
+    width: 45%;
+    height: fit-content;
+    border-radius: 7px;
+    box-shadow: 7px 7px 6px rgb(94, 93, 93);
+  }
+  .EditUser div { 
+    margin-top: 10px;
+  }

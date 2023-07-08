@@ -39,7 +39,7 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 100px;
+    width: 150px;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -61,7 +61,7 @@ img {
     margin-bottom: 10%;
     height:fit-content;
     margin-right: auto;
-    margin-left: 20%;
+    margin-left: 10%;
     background-color: white;
   }
   .btn-outline-danger{
@@ -69,6 +69,7 @@ img {
     color:black;
     
   }
+  
   /* Media query para pantallas más pequeñas */
   @media (max-width: 768px) {
     .cliente {

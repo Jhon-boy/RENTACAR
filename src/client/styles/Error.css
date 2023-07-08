@@ -1,0 +1,58 @@
+
+.ErrorComponent{
+	margin-top: 8%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+  }
+  .ErrorComponent h1{
+	margin-left: 50px;
+	margin-top: -150px;
+	font-size: 110px;
+	color: lightseagreen;
+  }
+  .ErrorComponent h2{
+	font-size: 16px;
+	color: rgb(72, 71, 71);
+	margin-left: 50px;
+  } 
+  .ErrorComponent button{
+	height: 45px;
+	margin: 15px 0 0 25px;
+	border-radius: 7px;
+	font-size: 15px;
+	width: 150px;
+  }
+  .MenuItem{
+	display: flex;
+  }
+ 
+  .ErrorComponent button:hover{
+	cursor: pointer;
+	height: 65px;
+	font-size: 16px;
+	transition: 0.4s;
+  }
+  .btnInicio{
+	background-color: darkcyan;
+	color: white;
+	border: 2px solid darkcyan;
+	height: 75px;
+  }
+  .btnInicio:hover{
+	opacity: 0.8;
+  }
+  .btnInformar{
+	background-color: white;
+	color: darkcyan;
+	border: 2px solid darkcyan;
+  }
+  .btnInformar:hover{
+	opacity: 0.6;
+  }
+  .imagenError{
+	width: 35%;
+  
+  }
+  

@@ -64,9 +64,9 @@ export default function Navbar({ usuario, cliente }) {
         <>
             {
                 showLoader ? (
-                  <center>
-                    <Loader />
-                  </center>  
+                    <center>
+                        <Loader />
+                    </center>
                 ) : (
                     <div className='NavBar'>
                         <AppBar className='NavBar' style={{ height: '100px', backgroundColor: '#0194be', display: 'flex', justifyContent: 'space-between' }}>
@@ -84,13 +84,13 @@ export default function Navbar({ usuario, cliente }) {
                                     <DirectionsCar style={{ marginRight: '4px' }} />
                                     <Typography variant="subtitle1">Vehiculos</Typography>
                                 </Link>
-                                <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
-                                    <Contacts style={{ marginRight: '4px' }} />
-                                    <Typography variant="subtitle1">Contactos</Typography>
-                                </Link>
                                 <Link to="/cliente/misReservas" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
                                     <EventNote style={{ marginRight: '4px' }} />
                                     <Typography variant="subtitle1">Reserva</Typography>
+                                </Link>
+                                <Link to="/cliente/contactos" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
+                                    <Contacts style={{ marginRight: '4px' }} />
+                                    <Typography variant="subtitle1">Contactos</Typography>
                                 </Link>
                                 <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
                                     <Business style={{ marginRight: '4px' }} />
@@ -121,14 +121,16 @@ export default function Navbar({ usuario, cliente }) {
                                                 'aria-labelledby': 'basic-button',
                                             }}
                                         >
+                                          <Link to='/cliente/editPerfil'>
                                             <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                                          </Link>  
                                             <MenuItem onClick={handleClose}>Configuraciones</MenuItem>
                                             <MenuItem onClick={logOut}>Logout</MenuItem>
                                         </Menu>
                                     </div></Typography>
                                 </Link>
                                 <Typography style={{ marginLeft: '4px', color: 'white' }}>
-                                    <Estado estado={cliente.estado}/>
+                                    <Estado estado={cliente.estado} />
                                 </Typography>
                             </Toolbar>
                         </AppBar>

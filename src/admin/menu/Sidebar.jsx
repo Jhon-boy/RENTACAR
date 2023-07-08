@@ -125,7 +125,9 @@ export default function Sidebar({ usuario }) {
                       'aria-labelledby': 'basic-button',
                     }}
                   >
-                    <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                <Link to='/Perfil'>
+                  <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                </Link>    
                     <MenuItem onClick={handleClose}>Configuraciones</MenuItem>
                     <MenuItem onClick={logOut}>Logout</MenuItem>
                   </Menu>
