@@ -11,7 +11,7 @@ export const Error = () => {
 
     return (
         <div>
-            <div className='ErrorComponent container'>
+            <div className='ErrorComponent'>
                 <img className='imagenError' alt='ErrorImg' src={ErrorP} />
                 <div>
                     <h1>

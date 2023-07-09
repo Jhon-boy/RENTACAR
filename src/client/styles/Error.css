@@ -1,10 +1,9 @@
-
 .ErrorComponent{
-	margin-top: 8%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	width: 100vw;
   }
   .ErrorComponent h1{
 	margin-left: 50px;
@@ -22,7 +21,7 @@
 	margin: 15px 0 0 25px;
 	border-radius: 7px;
 	font-size: 15px;
-	width: 150px;
+	width: 175px;
   }
   .MenuItem{
 	display: flex;
