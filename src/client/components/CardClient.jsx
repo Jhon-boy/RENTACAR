@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import { URL } from '../data/URL';
-import { Estado } from './Estado';
+import { Estado } from './Perfil/Estado';
 import { Done, Clear } from '@mui/icons-material/';
 import ListItemIcon from '@mui/material/ListItemIcon';
 

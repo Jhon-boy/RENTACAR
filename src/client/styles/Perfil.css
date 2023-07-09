@@ -1,40 +1,56 @@
 
 .Perfil-Container{
     margin-top: 70px;
-    display: flex;
+    margin-left: 55px;
 }
-.client-container{
-    display: flex;
-    margin-top: 20px;
-}
+ 
 .EditPerfil{
-    border: 2px solid rgb(68, 65, 65);
-    border-radius: 7px;
-    box-shadow: 7px 7px 6px rgb(94, 93, 93);
-    width:max-content;
-    height: fit-content;
-    margin-right: 70px;
+  border: none;
+    width: fit-content;
+    max-height: min-content;
+    justify-content: center;
   }
-  .EditPerfil div { 
-    margin-top: 20px;
+  .EditInfo{
+    width: auto;
+     max-height: 350px;
+    justify-content: center;
+    margin-left: 50px;
   }
-  .EditPerfil Button{
-    margin-left: 20px;
-  }
-  .btnEdit{
- padding-left: 17%;
-  }
+.dividers{
+  margin-left: 30px;
+  height: fit-content;
+}
+
   .EditUser{
     margin-top: 50px;
-    border: 2px solid black;
-    width: 30%;
-    height: fit-content;
+    width: 45%;
+    height: 28rem;
     border-radius: 7px;
     box-shadow: 7px 7px 6px rgb(94, 93, 93);
   }
   .EditUser div { 
     margin-top: 10px;
   }
-.Info{
+  .Userss{
+    margin-top: 50px;
+  }
+  .CardLicencia{
+    width: min-content;
+    border-radius: 7px;
+    border: 2px solid black;
+    box-shadow: 7px 7px 6px rgb(94, 93, 93);
+    margin-left: 10px;
+    margin-top: 40px;
+  }
+  .CardLicencia div{
+    margin-top: 5px;
+  }
+  .inputs{
     display: flex;
-}
+  }
+ 
+  .btnEdit {
+  margin-left: 50px;
+    justify-content:space-between;  
+  }
+  

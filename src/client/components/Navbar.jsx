@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Swal from 'sweetalert2';
 import { Salir } from '../controllers/User.controller';
 import { Loader } from '../../pages/Loaders';
-import { Estado } from './Estado';
+import { Estado } from './Perfil/Estado';
 
 export default function Navbar({ usuario, cliente }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
