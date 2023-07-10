@@ -32,7 +32,8 @@ export const Cars = () => {
   );
 
   return (
-    <div className='contenedor-house'>
+    <div>
+        <div className='contenedor-house'>
       <div className="house">
         <div className='Buscador'>
           <Autocomplete
@@ -55,7 +56,9 @@ export const Cars = () => {
           </Grid>
         </div>
       </div>
-      <div className="footer-wrapper">
+
+    </div>
+    <div className="footer-wrapper">
         <Footer />
       </div>
     </div>

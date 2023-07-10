@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { LoginUser } from './Controller/Login.controller';
 
+
 const loginSchema = Yup.object().shape(
     {
         email: Yup.string()
@@ -46,7 +47,7 @@ export const Login = (props) => {
 
                 console.log(clienteFiltrado);
                 // Guardar los datos del cliente junto con los demás en el localStorage
-                localStorage.setItem('credentials', JSON.stringify({  correo: usuario.correo, rol: usuario.rol, id_user: usuario.id, token , cliente: clienteFiltrado }));
+                localStorage.setItem('credentials', JSON.stringify({ correo: usuario.correo, rol: usuario.rol, id_user: usuario.id, token, cliente: clienteFiltrado }));
 
                 // Redirigir al usuario en función de su rol
                 if (usuario.rol === 1) {
@@ -94,7 +95,6 @@ export const Login = (props) => {
     }, []);
 
     return (
-
         <>
             {
                 usuario ?
@@ -118,24 +118,27 @@ export const Login = (props) => {
                                 <Form onSubmit={iniciarSesion} >
                                     <center>
                                         <div className='Ingreso'>
+                                            <div className="container-title">
+                                                <h1>RentaCar</h1>
+                                            </div>
+                                            <div className="container-saludo">
+                                                <h3>¡Bienvenido!</h3>
+                                                <p>Por favor, ingrese sus datos para iniciar sesion.</p>
+                                            </div>
                                             <div className="mb-3">
-                                                <label className="form-label">Correo</label>
+                                                <label className="form-label align-left">Correo</label>
                                                 <Field
                                                     className="form-control"
                                                     type="email"
                                                     id='email'
                                                     name='email'
                                                     placeholder='example@gmail.com'
-
                                                 /> {
                                                     errors.email && touched.email &&
                                                     (
-
                                                         <ErrorMessage name='email' className='Errores' component='div'></ErrorMessage>
-
                                                     )
                                                 }
-
                                             </div>
                                             <div className="mb-3">
                                                 <label className="form-label">Contraseña</label>
@@ -143,15 +146,12 @@ export const Login = (props) => {
                                                     type="password"
                                                     id='password'
                                                     name='password'
-
                                                 />
                                                 {
                                                     errors.password && touched.password &&
                                                     (
                                                         ( //Mostramos el error en caso de ser invalido con un DIV
-
                                                             <ErrorMessage name='password' className='Errores' component='div'></ErrorMessage>
-
                                                         )
                                                     )
                                                 }
@@ -160,16 +160,15 @@ export const Login = (props) => {
                                             {isSubmitting ? (<p>Sending....</p>) : null}
                                             <br></br>
                                             <Link to="/registro" className='NewCount'> ¿No tienes Cuenta? Crea una! </Link>
+                                            <div className='recuperar'>
+                                            <Link to="/registro" className='NewCount'> Recuperar contraseña </Link>
+                                            </div>
                                         </div>
                                     </center>
-
-
                                 </Form>
                             )
                             }
-
                         </Formik>
-
                     </div>
             }
         </>

@@ -1,54 +1,138 @@
+:root {
+  --primary-color: #0fc3e8;
+  --success-color: green;
+  --error-color: red;
+  --form-width: 1000px;
+  --form-border: 3px solid var(--primary-color);
+  --form-padding: 30px;
+  --form-border-radius: 10px;
+  --info-text-color: #000;
+  --info-text-padding-bottom: 15px;
+  --info-text-font-style: italic;
+  --info-text-decoration: underline;
+  --select-padding: 5px 43px;
+  --select-border-radius: 5px;
+  --btn-margin-left: 20px;
+  --btn1-bg-color: var(--success-color);
+  --btn2-bg-color: var(--error-color);
+  --box-shadow: 1px 3px 7px 2px rgb(100, 98, 98); 
+}
+
 .container-registro {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-  }
-.Formulario{
-    align-items: center;
-    text-align: center;
-    width: 450px;
-    border-style: solid;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.144);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  
 }
-.entrada{
-    margin-bottom: 15px;
-    display: flex;
-    justify-content:space-around;
-    flex-direction:row;
+
+.Formulario {
+  width: var(--form-width);
+  height: 750px;
+  border: var(--form-border);
+  padding: var(--form-padding);
+  border-radius: var(--form-border-radius);
+  background-color: #0fc4e84b;
+  box-shadow: 1px 3px 7px 2px rgb(100, 98, 98); 
+
 }
- 
-select{
-    padding: 0 35px;
+
+.Formulario h1 {
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.error{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.info {
+  padding-bottom: var(--info-text-padding-bottom);
+  font-style: var(--info-text-font-style);
+  text-decoration: var(--info-text-decoration);
+  font-weight: bolder;
 }
-.licencia{
-    border-style: solid;
-    border-radius: 10px;
-    margin-bottom: 15px;
+
+.container-formulario {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container-formulario > div {
+  flex-basis: calc(50% - 10px); /* Ajusta el ancho de cada div según tus necesidades */
+  margin-bottom: 10px;
+}
+
+.container-formulario > div:nth-child(3) {
+  flex-basis: 100%; /* El tercer div ocupa todo el ancho disponible */
+}
+.container-personal{
+  border: var(--form-border);
+  border-radius: var(--form-border-radius);
+  padding: 15px 25px;
+}
+
+.entrada {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
 }
 
 .input-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .input-label .form-label {
-    width: 120px; /* Ajusta el ancho según sea necesario */
-  }
-  .btn1{
-    margin-left: 20px;
-    background-color: green;
-  }
-  .btn2{
-    margin-left: 20px;
-    background-color: red;
-  }
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-label label {
+  width: 120px;
+}
+.input-correcto {
+  background-color: #c8f7c5;
+  color: #000000;
+}
+.error {
+  margin-top: 5px;
+  position: relative;
+  top: 100%;
+  left: 40%;
+  margin-top: 5px;
+
+}
+
+.alert {
+  color: red;
+}
+
+select {
+  padding: var(--select-padding);
+  border-radius: var(--select-border-radius);
+  background-color: white;
+  color: #000;
+}
+
+.licencia {
+  border: var(--form-border);
+  border-radius: var(--form-border-radius);
+  padding: 15px;
+}
+
+.botones{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
+}
+.btn1 {
+  margin-left: var(--btn-margin-left);
+  background-color: var(--btn1-bg-color);
+  box-shadow: var(--box-shadow);
+}
+
+.btn2 {
+  margin-left: var(--btn-margin-left);
+  background-color: var(--btn2-bg-color);
+  box-shadow: var(--box-shadow);
+}

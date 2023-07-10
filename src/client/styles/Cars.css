@@ -1,24 +1,25 @@
+.Buscador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  top: 150px;
+}
+
 .card-autos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 75px;
+    position: relative;
+    top: 200px;
+    padding-left: 125px;
     padding-top: 20px;
   }
-  
-  .Buscador {
-    padding-top: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+
   .search {
     width: 500px;
   }
   
   .contenedor-house {
     width: 100vw;
+    height: 100vh;
   }
   
 

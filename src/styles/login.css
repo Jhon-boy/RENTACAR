@@ -1,29 +1,39 @@
-.LoginIngreso{
-    margin-left: 120%;
-
+:root{
+    --primary-color: #0fc3e8;
+    --form-border: 3px solid var(--primary-color);
+    --form-border-radius: 10px;
 }
-.Ingreso{
-    height: 350px;
+.LoginIngreso{
+    width: 100vw;
+}
+
+.container-saludo{
+    text-align: left;
+    margin: 35px 0 25px 0;
     width: 400px;
-    border: 2px black solid;
-    border-radius: 5px;
+}
+
+.Ingreso{
+    height: 550px;
+    width: 400px;
+    border: var(--form-border);
+    border-radius: var(--form-border-radius);
     box-shadow: 1px 3px 7px 2px rgb(100, 98, 98); 
+    padding: 25px;
+    background-color: #0fc4e84b
 }
 .Ingreso button{
     margin-left: -1%;
 }
 .mb-3{
     margin-top: 7%;
-    width: 300px;
+    width: auto;
 }
 .Errores{
     font-size: 10px;
     color: red;
 }
-.NewCount {
-    color: rgb(100, 98, 98);
 
-}
 .NewCount:hover{
     cursor: pointer;
     color: black;
@@ -58,4 +68,24 @@
 }
 .btn-primary{
     background-color: rgb(44, 112, 239);
+    margin-bottom: 12px;
+}   
+.btn-primary:hover{
+    background-color: rgba(44, 112, 239, 0.753);
+}
+
+.recuperar{
+    margin-top: 10px;
+}
+
+.form-control{
+    margin-top: 5px;
+    width: 100%;
+}
+.form-label{
+    align-self: flex-start;
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(65, 59, 59);
 }
