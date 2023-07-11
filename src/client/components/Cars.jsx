@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import { CardAuto } from './CardAuto';
 import { URL } from '../data/URL';
@@ -33,32 +33,34 @@ export const Cars = () => {
 
   return (
     <div>
-        <div className='contenedor-house'>
-      <div className="house">
-        <div className='Buscador'>
-          <Autocomplete
-            className='search'
-            disablePortal
-            id="combo-box-demo"
-            options={vehicleTypes}
-            value={searchTerm}
-            onChange={handleSearchChange}
-            renderInput={(params) => <TextField {...params} label="Tipo Vehiculo" />}
-          />
-        </div>
-        <div className="card-autos">
-          <Grid container spacing={2}>
-            {filteredAutos.map((auto) => (
-              <Grid item key={auto.id_auto}>
-                <CardAuto auto={auto} key={auto.id_auto} />
+      <div className='contenedor-house'>
+        <div className="house">
+          <div className='Buscador'>
+            <Autocomplete
+              className='search'
+              disablePortal
+              id="combo-box-demo"
+              options={vehicleTypes}
+              value={searchTerm}
+              onChange={handleSearchChange}
+              renderInput={(params) => <TextField {...params} label="Tipo Vehiculo" />}
+            />
+          </div>
+          <div className="container-autos">
+            <div className="card-autos">
+              <Grid container spacing={2}>
+                {filteredAutos.map((auto) => (
+                  <Grid item key={auto.id_auto}>
+                    <CardAuto auto={auto} key={auto.id_auto} />
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
+            </div>
+          </div>
         </div>
-      </div>
 
-    </div>
-    <div className="footer-wrapper">
+      </div>
+      <div className="footer-wrapper">
         <Footer />
       </div>
     </div>
