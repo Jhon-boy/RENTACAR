@@ -1,9 +1,9 @@
 :root {
-  --primary-color: #0fc3e8;
+  --primary-color: #373a3b;
   --success-color: green;
   --error-color: red;
   --form-width: 1000px;
-  --form-border: 3px solid var(--primary-color);
+  --form-border: 2px solid var(--primary-color);
   --form-padding: 30px;
   --form-border-radius: 10px;
   --info-text-color: #000;
@@ -22,9 +22,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  
+  height: 70%;
+  width: 80%;
+  margin-top: 20px;
+  margin-left: 30%;
+  margin-bottom: 20px;
+  background-color: aquamarine;
 }
 
 .Formulario {
@@ -33,13 +36,12 @@
   border: var(--form-border);
   padding: var(--form-padding);
   border-radius: var(--form-border-radius);
-  background-color: #0fc4e84b;
-  box-shadow: 1px 3px 7px 2px rgb(100, 98, 98); 
+  background-color: white;
+  box-shadow: 1px 3px 7px 2px rgb(98, 100, 100); 
 
 }
 
 .Formulario h1 {
-  padding: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,7 +129,7 @@ select {
 }
 .btn1 {
   margin-left: var(--btn-margin-left);
-  background-color: var(--btn1-bg-color);
+  background-color:rgb(22, 145, 145) ;
   box-shadow: var(--box-shadow);
 }
 

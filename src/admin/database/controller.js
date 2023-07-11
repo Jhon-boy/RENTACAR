@@ -30,15 +30,16 @@ export const  editarAutoController = async (id, formData) => {
     throw error;
   }
 };
-export const editarAutoFilesController = async (id, cars) => {
-  try {
-    const response1 = await axios.put(`${URL}/autosfile/${id}`, cars);
-    return response1.data;
-  } catch (error) {
-    alert('Error al editar el auto:', error);
-    throw error;
-  }
-};
+
+  export const editarAutoFilesController = async (id, cars) => {
+    try {
+      const response1 = await axios.put(`${URL}/autosfile/${id}`, cars);
+      return response1.data;
+    } catch (error) {
+      alert('Error al editar el auto:', error);
+      throw error;
+    }
+  };
 export const CambioStadoAuto = async (id_autoA, estadoA) => {
   
   // FUNCIONA PERO ANDO PROBANDO OTRAS COSAS XD

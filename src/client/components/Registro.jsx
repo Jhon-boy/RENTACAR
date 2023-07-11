@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable no-undef */
+import { useState } from 'react';
 import '../styles/Registro.css';
 import {
     verificarNombre,
@@ -22,6 +23,7 @@ const Registro = () => {
     const [fechaEmision, setFechaEmision] = useState('');
     const [fechaCaducidad, setFechaCaducidad] = useState('');
     const [error, setError] = useState('');
+    const [genero, setGenero] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -156,7 +158,7 @@ const Registro = () => {
                         <div className='entrada'>
                             <div className='input-label'>
                                 <label className="form-label">Género: </label>
-                                <select classNamename="genero" id="genero" >
+                                <select className="genero" id="genero" >
                                     <option value="MASCULINO">Masculino</option>
                                     <option value="FEMENINO">Femenino</option>
                                 </select>
@@ -216,7 +218,7 @@ const Registro = () => {
                         </div>
                     </div>
                     <div className="botones">
-                    <button className='btn1 btn-warning mt-1 w-100' onClick={Confirmar} >Enviar</button>
+                    <button className='btn1 btn-warning mt-1 w-100' onClick={Confirmar} >Registar me</button>
                     <button className='btn2 btn-warning mt-1 w-100' onClick={() => window.history.back()}>Cancelar</button>
                 </div>
                 </form>
