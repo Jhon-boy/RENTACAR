@@ -9,7 +9,6 @@ import { InfoC } from './Perfil/InfoC.jsx';
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
 
-
 export const EditPerfil = (props) => {
     const [clienteData, setClienteData] = useState(props.cliente);
 

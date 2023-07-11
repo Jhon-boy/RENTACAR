@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { IMAGE } from '../../data/URL';
 import { URL } from '../../data/URL';
-
 import '../../Home.css'
 import '../../styles/Autos.css'
 import Form from 'react-bootstrap/Form';

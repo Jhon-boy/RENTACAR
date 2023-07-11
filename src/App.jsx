@@ -59,7 +59,6 @@ function App() {
     }
   };
 
-
   // Redireccionar al sistema si el usuario ya está logeado
   useEffect(() => {
     redirectToSystem();
@@ -111,10 +110,8 @@ function App() {
                   <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto cliente={cliente} />} />
                 </Route>
               </Route>
-
             )}
           </Route>
-
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/inicio' index element={<Inicio />} />

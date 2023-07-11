@@ -6,18 +6,23 @@ import Swal from 'sweetalert2';
 import { URL } from '../../data/URL.js';
 import { ActualizarCredencial } from '../../controllers/User.controller.js';
 import '../../styles/Perfil.css'
+import { validarCorreo, validarContraseña, contrasenasValidadas } from '../../controllers/cliente.controller.js';
 
 export const Perfilc = (props) => {
     const [correo, setCorreo] = useState('');
     const [contrasena, setContrasena] = useState(' ');
     const [nuevContrasena, setNuevContrasena] = useState('')
+    const [confirmarContrasena, setConfirmarContrasena] = useState('');
     const [editable, setEditable] = useState(false);
     const [estado, setEstado] = useState(' ');
     const [mostrarContrasena, setMostrarContrasena] = useState(false);
+    const [mostrarNuevaC, setMostrarNuevaC] = useState(false);
     const [user, setuser] = useState({ correo: '', contrasena: '', estado: '' });
-    const handleCorreoChange = (event) => {
-        setCorreo(event.target.value);
-    };
+
+
+    const [correoValido, setcorreoValido] = useState(true);
+    const [nuevaContrasenaValida, setnuevaContrasenaValida] = useState(true);
+    const [confirmarContrasenaValida, setconfirmarContrasenaValida] = useState(true);
 
     const handleContrasenaChange = (event) => {
         setContrasena(event.target.value);
@@ -29,7 +34,7 @@ export const Perfilc = (props) => {
 
     const handleGuardarClick = () => {
         user.correo = correo;
-        user.contrasena = contrasena;
+        user.contrasena = confirmarContrasena;
         user.estado = estado;
         Swal.fire({
             title: 'Estas seguro de esta acción?',
@@ -68,6 +73,10 @@ export const Perfilc = (props) => {
         setMostrarContrasena(!mostrarContrasena);
     };
 
+    const handleMostrarContrasenaClick2 = () => {
+        setMostrarNuevaC(!mostrarNuevaC);
+    };
+
     useEffect(() => {
         const fetchConfig = async () => {
             try {
@@ -91,12 +100,21 @@ export const Perfilc = (props) => {
                         <TextField
                             label='Correo'
                             value={correo}
-                            onChange={handleCorreoChange}
+                            onChange={(e) => {
+                                const correoAux = e.target.value;
+                                setCorreo(e.target.value);
+                                setcorreoValido(validarCorreo(correoAux))
+                            }}
                             disabled={!editable}
-                            style={{height: '20px' , marginTop: '-12%'}}
+                            style={{ height: '20px', marginTop: '-12%' }}
                         />
-                    </div>
 
+                    </div>
+                    {!correoValido && (
+                        <div>
+                            <h6 className="ErroresInput2">*Formato invalido</h6>
+                        </div>
+                    )}
                     <div className='dividers'>
                         <TextField
                             label='Contraseña'
@@ -104,7 +122,7 @@ export const Perfilc = (props) => {
                             value={contrasena}
                             onChange={handleContrasenaChange}
                             disabled={!editable}
-                            style={{height: '20px' , width: '230px', marginTop: '-12%'}}
+                            style={{ height: '20px', width: '230px', marginTop: '-12%' }}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
@@ -127,23 +145,52 @@ export const Perfilc = (props) => {
                                     <div className='dividers'>
                                         <TextField
                                             label="Nueva Contraseña"
-                                            type={mostrarContrasena ? 'text' : 'password'}
+                                            type={mostrarNuevaC ? 'text' : 'password'}
                                             value={nuevContrasena}
-                                            onChange={handleContrasenaChange}
+                                            InputProps={{
+                                                endAdornment: (
+                                                    <InputAdornment position="end">
+                                                        <IconButton onClick={handleMostrarContrasenaClick2} edge="end">
+                                                            {mostrarContrasena ? <VisibilityOff /> : <Visibility />}
+                                                        </IconButton>
+                                                    </InputAdornment>
+                                                ),
+                                            }}
+                                            onChange={(e) => {
+                                                const contraAux = e.target.value;
+                                                setNuevContrasena(e.target.value);
+                                                setnuevaContrasenaValida(validarContraseña(contraAux))
+                                            }}
                                             disabled={!editable}
-                                            style={{height: '20px' , width: '230px', marginTop: '-2%'}}
+                                            style={{ height: '20px', width: '230px', marginTop: '-2%' }}
                                         />
+                                        {!nuevaContrasenaValida && (
+                                            <div>
+                                                <h6 className="ErroresInput2">*Formato invalido [Password_2231]</h6>
+                                            </div>
+                                        )}
                                     </div>
+
                                     <div className='dividers'>
                                         <TextField
                                             label="Confirme la contraseña"
-                                            type={mostrarContrasena ? 'text' : 'password'}
-                                            value={nuevContrasena}
-                                            onChange={handleContrasenaChange}
+                                            type={'password'}
+                                            value={confirmarContrasena}
+                                            onChange={(e) => {
+                                                const contraAux2 = e.target.value;
+                                                setConfirmarContrasena(e.target.value);
+                                                setconfirmarContrasenaValida(contrasenasValidadas(contraAux2, nuevContrasena))
+                                            }}
                                             disabled={!editable}
-                                            style={{height: '20px' , width: '230px', marginTop: '-2%'}}
+                                            style={{ height: '20px', width: '230px', marginTop: '-2%' }}
                                         />
+                                        {!confirmarContrasenaValida && (
+                                            <div>
+                                                <h6 className="ErroresInput2">Las contreñas deben coincidir</h6>
+                                            </div>
+                                        )}
                                     </div>
+
 
                                 </div>
 
@@ -159,10 +206,13 @@ export const Perfilc = (props) => {
                 <div className='btnEdit'>
                     {editable ? (
                         <>
-                            <Button variant="contained" className='btns' style={{ marginTop: '50px' }}  onClick={handleGuardarClick}>
+                            <Button variant="contained" className='btns'
+                                style={{ marginTop: '50px' }}
+                                onClick={handleGuardarClick}
+                                disabled={!correoValido || !nuevaContrasenaValida || !confirmarContrasenaValida}>
                                 Guardar
                             </Button>
-                            <Button variant="outlined" className='btns' style={{ marginTop: '50px' }}  color="error" onClick={() => setEditable(false)}>
+                            <Button variant="outlined" className='btns' style={{ marginTop: '50px' }} color="error" onClick={() => setEditable(false)}>
                                 Cancelar
                             </Button>
                         </>

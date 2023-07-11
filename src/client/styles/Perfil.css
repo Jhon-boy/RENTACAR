@@ -53,4 +53,24 @@
   margin-left: 50px;
     justify-content:space-between;  
   }
-  
+  .ErroresInput2{
+    color: red;
+    font-size: 8px;
+    margin-top: 50px;
+  }
+  .ErroresInput3{
+    color: red;
+    font-size: 8px;
+    margin-top: -3%;
+  }
+  .ErroresInput4{
+    color: red;
+    font-size: 8px;
+    margin-left: -100%;
+    margin-top: -10%;
+  }
+  .ErroresInput5{
+    color: red;
+    font-size: 8px;
+    margin-top: 7%;
+  }

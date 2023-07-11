@@ -1,5 +1,5 @@
 :root{
-    --primary-color: #0fc3e8;
+    --primary-color: #e2e5e6;
     --form-border: 3px solid var(--primary-color);
     --form-border-radius: 10px;
 }
@@ -16,11 +16,11 @@
 .Ingreso{
     height: 550px;
     width: 400px;
-    border: var(--form-border);
+    border: 2px solid black;
     border-radius: var(--form-border-radius);
-    box-shadow: 1px 3px 7px 2px rgb(100, 98, 98); 
+    box-shadow: 1px 3px 7px 4px rgb(100, 98, 98); 
     padding: 25px;
-    background-color: #0fc4e84b
+    background-color: #e0f7fb4b
 }
 .Ingreso button{
     margin-left: -1%;
@@ -67,11 +67,14 @@
     margin-left: 15px;
 }
 .btn-primary{
-    background-color: rgb(44, 112, 239);
+    background-color: rgb(7, 177, 210);
     margin-bottom: 12px;
 }   
 .btn-primary:hover{
-    background-color: rgba(44, 112, 239, 0.753);
+    background-color: rgba(7, 133, 164, 0.753);
+    height: 50px;
+    width: 140px;
+    transition: 0.10 ms ease-in-out;
 }
 
 .recuperar{
