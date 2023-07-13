@@ -28,7 +28,7 @@ import { Inicio } from './pages/Inicio'
 import InformacionAuto from './client/components/InformacionAuto'
 import { ProtectedRoute } from './Router/ProtectedRoutes';
 import { ProtectedRouteClient } from './Router/ProtectedRouteClient';
-import Registro from './client/components/Registro'
+import Registro from './pages/Registro'
 import { PagosC } from './client/components/PagosC';
 import { ReservasC } from './client/components/ReservasC';
 import { ContactForm } from './client/components/ContactForm';

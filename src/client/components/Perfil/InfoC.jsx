@@ -121,7 +121,6 @@ export const InfoC = (props) => {
                                                     reader.readAsDataURL(file);
                                                     setImageFile(file);
                                                 }
-
                                             }} />
                                     </FormControl>
                                 )}

@@ -14,3 +14,15 @@ export const  editarCliente = async (id_cliente, formData) => {
     }
   };
   
+  export const  editarLicencia = async (licencia, formData) => {
+    const id = licencia;
+    console.log(id, formData);
+    try {
+      const response = await axios.put(`${URL}/licencia/${id}`, formData);
+      return response.data;
+    } catch (error) {
+      console.log('Error al editar el cliente:', error);
+      throw error;
+    }
+  };
+  

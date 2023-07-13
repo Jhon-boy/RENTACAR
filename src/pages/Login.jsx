@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import { URL } from '../client/data/URL';
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
+
 import { LoginUser } from './Controller/Login.controller';
 
 
@@ -41,10 +42,8 @@ export const Login = (props) => {
             const response = await LoginUser(data);
             if (response) {
                 const { usuario, token } = response;
-
                 // Filtrar los datos del cliente utilizando usuario.id
                 const clienteFiltrado = clientes.find(cliente => cliente.id_usuario === usuario.id);
-
                 console.log(clienteFiltrado);
                 // Guardar los datos del cliente junto con los demás en el localStorage
                 localStorage.setItem('credentials', JSON.stringify({ correo: usuario.correo, rol: usuario.rol, id_user: usuario.id, token, cliente: clienteFiltrado }));

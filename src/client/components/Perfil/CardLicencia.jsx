@@ -9,9 +9,11 @@ import {
     Grid,
     CardMedia, Select, MenuItem
 } from '@mui/material';
+import Swal from 'sweetalert2';
 
 import { CheckCircle, Block } from '@mui/icons-material/';
 import { verificarLicencias, verificarFechas } from '../../controllers/cliente.controller.js';
+import { editarLicencia } from '../../controllers/controllerCliente.js';
 
 export const CardLicencia = (props) => {
     const [licenciaData, setlicenciaData] = useState([]);
@@ -23,31 +25,50 @@ export const CardLicencia = (props) => {
     const [categoria, setCategoria] = useState();
     const [fecha_Caducidad, setFecha_Caducidad] = useState('');
     const [licencia, setLicencia] = useState('');
-    const [foto, setFoto] = useState(null);
+    const [foto, setFoto] = useState(licenciaData.fotolicencia);
 
     //validaciones 
     const [fechaValida, setFechaCaducidadValida ]= useState(true);
     const [ licenciaValida, setLicenciaValida ] = useState(true);
-
+    // eslint-disable-next-line no-unused-vars
+    const [imageFile, setImageFile] = useState(null);
 
     const fechaCaducidad = new Date(fecha_Caducidad);
     const fechaCaducidadISO = isNaN(fechaCaducidad) ? '' : fechaCaducidad.toISOString().split('T')[0];
-
-    const handleFotoInputChange = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setFotoPreview(reader.result);
-        };
-        reader.readAsDataURL(file);
-    };
 
     const handleEditarlicenciaClick = () => {
         setEditableC(true);
     };
 
-    const handleGuardarCambiosClick = () => {
+    const handleGuardarCambiosClick = async () => {
         setEditableC(false);
+      
+        const formData = new FormData();
+        formData.append('id', licencia);
+        formData.append('fecha_caducidad', fecha_Caducidad);
+        formData.append('categoria', categoria);
+        formData.append('estado', licenciaData.estado);
+
+        if (foto instanceof File) {
+            formData.append('fotolicencia', foto);
+        }
+        try {
+            await editarLicencia(licencia, formData);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Su información ha sido actualizado',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            setEditableC(false);
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Algo Salio mal',
+                text: 'Error: ' + error.message,
+            });
+        }
         // Aquí puedes realizar alguna acción para guardar los cambios en el licencia
     };
 
@@ -85,7 +106,22 @@ export const CardLicencia = (props) => {
                         <p style={{ marginLeft: '30px', fontSize: '16px' }}>Estado:    {licenciaData.estado ? <CheckCircle style={{ color: 'green' }} /> : <Block style={{ color: 'red' }} />}</p>
                         {editableC && (
                             <FormControl fullWidth>
-                                <input type="file" accept="image/*" onChange={handleFotoInputChange} />
+                                <input type="file" accept="image/*"
+                                 onChange={(e) => {
+                                                const archivo = e.target.files[0];
+                                                setFoto(e.target.files[0]);
+                                                const file = e.target.files[0];
+                                                const reader = new FileReader();
+                                                reader.onloadend = () => {
+                                                    setFotoPreview(reader.result);
+                                                };
+                                                reader.readAsDataURL(archivo);
+                                                if (file) {
+                                                    reader.readAsDataURL(file);
+                                                    setImageFile(file);
+                                                }
+
+                                            }}  />
                             </FormControl>
                         )}
                     </Grid>

@@ -40,51 +40,34 @@ export const contrasenasValidadas = (valor1, valor2) => {
     return valor1 === valor2;
 }
 
-export const verificarCedula = (cedulaP) => {
-    const cedula = cedulaP;
 
-    if (cedula.length !== 10) {
-        console.log('Esta cédula tiene menos de 10 dígitos');
+export const verificarCedula = (cedula) => {
+    var cad = cedula.trim();
+    var total = 0;
+    var longitud = cad.length;
+    var longcheck = longitud - 1;
+
+    if (cad !== "" && longitud === 10) {
+        for (let i = 0; i < longcheck; i++) {
+            if (i % 2 === 0) {
+                let aux = cad.charAt(i) * 2;
+                if (aux > 9) aux -= 9;
+                total += aux;
+            } else {
+                total += parseInt(cad.charAt(i)); // parseInt o concatenará en lugar de sumar
+            }
+        }
+        total = total % 10 ? 10 - total % 10 : 0;
+
+        if (cad.charAt(longitud - 1) == total) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
         return false;
     }
-
-    const digitoRegion = parseInt(cedula.substring(0, 2));
-
-    if (digitoRegion < 1 || digitoRegion > 24) {
-        console.log('Esta cédula no pertenece a ninguna región');
-        return false;
-    }
-
-    const ultimoDigito = parseInt(cedula.substring(9, 10));
-
-    let pares = 0;
-    let impares = 0;
-
-    for (let i = 1; i < 9; i += 2) {
-        const digito = parseInt(cedula.charAt(i));
-        impares += digito * 2 > 9 ? digito * 2 - 9 : digito * 2;
-    }
-
-    for (let i = 0; i < 9; i += 2) {
-        pares += parseInt(cedula.charAt(i));
-    }
-
-    const sumaTotal = pares + impares;
-    const primerDigitoSuma = parseInt(String(sumaTotal).charAt(0));
-    const decena = (primerDigitoSuma + 1) * 10;
-    let digitoValidador = decena - sumaTotal;
-
-    if (digitoValidador === 10) {
-        digitoValidador = 0;
-    }
-
-    if (digitoValidador !== ultimoDigito) {
-        console.log('La cédula ' + cedula + ' es incorrecta');
-        return false;
-    }
-
-    return true;
-};
+}
 
 export const verificarNombre = (nombre) => {
     const nombreP = nombre;
