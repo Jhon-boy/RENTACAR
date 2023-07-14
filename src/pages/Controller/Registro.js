@@ -35,3 +35,16 @@ export const RegistroCliente = async (formData) => {
     }
 
 }
+
+export const getCorreos = async (user) => {
+
+    try {
+        const response = await axios.post(`${URL}/recuperarContrasena`, user);
+        console.log('EXITOSO');
+        return response.data;
+
+    } catch (error) {
+        console.log('Error al obtener los correos registrados:', error.message);
+        return false;
+    }
+};

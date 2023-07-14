@@ -160,7 +160,7 @@ export const Login = (props) => {
                                             <br></br>
                                             <Link to="/registro" className='NewCount'> ¿No tienes Cuenta? Crea una! </Link>
                                             <div className='recuperar'>
-                                            <Link to="/registro" className='NewCount'> Recuperar contraseña </Link>
+                                            <Link to="/recuperarContraseña" className='NewCount'> Recuperar contraseña </Link>
                                             </div>
                                         </div>
                                     </center>
