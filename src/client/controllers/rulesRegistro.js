@@ -63,93 +63,33 @@ export const verificarGenero = (genero) => {
     return true;
 }
 
+export const verificarCedula = (cedula) => {
+  var cad = cedula.trim();
+  var total = 0;
+  var longitud = cad.length;
+  var longcheck = longitud - 1;
 
-export const verificarCedula = (cedulaP) => {
-    const cedula = cedulaP;
-    if (cedula.length === 10) {
-      //Obtenemos el digito de la region que son los dos primeros digitos
-      var digito_region = cedula.substring(0, 2);
-  
-      //Pregunto si la region existe, Ecuador se divide en 24 regiones
-      if (digito_region >= 1 && digito_region <= 24) {
-        // Extraigo el último dígito
-        var ultimo_digito = cedula.substring(9, 10);
-  
-        //Agrupo todos los pares y los sumo
-        var pares =
-          parseInt(cedula.substring(1, 2)) +
-          parseInt(cedula.substring(3, 4)) +
-          parseInt(cedula.substring(5, 6)) +
-          parseInt(cedula.substring(7, 8));
-  
-        //Agrupo los impares, los multiplico por un factor de 2, si la resultante es > que 9 le restamos el 9 a la resultante
-        var numero1 = cedula.substring(0, 1);
-        numero1 = numero1 * 2;
-        if (numero1 > 9) {
-          numero1 = numero1 - 9;
-        }
-  
-        var numero3 = cedula.substring(2, 3);
-        numero3 = numero3 * 2;
-        if (numero3 > 9) {
-          numero3 = numero3 - 9;
-        }
-  
-        var numero5 = cedula.substring(4, 5);
-        numero5 = numero5 * 2;
-        if (numero5 > 9) {
-          numero5 = numero5 - 9;
-        }
-  
-        var numero7 = cedula.substring(6, 7);
-        numero7 = numero7 * 2;
-        if (numero7 > 9) {
-          numero7 = numero7 - 9;
-        }
-  
-        var numero9 = cedula.substring(8, 9);
-        numero9 = numero9 * 2;
-        if (numero9 > 9) {
-          numero9 = numero9 - 9;
-        }
-  
-        var impares = numero1 + numero3 + numero5 + numero7 + numero9;
-  
-        //Suma total
-        var suma_total = pares + impares;
-  
-        //extraemos el primer dígito
-        var primer_digito_suma = String(suma_total).substring(0, 1);
-  
-        //Obtenemos la decena inmediata
-        var decena = (parseInt(primer_digito_suma) + 1) * 10;
-  
-        //Obtenemos la resta de la decena inmediata - la suma_total esto nos da el dígito validador
-        var digito_validador = decena - suma_total;
-  
-        //Si el dígito validador es = a 10 toma el valor de 0
-        if (digito_validador === 10) {
-          digito_validador = 0;
-        }
-  
-        //Validamos que el dígito validador sea igual al de la cédula
-        if (digito_validador != ultimo_digito) {
-          console.log('La cédula:' + cedula + ' es incorrecta');
-          return false;
-        }
-      } else {
-        // imprimimos en consola si la región no pertenece
-        console.log('Esta cédula no pertenece a ninguna región');
-        return false;
+  if (cad !== "" && longitud === 10) {
+      for (let i = 0; i < longcheck; i++) {
+          if (i % 2 === 0) {
+              let aux = cad.charAt(i) * 2;
+              if (aux > 9) aux -= 9;
+              total += aux;
+          } else {
+              total += parseInt(cad.charAt(i)); // parseInt o concatenará en lugar de sumar
+          }
       }
-    } else {
-      //imprimimos en consola si la cédula tiene más o menos de 10 dígitos
-      console.log('Esta cédula tiene menos de 10 dígitos');
+      total = total % 10 ? 10 - total % 10 : 0;
+
+      if (cad.charAt(longitud - 1) == total) {
+          return true;
+      } else {
+          return false;
+      }
+  } else {
       return false;
-    }
-  
-    return true;
-  };
+  }
+}
   
   export const verificarContrasena = (contrasena) => {
     // Verificar si la contraseña tiene una longitud válida (entre 8 y 20 caracteres)

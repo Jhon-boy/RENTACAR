@@ -28,12 +28,13 @@ import { Inicio } from './pages/Inicio'
 import InformacionAuto from './client/components/InformacionAuto'
 import { ProtectedRoute } from './Router/ProtectedRoutes';
 import { ProtectedRouteClient } from './Router/ProtectedRouteClient';
-import Registro from './client/components/Registro'
+import Registro from './pages/Registro'
 import { PagosC } from './client/components/PagosC';
 import { ReservasC } from './client/components/ReservasC';
 import { ContactForm } from './client/components/ContactForm';
 import { Profile } from './admin/components/Profile/Profile';
 import { EditPerfil } from './client/components/EditPerfil';
+import { RecuperacionContrasena } from './pages/RecuperacionContrasena ';
 function App() {
   // Obtener el usuario del almacenamiento local
   const storedCredentials = localStorage.getItem('credentials');
@@ -116,6 +117,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/inicio' index element={<Inicio />} />
         <Route path='/registro' element={<Registro />} />
+        <Route path='/recuperarContraseña' element={<RecuperacionContrasena />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </>

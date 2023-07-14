@@ -82,7 +82,11 @@ export const CreateCar = () => {
               })
             history('/Autos');
         } catch (error) {
-            alert('SOMETHING WAS WRONG' + error.message)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!'+ error.message
+              })
         }
     }
 
@@ -99,7 +103,7 @@ export const CreateCar = () => {
     return (
         <div className="CrearAuto">
             <div className="ContenidoAuto">
-                <Form onSubmit={crearAuto} method="POST" encType='multipart/form-data' className="formulario" >
+                <Form onSubmit={crearAuto} method="POST"     className="formulario" >
                     <Row className="mb-3">
                         <Form.Group className='ingresoD' controlId="forMarca">
                             <Form.Label>Marca</Form.Label>

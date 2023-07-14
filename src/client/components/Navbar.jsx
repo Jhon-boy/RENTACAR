@@ -125,7 +125,7 @@ export default function Navbar({ usuario, cliente }) {
                                             <MenuItem onClick={handleClose}>Perfil</MenuItem>
                                           </Link>  
                                             <MenuItem onClick={handleClose}>Configuraciones</MenuItem>
-                                            <MenuItem onClick={logOut}>Logout</MenuItem>
+                                            <MenuItem onClick={logOut}>Salir</MenuItem>
                                         </Menu>
                                     </div></Typography>
                                 </Link>

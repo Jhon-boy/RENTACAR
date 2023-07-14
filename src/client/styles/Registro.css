@@ -19,7 +19,6 @@
 }
 
 .container-registro {
-  display: flex;
   align-items: center;
   justify-content: center;
   height: 70%;
@@ -31,8 +30,8 @@
 }
 
 .Formulario {
-  width: var(--form-width);
-  height: 750px;
+  width:auto;
+  height: auto;
   border: var(--form-border);
   padding: var(--form-padding);
   border-radius: var(--form-border-radius);
@@ -137,4 +136,7 @@ select {
   margin-left: var(--btn-margin-left);
   background-color: var(--btn2-bg-color);
   box-shadow: var(--box-shadow);
+}
+.formData{
+  padding-left: 400px;
 }
