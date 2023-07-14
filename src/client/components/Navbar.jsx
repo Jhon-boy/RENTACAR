@@ -72,7 +72,7 @@ export default function Navbar({ usuario, cliente }) {
                         <AppBar className='NavBar' style={{ height: '100px', backgroundColor: '#0194be', display: 'flex', justifyContent: 'space-between' }}>
                             <Toolbar style={{ marginTop: '1%', display: 'flex', justifyContent: 'space-between' }}>
                                 <div className="nombre-empresa">
-                                    <Typography variant="h6" style={{ flexGrow: 40, fontWeight: 'bold' }}>
+                                    <Typography variant="h6" style={{ flexGrow: 40, fontWeight: 'bold', fontSize: '48px' }}>
                                         <b>R</b>enta<b>C</b>ar
                                     </Typography>
                                 </div>

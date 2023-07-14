@@ -7,10 +7,10 @@ const NavBar = () => {
     <div className="NavBar">
       <AppBar className='NavBar' style={{ height: '100px', backgroundColor: '#0194be', display: 'flex', justifyContent: 'space-between' }}>
         <Toolbar style={{ marginTop: '1%', display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="h6" style={{ flexGrow: 17, fontWeight: 'bold' }}>
+          <Typography variant="h6" style={{  fontWeight: 'bold', fontSize: '48px'  }}>
             <b>R</b>enta<b>C</b>ar
           </Typography>
-          <Link to="/cliente" style={{ color: 'white', textDecoration: 'none', display: 'flex', marginLeft: '200px', marginRight: '30px', alignItems: 'center' }}>
+          <Link to="/cliente" style={{ color: 'white', textDecoration: 'none', display: 'flex',  marginRight: '30px', alignItems: 'center' }}>
             <Home style={{ marginRight: '4px' }} />
             <Typography variant="subtitle1">Home</Typography>
           </Link>

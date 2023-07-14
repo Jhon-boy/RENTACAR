@@ -60,19 +60,13 @@ export default function Footer() {
                     <div className="colum3">
                         <h6 className="text-uppercase">Ubicación</h6>
                         <p>
-                            <a  className="text-reset">
-                                Riobamba, Chimborazo, Ecuador
-                            </a>
+                            Riobamba, Chimborazo, Ecuador
                         </p>
                         <p>
-                            <a  className="text-reset">
-                                Telf. 0956461616
-                            </a>
+                            Telf. 0956461616
                         </p>
                         <p>
-                            <a className="text-reset">
-                                Telf. 3251564165
-                            </a>
+                            Telf. 3251564165
                         </p>
                         <p>
                             <a href="#!" className="text-reset">

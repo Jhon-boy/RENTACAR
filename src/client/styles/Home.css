@@ -2,7 +2,6 @@
     background-color: #f5f1e3c6;
     color: black;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 9);
-
 }
 
 .title-cars{
@@ -34,6 +33,8 @@
     flex-wrap: wrap;
     white-space: break-word;
     margin-bottom: 0;
+    margin-top: 120px;
+    margin-left: 450px;
 }
 
 .boton-renta {

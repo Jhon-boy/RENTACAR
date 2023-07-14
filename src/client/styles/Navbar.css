@@ -1,5 +1,5 @@
 .NavBar{
-    width: 100vw;
+    min-width: 100vw;
     justify-content: space-between;
     height: 25%;
     display: flex;

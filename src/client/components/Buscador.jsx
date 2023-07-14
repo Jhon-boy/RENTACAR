@@ -7,7 +7,7 @@ export default function Buscador() {
         <div>
             <div className="hero-image">
                 <div className="overlay">
-                    <h1>¿BUSCAS RENTAR UN VEHÍCULO?</h1>
+                    <h1>¿Buscas rentar un vehículo?</h1>
                     <div className="search-box">
                         <span className="text">Fecha Alquiler</span>
                         <input type="date" placeholder="Fecha de inicio" style={{textAlign:'center',color:'black'}} />
