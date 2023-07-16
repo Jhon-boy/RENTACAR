@@ -12,6 +12,8 @@ import { Typography, Button } from '@mui/material/';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
+const imgUser = 'https://www.svgrepo.com/show/527946/user-circle.svg'
+
 export default function Sidebar({ correo }) {
   const [expanded, setExpaned] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null);
@@ -80,7 +82,7 @@ export default function Sidebar({ correo }) {
         ) : (
           <section className={stil.menu}>
             <article className={stil.contentImgUser}>
-              <img src='https://www.svgrepo.com/show/527946/user-circle.svg' className={stil.imgUser}></img>
+              <img src={imgUser} className={stil.imgUser}></img>
             </article>
             {SidebarData.map((item, index) => {
               return (
@@ -110,8 +112,7 @@ export default function Sidebar({ correo }) {
                   marginTop: '20px',
                   border: '2px solid #3085d6'
                 }}
-                className={stil.btnCorreo}
-              >
+                className={stil.btnCorreo}>
                 {correo}
               </Button>
               <Menu
@@ -119,10 +120,7 @@ export default function Sidebar({ correo }) {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-                MenuListProps={{
-                  'aria-labelledby': 'basic-button',
-                }}
-              >
+                MenuListProps={{'aria-labelledby': 'basic-button',}}>
                 <Link to='/Perfil'>
                   <MenuItem onClick={handleClose}>Perfil</MenuItem>
                 </Link>

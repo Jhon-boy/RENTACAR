@@ -4,6 +4,7 @@
   height: 100%;
   max-width: 200px;
   min-height: 100vh;
+  border-right: 1px solid #3085d6;
 }
 .menu{
   width: 100%;

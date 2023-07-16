@@ -28,26 +28,28 @@ export default function HomeAdmin({ correo, id_user }) {
     <section className={stil.content}>
       <Sidebar correo={correo} />
       <div className={stil.contentPage}>
-        <Routes>
-          <Route path='/Autos' element={<Autos />} />
-          <Route path='/Autos/:id' element={<CardAutos />} />
-          <Route path='/Clientes' element={<Clientes />} />
-          <Route path='/crearAuto' element={<CreateCar />} />
-          <Route path='/EditCar/:id' element={<EditCar />} />
-          <Route path='/CardClient' element={<CardClientes />} />
-          <Route path='/InfoClient/:id' element={<InfoClien />} />
-          <Route path='/Configuracion' element={<Config />} />
-          <Route path='/Reservas' element={<Reservas />} />
-          <Route path='/InfoReserva/:id' element={<InfoReserva />} />
-          <Route path='/ReservaCard' element={<CardsReservas />} />
-          <Route path='/ReservasPendientes' element={<TablePending />} />
-          <Route path='/ReservasConcretas' element={<TableConcret />} />
-          <Route path='/clientesPending' element={<ClientsPending />} />
-          <Route path='/clientesNo' element={<ClientsNo />} />
-          <Route path='/Pagos' element={<Pagos />} />
-          <Route path='/Perfil' element={<Profile id={id_user} />} />
-          <Route path='/Historial/:id' element={<Historial />} />
-        </Routes>
+        <div className={stil.contentPageComponent}>
+          <Routes>
+            <Route path='/Autos' element={<Autos />} />
+            <Route path='/Autos/:id' element={<CardAutos />} />
+            <Route path='/Clientes' element={<Clientes />} />
+            <Route path='/crearAuto' element={<CreateCar />} />
+            <Route path='/EditCar/:id' element={<EditCar />} />
+            <Route path='/CardClient' element={<CardClientes />} />
+            <Route path='/InfoClient/:id' element={<InfoClien />} />
+            <Route path='/Configuracion' element={<Config />} />
+            <Route path='/Reservas' element={<Reservas />} />
+            <Route path='/InfoReserva/:id' element={<InfoReserva />} />
+            <Route path='/ReservaCard' element={<CardsReservas />} />
+            <Route path='/ReservasPendientes' element={<TablePending />} />
+            <Route path='/ReservasConcretas' element={<TableConcret />} />
+            <Route path='/clientesPending' element={<ClientsPending />} />
+            <Route path='/clientesNo' element={<ClientsNo />} />
+            <Route path='/Pagos' element={<Pagos />} />
+            <Route path='/Perfil' element={<Profile id={id_user} />} />
+            <Route path='/Historial/:id' element={<Historial />} />
+          </Routes>
+        </div>
       </div>
     </section>
   )

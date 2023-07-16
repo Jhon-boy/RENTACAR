@@ -1,117 +1,152 @@
 .content {
-    width: 100vw;
-    display: flex;
+  width: 100vw;
+  display: flex;
 }
-.contentPage{
+.contentPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  background-color: aquamarine;
+  height: 100vh;
+  background-color: white;
+}
+.contentPageComponent{
+  width: 97%;
+  height: 95%;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #3085d6;
+  box-shadow: 0px 0px 7px 2px #8dc4f7;
 }
 
+/*
+.home-container {
+  padding: 20px;
+}
 
-  .home-container {
-    padding: 20px;
-  }
-  .card{
-    margin-bottom: 20px;
-  }
-  
-  .home-container h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  .home-client{
-    margin-left: 30px;
-    width: 70%;
-  }
-  .ErroresInput{
-    color:  red;
-    font-size: 12px;
-  }
-  .fotoError{
-    margin-left: 25px;
-    padding-top: 10px;
-  }
-  .SucessInput{
-    color: green;
-    margin-top: -10%;
-    font-size: 10px;
-  }
-  .home-container p {
-    font-size: 18px;
-  }
-  .danger{
-    background-color: rgb(252, 78, 78);
-    color: black;
-    border: 1px solid black;
-  }
-  .warning{
-    background-color: rgb(211, 211, 58);
-    color: black;
-    border: 1px solid black;
-  }
-  .icon{
-    height: 25px;
-    font-size: 100px;
-    width: 100px;
+.card {
+  margin-bottom: 20px;
+}
 
-  }
-  .sucess{
-    background-color: rgb(26, 194, 246);
-  }
-  .activeP{
-    color: rgb(82, 239, 106);
-  }
-  .noactive{
-   color: red;
-  }
-  .options{
-    display: flex;
-    width: auto;
-    min-width: 150px;
-  }
-  .Registro{
-    border:  1px solid black;
-    height: auto;
-    width: auto;
-    background-color: azure;
-  }
-  .form-control{
-    background-color: white;
-    color: black;
-    height: 35px;
-    width: 275px;
-  }
-  .EditPerfil{
-    border: 2px solid rgb(68, 65, 65);
-    width: 90%;
+.home-container h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.home-client {
+  margin-left: 30px;
+  width: 70%;
+}
+
+.ErroresInput {
+  color: red;
+  font-size: 12px;
+}
+
+.fotoError {
+  margin-left: 25px;
+  padding-top: 10px;
+}
+
+.SucessInput {
+  color: green;
+  margin-top: -10%;
+  font-size: 10px;
+}
+
+.home-container p {
+  font-size: 18px;
+}
+
+.danger {
+  background-color: rgb(252, 78, 78);
+  color: black;
+  border: 1px solid black;
+}
+
+.warning {
+  background-color: rgb(211, 211, 58);
+  color: black;
+  border: 1px solid black;
+}
+
+.icon {
+  height: 25px;
+  font-size: 100px;
+  width: 100px;
+
+}
+
+.sucess {
+  background-color: rgb(26, 194, 246);
+}
+
+.activeP {
+  color: rgb(82, 239, 106);
+}
+
+.noactive {
+  color: red;
+}
+
+.options {
+  display: flex;
+  width: auto;
+  min-width: 150px;
+}
+
+.Registro {
+  border: 1px solid black;
+  height: auto;
+  width: auto;
+  background-color: azure;
+}
+
+.form-control {
+  background-color: white;
+  color: black;
+  height: 35px;
+  width: 275px;
+}
+
+.EditPerfil {
+  border: 2px solid rgb(68, 65, 65);
+  width: 90%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 7px;
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+.EditPerfil div {
+  margin-top: 20px;
+}
+
+.EditPerfil Button {
+  margin-left: 20px;
+}
+
+.btnEdit {
+  padding-left: 17%;
+}
+
+@media (max-width: 768px) {
+  .page-content {
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-radius: 7px;
-    margin-left: 100px;
-    margin-top: 30px;
   }
-  .EditPerfil div {
-    margin-top: 20px;
-  }
-  .EditPerfil Button{
-    margin-left: 20px;
-  }
-  .btnEdit{
- padding-left: 17%;
-  }
-  @media (max-width: 768px) {
-    .page-content {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-  }
-  .ModalP{
-    background-color: transparent;
-  }
-.ErroresInput2{
+}
+
+.ModalP {
+  background-color: transparent;
+}
+
+.ErroresInput2 {
   margin-top: -13px;
-    font-size: 7px;
-    color: red;
-  }
+  font-size: 7px;
+  color: red;
+}
+*/
