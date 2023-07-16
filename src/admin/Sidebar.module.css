@@ -1,12 +1,37 @@
+.Lateral{
+  display: flex;
+  width: 15vw;
+  height: 100vh;
+  max-width: 200px;
+}
+
+.menu{
+  width: 100%;
+  display: flex;
+  background-color: greenyellow;
+  flex-direction: column;
+
+}
+.menuItem{
+  background-color: White;
+  color: #3085d6;
+}
+
+.menuItemActive{
+  background-color: #3085d6;
+  color: white;
+}
+
+/*
 .sidebar {
   top: 20px;
   display: flex;
   position: fixed;
   height: 100%;
   transition: all 300ms ease;
-  background-color: rgb(208, 209, 209);
+  background-color: rgb(0, 0, 0);
 }
-/* logo */
+
 .bars{
   display: none;
 }
@@ -30,7 +55,7 @@
 }
 
 
-/* menu */
+
 .menu {
   padding-right: 20px;
   margin-top: 4rem;
@@ -40,7 +65,6 @@
 }
 .menuItem {
   display: flex;
-  align-items: center;
   gap: 1rem;
   height: 2.5rem;
   margin-left: 2rem;
@@ -73,7 +97,7 @@
 }
 
 
-/* Tablets */
+
 @media screen and (max-width: 1200px) {
   .menuItem>span{
     display: none;
@@ -117,3 +141,4 @@
   }
 }
 
+*/

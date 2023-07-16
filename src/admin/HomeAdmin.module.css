@@ -1,7 +1,6 @@
-.page-content {
-    padding-left: 170px;
-    height: 100vh;
+.pageContent {
     width: 100%;
+    background-color: red;
   }
   
   .home-container {
