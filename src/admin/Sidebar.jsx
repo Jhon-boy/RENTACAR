@@ -78,48 +78,59 @@ export default function Sidebar({ correo }) {
             <Loader />
           </center>
         ) : (
-          <article className={stil.menu}>
-              {SidebarData.map((item, index) => {
-                return (
-                  <Link
+          <section className={stil.menu}>
+            <article className={stil.contentImgUser}>
+              <img src='https://www.svgrepo.com/show/527946/user-circle.svg' className={stil.imgUser}></img>
+            </article>
+            {SidebarData.map((item, index) => {
+              return (
+                <Link
                   className={selected === index ? stil.menuItemActive : stil.menuItem}
                   key={index}
                   onClick={() => setSelected(index)}
                   to={'/Home/' + item.heading}>
-                      <item.icon />
-                      <span>{item.heading}</span>
-                    </Link>
-                );
-              })}
-              <Typography style={{ color: 'black' }}>
-                <Button
-                  id="basic-button"
-                  variant="outlined"
-                  aria-controls={open ? 'basic-menu' : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined}
-                  onClick={handleClick}
-                  style={{ color: 'black', fontSize: '10px' }}
-                >
-                  {correo}
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                  }}
-                >
-                  <Link to='/Perfil'>
-                    <MenuItem onClick={handleClose}>Perfil</MenuItem>
-                  </Link>
-                  <MenuItem onClick={handleClose}>Configuraciones</MenuItem>
-                  <MenuItem onClick={logOut}>Salir</MenuItem>
-                </Menu>
-              </Typography>
-            </article>
+                  <item.icon />
+                  <span>{item.heading}</span>
+                </Link>
+              );
+            })}
+            <Typography style={{ color: '#3085d6' }}>
+              <Button
+                id="basic-button"
+                variant="outlined"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                style={{
+                  color: '#3085d6',
+                  backgroundColor: 'white',
+                  fontSize: '10px',
+                  fontWeight: 'bold',
+                  marginTop: '20px',
+                  border: '2px solid #3085d6'
+                }}
+                className={stil.btnCorreo}
+              >
+                {correo}
+              </Button>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  'aria-labelledby': 'basic-button',
+                }}
+              >
+                <Link to='/Perfil'>
+                  <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                </Link>
+                <MenuItem onClick={handleClose}>Configuraciones</MenuItem>
+                <MenuItem onClick={logOut}>Salir</MenuItem>
+              </Menu>
+            </Typography>
+          </section>
         )
       }
 

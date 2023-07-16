@@ -1,26 +1,61 @@
 .Lateral{
   display: flex;
   width: 15vw;
-  height: 100vh;
+  height: 100%;
   max-width: 200px;
+  min-height: 100vh;
 }
-
 .menu{
   width: 100%;
   display: flex;
-  background-color: greenyellow;
+  background-color: white;
   flex-direction: column;
-
+  align-items: center;
 }
+.contentImgUser{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0px;
+}
+.imgUser{
+  width: 100px;
+  border: 1px solid #3085d6;
+}
+
 .menuItem{
+  width: 100%;
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
   background-color: White;
-  color: #3085d6;
+  padding: 10px 15px;
+  color: #0194BF;
+  border-bottom: 2px solid #0194BF;
+}
+.menuItem:hover{
+  background-color: #64d3f8;
+  color: white;
+  border-bottom: 2px solid black;
 }
 
 .menuItemActive{
-  background-color: #3085d6;
-  color: white;
+  width: 100%;
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  background-color: #64d3f8;
+  padding: 10px 15px;
+  color: black;
+  border-bottom: 2px solid black;
 }
+.menuItemActive:hover{
+  background-color: #64d3f8;
+  color: white;
+  border-bottom: 2px solid black;
+}
+
+
 
 /*
 .sidebar {

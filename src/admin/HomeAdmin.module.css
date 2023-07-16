@@ -1,8 +1,13 @@
-.pageContent {
-    width: 100%;
-    background-color: red;
-  }
-  
+.content {
+    width: 100vw;
+    display: flex;
+}
+.contentPage{
+  width: 100%;
+  background-color: aquamarine;
+}
+
+
   .home-container {
     padding: 20px;
   }

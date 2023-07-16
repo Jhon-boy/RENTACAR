@@ -19,15 +19,15 @@ import { ClientsPending } from './clientes/ClientsPending'
 import { ClientsNo } from './clientes/ClientsNo'
 import { Pagos } from './components/pagos/pagos'
 import { Historial } from './components/historial/Historial'
-import { Profile } from './components/Profile/Profile';
+import { Profile } from './components/Profile/Profile'
 
 import Sidebar from './Sidebar'
 
 export default function HomeAdmin({ correo, id_user }) {
   return (
-    <section className={stil.pageContent}>
+    <section className={stil.content}>
       <Sidebar correo={correo} />
-      <div className=''>
+      <div className={stil.contentPage}>
         <Routes>
           <Route path='/Autos' element={<Autos />} />
           <Route path='/Autos/:id' element={<CardAutos />} />
