@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../../Home.css';
+//import '../../Home.css';
 import { SliderBar } from './SliderBar';
 import { TableReservas } from './TableReservas';
 

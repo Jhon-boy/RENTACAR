@@ -1,8 +1,8 @@
 
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import '../Home.css';
-import '../styles/Cliente.css'
+//import '../Home.css';
+//import '../styles/Cliente.css'
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';

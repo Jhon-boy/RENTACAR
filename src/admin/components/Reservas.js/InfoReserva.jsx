@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import '../../Home.css';
-import '../../styles/Cliente.css'
+//import '../../Home.css';
+//import '../../styles/Cliente.css'
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { URL } from '../../data/URL';

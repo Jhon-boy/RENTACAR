@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { URL } from '../data/URL';
-import '../Home.css';
+//import '../Home.css';
 import { BsPersonExclamation } from "react-icons/bs";
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { SliderBar } from './SliderBar';

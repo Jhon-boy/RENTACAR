@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../styles/Card.css'
+//import '../../styles/Card.css'
 import { IMAGE } from '../../data/URL';
 import { URL } from '../../data/URL';
 export const CardHistory = ({ historial }) => {

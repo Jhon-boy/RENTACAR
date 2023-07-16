@@ -6,7 +6,7 @@ import { URL } from "../../data/URL";
 import { MdEditNote } from 'react-icons/md';
 import { MdRestoreFromTrash } from "react-icons/md";
 import { SliderBar } from "./SliderBar";
-import '../../Home.css';
+//import '../../Home.css';
 
 export const TablePending = () => {
     const [activeTab, setActiveTab] = useState('pending');

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { URL } from '../data/URL';
-import '../Home.css';
+//import '../Home.css';
 import { MdToggleOff } from "react-icons/md";
 import { MdToggleOn } from "react-icons/md";
 import { SliderBar } from './SliderBar';

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
-import '../../Home.css';
-import '../../styles/Autos.css';
+//import '../../Home.css';
+//import '../../styles/Autos.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
