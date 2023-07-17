@@ -9,12 +9,12 @@ import { EditCar } from './components/forms/EditCar'
 import { CardClientes } from './clientes/CardClientes'
 import Clientes from './clientes/Clientes'
 import { InfoClien } from './clientes/InfoClien'
-import { Config } from './components/config/Config'
-import { Reservas } from './components/Reservas.js/Reservas'
-import { InfoReserva } from './components/Reservas.js/InfoReserva'
-import { CardsReservas } from './components/Reservas.js/CardsReservas'
-import { TablePending } from './components/Reservas.js/TablePending'
-import { TableConcret } from './components/Reservas.js/TableConcret'
+import { Config } from './config/Config'
+import { Reservas } from './Reservas/Reserva'
+import { InfoReserva } from './Reservas/InfoReserva'
+import { CardsReservas } from './Reservas/CardsReservas'
+import { TablePending } from './Reservas/TablePending'
+import { TableConcret } from './Reservas/TableConcret'
 import { ClientsPending } from './clientes/ClientsPending'
 import { ClientsNo } from './clientes/ClientsNo'
 import { Pagos } from './components/pagos/pagos'
@@ -28,7 +28,6 @@ export default function HomeAdmin({ correo, id_user }) {
     <section className={stil.content}>
       <Sidebar correo={correo} />
       <div className={stil.contentPage}>
-        <div className={stil.contentPageComponent}>
           <Routes>
             <Route path='/Autos' element={<Autos />} />
             <Route path='/Autos/:id' element={<CardAutos />} />
@@ -37,7 +36,6 @@ export default function HomeAdmin({ correo, id_user }) {
             <Route path='/EditCar/:id' element={<EditCar />} />
             <Route path='/CardClient' element={<CardClientes />} />
             <Route path='/InfoClient/:id' element={<InfoClien />} />
-            <Route path='/Configuracion' element={<Config />} />
             <Route path='/Reservas' element={<Reservas />} />
             <Route path='/InfoReserva/:id' element={<InfoReserva />} />
             <Route path='/ReservaCard' element={<CardsReservas />} />
@@ -48,8 +46,9 @@ export default function HomeAdmin({ correo, id_user }) {
             <Route path='/Pagos' element={<Pagos />} />
             <Route path='/Perfil' element={<Profile id={id_user} />} />
             <Route path='/Historial/:id' element={<Historial />} />
+
+            <Route path='/Configuracion' element={<Config />} />
           </Routes>
-        </div>
       </div>
     </section>
   )

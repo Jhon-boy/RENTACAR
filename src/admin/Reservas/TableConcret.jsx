@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom'
 import { Button } from "@mui/material";
-import { URL } from "../../data/URL";
+import { URL } from "/src/admin/data/URL.js";
 import { MdEditNote } from 'react-icons/md';
 import { MdRestoreFromTrash } from "react-icons/md";
-import { SliderBar } from "./SliderBar";
+import { SliderBar } from "/src/admin/SliderBar";
 //import '../../Home.css';
 
-export const TablePending = () => {
-    const [activeTab, setActiveTab] = useState('pending');
+
+export const TableConcret = () => {
+    const [activeTab, setActiveTab] = useState('all');
     const [reservas, setReservas] = useState([]);
     const [autos, setAutos] = useState([]);
 
@@ -89,7 +90,7 @@ export const TablePending = () => {
     const handleDelete = async (id) => {
         alert(id);
     }
-    const filteredReservas = reservas.filter((reserva) => reserva.estado === 'PENDIENTE');
+    const filteredReservas = reservas.filter((reserva) => reserva.estado === 'CONCRETADO');
     const columns = [
         {
             name: 'Reserva',
@@ -162,7 +163,7 @@ export const TablePending = () => {
                 <SliderBar activeTab={activeTab} setActiveTab={setActiveTab} />
             </div>
             <div>
-                <div className="home-container">
+                <div className="">
                     {filteredReservas.length > 0 && (
                         <DataTable
                             title="Reservas Pendientes por confirmar"

@@ -3,8 +3,8 @@
 //import '../../styles/Cliente.css'
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { URL } from '../../data/URL';
-import { IMAGE } from '../../data/URL'
+import { URL } from '/src/admin/data/URL.js';
+import { IMAGE } from '/src/admin/data/URL.js'
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -22,9 +22,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import Swal from 'sweetalert2';
-import { CompletarPago, editarEstadoReserva } from '../../database/Pagos.Controller';
-import { CambioStadoAuto } from '../../database/controller';
-import { crearHistorial } from '../../database/History.Controller';
+import { CompletarPago, editarEstadoReserva } from '../database/Pagos.Controller';
+import { CambioStadoAuto } from '/src/admin/database/Controller.js';
+import { crearHistorial } from '/src/admin/database/History.Controller';
 
 export const InfoReserva = () => {
     const { id } = useParams();
