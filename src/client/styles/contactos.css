@@ -5,6 +5,9 @@
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
+.cont{
+    width: 100vw;
+}
 .container-form{
     width: 100%;
     max-width: 1200px;
@@ -16,7 +19,7 @@
     margin-bottom: 55px;
 }
 .contactoForm{
-    margin: 70px 50px auto auto;
+    margin: 170px 50px auto auto;
     width: 90%;
     border: 2px solid black;
     border-radius: 7px;

@@ -102,8 +102,7 @@ export const CardLicencia = (props) => {
                             alt={`${licenciaData.id_licencia} ${licenciaData.categoria}`}
                             sx={{ width: 300, height: 190, marginLeft: 1 }}
                         />
-
-                        <p style={{ marginLeft: '30px', fontSize: '16px' }}>Estado:    {licenciaData.estado ? <CheckCircle style={{ color: 'green' }} /> : <Block style={{ color: 'red' }} />}</p>
+                        <p style={{ marginLeft: '30px', fontSize: '16px', margin:'15px' }}>Estado:    {licenciaData.estado ? <CheckCircle style={{ color: 'green' }} /> : <Block style={{ color: 'red' }} />}</p>
                         {editableC && (
                             <FormControl fullWidth>
                                 <input type="file" accept="image/*"
@@ -127,7 +126,7 @@ export const CardLicencia = (props) => {
                     </Grid>
                 </div>
 
-                <Grid style={{ marginLeft: '10px' }}>
+                <Grid style={{ marginLeft: '20px' }}>
                     <div className='inputs'>
 
                         <TextField
@@ -189,9 +188,9 @@ export const CardLicencia = (props) => {
                                 </div>
                             )}
                     </div>
-
-                </Grid>
-                <div className='btnEdit'>
+                </Grid>         
+            </Grid>
+            <div className='btnEdit'>
                     {editableC ? (
                         <>
                             <Button variant="contained" 
@@ -207,12 +206,11 @@ export const CardLicencia = (props) => {
 
 
                     ) : (
-                        <Button style={{ marginLeft: '110%' }} variant="contained" onClick={handleEditarlicenciaClick}>
+                        <Button style={{ marginLeft: '10px' }} variant="contained" onClick={handleEditarlicenciaClick}>
                             Editar
                         </Button>
                     )}
                 </div>
-            </Grid>
         </div>
     )
 }

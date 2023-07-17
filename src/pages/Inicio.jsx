@@ -7,7 +7,7 @@ export const Inicio = () => {
         <div className='home-content'>
             <NavBar />
             <div className="main">
-                <HomeClient />
+                <HomeClient/>
             </div>
         </div>
     );

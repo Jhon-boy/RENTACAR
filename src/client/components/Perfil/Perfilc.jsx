@@ -106,9 +106,8 @@ export const Perfilc = (props) => {
                                 setcorreoValido(validarCorreo(correoAux))
                             }}
                             disabled={!editable}
-                            style={{ height: '20px', marginTop: '-12%' }}
+                            style={{ height: '20px' }}
                         />
-
                     </div>
                     {!correoValido && (
                         <div>
@@ -122,7 +121,7 @@ export const Perfilc = (props) => {
                             value={contrasena}
                             onChange={handleContrasenaChange}
                             disabled={!editable}
-                            style={{ height: '20px', width: '230px', marginTop: '-12%' }}
+                            style={{ height: '20px', width: '230px' }}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
@@ -218,7 +217,7 @@ export const Perfilc = (props) => {
                         </>
 
                     ) : (
-                        <Button variant="contained" style={{ marginLeft: '22%', marginTop: '50px' }} onClick={handleEditarClick}>
+                        <Button variant="contained" style={{ marginLeft: '7%', marginTop: '50px' }} onClick={handleEditarClick}>
                             Editar
                         </Button>
                     )}

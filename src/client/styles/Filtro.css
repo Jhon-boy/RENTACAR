@@ -1,0 +1,23 @@
+.container-filtro{
+    background-color: #0fc3e8;
+    height: 100vh;
+    padding-left: 20px;
+    border-radius: 0 10px 10px 0;
+    width: 300px; 
+}
+.input-wrapper{
+    display: flex;
+    width: 0px;
+    padding: 10px 0 5px 25px;
+}
+
+.a-title{
+    padding-top: 20PX;
+}
+
+.checkbox-mini{
+    position: relative;
+    overflow: visible;
+    box-sizing: border-box;
+    min-height: 1px;
+}

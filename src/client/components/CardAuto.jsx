@@ -46,16 +46,16 @@ export const CardAuto = ({ auto }) => {
 
 
     return (
-        <div className='home-content'>
-            <div style={{borderRadius:'10px'}}>
-                <Card sx={{ width: 345 }}>
+        <div className='home-content-cars' >
+            <div>
+                <Card sx={{ width: 345 , height: 430}}>
                     <CardMedia
                         component="img"
                         height="204"
                         image={`${IMAGE}/${auto.fotos}`}
                         alt="Paella dish"
                     />
-                    <CardContent>
+                    <CardContent >
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                             Disponible Ahora
                         </Typography>
@@ -73,7 +73,6 @@ export const CardAuto = ({ auto }) => {
                         {renderButton()}{renderIcon()}
                     </Link>
                 </Card>
-
             </div>
         </div>
     )

@@ -20,7 +20,8 @@
     border-radius: var(--form-border-radius);
     box-shadow: 1px 3px 7px 4px rgb(100, 98, 98); 
     padding: 25px;
-    background-color: #e0f7fb4b
+    background-color: #e0f7fb4b;
+    margin-top: 125px;
 }
 .Ingreso button{
     margin-left: -1%;

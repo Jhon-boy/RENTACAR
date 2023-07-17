@@ -11,9 +11,9 @@ export default function Portada() {
                 <img className='img' src={Img1} alt="Backgraound" />
                 <div className="container-text">
                     <h5 className="card-title1" style={{ color: 'white', width: '500px', textAlign: 'center' }}>
-                        ¡TENEMOS EL VEHÍCULO PARA TI!
+                        ¡Tenemos el vehiculo para ti!
                     </h5>
-                    <h6 className="card-text" style={{ color: 'black', width: '500px', textAlign: 'center' }}>Los mejores vehiculos para que reserves y aproveches.</h6>
+                    <h6 className="card-text" style={{ color: '#e2d397', width: '500px', textAlign: 'center' }}>Los mejores vehiculos para que reserves y aproveches.</h6>
                 </div>
             <Buscador/>
             </div>

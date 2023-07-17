@@ -9,9 +9,9 @@ export default function Buscador() {
                 <div className="overlay">
                     <h1>¿Buscas rentar un vehículo?</h1>
                     <div className="search-box">
-                        <span className="text">Fecha Alquiler</span>
+                        <span className="text">Fecha alquiler: </span>
                         <input type="date" placeholder="Fecha de inicio" style={{textAlign:'center',color:'black'}} />
-                        <span className="text">Fecha Devolución</span>
+                        <span className="text">Fecha devolución: </span>
                         <input type="date" placeholder="Fecha de fin" style={{textAlign:'center',color:'black'}} />
                         <span className="text">Tipo de vehículo</span>
                         <select className='box-tip'>

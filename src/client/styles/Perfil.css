@@ -1,76 +1,97 @@
-
-.Perfil-Container{
-    margin-top: 70px;
-    margin-left: 55px;
+.Perfil-Container {
+  margin-top: 120px;
+  color: black;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
 }
- 
-.EditPerfil{
-  border: none;
-    width: fit-content;
-    max-height: min-content;
-    justify-content: center;
-  }
-  .EditInfo{
-    width: auto;
-     max-height: 350px;
-    justify-content: center;
-    margin-left: 50px;
-  }
-.dividers{
+
+
+.EditInfo {
+  width: auto;
+  max-height: 350px;
+  justify-content: center;
+  margin-left: 50px;
+  margin-top: 15px;
+}
+
+.dividers {
   margin-left: 30px;
   height: fit-content;
+  margin-top: 10px;
 }
 
-  .EditUser{
-    margin-top: 50px;
-    width: 45%;
-    height: 28rem;
-    border-radius: 7px;
-    box-shadow: 7px 7px 6px rgb(94, 93, 93);
+.EditUser {
+
+  width: 45%;
+  height: 28rem;
+  border-radius: 7px;
+  box-shadow: 7px 7px 6px rgb(94, 93, 93);
+}
+
+.Userss {
+  margin-top: 50px;
+}
+
+.CardLicencia {
+  width: min-content;
+  border-radius: 7px;
+  border: 2px solid black;
+  box-shadow: 7px 7px 6px rgb(94, 93, 93);
+  margin-left: 10px;
+  margin-top: 40px;
+}
+
+.CardLicencia div {
+  margin-top: 5px;
+}
+
+.inputs {
+  display: flex;
+}
+
+.ErroresInput2 {
+  color: red;
+  font-size: 8px;
+  margin-top: 50px;
+}
+
+.ErroresInput3 {
+  color: red;
+  font-size: 8px;
+  margin-top: -3%;
+}
+
+.ErroresInput4 {
+  color: red;
+  font-size: 8px;
+  margin-left: -100%;
+  margin-top: -10%;
+}
+
+.ErroresInput5 {
+  color: red;
+  font-size: 8px;
+  margin-top: 7%;
+}
+
+
+.EditPerfil {
+  border-radius: 7px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  .EditUser div { 
-    margin-top: 10px;
-  }
-  .Userss{
-    margin-top: 50px;
-  }
-  .CardLicencia{
-    width: min-content;
-    border-radius: 7px;
-    border: 2px solid black;
-    box-shadow: 7px 7px 6px rgb(94, 93, 93);
-    margin-left: 10px;
-    margin-top: 40px;
-  }
-  .CardLicencia div{
-    margin-top: 5px;
-  }
-  .inputs{
-    display: flex;
-  }
- 
-  .btnEdit {
-  margin-left: 50px;
-    justify-content:space-between;  
-  }
-  .ErroresInput2{
-    color: red;
-    font-size: 8px;
-    margin-top: 50px;
-  }
-  .ErroresInput3{
-    color: red;
-    font-size: 8px;
-    margin-top: -3%;
-  }
-  .ErroresInput4{
-    color: red;
-    font-size: 8px;
-    margin-left: -100%;
-    margin-top: -10%;
-  }
-  .ErroresInput5{
-    color: red;
-    font-size: 8px;
-    margin-top: 7%;
-  }
+}
+.ModalP {
+  background-color: transparent;
+}
+.ErroresInput2 {
+  margin-top: -13px;
+  font-size: 7px;
+  color: red;
+}

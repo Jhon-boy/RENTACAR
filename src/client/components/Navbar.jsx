@@ -60,7 +60,6 @@ export default function Navbar({ usuario, cliente }) {
     })
 
     return (
-
         <>
             {
                 showLoader ? (
@@ -97,10 +96,10 @@ export default function Navbar({ usuario, cliente }) {
                                     <Typography variant="subtitle1">Oficina</Typography>
                                 </Link>
                                 <Link style={{
-                                    alignItems: 'center', display: 'flex', marginLeft: '150px', border: '1px solid white', borderRadius: '5px', padding: '5px'
+                                    alignItems: 'center', display: 'flex', 
                                 }} component={Button} variant="outlined" >
                                     <AccountCircle style={{ color: 'white' }} />
-                                    <Typography style={{ marginLeft: '4px', color: 'white' }}> <div>
+                                    <Typography style={{ color: 'white' }}> <div>
                                         <Button
                                             variant="outlined"
                                             id="basic-button"
@@ -129,7 +128,7 @@ export default function Navbar({ usuario, cliente }) {
                                         </Menu>
                                     </div></Typography>
                                 </Link>
-                                <Typography style={{ marginLeft: '4px', color: 'white' }}>
+                                <Typography style={{  color: 'white' }}>
                                     <Estado estado={cliente.estado} />
                                 </Typography>
                             </Toolbar>
