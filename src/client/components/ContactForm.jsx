@@ -32,7 +32,9 @@ export const ContactForm = () => {
                     </form>
                 </div>
             </div>
-            <Footer />
+            <div className="con-footer">
+                <Footer />
+            </div>
         </div>
 
     )
