@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import UserCard from './useCard';
 import { URL } from '../data/URL';
 import axios from 'axios';
-import '../Home.css';
+//import '../Home.css';
 import Grid from '@mui/material/Grid';
 import { SliderBar } from './SliderBar';
 

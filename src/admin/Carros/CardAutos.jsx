@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import '../Home.css';
-import '../styles/Autos.css';
+//import '../Home.css';
+//import '../styles/Autos.css';
 import { URL } from '../data/URL';
 import { IMAGE } from '../data/URL';
 // eslint-disable-next-line react/prop-types, no-unused-vars

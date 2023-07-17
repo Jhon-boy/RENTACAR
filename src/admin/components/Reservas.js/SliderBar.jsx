@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import '../../styles/SliderBarClient.css'
+//import '../../styles/SliderBarClient.css'
 import { Link } from 'react-router-dom'
 
 export const SliderBar = ({ activeTab, setActiveTab }) => {

@@ -1,5 +1,5 @@
-import '../../Home.css'
-import '../../styles/Config.css'
+//import '../../Home.css'
+//import '../../styles/Config.css'
 import { useState, useEffect } from 'react'
 import { URL } from '../../data/URL';
 import Swal from 'sweetalert2';

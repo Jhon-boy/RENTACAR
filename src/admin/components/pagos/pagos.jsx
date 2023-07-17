@@ -1,5 +1,5 @@
-import '../../Home.css'
-import '../../styles/Config.css'
+//import '../../Home.css'
+//import '../../styles/Config.css'
 import { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Box } from '@mui/material';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
