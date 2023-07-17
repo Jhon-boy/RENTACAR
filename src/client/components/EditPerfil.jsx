@@ -14,21 +14,21 @@ export const EditPerfil = (props) => {
 
     return (
             <div className='Perfil-Container'>
-                <div className="home-container" >
+                <div className="home-container2" >
                     <h2 style={{ color: 'black', marginBottom:'10px',}}>Información personal</h2>
                     <Divider textAlign="left" >
                         <Chip color="primary" label="Sus credenciales" />
                     </Divider>
                     <Perfilc id={props.id} />
                 </div>
-                <div className='home-container'style={{marginTop: '45px'}}>
+                <div className='home-container2'style={{marginTop: '59px'}}>
                     <Divider textAlign="left">
                         <Chip color="primary" label="Informacíon personal " />
                     </Divider>
                     <InfoC cliente={props.cliente} />
                 </div>
 
-                <div className='home-container'>
+                <div className='home-container2'>
                     <Divider textAlign="left">
                         <Chip color="primary" label="Información licencia" />
                     </Divider>

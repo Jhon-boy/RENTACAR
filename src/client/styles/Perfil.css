@@ -5,7 +5,9 @@
   display: flex;
   flex-wrap: wrap;
 }
-
+.home-container2{
+  margin: 15px;
+}
 
 .EditInfo {
   width: auto;

@@ -28,7 +28,7 @@ export const HomeClient = () => {
                 <p className='frase'>¿Cuál auto le interesa? En nuestros autos de renta podemos ayudarle a elegir. Revise cuales son nuestros vehiculos más populares.</p>
                 <div className="cards-autos">
                     <Grid className='container-autos' container spacing={2}>
-                        {autos.map(auto => (
+                        {autos.slice(0, 3).map(auto => (
                             <Grid item key={auto.id_auto}>
                                 <CardAuto auto={auto} key={auto.id_auto} />
                             </Grid>
