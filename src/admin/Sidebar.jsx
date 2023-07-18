@@ -90,7 +90,7 @@ export default function Sidebar({ correo }) {
                   className={selected === index ? stil.menuItemActive : stil.menuItem}
                   key={index}
                   onClick={() => setSelected(index)}
-                  to={'/Home/' + item.heading}>
+                  to={'/Home/' + item.url}>
                   <item.icon />
                   <span>{item.heading}</span>
                 </Link>

@@ -15,29 +15,36 @@ export const SidebarData = [
   {
     icon: UilEstate,
     heading: "Home",
+    url: ""
   },
   {
     icon: UilClipboardAlt,
     heading: "Reservas",
+    url: "Reservas"
   },
   {
     icon: UilUsersAlt,
     heading: "Clientes",
+    url: "Clientes"
   },
   {
     icon: UilCar,
-    heading: 'Autos'
+    heading: 'Autos',
+    url: "Autos"
   },
   {
     icon: UilChart,
-    heading: 'Analisis'
+    heading: 'Analisis',
+    url: "Analisis"
   },
   {
     icon: UilCreditCard ,
-    heading: 'Pagos'
+    heading: 'Pagos',
+    url:"Pagos"
   },
   {
     icon: UilSetting,
-    heading: 'Configuracion'
+    heading: 'Configuracion',
+    url:"Configuracion"
   }
 ];
