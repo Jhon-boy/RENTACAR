@@ -3,8 +3,8 @@
 import { IMAGE } from '../data/URL';
 import { URL } from '../data/URL';
 import axios from 'axios';
-import '../Home.css';
-import '../styles/Cliente.css'
+//import '../Home.css';
+//import '../styles/Cliente.css'
 import { useState, useEffect } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import {   FaCheck, FaTimes } from 'react-icons/fa';

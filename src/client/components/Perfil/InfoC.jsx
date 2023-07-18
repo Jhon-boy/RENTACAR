@@ -27,7 +27,7 @@ export const InfoC = (props) => {
     const [fotoPreview, setFotoPreview] = useState(null);
 
     //ALMACENADO EN ESTADOS: _______-
-    const [cedula, setCedula] = useState(clienteData.cedula);   
+    const [cedula, setCedula] = useState(clienteData.cedula);
     const [nombre, setNombre] = useState(clienteData.nombre);
     const [apellido, setApellido] = useState(clienteData.apellido);
     const [genero, setGenero] = useState(clienteData.genero);
@@ -125,7 +125,7 @@ export const InfoC = (props) => {
                                     </FormControl>
                                 )}
                             </Grid>
-                            <div style={{ marginLeft: '20px', display: 'flex ' }}>
+                            <div style={{ marginLeft: '20px', display: 'flex ', marginTop: '15px' }}>
                                 Estado:     <Estado estado={clienteData.estado} />
                             </div>
                         </div>
@@ -204,32 +204,29 @@ export const InfoC = (props) => {
                                 </div>
                             )}
                         </Grid>
-                      
-                    </Grid>  <div className='btnEdit'>
-                            {editableC ? (
-                                <>
-                                    <Button variant="contained"
-                                        onClick={handleGuardarCambiosClick}
-                                        disabled={!nombreValido || !apellidoValido || !cedulaValido}
-                                    >
-                                        Guardar
-                                    </Button>
-                                    <Button variant="outlined" className='btns' color="error" onClick={() => setEditableC(false)}>
-                                        Cancelar
-                                    </Button>
-                                </>
-
-                            ) : (
-                                <Button style={{marginLeft: '100px'}} variant="contained" onClick={handleEditarClienteClick}>
-                                    Editar
+                    </Grid>
+                    <div className='btnEdit'>
+                        {editableC ? (
+                            <>
+                                <Button variant="contained"
+                                    onClick={handleGuardarCambiosClick}
+                                    disabled={!nombreValido || !apellidoValido || !cedulaValido}
+                                >
+                                    Guardar
                                 </Button>
-                            )}
-                        </div>
+                                <Button variant="outlined" className='btns' color="error" onClick={() => setEditableC(false)}>
+                                    Cancelar
+                                </Button>
+                            </>
+
+                        ) : (
+                            <Button style={{ marginLeft: '10px', marginTop: '10px' }} variant="contained" onClick={handleEditarClienteClick}>
+                                Editar
+                            </Button>
+                        )}
+                    </div>
                 </Form>
-
-
             </div>
-
         </div>
     )
 }

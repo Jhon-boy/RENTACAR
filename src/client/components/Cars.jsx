@@ -7,11 +7,10 @@ import Footer from './Footer';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { vehicleTypes } from '../data/TipoAuto';
-
+import Filtro from '../components/Filtro'
 export const Cars = () => {
   const [autos, setAutos] = useState([]);
   const [searchTerm, setSearchTerm] = useState(null); // Cambiado a null
-
   useEffect(() => {
     fetch(`${URL}/autos`)
       .then(response => response.json())
@@ -33,6 +32,9 @@ export const Cars = () => {
 
   return (
     <div>
+      <div className="filtro">
+        <Filtro />
+      </div>
       <div className='contenedor-house'>
         <div className="house">
           <div className='Buscador'>
@@ -58,7 +60,6 @@ export const Cars = () => {
             </div>
           </div>
         </div>
-
       </div>
       <div className="footer-wrapper">
         <Footer />

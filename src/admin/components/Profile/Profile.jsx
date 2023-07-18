@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { TextField, Button, InputAdornment, IconButton } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import '../../Home.css';
+//import '../../Home.css';
 import Swal from 'sweetalert2';
 import { URL } from '../../data/URL';
 import { ActualizarAdmin } from '../../database/Admin.controller';

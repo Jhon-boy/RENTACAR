@@ -5,8 +5,9 @@ import * as Yup from 'yup'
 import { URL } from '../client/data/URL';
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
-
+import Navbar from './NavBar'
 import { LoginUser } from './Controller/Login.controller';
+import Footer from '../client/components/Footer'
 
 
 const loginSchema = Yup.object().shape(
@@ -99,6 +100,7 @@ export const Login = (props) => {
                 usuario ?
                     navigateTo('/')
                     : <div className='LoginIngreso'>
+                        <Navbar/>
                         <Formik
                             initialValues={CredencialesInicial}
                             //Yup Validaciones esquemas
@@ -168,6 +170,7 @@ export const Login = (props) => {
                             )
                             }
                         </Formik>
+                        <Footer/>
                     </div>
             }
         </>

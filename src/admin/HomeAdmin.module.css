@@ -1,0 +1,13 @@
+.content {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 15vw 85vw;
+}
+.contentPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}

@@ -1,5 +1,5 @@
 
-import '../Home.css'
+//import '../Home.css'
 import Button from 'react-bootstrap/Button';
 import { TableAutos } from './TableAutos'
 import { Link } from 'react-router-dom'

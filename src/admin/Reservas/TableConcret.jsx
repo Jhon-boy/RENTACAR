@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom'
 import { Button } from "@mui/material";
-import { URL } from "../../data/URL";
+import { URL } from "/src/admin/data/URL.js";
 import { MdEditNote } from 'react-icons/md';
 import { MdRestoreFromTrash } from "react-icons/md";
-import { SliderBar } from "./SliderBar";
-import '../../Home.css';
+import { SliderBar } from "/src/admin/SliderBar";
+//import '../../Home.css';
 
 
 export const TableConcret = () => {

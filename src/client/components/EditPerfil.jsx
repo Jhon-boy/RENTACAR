@@ -13,32 +13,27 @@ export const EditPerfil = (props) => {
     const [clienteData, setClienteData] = useState(props.cliente);
 
     return (
-        <div>
             <div className='Perfil-Container'>
-                <div className="home-container">
-                <h3>Informacion de su Cuenta</h3>
-                <Divider textAlign="left">
-                    <Chip   color="primary"     label="Sus credenciales" />
-                </Divider>
+                <div className="home-container2" >
+                    <h2 style={{ color: 'black', marginBottom:'10px',}}>Información personal</h2>
+                    <Divider textAlign="left" >
+                        <Chip color="primary" label="Sus credenciales" />
+                    </Divider>
                     <Perfilc id={props.id} />
                 </div>
-                <div className='home-container'>
-                <Divider textAlign="left">
-                    <Chip    color="primary" label="Informacíon personal de su Cuenta" />
-                </Divider>
+                <div className='home-container2'style={{marginTop: '59px'}}>
+                    <Divider textAlign="left">
+                        <Chip color="primary" label="Informacíon personal " />
+                    </Divider>
                     <InfoC cliente={props.cliente} />
                 </div>
 
-                <div className='home-container'>
-                <Divider textAlign="left">
-                    <Chip   color="primary" label="Informacion de su licencia" />
-                </Divider>
+                <div className='home-container2'>
+                    <Divider textAlign="left">
+                        <Chip color="primary" label="Información licencia" />
+                    </Divider>
                     <CardLicencia id_licencia={clienteData.id_licencia} />
                 </div>
             </div>
-
-
-        </div>
-
     )
 }

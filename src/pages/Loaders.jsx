@@ -1,7 +1,7 @@
 import { Waveform } from '@uiball/loaders'
 export const Loader = () => {
     return (
-      <div className='container-loader' style={{marginLeft: '600px'}}>
+      <div className='container-loader' style={{width:"100vw"}}>
         <Waveform
         size={60}
         lineWeight={3.5}

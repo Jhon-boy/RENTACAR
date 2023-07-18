@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom'
 import { Button } from "@mui/material";
-import { URL } from "../../data/URL";
+import { URL } from "/src/admin/data/URL.js";
 import { MdEditNote } from 'react-icons/md';
 import { MdRestoreFromTrash } from "react-icons/md";
+import { SliderBar } from "../SliderBar";
+//import '../../Home.css';
 
-
-export const TableReservas = () => {
+export const TablePending = () => {
+    const [activeTab, setActiveTab] = useState('pending');
     const [reservas, setReservas] = useState([]);
     const [autos, setAutos] = useState([]);
 
@@ -87,6 +89,7 @@ export const TableReservas = () => {
     const handleDelete = async (id) => {
         alert(id);
     }
+    const filteredReservas = reservas.filter((reserva) => reserva.estado === 'PENDIENTE');
     const columns = [
         {
             name: 'Reserva',
@@ -154,16 +157,25 @@ export const TableReservas = () => {
     ];
 
     return (
-        <div>
-            <DataTable
-                title="Reservas"
-                columns={columns}
-                data={reservas}
-                pagination
-                highlightOnHover
-                striped
-                dense
-            />
+        <div className="page-content">
+            <div className="home-container">
+                <SliderBar activeTab={activeTab} setActiveTab={setActiveTab} />
+            </div>
+            <div>
+                <div className="home-container">
+                    {filteredReservas.length > 0 && (
+                        <DataTable
+                            title="Reservas Pendientes por confirmar"
+                            columns={columns}
+                            data={filteredReservas}
+                            pagination
+                            highlightOnHover
+                            striped
+                            dense
+                        />
+                    )}
+                </div>
+            </div>
         </div>
     );
 };

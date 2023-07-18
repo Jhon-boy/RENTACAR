@@ -1,28 +1,29 @@
-.home-content{
-    background-color: #f5f1e3c6;
-    color: black;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 9);
+.home-content {
+	background-color: #f5f1e3c6;
+	color: black;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 9);
 }
 
-.title-cars{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    margin-top: 80px;
-    font-weight: bold;
-    font-size: 38px;
-    margin-bottom: 15px;
+.title-cars {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	margin-top: 80px;
+	font-weight: bold;
+	font-size: 38px;
+	margin-bottom: 15px;
 }
+
 .frase {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    white-space: break-word;
-    margin-bottom: 0;
-    font-style: italic;
-    font-size: 15px;
-    margin-bottom: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	white-space: break-word;
+	margin-bottom: 0;
+	font-style: italic;
+	font-size: 15px;
+	margin-bottom: 25px;
 }
 
 .container-autos {
@@ -34,19 +35,24 @@
     white-space: break-word;
     margin-bottom: 0;
     margin-top: 120px;
-    margin-left: 450px;
+    margin-left: 200px;
 }
 
 .boton-renta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.ver-mas{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 25px;
-    margin-bottom: 150px;
+.ver-mas {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 25px;
+	margin-bottom: 150px;
+}
+
+.Dinero{
+	color: green;
+	font-weight: bold;
 }

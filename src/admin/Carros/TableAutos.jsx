@@ -1,4 +1,4 @@
-import '../Home.css'
+//import '../Home.css'
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import DataTable from 'react-data-table-component';

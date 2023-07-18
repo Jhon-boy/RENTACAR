@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import React from 'react';
 import '../styles/Home.css'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -15,7 +15,7 @@ export const CardAuto = ({ auto }) => {
     const renderButton = () => {
         if (auto.estado === 'OCUPADO' || auto.estado === 'MATENIMIENTO') {
             return (
-                <Button variant="contained" size="large"  disabled>
+                <Button variant="contained" size="large" disabled>
                     Próximamente
                 </Button>
             );
@@ -39,16 +39,25 @@ export const CardAuto = ({ auto }) => {
             return <CloseIcon />;
         }
     };
-    if (auto.estado === 'FUERA DE SERVICIO') {
-        return null;
-    }
 
-
+    const renderEstado = () => {
+        if (auto.estado === 'DISPONIBLE') {
+            return 'Disponible';
+        } else if (auto.estado === 'OCUPADO') {
+            return 'Ocupado';
+        }
+        else if ( auto.estado === 'MATENIMIENTO') {
+            return 'Mantenimiento';
+        }
+        else {
+            return auto.estado;
+        }
+    };
 
     return (
-        <div className='home-content'>
-            <div style={{borderRadius:'10px'}}>
-                <Card sx={{ width: 345 }}>
+        <div className='home-content-cars'>
+            <div>
+                <Card sx={{ width: 345, height: 430 }}>
                     <CardMedia
                         component="img"
                         height="204"
@@ -57,7 +66,9 @@ export const CardAuto = ({ auto }) => {
                     />
                     <CardContent>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            Disponible Ahora
+                            {renderEstado()}
+                            {auto.estado === 'DISPONIBLE' && <span style={{ color: 'green', marginLeft: '5px' }}>●</span>}
+                            {(auto.estado === 'OCUPADO' || auto.estado === 'MATENIMIENTO') && <span style={{ color: 'red', marginLeft: '5px' }}>●</span>}
                         </Typography>
                         <Typography variant="h5" component="div">
                             {auto.marca} - {auto.modelo}
@@ -66,15 +77,14 @@ export const CardAuto = ({ auto }) => {
                             {auto.detalles}
                         </Typography>
                         <Typography variant="h6">
-                            ${auto.precio} - {auto.estado}
+                            <span className='Dinero'>$ </span>{auto.precio} - {auto.estado}
                         </Typography>
                     </CardContent>
-                    <Link  to={`/cliente/vehiculos/${auto.id_auto}`} className='boton-renta' style={{marginBottom: '10px'}}>
+                    <Link to={`/cliente/vehiculos/${auto.id_auto}`} className='boton-renta' style={{ marginBottom: '10px' }}>
                         {renderButton()}{renderIcon()}
                     </Link>
                 </Card>
-
             </div>
         </div>
-    )
-}
+    );
+};
