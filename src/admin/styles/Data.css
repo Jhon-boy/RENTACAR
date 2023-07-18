@@ -1,0 +1,36 @@
+.data-home{
+   margin: 10px 20px 60px 50px;
+}
+.data-info{
+    margin: 10px 10px 40px 10px;
+    display: flex;
+    max-height: 170px;
+    border-radius: 7px;
+}
+.data-info div{
+    margin: 2px 5px 2px 3px;
+}
+.data1{
+    margin-left: 30px ; 
+    display: flex;
+    height: fit-content;
+}
+.data-analisis{
+    max-height: 450px;
+    max-height: 450px;
+    border-radius: 7px;
+    margin-right: 13px;
+    background-color: white;
+    width: min-content;
+   box-shadow: 0px 2px 2px 5px rgb(165, 163, 163);
+}
+.data-analisis div{
+    margin: 2px 5px 2px 3px;
+}
+.data-usuarios{
+    margin: 10px 10px 10px 10px;
+    display: flex;
+    max-height: auto;  
+    border-radius: 7px;
+     border: 1px solid black;
+}

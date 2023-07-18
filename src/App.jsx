@@ -19,6 +19,7 @@ import { ContactForm } from './client/components/ContactForm';
 
 import { EditPerfil } from './client/components/EditPerfil';
 import { RecuperacionContrasena } from './pages/RecuperacionContrasena ';
+
 function App() {
   // Obtener el usuario del almacenamiento local
   const storedCredentials = localStorage.getItem('credentials');

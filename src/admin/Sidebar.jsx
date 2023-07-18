@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 //import './Sidebar.css';
 //import styled from 'styled-components'
@@ -12,7 +14,7 @@ import { Typography, Button } from '@mui/material/';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-const imgUser = 'https://www.svgrepo.com/show/527946/user-circle.svg'
+const imgUser = 'https://www.pngmart.com/files/21/Admin-Profile-PNG-Image.png'
 
 export default function Sidebar({ correo }) {
   const [expanded, setExpaned] = useState(true)
@@ -90,7 +92,7 @@ export default function Sidebar({ correo }) {
                   className={selected === index ? stil.menuItemActive : stil.menuItem}
                   key={index}
                   onClick={() => setSelected(index)}
-                  to={'/Home/' + item.heading}>
+                  to={'/Home/' + item.url}>
                   <item.icon />
                   <span>{item.heading}</span>
                 </Link>
