@@ -25,23 +25,27 @@
 }
 
 .menuItem{
-  width: 100%;
+  width: 90%;
   display: flex;
   column-gap: 5px;
   align-items: center;
   background-color: #0194BE;
   padding: 10px 15px;
   color: white;
-  border-bottom: 2px solid black;
+  margin-top: 5px;
+  border-radius: 7px;
 }
 .menuItem:hover{
   background-color: #64d3f8;
   color: white;
-  border-bottom: 2px solid black;
+  width: 90%;
+  border-radius: 7px;
 }
 
 .menuItemActive{
-  width: 100%;
+  width: 90%;
+  border-radius: 7px;
+  margin-top: 10px;
   display: flex;
   column-gap: 5px;
   align-items: center;
@@ -49,6 +53,7 @@
   padding: 10px 15px;
   color: black;
   border-bottom: 2px solid black;
+  box-shadow: 2px 1px 0px 1px rgb(77, 75, 75);
 }
 .menuItemActive:hover{
   background-color: #64d3f8;
