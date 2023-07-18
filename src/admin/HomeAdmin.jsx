@@ -1,4 +1,5 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+/* eslint-disable react/prop-types */
+import { Routes, Route } from 'react-router-dom';
 import stil from './HomeAdmin.module.css';
 
 
@@ -22,12 +23,16 @@ import { Profile } from './components/Profile/Profile'
 
 
 import Sidebar from './Sidebar'
+import { HomeData } from './Datos/HomeData';
 
 export default function HomeAdmin({ correo, id_user }) {
   return (
-    <section className={stil.content}>
-      <Sidebar correo={correo} />
-      <div className={stil.contentPage}>
+    <div style={{display: 'flex'}}>
+      <section className={stil.content}>
+        <Sidebar correo={correo} />
+     
+        <div className={stil.contentPage}>
+        
           <Routes>
             <Route path='/Autos' element={<Autos />} />
             <Route path='/Autos/:id' element={<CardAutos />} />
@@ -37,9 +42,9 @@ export default function HomeAdmin({ correo, id_user }) {
             <Route path='/CardClient' element={<CardClientes />} />
             <Route path='/InfoClient/:id' element={<InfoClien />} />
             <Route path='/Reservas/*' element={<Reservas />} />
-            
-            
-            
+            <Route index  element={<HomeData />} />
+
+
             <Route path='/clientesPending' element={<ClientsPending />} />
             <Route path='/clientesNo' element={<ClientsNo />} />
             <Route path='/Pagos' element={<Pagos />} />
@@ -48,7 +53,9 @@ export default function HomeAdmin({ correo, id_user }) {
 
             <Route path='/Configuracion' element={<Config />} />
           </Routes>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
+
   )
 }
