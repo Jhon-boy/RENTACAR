@@ -100,7 +100,7 @@ export const Login = (props) => {
                 usuario ?
                     navigateTo('/')
                     : <div className='LoginIngreso'>
-                        <Navbar/>
+                        <Navbar />
                         <Formik
                             initialValues={CredencialesInicial}
                             //Yup Validaciones esquemas
@@ -162,7 +162,7 @@ export const Login = (props) => {
                                             <br></br>
                                             <Link to="/registro" className='NewCount'> ¿No tienes Cuenta? Crea una! </Link>
                                             <div className='recuperar'>
-                                            <Link to="/recuperarContraseña" className='NewCount'> Recuperar contraseña </Link>
+                                                <Link to="/recuperarContraseña" className='NewCount'> Recuperar contraseña </Link>
                                             </div>
                                         </div>
                                     </center>
@@ -170,7 +170,7 @@ export const Login = (props) => {
                             )
                             }
                         </Formik>
-                        <Footer/>
+                        <Footer />
                     </div>
             }
         </>
