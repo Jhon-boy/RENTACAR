@@ -60,10 +60,10 @@ export const RecuperacionContrasena = () => {
             setCorreoValido(correoValido);
             if (correoValido) {
                 setActiveStep(activeStep + 1);
-  
+
             }
         } else if (activeStep === 1) {
- 
+
             const cedulaValida = verificarCedula(cedula);
             setCedulaValida(cedulaValida);
             if (cedulaValida) {
@@ -103,7 +103,7 @@ export const RecuperacionContrasena = () => {
                     // Mostrar aviso de rechazo usando Material-UI Snackbar
                     setSnackbarMessage('Solicitud rechazada');
                     setSnackbarSeverity('error');
-     
+
                     history.push('/login');
                 }
 
@@ -119,7 +119,7 @@ export const RecuperacionContrasena = () => {
     const revision = (e) => {
         e.preventDefault();
     }
- 
+
     return (
         <div className="formData">
             <Box sx={{ maxWidth: 400 }} >
