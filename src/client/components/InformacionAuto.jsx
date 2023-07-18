@@ -181,7 +181,7 @@ export default function Product(props) {
               </h4>
               <h4 className="display-6 fw-bold">
                 <span className="Span">
-                  Total + IVA ({config.iva}):
+                  Total incluido IVA :
                 </span>{' '}
                 ${IvaPrice}
               </h4>

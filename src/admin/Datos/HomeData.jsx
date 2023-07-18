@@ -26,10 +26,10 @@ export const HomeData = () => {
                     <OverviewTraffic chartSeries={chartSeries} labels={labels} sx={{ color: 'black' }}/>
                 </div>
             </div>
-            <div className="data-usuarios">
+            {/* <div className="data-usuarios">
                 <DUsuarios />
                 <DAutos />
-            </div>
+            </div> */}
         </div>
     )
 }

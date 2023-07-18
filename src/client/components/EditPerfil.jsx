@@ -27,7 +27,6 @@ export const EditPerfil = (props) => {
                     </Divider>
                     <InfoC cliente={props.cliente} />
                 </div>
-
                 <div className='home-container2'>
                     <Divider textAlign="left">
                         <Chip color="primary" label="Información licencia" />

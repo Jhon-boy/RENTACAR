@@ -9,6 +9,7 @@ import Footer from '../client/components/Footer'
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import Ventaja from '../client/components/Virtudes'
+import ChatFuelScript from './ChatFuelScript';
 
 
 
