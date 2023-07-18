@@ -11,15 +11,15 @@ import Clientes from './clientes/Clientes'
 import { InfoClien } from './clientes/InfoClien'
 import { Config } from './config/Config'
 import { Reservas } from './Reservas/Reserva'
-import { InfoReserva } from './Reservas/InfoReserva'
-import { CardsReservas } from './Reservas/CardsReservas'
-import { TablePending } from './Reservas/TablePending'
-import { TableConcret } from './Reservas/TableConcret'
+
+
 import { ClientsPending } from './clientes/ClientsPending'
 import { ClientsNo } from './clientes/ClientsNo'
 import { Pagos } from './components/pagos/pagos'
 import { Historial } from './components/historial/Historial'
 import { Profile } from './components/Profile/Profile'
+
+
 
 import Sidebar from './Sidebar'
 
@@ -36,11 +36,10 @@ export default function HomeAdmin({ correo, id_user }) {
             <Route path='/EditCar/:id' element={<EditCar />} />
             <Route path='/CardClient' element={<CardClientes />} />
             <Route path='/InfoClient/:id' element={<InfoClien />} />
-            <Route path='/Reservas' element={<Reservas />} />
-            <Route path='/InfoReserva/:id' element={<InfoReserva />} />
-            <Route path='/ReservaCard' element={<CardsReservas />} />
-            <Route path='/ReservasPendientes' element={<TablePending />} />
-            <Route path='/ReservasConcretas' element={<TableConcret />} />
+            <Route path='/Reservas/*' element={<Reservas />} />
+            
+            
+            
             <Route path='/clientesPending' element={<ClientsPending />} />
             <Route path='/clientesNo' element={<ClientsNo />} />
             <Route path='/Pagos' element={<Pagos />} />

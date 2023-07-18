@@ -1,5 +1,22 @@
 .contentSliderBar{
-  background-color: yellowgreen;
+  display: flex;
+  height: 60px;
+  background-color: transparent;
+  justify-content: space-around;
+  align-items: center;
+
+}
+.sliderBtn{
+  background-color: #047A87;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+}
+.sliderBtn:hover{
+  background-color: white;
+  border: 1px solid #047A87;
+  color: #047A87;
 }
 
 /*

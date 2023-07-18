@@ -7,15 +7,15 @@ nombre=''
 
 export const BtnReserva = [
   {
-    url: '/Reservas',
+    url: '/Home/Reservas/',
     name: 'Listado de todas las reservas'
   },
   {
-    url: '/ReservarPendientes',
+    url: '/Home/Reservas/Pendientes',
     name: 'Reservas Pendientes'
   },
   {
-    url: '/ReservasConcretadas',
+    url: '/Home/Reservas/Concretadas',
     name: 'Reservas Concretadas'
   },
 ]
