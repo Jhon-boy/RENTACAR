@@ -8,6 +8,8 @@ import Footer from '../components/Footer'
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import Ventaja from '../components/Virtudes'
+import TidioChat from '../TidioChat';
+
 export const HomeClient = () => {
     const [autos, setAutos] = useState([]);
 
@@ -39,6 +41,9 @@ export const HomeClient = () => {
                     <Link to="/cliente/vehiculos" >
                         <Button variant="outlined" size="medium"> Ver más </Button>
                     </Link>
+                </div>
+                <TidioChat />
+                <div>
                 </div>
             </div>
             <div className="ventajas">
