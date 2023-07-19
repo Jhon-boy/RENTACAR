@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, Typography, Button } from '@mui/material/';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Home, DirectionsCar, Contacts, EventNote, Business, AccountCircle } from '@mui/icons-material';
 import '../styles/navbar.css'
 const NavBar = () => {
