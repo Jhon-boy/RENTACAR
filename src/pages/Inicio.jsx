@@ -30,6 +30,7 @@ export const Inicio = () => {
                     <div className="portada">
                         <Portada />
                     </div>
+                    <script id="64a42eb3dbb08e674f8c0d37" src="https://dashboard.chatfuel.com/integration/entry-point.js" async defer></script>
                     <div className="autos">
                         <h2 className="title-cars">AUTOS MODERNOS</h2>
                         <p className='frase'>¿Cuál auto le interesa? En nuestros autos de renta podemos ayudarle a elegir. Revise cuales son nuestros vehiculos más populares.</p>

@@ -86,6 +86,8 @@
 .form-control{
     margin-top: 5px;
     width: 100%;
+    padding: 15px;
+    background-color: #e2e5e6;
 }
 .form-label{
     align-self: flex-start;

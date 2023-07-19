@@ -53,7 +53,7 @@ export default function Footer() {
                         </p>
                         <p>
                             <a href="#!" className="text-reset">
-                                ¿Porque nosotros?
+                                ¿Por qué nosotros?
                             </a>
                         </p>
                     </div>
@@ -70,7 +70,7 @@ export default function Footer() {
                         </p>
                         <p>
                             <a href="#!" className="text-reset">
-                                Help
+                                Ayuda
                             </a>
                         </p>
                     </div>

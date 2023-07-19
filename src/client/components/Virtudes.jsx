@@ -10,7 +10,7 @@ export default function Virtudes() {
         <div className='ventajas'>
             <div className="title">
                 <h2 className="title-ven">
-                    ¿POR QUE ELEGIR RENTACAR?
+                    ¿Por qué elegir RentaCar?
                 </h2>
             </div>
             <div className="container-ventajas">
