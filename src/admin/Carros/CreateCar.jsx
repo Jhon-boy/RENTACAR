@@ -6,12 +6,12 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Swal from 'sweetalert2';
-import { verificarPlaca, campoEstaVacio, estados, verificarAnio, verificarExtensionFoto, verificarPrecio, verificarTipo } from '../../hooks/Autos';
+import { verificarPlaca, campoEstaVacio, estados, verificarAnio, verificarExtensionFoto, verificarPrecio, verificarTipo } from '../hooks/Autos';
 // import TextField from '@mui/material/TextField';
 // import Autocomplete from '@mui/material/Autocomplete';
 // import { obtenerModelosAutos } from '../data/APIS.js'
 
-import { registrarAuto } from '../../database/controller';
+import { registrarAuto } from '../database/controller';
 import { useNavigate } from 'react-router-dom'
 
 

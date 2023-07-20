@@ -1,10 +1,10 @@
 .contentSliderBar{
   display: flex;
-  height: 60px;
+  height: 10vh;
+  width: 100%;
   background-color: transparent;
   justify-content: space-around;
   align-items: center;
-
 }
 .sliderBtn{
   background-color: #047A87;

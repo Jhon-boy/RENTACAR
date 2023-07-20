@@ -1,0 +1,25 @@
+.contentPagos{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pagosFiltro{
+  display: flex;
+  width: 100%;
+  height: 10vh;
+  align-items: center;
+  padding: 20px;
+}
+.filtro{
+  margin-right: 20px;
+}
+.btnEstado{
+  background-color: aqua;
+}
+
+
+.contentTabla{
+  width: 98%;
+}

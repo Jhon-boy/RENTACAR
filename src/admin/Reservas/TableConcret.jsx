@@ -5,7 +5,12 @@ import { Button } from "@mui/material";
 import { URL } from "/src/admin/data/URL.js";
 import { MdEditNote } from 'react-icons/md';
 import { MdRestoreFromTrash } from "react-icons/md";
-import { SliderBar } from "/src/admin/SliderBar";
+import SliderBar  from "../SliderBar";
+import customStyles from '../config/ConfigTable'
+import stil from './Table.module.css'
+
+import { BtnReserva } from '../data/BtnAdmin'
+
 //import '../../Home.css';
 
 
@@ -139,15 +144,22 @@ export const TableConcret = () => {
 		}, {
 			name: 'OPCIONES',
 			cell: (row) => (
-				<div className='options'>
-					<Button variant="outlined" className="danger" onClick={() => handleDelete(row.id_reserva)}><MdRestoreFromTrash /> </Button>
-					<Link to={`/InfoReserva/${row.id_reserva}`}>
-						<Button className="warning" variant="outlined" style={{ color: 'white    ', backgroundColor: getButtonColor(row.estado) }}> <MdEditNote /> </Button>
-
+				<div className={stil.cellOptiones}>
+					<Link
+						variant="outlined"
+						className={stil.btn}
+						onClick={() => handleDelete(row.id_reserva)}>
+						<img className={stil.btnImage} src="https://www.svgrepo.com/show/522316/trash.svg" alt="" />
+					</Link>
+					<Link
+						to={`/Home/Reservas/InfoReserva/${row.id_reserva}`}
+						variant="outlined"
+						className={stil.btn}>
+						<img className={stil.btnImage} src="https://www.svgrepo.com/show/511904/edit-1479.svg" alt="" />
 					</Link>
 				</div>
 			),
-			width: '150px'
+			width: '110px'
 		},
 		{
 			name: 'Estado',
@@ -158,20 +170,24 @@ export const TableConcret = () => {
 	];
 
 	return (
-		<div>
-			<div className="">
+		<section className={stil.sectionTabla}>
+			<SliderBar btnDatos={BtnReserva}/>
+			<div className={stil.contentTabla}>
 				{filteredReservas.length > 0 && (
 					<DataTable
-						title="Reservas Pendientes por confirmar"
+						title="Reservas Concretadas"
 						columns={columns}
 						data={filteredReservas}
+						customStyles={customStyles}
 						pagination
 						highlightOnHover
 						striped
 						dense
+						paginationPerPage={10}
+						paginationRowsPerPageOptions={[5,10]}
 					/>
 				)}
 			</div>
-		</div>
+		</section>
 	);
 };

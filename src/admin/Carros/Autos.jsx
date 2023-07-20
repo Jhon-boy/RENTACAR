@@ -1,19 +1,24 @@
 
 //import '../Home.css'
 import Button from 'react-bootstrap/Button';
+import { Routes, Route } from 'react-router-dom';
 import { TableAutos } from './TableAutos'
 import { Link } from 'react-router-dom'
+
+import { CardAutos } from './CardAutos'
+import { CreateCar } from './CreateCar'
+import { EditCar } from './EditCar'
+import stil from './Autos.module.css'
+
 const Autos = () => {
   return (
-    <div className='page-content'>
-      <div className='home-container'>
-        <div> ADMINISTRAR AUTOS</div>
-        <Link to={`/crearAuto`}>
-          <Button>Registrar Autos</Button>
-        </Link>
-        <TableAutos />
-
-      </div>
+    <div className={stil.contentAutos}>
+      <Routes>
+        <Route path='/' element={<TableAutos />} />
+        <Route path='/:id' element={<CardAutos />} />
+        <Route path='/crearAuto' element={<CreateCar />} />
+          <Route path='/EditCar/:id' element={<EditCar />} />
+      </Routes>
     </div>
   )
 }

@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom'
-import { Button } from "@mui/material";
 import { URL } from "../data/URL";
-import { MdEditNote } from 'react-icons/md';
-import { MdRestoreFromTrash } from "react-icons/md";
 import stil from './Table.module.css'
+import customStyles from '../config/ConfigTable'
+
+import SliderBar from '../SliderBar';
+
+import { BtnReserva } from '../data/BtnAdmin'
 
 export const TableReservas = () => {
 	const [reservas, setReservas] = useState([]);
 	const [autos, setAutos] = useState([]);
-
+	const [clientes, setClientes] = useState([]);
 
 	useEffect(() => {
 		fetch(`${URL}/reservas`)
@@ -18,8 +20,6 @@ export const TableReservas = () => {
 			.then((data) => setReservas(data))
 			.catch((error) => console.log(error));
 	}, []);
-
-	const [clientes, setClientes] = useState([]);
 
 	useEffect(() => {
 		fetch(`${URL}/clientes`)
@@ -40,7 +40,6 @@ export const TableReservas = () => {
 		return auto ? `${auto.marca} ${auto.modelo}` : '';
 	};
 
-
 	const getNombreCliente = (idCliente) => {
 		const cliente = clientes.find((cliente) => cliente.id_cliente === idCliente);
 		return cliente ? `${cliente.nombre} ${cliente.apellido}` : '';
@@ -48,45 +47,30 @@ export const TableReservas = () => {
 
 	const getCurrentStatus = (row) => {
 		const fechaActual = new Date();
-		const fechaEntrega = new Date(row.fecha_entrega);
-		const fechaDevolucion = new Date(row.fecha_devolucion);
-
+		let fechaEntrega = new Date(row.fecha_entrega);
+		let fechaDevolucion = new Date(row.fecha_devolucion);
 		if (fechaActual < fechaEntrega) {
 			return (
-				<button className="status-button" style={{ backgroundColor: 'skyblue', marginTop: '5px' }}>
+				<button className={stil.btnEstado} style={{ backgroundColor: 'skyblue', marginTop: '5px' }}>
 					PRÓXIMAMENTE
 				</button>
 			);
 		} else if (fechaActual > fechaDevolucion) {
 			return (
-				<button className="status-button" style={{ backgroundColor: 'red', marginTop: '5px' }}>
+				<button className={stil.btnEstado} style={{ backgroundColor: 'red', marginTop: '2px' }}>
 					FINALIZÓ
 				</button>
 			);
 		} else {
 			return (
-				<button className="status-button" style={{ backgroundColor: 'green', marginTop: '5px' }}>
+				<button className={stil.btnEstado} style={{ backgroundColor: 'green', marginTop: '5px' }}>
 					EN CURSO
 				</button>
 			);
 		}
 	};
-	const getButtonColor = (estado) => {
-		switch (estado) {
-			case 'PENDIENTE':
-				return 'red';
-			case 'EN CURSO':
-				return 'blue';
-			case 'FINALIZADO':
-				return 'green';
-			default:
-				return 'gray';
-		}
-	};
 
-	const handleDelete = async (id) => {
-		alert(id);
-	}
+	const handleDelete = async (id) => { alert(id); }
 	const columns = [
 		{
 			name: 'Reserva',
@@ -127,25 +111,32 @@ export const TableReservas = () => {
 			selector: 'fecha_devolucion',
 			sortable: true,
 			width: '130px',
-		}
-		,
+		},
 		{
 			name: 'Costo total',
 			selector: 'monto',
 			sortable: true,
 			width: '90px'
-		}, {
+		},
+		{
 			name: 'OPCIONES',
 			cell: (row) => (
-				<div className='options'>
-					<Button variant="outlined" className="danger" onClick={() => handleDelete(row.id_reserva)}><MdRestoreFromTrash /> </Button>
-					<Link to={`/Home/Reservas/InfoReserva/${row.id_reserva}`}>
-						<Button className="warning" variant="outlined" style={{ color: 'white    ', backgroundColor: getButtonColor(row.estado) }}> <MdEditNote /> </Button>
-
+				<div className={stil.cellOptiones}>
+					<Link
+						variant="outlined"
+						className={stil.btn}
+						onClick={() => handleDelete(row.id_reserva)}>
+						<img className={stil.btnImage} src="https://www.svgrepo.com/show/522316/trash.svg" alt="" />
+					</Link>
+					<Link
+						to={`/Home/Reservas/InfoReserva/${row.id_reserva}`}
+						variant="outlined"
+						className={stil.btn}>
+						<img className={stil.btnImage} src="https://www.svgrepo.com/show/511904/edit-1479.svg" alt="" />
 					</Link>
 				</div>
 			),
-			width: '140px'
+			width: '110px'
 		},
 		{
 			name: 'Estado',
@@ -155,44 +146,23 @@ export const TableReservas = () => {
 			width: '140px'
 		},
 	];
-
-	const customStyles = {
-		table: {
-			style: {
-				width: ''
-			}
-		},
-		header: {
-			style: {
-				width: ''
-			}
-		},
-		pagination:{
-			style: {
-				width: ''
-			}
-		},
-		rows:{
-			style: {
-				height: '40px'
-			}
-		}
-	}
-
 	return (
-		<div className={stil.contentTable}>
-			
-		<DataTable
-			title="Reservas"
-			columns={columns}
-			data={reservas}
-			customStyles={customStyles}
-			pagination
-			highlightOnHover
-			striped
-			dense
-			paginationPerPage={10}
-			/>
+		<section className={stil.sectionTabla}>
+			<SliderBar btnDatos={BtnReserva} />
+			<div className={stil.contentTabla}>
+				<DataTable
+					title="Listado de todas las reservas"
+					columns={columns}
+					data={reservas}
+					customStyles={customStyles}
+					pagination
+					highlightOnHover
+					striped
+					dense
+					paginationPerPage={10}
+					paginationRowsPerPageOptions={[5, 10]}
+				/>
 			</div>
+		</section>
 	);
 };

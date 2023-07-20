@@ -5,8 +5,8 @@ import stil from './HomeAdmin.module.css';
 
 import Autos from './Carros/Autos'
 import { CardAutos } from './Carros/CardAutos'
-import { CreateCar } from './components/forms/CreateCar'
-import { EditCar } from './components/forms/EditCar'
+import { CreateCar } from './Carros/CreateCar'
+import { EditCar } from './Carros/EditCar'
 import { CardClientes } from './clientes/CardClientes'
 import Clientes from './clientes/Clientes'
 import { InfoClien } from './clientes/InfoClien'
@@ -14,9 +14,8 @@ import { Config } from './config/Config'
 import { Reservas } from './Reservas/Reserva'
 
 
-import { ClientsPending } from './clientes/ClientsPending'
-import { ClientsNo } from './clientes/ClientsNo'
-import { Pagos } from './components/pagos/pagos'
+
+import { Pagos } from './Pagos/pagos'
 import { Historial } from './components/historial/Historial'
 import { Profile } from './components/Profile/Profile'
 
@@ -34,10 +33,8 @@ export default function HomeAdmin({ correo, id_user }) {
         <div className={stil.contentPage}>
         
           <Routes>
-            <Route path='/Autos' element={<Autos />} />
-            <Route path='/Autos/:id' element={<CardAutos />} />
-            <Route path='/Clientes' element={<Clientes />} />
-            <Route path='/crearAuto' element={<CreateCar />} />
+            <Route path='/Autos/*' element={<Autos />} />
+            <Route path='/Clientes/*' element={<Clientes />} />
             <Route path='/EditCar/:id' element={<EditCar />} />
             <Route path='/CardClient' element={<CardClientes />} />
             <Route path='/InfoClient/:id' element={<InfoClien />} />
@@ -45,8 +42,7 @@ export default function HomeAdmin({ correo, id_user }) {
             <Route index  element={<HomeData />} />
 
 
-            <Route path='/clientesPending' element={<ClientsPending />} />
-            <Route path='/clientesNo' element={<ClientsNo />} />
+            
             <Route path='/Pagos' element={<Pagos />} />
             <Route path='/Perfil' element={<Profile id={id_user} />} />
             <Route path='/Historial/:id' element={<Historial />} />

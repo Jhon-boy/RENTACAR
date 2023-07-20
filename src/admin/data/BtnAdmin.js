@@ -1,9 +1,3 @@
-/*
-to=''
-nombre=''
-
-
- */
 
 export const BtnReserva = [
   {
@@ -21,19 +15,24 @@ export const BtnReserva = [
 ]
 export const BtnClientes = [
   {
-    url: '',
-    name: ''
+    url: '/Home/Clientes/',
+    name: 'Clientes'
+  },{
+    url: '/Home/Clientes/CardClient',
+    name: 'Perfil de los clientes'
   },
   {
-    url: '',
-    name: ''
+    url: '/Home/Clientes/clientesPending',
+    name: 'Clientes Pendientes'
   },
   {
-    url: '',
-    name: ''
+    url: '/Home/Clientes/clientesNo',
+    name: 'Clientes no habilitados'
   },
+]
+export const BtnAutos = [
   {
-    url: '',
-    name: ''
-  },
+    url:'/Home/Autos/crearAuto',
+    name:'Registrar Autos'
+  }
 ]

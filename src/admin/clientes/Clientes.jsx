@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { URL } from '../data/URL';
-//import '../Home.css';
-import { MdToggleOff } from "react-icons/md";
-import { MdToggleOn } from "react-icons/md";
-import { SliderBar } from './SliderBar';
-import { Link } from 'react-router-dom';
+
 import Swal from 'sweetalert2';
+import { Routes, Route } from 'react-router-dom';
 import { eliminarCliente } from '../database/ClientController';
+
+import { ClientsPending } from './ClientsPending'
+import { ClientsNo } from './ClientsNo'
+import  Listado  from './Listado'
+import { CardClientes } from './CardClientes';
+import stil from './Clientes.module.css'
 
 
 const Clientes = () => {
@@ -75,89 +78,15 @@ const Clientes = () => {
 
   };
 
-  const columns = [
-    {
-      name: 'Id',
-      selector: 'id_cliente',
-      sortable: true,
-    },
-    {
-      name: 'Nombre',
-      selector: 'nombre',
-      sortable: true,
-    },
-    {
-      name: 'Apellido',
-      selector: 'apellido',
-      sortable: true,
-    },
-    {
-      name: 'Correo',
-      selector: 'correo',
-      sortable: true,
-    },
-    {
-      name: 'Cédula',
-      selector: 'cedula',
-      sortable: true,
-    },
-    {
-      name: 'Estado',
-      cell: (row) => {
-        if (row.estado === "CONECTADO") {
-          return <MdToggleOn className='icon activeP' />
-        } else {
-          return <MdToggleOff className='icon noactive' />
-        }
-      },
-      sortable: true,
-    },
-    {
-      name: 'Género',
-      selector: 'genero',
-      sortable: true,
-    },
-    {
-      name: 'Eliminar',
-      cell: (row) => (
-        <button className='danger' onClick={() => handleDelete(row.id_cliente)}>Eliminar</button>
-      ),
-      button: true,
-    },
-    {
-      name: 'Ver Historial',
-      cell: (row) => (
-        <Link to={`/Historial/${row.id_cliente}`}>
-           <button className='warning'>Historial</button>
-        </Link>
-       
-      ),
-      button: true,
-    },
-    {
-      name: 'Ver Perfil',
-      cell: (row) => (
-        <Link to={`/InfoClient/${row.id_cliente}`}>
-          <button>Editar</button>
-        </Link>
-      ),
-      button: true,
-    },
-  ];
   return (
-    <div className='page-content'>
-      <div className='home-container'>
-        <div> ADMINISTRAR CLIENTES</div>
-        <SliderBar activeTab={activeTab} setActiveTab={setActiveTab} />
-        <h1>HOLA ADMIN</h1>
-        <DataTable
-          columns={columns}
-          data={datosCombinados}
-          title="Clientes Registrados "
-          pagination
-        />
-      </div>
-    </div>
+    <section className={stil.contentClientes}>
+      <Routes>
+        <Route path='/' element={<Listado />}></Route>
+        <Route path='/CardClient' element={<CardClientes></CardClientes>}></Route>
+        <Route path='/clientesPending' element={<ClientsPending />} />
+        <Route path='/clientesNo' element={<ClientsNo />} />
+      </Routes>
+    </section>
   );
 };
 

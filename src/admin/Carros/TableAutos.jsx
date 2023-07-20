@@ -13,150 +13,163 @@ import { URL } from '../data/URL';
 import { eliminarAuto } from '../database/controller';
 import { ModalChangeState } from './ModalChangeState';
 
+import { BtnAutos } from '../data/BtnAdmin';
+import SliderBar from '../SliderBar';
+import customStyles from '../config/ConfigTable'
+import stil from './Autos.module.css'
 
 export const TableAutos = () => {
-    const [cars, setCars] = useState([]);
-    const [showModal, setShowModal] = useState(false);
-    const [tempId, setTempId] = useState(0);
-    const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
+	const [cars, setCars] = useState([]);
+	const [showModal, setShowModal] = useState(false);
+	const [tempId, setTempId] = useState(0);
+	const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
 
-    const handleOpenModal = () => {
-        const { clientX, clientY } = event;
-        setModalPosition({ x: clientX, y: clientY });
-        setShowModal(true);
-    };
+	const handleOpenModal = () => {
+		const { clientX, clientY } = event;
+		setModalPosition({ x: clientX, y: clientY });
+		setShowModal(true);
+	};
 
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
+	const handleCloseModal = () => {
+		setShowModal(false);
+	};
 
-    const modalStyle = {
-        top: modalPosition.y,
-        left: modalPosition.x,
-        position: 'absolute',
-        border: '1px solid black',
-        padding: '16px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '8px',
-    };
+	const modalStyle = {
+		top: modalPosition.y,
+		left: modalPosition.x,
+		position: 'absolute',
+		border: '1px solid black',
+		padding: '16px',
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '8px',
+	};
 
-    useEffect(() => {
-        fetch(`${URL}/autos`)
-            .then(response => response.json())
-            .then(data => setCars(data))
-            .catch(error => console.log(error));
-    }, []);
+	useEffect(() => {
+		fetch(`${URL}/autos`)
+			.then(response => response.json())
+			.then(data => setCars(data))
+			.catch(error => console.log(error));
+	}, []);
 
-    const handleDelete = async (id_auto) => {
-        try {
-            await eliminarAuto(id_auto);
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
-              })
-        } catch (error) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Algo Salio mal',
-                text: 'Error: ' + error.message,
-            });
-        }
+	const handleDelete = async (id_auto) => {
+		try {
+			await eliminarAuto(id_auto);
+			Swal.fire({
+				position: 'center',
+				icon: 'success',
+				title: 'Your work has been saved',
+				showConfirmButton: false,
+				timer: 1500
+			})
+		} catch (error) {
+			Swal.fire({
+				icon: 'error',
+				title: 'Algo Salio mal',
+				text: 'Error: ' + error.message,
+			});
+		}
 
-    };
-    const columns = [
-        {
-            name: 'Id',
-            selector: 'id_auto',
-            sortable: true,
-        },
-        {
-            name: 'PLACAS',
-            selector: 'placas',
-            sortable: true,
-        },
-        {
-            name: 'MARCA',
-            selector: 'marca',
-            sortable: true,
-        },
-        {
-            name: 'MODELO',
-            selector: 'modelo',
-            sortable: true,
-        },
-        {
-            name: 'AÑO',
-            selector: 'anio',
-            sortable: true,
-        },
-        {
-            name: 'ESTADO',
-            selector: 'estado',
-            sortable: true,
-            cell: (row) => (
-                <div className='ModalP'>
-                    <Button variant="contained" onClick={() => { setTempId(row.id_auto); handleOpenModal(); }}>
-                        {row.estado} <MdEditNote />
-                    </Button>
-                    <Modal open={showModal} onClose={handleCloseModal} className='ModalP'>
-                        <div className="modal-container" style={modalStyle}>
-                            <ModalChangeState idAuto={tempId} estado={row.estado} />
-                        </div>
-                    </Modal>
-                </div>
-            ),
-        }, 
+	};
+	const columns = [
+		{
+			name: 'Id',
+			selector: 'id_auto',
+			sortable: true,
+		},
+		{
+			name: 'PLACAS',
+			selector: 'placas',
+			sortable: true,
+		},
+		{
+			name: 'MARCA',
+			selector: 'marca',
+			sortable: true,
+		},
+		{
+			name: 'MODELO',
+			selector: 'modelo',
+			sortable: true,
+		},
+		{
+			name: 'AÑO',
+			selector: 'anio',
+			sortable: true,
+		},
+		{
+			name: 'ESTADO',
+			selector: 'estado',
+			sortable: true,
+			cell: (row) => (
+				<div className='ModalP'>
+					<Button variant="contained" onClick={() => { setTempId(row.id_auto); handleOpenModal(); }}>
+						{row.estado} <MdEditNote />
+					</Button>
+					<Modal open={showModal} onClose={handleCloseModal} className='ModalP'>
+						<div className="modal-container" style={modalStyle}>
+							<ModalChangeState idAuto={tempId} estado={row.estado} />
+						</div>
+					</Modal>
+				</div>
+			),
+		},
 
-        {
-            name: 'TIPO',
-            selector: 'tipo',
-            sortable: true,
-        },
-        {
-            name: 'PRECIO',
-            selector: 'precio',
-            sortable: true,
-        },
-        {
-            name: 'OPCIONES',
-            cell: (row) => (
-                <div className='options'>
-                    <Button className="danger" onClick={() => handleDelete(row.id_auto)}><MdRestoreFromTrash /> </Button>{'-  '}
-                    <Link to={`/EditCar/${row.id_auto}`}>   <Button className="warning"><MdEditNote /></Button></Link>{'-  '}
-                    <Link to={`/Autos/${row.id_auto}`}>
-                        <Button className="sucess" ><MdEditNote /></Button>
-                    </Link>
+		{
+			name: 'TIPO',
+			selector: 'tipo',
+			sortable: true,
+		},
+		{
+			name: 'PRECIO',
+			selector: 'precio',
+			sortable: true,
+		},
+		{
+			name: 'OPCIONES',
+			cell: (row) => (
+				<div className='options'>
+					<Button className="danger" onClick={() => handleDelete(row.id_auto)}><MdRestoreFromTrash /> </Button>{'-  '}
+					<Link to={`/EditCar/${row.id_auto}`}>   <Button className="warning"><MdEditNote /></Button></Link>{'-  '}
+					<Link to={`/Autos/${row.id_auto}`}>
+						<Button className="sucess" ><MdEditNote /></Button>
+					</Link>
 
-                </div>
-            ),
-        },
-        {
-            name: ' + Detalles',
-            cell: (row) => (
-                <div className='options'>
-                    <Link to={`/Autos/${row.id_auto}`}>
-                        <Button className="sucess" ><MdEditNote /></Button>
-                    </Link>
-                </div>
-            ),
-        },
-    ];
+				</div>
+			),
+			width:`100px`
+		},
+		{
+			name: ' + Detalles',
+			cell: (row) => (
+				<div className='options'>
+					<Link to={`/Autos/${row.id_auto}`}>
+						<Button className="sucess" ><MdEditNote /></Button>
+					</Link>
+				</div>
+			),
+		},
+	];
 
 
-    return (
-        <>
-            <DataTable
-                columns={columns}
-                data={cars}
-                title="Autos"
-                pagination
-            />
+	return (
+		<section className={stil.sectionTabla}>
+			<SliderBar btnDatos={BtnAutos} />
+			<div className={stil.contentTabla}>
+				<DataTable
+				columns={columns}
+				data={cars}
+				customStyles={customStyles}
+				title="Autos"
+				pagination
+				highlightOnHover
+				striped
+				dense
+				paginationPerPage={10}
+				paginationRowsPerPageOptions={[5, 10]}
+				/>
+			</div>
+		</section>
 
-        </>
-
-    )
+	)
 }
