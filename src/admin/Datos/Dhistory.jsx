@@ -10,6 +10,7 @@ import {
     Legend,
     Filler,
 } from 'chart.js';
+import {  Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { URL } from '../data/URL';
 
@@ -116,7 +117,12 @@ export const Dhistory = () => {
 
     return (
         <div>
-            <h2>Alquiler de Autos</h2>
+            <Typography
+                color="text.secondary"
+                variant="h6"
+              >
+                Historygrama de Pagos y Alquileres
+              </Typography>
             <div style={{ width: '800px', height: '800px' }}>
                 <Line data={midata} options={misoptions} />
             </div>
