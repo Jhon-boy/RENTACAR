@@ -3,10 +3,34 @@ import ArrowDownIcon from '@heroicons/react/24/solid/ArrowDownIcon';
 import ArrowUpIcon from '@heroicons/react/24/solid/ArrowUpIcon';
 import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
+import  {URL } from '../data/URL'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export const OverviewTotalCustomers = (props) => {
+  const [usuarios, setUsuarios] = useState(0);
   const { difference = 15, positive = true } = props;
-
+  
+  useEffect(() => {
+    const cargarCliente = async () => {
+      try {
+        const responseClientes = await fetch(`${URL}/user`);
+        const clientesData = await responseClientes.json();
+        
+        // Filtrar usuarios con estado 'CONECTADO'
+        const usuariosConectados = clientesData.filter((usuario) => usuario.estado === 'CONECTADO');
+        
+        // Guardar el número de usuarios conectados en el estado setUsuarios
+        setUsuarios(usuariosConectados.length);
+        
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
+    cargarCliente();
+  }, []);
+  
   return (
     <Card sx={{ maxHeight: 170 }}>
       <CardContent>
@@ -19,12 +43,12 @@ export const OverviewTotalCustomers = (props) => {
           <Stack spacing={0}>
             <Typography
               color="text.secondary"
-              variant="overline"
+              variant="p"
             >
-              Total Clientes
+             Usuarios Conectados
             </Typography>
             <Typography  variant="h2"   >
-              18
+              {usuarios}
             </Typography>
           </Stack>
           <Avatar
@@ -49,7 +73,7 @@ export const OverviewTotalCustomers = (props) => {
             <Stack
               alignItems="center"
               direction="row"
-              spacing={0.5}
+              spacing={0.4}
             >
               <SvgIcon
                 color={positive ? 'success' : 'error'}

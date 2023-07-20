@@ -1,6 +1,5 @@
-import { DAutos } from "./DAutos"
+
 import { DInfo } from "./DInfo"
-import { DUsuarios } from "./DUsuarios"
 import { Dhistory } from "./Dhistory"
 import '../styles/Data.css'
 import { OverviewTraffic } from "./overview-traffic"
