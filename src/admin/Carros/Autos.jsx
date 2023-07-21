@@ -1,9 +1,7 @@
 
 //import '../Home.css'
-import Button from 'react-bootstrap/Button';
 import { Routes, Route } from 'react-router-dom';
 import { TableAutos } from './TableAutos'
-import { Link } from 'react-router-dom'
 
 import { CardAutos } from './CardAutos'
 import { CreateCar } from './CreateCar'
@@ -17,7 +15,7 @@ const Autos = () => {
         <Route path='/' element={<TableAutos />} />
         <Route path='/:id' element={<CardAutos />} />
         <Route path='/crearAuto' element={<CreateCar />} />
-          <Route path='/EditCar/:id' element={<EditCar />} />
+        <Route path='/EditCar/:id' element={<EditCar />} />
       </Routes>
     </div>
   )

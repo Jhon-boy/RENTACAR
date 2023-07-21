@@ -1,0 +1,88 @@
+.pageEditCar{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+.editCarTitle{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 27px;
+  font-weight: bold;
+  color: #047A87;
+}
+.formAuto{
+  margin-top: 20px;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  justify-items: center;
+  align-items: center;
+}
+.formLeft{
+  display: flex;
+  width: 90%;
+  height: 90%;
+  border: 2px solid black;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+}
+.formRight{
+  display: flex;
+  width: 60%;
+  height: 90%;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.labelAuto{
+  margin-top: 10px;
+  margin-left: 20px;
+  font-weight: bold;
+}
+.inAuto{
+  display: flex;
+  width: 90%;
+  background-color: #3B3B3B;
+  color: white;
+  border-radius: 5px;
+  border: 0;
+  margin-left: 10px;
+  padding: 5px;
+}
+.btns{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.formBtn{
+  background-color: #047A87;
+}
+
+.imagenLabel{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.imagenAuto{
+  width: 360px;
+  height: 280px;
+  border-radius: 10px;
+}
+.Error{
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+}
+.test{
+  width: 100%;
+  background-color: aqua;
+}

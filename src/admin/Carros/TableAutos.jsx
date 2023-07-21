@@ -76,21 +76,25 @@ export const TableAutos = () => {
 			name: 'Id',
 			selector: 'id_auto',
 			sortable: true,
+			width: '70px'
 		},
 		{
 			name: 'PLACAS',
 			selector: 'placas',
 			sortable: true,
+			width: '100px'
 		},
 		{
 			name: 'MARCA',
 			selector: 'marca',
 			sortable: true,
+			width: '100px'
 		},
 		{
 			name: 'MODELO',
 			selector: 'modelo',
 			sortable: true,
+			width: '100px'
 		},
 		{
 			name: 'AÑO',
@@ -101,17 +105,19 @@ export const TableAutos = () => {
 			name: 'ESTADO',
 			selector: 'estado',
 			sortable: true,
+			width: '225px',
 			cell: (row) => (
-				<div className='ModalP'>
-					<Button variant="contained" onClick={() => { setTempId(row.id_auto); handleOpenModal(); }}>
-						{row.estado} <MdEditNote />
-					</Button>
-					<Modal open={showModal} onClose={handleCloseModal} className='ModalP'>
+				<article className=''>
+					<button onClick={() => { setTempId(row.id_auto); handleOpenModal(); }}>
+						{row.estado}
+						<img className={stil.btnImageReverse} src="https://www.svgrepo.com/show/511904/edit-1479.svg"/>
+					</button>
+					<Modal open={showModal} onClose={handleCloseModal} className=''>
 						<div className="modal-container" style={modalStyle}>
 							<ModalChangeState idAuto={tempId} estado={row.estado} />
 						</div>
 					</Modal>
-				</div>
+				</article>
 			),
 		},
 
@@ -119,35 +125,36 @@ export const TableAutos = () => {
 			name: 'TIPO',
 			selector: 'tipo',
 			sortable: true,
+			width: '100px'
 		},
 		{
 			name: 'PRECIO',
 			selector: 'precio',
 			sortable: true,
+			width: '100px'
 		},
 		{
 			name: 'OPCIONES',
 			cell: (row) => (
-				<div className='options'>
-					<Button className="danger" onClick={() => handleDelete(row.id_auto)}><MdRestoreFromTrash /> </Button>{'-  '}
-					<Link to={`/EditCar/${row.id_auto}`}>   <Button className="warning"><MdEditNote /></Button></Link>{'-  '}
-					<Link to={`/Autos/${row.id_auto}`}>
-						<Button className="sucess" ><MdEditNote /></Button>
+				<article className={stil.cellOptions}>
+					<Link
+						className={stil.btn}
+						onClick={() => handleDelete(row.id_auto)}>
+						<img className={stil.btnImage} src="https://www.svgrepo.com/show/522316/trash.svg" alt="" />
 					</Link>
-
-				</div>
-			),
-			width:`100px`
-		},
-		{
-			name: ' + Detalles',
-			cell: (row) => (
-				<div className='options'>
-					<Link to={`/Autos/${row.id_auto}`}>
-						<Button className="sucess" ><MdEditNote /></Button>
+					<Link 
+						className={stil.btn}
+						to={`/Home/Autos/EditCar/${row.id_auto}`}>  
+						<img className={stil.btnImage} src="https://www.svgrepo.com/show/511904/edit-1479.svg" alt="" />
 					</Link>
-				</div>
+					<Link 
+						className={stil.btn}
+						to={`/Home/Autos/${row.id_auto}`}>
+						<img className={stil.btnImage} src="https://www.svgrepo.com/show/514119/eye.svg" alt="" />
+					</Link>
+				</article>
 			),
+			width:`130px`
 		},
 	];
 

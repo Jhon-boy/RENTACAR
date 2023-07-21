@@ -14,6 +14,10 @@
 .btnImage{
   width: 20px;
 }
+.btnImageReverse{
+  width: 20px;
+  filter: invert(100%);
+}
 
 .sectionTabla{
   display: flex;
@@ -25,4 +29,16 @@
 
 .contentTabla{
   width: 98%;
+}
+
+
+
+
+
+
+
+
+/*Modal Change State*/
+.pageContent{
+  
 }
