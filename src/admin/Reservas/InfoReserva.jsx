@@ -225,7 +225,7 @@ export const InfoReserva = () => {
 								{licencias.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
 							</label>
 						</div>
-							<Link to={`/InfoClient/${clientes.id_cliente}`} variant="outlined">
+							<Link to={`/Home/InfoClient/${clientes.id_cliente}`} variant="outlined">
 								<Button variant="outlined">Ver Perfil</Button>
 							</Link>
 					</form>
@@ -256,7 +256,7 @@ export const InfoReserva = () => {
 							{autos.estado === 'OCUPADO' && <BusinessIcon color='primary' className='IconsP' />}
 						</label>
 						</div>
-						<Link to={`/Autos/${autos.id_auto}`}>
+						<Link to={`/Home/Autos/${autos.id_auto}`}>
 							<Button variant="outlined">Ver Perfil</Button>
 						</Link>
 					</form>

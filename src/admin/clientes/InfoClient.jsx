@@ -16,7 +16,7 @@ import { URL } from '../data/URL';
 import { IMAGE } from '../data/URL'
 import { editarEstadoClient } from '../database/ClientController';
 
-export const InfoClien = () => {
+export const InfoClient = () => {
     const { id } = useParams();
     const [clientes, setClientes] = useState([]);
     const [licencias, setLicencias] = useState([]);

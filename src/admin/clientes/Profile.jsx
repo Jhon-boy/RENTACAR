@@ -4,8 +4,8 @@ import { TextField, Button, InputAdornment, IconButton } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 //import '../../Home.css';
 import Swal from 'sweetalert2';
-import { URL } from '../../data/URL';
-import { ActualizarAdmin } from '../../database/Admin.controller';
+import { URL } from '../data/URL';
+import { ActualizarAdmin } from '../database/Admin.controller';
 import { validarCorreo, validarContrasena, contrasenasValidadas } from './controllerCorreo';
 
 export const Profile = (props) => {

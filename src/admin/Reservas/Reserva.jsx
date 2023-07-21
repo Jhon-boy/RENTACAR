@@ -3,7 +3,7 @@ import { TableReservas } from './TableReservas';
 import { TablePending } from './TablePending'
 import { TableConcret } from './TableConcret'
 
-import { InfoReserva } from './InfoReserva'
+import { InfoReserva }  from './InfoReserva'
 import { CardsReservas } from './CardsReservas'
 
 import stil from './Reserva.module.css'

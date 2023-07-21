@@ -10,7 +10,10 @@ import { ClientsPending } from './ClientsPending'
 import { ClientsNo } from './ClientsNo'
 import  Listado  from './Listado'
 import { CardClientes } from './CardClientes';
+import { InfoClient } from './InfoClient'
 import stil from './Clientes.module.css'
+import { Historial } from './Historial';
+import { Profile } from './Profile';
 
 
 const Clientes = () => {
@@ -83,8 +86,11 @@ const Clientes = () => {
       <Routes>
         <Route path='/' element={<Listado />}></Route>
         <Route path='/CardClient' element={<CardClientes></CardClientes>}></Route>
+        <Route path='/InfoClient/:id' element={<InfoClient />} />
         <Route path='/clientesPending' element={<ClientsPending />} />
         <Route path='/clientesNo' element={<ClientsNo />} />
+        <Route path='/Historial/:id' element={<Historial />}/>
+        <Route path='/Perfil/:id' element={<Profile />} />
       </Routes>
     </section>
   );

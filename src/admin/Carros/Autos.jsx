@@ -17,7 +17,7 @@ const Autos = () => {
         <Route path='/crearAuto' element={<CreateCar />} />
         <Route path='/EditCar/:id' element={<EditCar />} />
       </Routes>
-    </div>
+    </div>  
   )
 }
 

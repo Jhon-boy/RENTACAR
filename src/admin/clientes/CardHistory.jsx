@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 //import '../../styles/Card.css'
-import { IMAGE } from '../../data/URL';
-import { URL } from '../../data/URL';
+import { IMAGE } from '../data/URL';
+import { URL } from '../data/URL';
 export const CardHistory = ({ historial }) => {
   const [cliente, setCliente] = useState({});
   const [reserva, setReserva] = useState({});

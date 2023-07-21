@@ -1,13 +1,10 @@
 //import '../Home.css'
 import { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
 import DataTable from 'react-data-table-component';
-import { MdRestoreFromTrash } from "react-icons/md";
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2';
 
 import { Modal } from '@mui/material';
-import { MdEditNote } from 'react-icons/md';
 
 import { URL } from '../data/URL';
 import { eliminarAuto } from '../database/controller';
@@ -125,7 +122,7 @@ export const TableAutos = () => {
 			name: 'TIPO',
 			selector: 'tipo',
 			sortable: true,
-			width: '100px'
+			width: '200px'
 		},
 		{
 			name: 'PRECIO',

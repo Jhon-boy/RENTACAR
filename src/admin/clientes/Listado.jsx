@@ -131,7 +131,7 @@ const Listado = () => {
     {
       name: 'Ver Historial',
       cell: (row) => (
-        <Link to={`/Historial/${row.id_cliente}`}>
+        <Link to={`/Home/Clientes/Historial/${row.id_cliente}`}>
            <button className='warning'>Historial</button>
         </Link>
        
@@ -141,7 +141,7 @@ const Listado = () => {
     {
       name: 'Ver Perfil',
       cell: (row) => (
-        <Link to={`/InfoClient/${row.id_cliente}`}>
+        <Link to={`/Home/Clientes/InfoClient/${row.id_cliente}`}>
           <button>Editar</button>
         </Link>
       ),
