@@ -1,0 +1,75 @@
+.clienteInfo{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+.imgCliente{
+  width: 300px;
+  border-radius: 15px;
+}
+.contentImg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.formBtn{
+  background-color: #047A87;
+  width: 45%;
+}
+.formBtn:hover{
+  font-weight: bold;
+  color: #047A87;
+  background-color: white;
+  border-color: #047A87;
+}
+
+.contentForm{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form{
+  width: 70%;
+  height: 90%;
+  padding: 20px;
+  border-radius: 15px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.separador{
+  background-color: #1976D2;
+  color: white;
+  font-size: 13px;
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+
+.labelForm{
+  display: flex;
+  align-items: center;
+}
+
+.icon{
+  margin-left: 10px;
+}
+
+.in{
+  background-color: #F5F5F5;
+  color: black;
+  border-radius: 5px;
+  border: 0;
+  margin-left: 10px;
+  padding: 5px;
+}
+.in::placeholder{
+  color: #818381;
+}

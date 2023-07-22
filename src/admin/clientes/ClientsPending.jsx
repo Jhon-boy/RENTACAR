@@ -95,7 +95,7 @@ export const ClientsPending = () => {
 		{
 			name: 'Ver Perfil',
 			cell: (row) => (
-				<Link to={`/InfoClient/${row.id_cliente}`}>
+				<Link to={`/Home/Clientes/InfoClient/${row.id_cliente}`}>
 					<button className='danger'>Revisar</button>
 				</Link>
 			),
