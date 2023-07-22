@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin: 15px 0 15px 0;
+  margin: 1px 0 15px 0;
 }
 
 .fechas>div {
@@ -63,8 +63,6 @@
   margin-right: 10px;
 }
 
-
-
 .cliente {
   border: 2px solid black;
   box-shadow: 2px 2px 2px 3px rgb(87, 86, 86);
@@ -74,8 +72,8 @@
   margin-bottom: 10%;
   height: fit-content;
   margin-right: auto;
-  margin-left: 10%;
   background-color: white;
+  margin-left: 6%;
 }
 
 .btn-outline-danger {
@@ -100,4 +98,15 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+
+.container-info-autos{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 55px;
+}
+
+.text-uppercase{
+  margin-right: 40px;
 }

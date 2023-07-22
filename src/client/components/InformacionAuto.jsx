@@ -136,13 +136,62 @@ export default function Product(props) {
           <div className="container-img">
             <img src={`${IMAGE}/${data.fotos}`} alt={data.title} />
           </div>
-          <div className="container-info">
-            <h4 className="text-uppercase text-black-50">
-              <span className="Span">Marca Auto:</span> {data.marca}
-            </h4>
-            <h4 className="text-uppercase text-black-50">
-              <span className="Span">Modelo:</span> {data.modelo}
-            </h4>
+          <div>
+            <div className="container-info-autos">
+              <div className="titles">
+                <h4 className="text-uppercase text-black-50" style={{color: '#f07e13'}}>
+                  Marca Auto:
+                </h4>
+                <h4 className="text-uppercase text-black-50" style={{color: '#f07e13'}}>
+                  Modelo:
+                </h4>
+                <h4 className="lead" style={{color: '#f07e13'}}>
+                  Detalles vehiculo:
+                </h4>
+                <h4 className="lead" style={{color: '#f07e13'}}>
+                  Estado:
+                </h4>
+                <h4 className="lead" style={{color: '#f07e13'}}>
+                  Tipo auto:
+                </h4>
+                <h4 className="display-6 fw-bold my-4" style={{color: '#f07e13', marginTop: '10px'}}>
+                  Precio diario:
+                </h4>
+                <h4 className="display-6 fw-bold" style={{color: '#f07e13'}}>
+                  Total:
+                </h4>
+                <h4 className="display-6 fw-bold" style={{color: '#f07e13'}}>
+                  Total incluido IVA:
+                  {' '}
+                </h4>
+              </div>
+              <div className="info">
+                <h4 className="text-uppercase text-black-50">
+                  {data.marca}
+                </h4>
+                <h4 className="text-uppercase text-black-50">
+                  {data.modelo}
+                </h4>
+                <h4 className="lead">
+                  {data.detalles}
+                </h4>
+                <h4 className="lead">
+                  {data.estado}
+                </h4>
+                <h4 className="lead">
+                  {data.tipo}
+                </h4>
+                <h4 className="display-6 fw-bold my-4" style={{ marginTop: '10px'}}>
+                  $ {data.precio}
+                </h4>
+                <h4 className="display-6 fw-bold">
+                  $ {totalPrice}
+                </h4>
+                <h4 className="display-6 fw-bold">
+                  $ {IvaPrice}
+                </h4>
+              </div>
+            </div>
             <div className="fechas">
               <div>
                 <label htmlFor="startDate" className="text1">
@@ -171,31 +220,6 @@ export default function Product(props) {
                   max={maxEndDate}
                 />
               </div>
-            </div>
-            <div className="info-precio">
-              <h3 className="display-6 fw-bold my-4">
-                <span className="Span">Precio diario:</span> ${data.precio}
-              </h3>
-              <h4 className="display-6 fw-bold">
-                <span className="Span">Total:</span> ${totalPrice}
-              </h4>
-              <h4 className="display-6 fw-bold">
-                <span className="Span">
-                  Total incluido IVA :
-                </span>{' '}
-                ${IvaPrice}
-              </h4>
-            </div>
-            <div className="info-auto">
-              <h4 className="lead">
-                <span className="Span">Detalles vehiculo:</span> {data.detalles}
-              </h4>
-              <h4 className="lead">
-                <span className="Span">Estado:</span> {data.estado}
-              </h4>
-              <h4 className="lead">
-                <span className="Span">Tipo auto:</span> {data.tipo}
-              </h4>
             </div>
             <div>
               {cliente.estado === 'HABILITADO' ? (
