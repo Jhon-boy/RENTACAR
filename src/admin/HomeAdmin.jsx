@@ -10,6 +10,7 @@ import { Pagos } from './Pagos/pagos'
 import Sidebar from './Sidebar'
 import { HomeData } from './Datos/HomeData';
 
+// eslint-disable-next-line no-unused-vars
 export default function HomeAdmin({ correo, id_user }) {
   return (
     <div style={{display: 'flex'}}>

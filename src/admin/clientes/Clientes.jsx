@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { URL } from '../data/URL';
@@ -20,6 +21,7 @@ const Clientes = () => {
   const [clientes, setClientes] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
   const [datosCombinados, setDatosCombinados] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [activeTab, setActiveTab] = useState('all');
 
 

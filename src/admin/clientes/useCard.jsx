@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 //import '../styles/Cliente.css'
 import { useState, useEffect } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import {   FaCheck, FaTimes } from 'react-icons/fa';
+import { FaCheck, FaTimes } from 'react-icons/fa';
 import { BsFillExclamationTriangleFill, BsFillPersonCheckFill, BsFillPersonXFill } from 'react-icons/bs';
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
@@ -62,11 +62,11 @@ const UserCard = ({ cliente }) => {
   const getStatusIcon = (estado) => {
     switch (estado) {
       case 'HABILITADO':
-        return <BsFillPersonCheckFill className="icon-habilitado" />;
+        return <BsFillPersonCheckFill className="icon-habilitado" style={{ color: 'green' }} />;
       case 'NO HABILITADO':
-        return <BsFillPersonXFill className="icon-no-habilitado" />;
+        return <BsFillPersonXFill className="icon-no-habilitado" style={{ color: 'red' }} />;
       case 'PENDIENTE':
-        return <BsFillExclamationTriangleFill className="icon-pendiente" />;
+        return <BsFillExclamationTriangleFill className="icon-pendiente" style={{ color: 'orange' }} />;
       default:
         return null;
     }
@@ -101,14 +101,14 @@ const UserCard = ({ cliente }) => {
               </Paper>
               <Box component="img"
                 sx={{
-                  height: 205,
+                  height: 150,
                   display: 'block',
                   maxWidth: 400,
                   overflow: 'hidden',
                   width: '100%',
                 }}
                 src={images[activeStep].imgPath}
-                alt={images[activeStep].label}/>
+                alt={images[activeStep].label} />
               <MobileStepper steps={maxSteps} position="static" activeStep={activeStep}
                 nextButton={
                   <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
@@ -119,42 +119,42 @@ const UserCard = ({ cliente }) => {
                   <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
                     {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
                     Back
-                  </Button>}/>
+                  </Button>} />
             </Box>
           </center>
 
           <div className={stil.cardInfo}>
-              <h2 className="">
-                {cliente.nombre} {cliente.apellido} {' - '}
-                <span>{getStatusIcon(cliente.estado)}</span>
-              </h2>
-              <form className={stil.form}>
-                <label className=""> ID:
-                  <input className={stil.in} type="text" value={cliente.id_cliente} readOnly />
-                </label>
-                <label >Cédula:
-                  <input className={stil.in} type="text" value={cliente.cedula} readOnly />
-                </label>
-                <label className="">Género:
-                  <input className={stil.in} type="text" value={cliente.genero} readOnly />
-                </label>
-                <label className="">Licencia:
-                  <input className={stil.in} type="text" value={cliente.id_licencia} readOnly />
-                </label>
-                <label className="">Categoría:
-                  <input className={stil.in} type="text" value={licencias.categoria} readOnly />
-                </label>
-                <label className=""> Estado
-                  <span className={stil.in}>{estadoLicencia(licencias.estado)}</span>
-                </label>
-              </form>
+            <h2 className="" style={{ fontSize: '15px' }}>
+              {cliente.nombre} {cliente.apellido} {' - '}
+              <span>{getStatusIcon(cliente.estado)}</span>
+            </h2>
+            <form className={stil.form}>
+              <label className=""> ID:
+                <input className={stil.in} type="text" value={cliente.id_cliente} readOnly />
+              </label>
+              <label >Cédula:
+                <input className={stil.in} type="text" value={cliente.cedula} readOnly />
+              </label>
+              <label className="">Género:
+                <input className={stil.in} type="text" value={cliente.genero} readOnly />
+              </label>
+              <label className="">Licencia:
+                <input className={stil.in} type="text" value={cliente.id_licencia} readOnly />
+              </label>
+              <label className="">Categoría:
+                <input className={stil.in} type="text" value={licencias.categoria} readOnly />
+              </label>
+              <label className=""> Estado
+                <span className={stil.in}>{estadoLicencia(licencias.estado)}</span>
+              </label>
+            </form>
             <div className='btnSlider'>
               <Link to={'/Home/Clientes/InfoClient/1'}>
                 <Button variant="contained" endIcon={<SendIcon />}>Detalles </Button>
               </Link>
               <span> {' - '}</span>
               <Link to={'/Home/Clientes/Historial/1'}>
-              <Button variant="contained" >Ver Historial</Button>
+                <Button variant="contained" >Ver Historial</Button>
               </Link>
             </div>
 

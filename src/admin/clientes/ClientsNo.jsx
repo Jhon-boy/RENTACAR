@@ -17,8 +17,6 @@ export const ClientsNo = () => {
 	const [usuarios, setUsuarios] = useState([]);
 	// eslint-disable-next-line no-unused-vars
 	const [datosCombinados, setDatosCombinados] = useState([]);
-	const [activeTab, setActiveTab] = useState('No');
-
 
 	useEffect(() => {
 		fetch(`${URL}/clientes`)

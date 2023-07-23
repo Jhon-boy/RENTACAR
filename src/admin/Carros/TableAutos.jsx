@@ -55,7 +55,7 @@ export const TableAutos = () => {
 			Swal.fire({
 				position: 'center',
 				icon: 'success',
-				title: 'Your work has been saved',
+				title: 'Auto Eliminado',
 				showConfirmButton: false,
 				timer: 1500
 			})

@@ -12,7 +12,6 @@ import stil from './useCard.module.css'
 export const CardClientes = () => {
 	const [clientes, setClientes] = useState([]);
 	const [licencias, setLicencias] = useState([]);
-	const [activeTab, setActiveTab] = useState('all');
 	// eslint-disable-next-line no-unused-vars
 	const [datosCombinados, setDatosCombinados] = useState([]);
 
@@ -60,7 +59,7 @@ export const CardClientes = () => {
 			<div className={stil.contentGrid}>
 				<Grid container spacing={-20}>
 					{datosCombinados.map((cliente) => (
-						<Grid item xs={12} sm={3} md={4} key={cliente.id_cliente}>
+						<Grid item xs={1} sm={2} md={4} key={cliente.id_cliente}>
 							<UserCard cliente={cliente} />
 						</Grid>
 					))}

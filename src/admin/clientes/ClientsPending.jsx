@@ -7,19 +7,18 @@ import { BsPersonFillExclamation } from "react-icons/bs";
 //import { SliderBar } from './SliderBar';
 import { Link } from 'react-router-dom';
 
-
 import { BtnClientes } from '../data/BtnAdmin.js'
 import SliderBar from '/src/admin/SliderBar.jsx'
 import stil from './Clientes.module.css'
 import customStyles from '../config/ConfigTable'
+import Button from '@mui/material/Button';
+
 
 export const ClientsPending = () => {
 	const [clientes, setClientes] = useState([]);
 	const [usuarios, setUsuarios] = useState([]);
 	// eslint-disable-next-line no-unused-vars
 	const [datosCombinados, setDatosCombinados] = useState([]);
-	const [activeTab, setActiveTab] = useState('pending');
-
 
 	useEffect(() => {
 		fetch(`${URL}/clientes`)
@@ -46,6 +45,53 @@ export const ClientsPending = () => {
 		setDatosCombinados(datosCombinados);
 	}, [clientes, usuarios]);
 	const filteredReservas = clientes.filter((clientes) => clientes.estado === 'PENDIENTE');
+	const getEstado = (row) => {
+		// Obtener el estado de la fila
+		const estado = row.estado;
+
+		// Asignar el título del botón según el estado
+		let title;
+		switch (estado) {
+			case 'CANCELADO':
+				title = 'CANCELADO';
+				break;
+			case 'CONCRETADO':
+				title = 'CONCRETADO';
+				break;
+			case 'PENDIENTE':
+				title = 'PENDIENTE';
+				break;
+			default:
+				title = 'Estado desconocido';
+			// Puedes asignar un título predeterminado si el estado no coincide con ninguno de los casos anteriores
+		}
+
+		// Asignar estilos en línea de acuerdo al estado
+		const buttonStyle = {
+			marginTop: '5px',
+			marginBottom: '2px',
+			borderRadius: '7px',
+			padding: '5px 10px',
+			fontWeight: 'bold',
+			fontSize: '12px', // Tamaño de fuente de 12px
+			width: '120px',
+			height: '35px',
+			color: estado === 'CANCELADO' ? 'red' : estado === 'CONCRETADO' ? 'green' : 'black',
+			backgroundColor:
+				estado === 'CANCELADO'
+					? '#ffe5e5'
+					: estado === 'CONCRETADO'
+						? '#d9f4d9'
+						: '#fff2cc',
+		};
+
+		return (
+			<Button className="status-button" variant="outlined" style={buttonStyle}>
+				{title}
+			</Button>
+		);
+	};
+
 	const columns = [
 		{
 			name: 'Id',
@@ -75,6 +121,8 @@ export const ClientsPending = () => {
 			name: 'Estado de la cuenta',
 			selector: 'estado',
 			sortable: true,
+			width: '130px',
+			cell: (row) => getEstado(row),
 		},
 		{
 			name: 'Estado',
@@ -82,28 +130,32 @@ export const ClientsPending = () => {
 				if (row.estado === "CONECTADO") {
 					return <BsPersonFillExclamation className='icon activeP' />
 				} else {
-					return <BsPersonExclamation className='icon noactive' />
+					return <BsPersonExclamation style={{ color: row.estado === "CONECTADO" ? "#00cc00" : "#cc0000", fontSize: "24px" }} />
 				}
 			},
 			sortable: true,
+			width: '130px',
 		},
 		{
 			name: 'Género',
 			selector: 'genero',
 			sortable: true,
+			width: '130px',
 		},
 		{
 			name: 'Ver Perfil',
 			cell: (row) => (
 				<Link to={`/Home/Clientes/InfoClient/${row.id_cliente}`}>
-					<button className='danger'>Revisar</button>
+					<Button variant="outlined" color="secondary" >Ver</Button>
 				</Link>
 			),
 			button: true,
+			width: '130px',
 		},
 	];
 	return (
-		<section className={stil.sectionTabla}>
+		<div style={{width: '90%'}}>
+			<section className={stil.sectionTabla}>
 			<SliderBar btnDatos={BtnClientes} />
 			<div className={stil.contentTabla}>
 				{filteredReservas.length > 0 && (
@@ -122,5 +174,7 @@ export const ClientsPending = () => {
 				)}
 			</div>
 		</section>
+		</div>
+		
 	);
 };

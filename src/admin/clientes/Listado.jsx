@@ -8,18 +8,20 @@ import { MdToggleOn } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { eliminarCliente } from '../database/ClientController';
+import { BsFillEyeFill, BsDashLg } from "react-icons/bs";
+import { MdRestoreFromTrash } from "react-icons/md";
 
 import SliderBar from '/src/admin/SliderBar.jsx'
 import { BtnClientes } from '../data/BtnAdmin.js'
 import customStyles from '../config/ConfigTable'
 import stil from './Clientes.module.css'
+import Button from '@mui/material/Button';
+
 
 const Listado = () => {
   const [clientes, setClientes] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
   const [datosCombinados, setDatosCombinados] = useState([]);
-  const [activeTab, setActiveTab] = useState('all');
-
 
   useEffect(() => {
     fetch(`${URL}/clientes`)
@@ -79,78 +81,86 @@ const Listado = () => {
 
   };
 
+  
   const columns = [
     {
       name: 'Id',
       selector: 'id_cliente',
       sortable: true,
+      width: '80px',
     },
     {
       name: 'Nombre',
       selector: 'nombre',
       sortable: true,
+      width: '120px',
     },
     {
       name: 'Apellido',
       selector: 'apellido',
       sortable: true,
+      width: '120px',
     },
     {
       name: 'Correo',
       selector: 'correo',
       sortable: true,
+      width: '190px',
     },
     {
       name: 'Cédula',
       selector: 'cedula',
       sortable: true,
+      width: '120px',
     },
     {
       name: 'Estado',
       cell: (row) => {
         if (row.estado === "CONECTADO") {
-          return <MdToggleOn className='icon activeP' />
+          return <MdToggleOn className='icon activeP' style={{ color: row.estado === "CONECTADO" ? "#00cc00" : "#cc0000", fontSize: "34px" }} />
         } else {
-          return <MdToggleOff className='icon noactive' />
+          return <MdToggleOff className='icon noactive' style={{ color: row.estado === "CONECTADO" ? "#00cc00" : "#cc0000", fontSize: "34px" }} />
         }
       },
       sortable: true,
+      width: '90px',
     },
     {
       name: 'Género',
       selector: 'genero',
       sortable: true,
+      width: '120px',
     },
     {
-      name: 'Eliminar',
+      name: 'Opciones',
       cell: (row) => (
-        <button className='danger' onClick={() => handleDelete(row.id_cliente)}>Eliminar</button>
+        <div>
+          <MdRestoreFromTrash className={stil.btnImage} style={{ color: 'red', height: '50px' }} onClick={() => handleDelete(row.id_cliente)}>Eliminar</MdRestoreFromTrash>
+         <BsDashLg style={{ color: 'white', height: '50px' }} ></BsDashLg>
+          <Link to={`/Home/Clientes/InfoClient/${row.id_cliente}`}>
+            <BsFillEyeFill className={stil.btnImage} style={{ color: 'gray', height: '50px' }} />
+          </Link>
+        </div>
+
       ),
       button: true,
     },
+
     {
       name: 'Ver Historial',
       cell: (row) => (
         <Link to={`/Home/Clientes/Historial/${row.id_cliente}`}>
-           <button className='warning'>Historial</button>
+          <Button variant="outlined" color="secondary" >Ver</Button>
         </Link>
-       
+
       ),
       button: true,
-    },
-    {
-      name: 'Ver Perfil',
-      cell: (row) => (
-        <Link to={`/Home/Clientes/InfoClient/${row.id_cliente}`}>
-          <button>Editar</button>
-        </Link>
-      ),
-      button: true,
-    },
+      width: '120px',
+    }
   ];
   return (
     <section className={stil.sectionTabla}>
-        <SliderBar btnDatos={BtnClientes}/>
+      <SliderBar btnDatos={BtnClientes} />
       <div className={stil.contentTabla}>
         <DataTable
           columns={columns}
@@ -159,10 +169,10 @@ const Listado = () => {
           title="Clientes Registrados "
           pagination
           highlightOnHover
-					striped
-					dense
-					paginationPerPage={10}
-					paginationRowsPerPageOptions={[5, 10]}
+          striped
+          dense
+          paginationPerPage={10}
+          paginationRowsPerPageOptions={[5, 10]}
         />
       </div>
     </section>
