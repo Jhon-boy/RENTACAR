@@ -5,7 +5,7 @@ import { Button, Select, MenuItem } from '@mui/material';
 import Swal from 'sweetalert2';
 import { CambioStadoAuto } from '../database/controller';
 import { useNavigate } from 'react-router-dom';
-import stil from './Autos.module.css'
+import stil from './TableAutos.module.css'
 
 
 export const ModalChangeState = ({ idAuto, estado }) => {
@@ -34,7 +34,7 @@ export const ModalChangeState = ({ idAuto, estado }) => {
 		}
 		try {
 			await CambioStadoAuto(id, estado_);
-			await history(`/Autos`);
+			history('/Home');
 			Swal.fire({
 				position: 'top-end',
 				icon: 'success',
@@ -65,21 +65,19 @@ export const ModalChangeState = ({ idAuto, estado }) => {
 	};
 
 	return (
-		<section className={stil.pageContent}>
-			<div>
-				<div className="">
-					<h2>Seleccionar estado</h2>
-					<Select value={selectedEstado} onChange={(event) => setSelectedEstado(event.target.value)}>
+		<section className={stil.contentChange}>
+				<article className="">
+					<h2 className={stil.title}>Seleccionar estado</h2>
+					<select className={stil.select} value={selectedEstado} onChange={(event) => setSelectedEstado(event.target.value)}>
 						{estado}
-						<MenuItem value="Disponible">DISPONIBLE</MenuItem>
-						<MenuItem value="Mantenimiento">MANTENIMIENTO</MenuItem>
-						<MenuItem value="Fuera de servicio">FUERA DE SERVICIO</MenuItem>
-					</Select>
-					<Button variant="contained" onClick={() => changeState(id, selectedEstado)}>
+						<option value="Disponible">DISPONIBLE</option>
+						<option value="Mantenimiento">MANTENIMIENTO</option>
+						<option value="Fuera de servicio">FUERA DE SERVICIO</option>
+					</select>
+					<button className={stil.formBtn} onClick={() => changeState(id, selectedEstado)}>
 						Guardar
-					</Button>
-				</div>
-			</div>
+					</button>
+				</article>
 		</section>
 	);
 };
