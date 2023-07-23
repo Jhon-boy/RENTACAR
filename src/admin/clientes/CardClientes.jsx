@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 
 import { BtnClientes } from '../data/BtnAdmin.js'
 import SliderBar from '/src/admin/SliderBar.jsx'
-import stil from './Clientes.module.css'
+import stil from './useCard.module.css'
 
 export const CardClientes = () => {
 	const [clientes, setClientes] = useState([]);
@@ -55,17 +55,17 @@ export const CardClientes = () => {
 	}, [clientes, licencias]);
 
 	return (
-		<div className='page-content'>
+		<section className={stil.contentCard}>
 			<SliderBar btnDatos={BtnClientes} />
-
-			<Grid container spacing={-20}>
-				{datosCombinados.map((cliente) => (
-					<Grid item xs={12} sm={3} md={4} key={cliente.id_cliente}>
-						<UserCard cliente={cliente} />
-					</Grid>
-				))}
-			</Grid>
-		</div>
-
+			<div className={stil.contentGrid}>
+				<Grid container spacing={-20}>
+					{datosCombinados.map((cliente) => (
+						<Grid item xs={12} sm={3} md={4} key={cliente.id_cliente}>
+							<UserCard cliente={cliente} />
+						</Grid>
+					))}
+				</Grid>
+			</div>
+		</section>
 	);
 };
