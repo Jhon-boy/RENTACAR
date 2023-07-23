@@ -51,6 +51,7 @@ export const CardAutos = () => {
 
   return (
     <section className={stil.contentAuto}>
+      <form className={stil.form}>
         <span className={stil.infoLabel}><strong>ID:</strong>#{id}</span>
         <img className={stil.imgInfo} src={`${IMAGE}/${cars.fotos}`} />
         <span className={stil.infoLabel}><strong>PRECIO POR DÍA:</strong>{cars.precio}</span>
@@ -61,6 +62,7 @@ export const CardAutos = () => {
         <span className={stil.infoLabel}><strong>ESTADO:</strong>{cars.estado}</span>
         <span className={stil.infoLabel}><strong>TIPO:</strong>{cars.tipo}</span>
         <span className={stil.infoLabel}><strong>DETALLES:</strong>{cars.detalles}</span>
+      </form>
     </section>
   );
 };
