@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
 import '../styles/Filtro.css';
 
 const SidebarFilter = ({ applyFilters }) => {
@@ -24,7 +26,7 @@ const SidebarFilter = ({ applyFilters }) => {
   };
 
   return (
-    <aside id="sidebar">
+    <aside id=" ">
       <div className="container-filtro">
         <div>
           <div>
@@ -48,12 +50,6 @@ const SidebarFilter = ({ applyFilters }) => {
                 </div>
                 <div className="input-wrapper">
                   <label className='labeltext' htmlFor="checkbox-economico">MINIVAN</label>
-                </div>
-                <div className="input-wrapper">
-                  <label className='labeltext' htmlFor="checkbox-economico">UTILITARIO</label>
-                </div>
-                <div className="input-wrapper">
-                  <label className='labeltext' htmlFor="checkbox-economico">LIMOSINA</label>
                 </div>
                 <div className="input-wrapper">
                   <label className='labeltext' htmlFor="checkbox-economico">CAMIONETA</label>

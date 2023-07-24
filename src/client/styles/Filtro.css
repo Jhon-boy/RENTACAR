@@ -1,18 +1,24 @@
 .container-filtro{
-    background-color: #0fc3e8;
-    height: 100vh;
+    background-color: #babebf;
+    height: auto;
     padding-left: 20px;
     border-radius: 0 10px 10px 0;
-    width: 300px;
+    width: max-content;
     height: auto; 
+    padding-right: 4px;
+    color: black;
+    position: relative;
+    margin-top: -50px;
 }
 .input-wrapper{
     display: flex;
     padding: 10px 0 5px 25px;
+    font-size: 14px;
 }
 
 .a-title{
     padding-top: 20px;
+    font-size: 16px;
 }
 
 .checkbox-mini{
