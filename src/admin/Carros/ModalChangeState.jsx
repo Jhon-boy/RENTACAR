@@ -34,7 +34,7 @@ export const ModalChangeState = ({ idAuto, estado }) => {
 		}
 		try {
 			await CambioStadoAuto(id, estado_);
-			await history(`/Autos`);
+			history(`/Home/Autos`);
 			Swal.fire({
 				position: 'top-end',
 				icon: 'success',
@@ -66,10 +66,12 @@ export const ModalChangeState = ({ idAuto, estado }) => {
 
 	return (
 		<section className={stil.pageContent}>
-			<div>
-				<div className="">
+			<div style={{ width: '250px' }}>
+				<div style={{ width: '250px' }}>
 					<h2>Seleccionar estado</h2>
-					<Select value={selectedEstado} onChange={(event) => setSelectedEstado(event.target.value)}>
+					<Select
+						style={{ width: '80%', marginBottom: '10px' }}
+						value={selectedEstado} onChange={(event) => setSelectedEstado(event.target.value)}>
 						{estado}
 						<MenuItem value="Disponible">DISPONIBLE</MenuItem>
 						<MenuItem value="Mantenimiento">MANTENIMIENTO</MenuItem>

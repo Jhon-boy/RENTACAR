@@ -86,7 +86,7 @@ export const EditCar = () => {
             showConfirmButton: false,
             timer: 1500
           })
-          history(`/EditCar/${id}`);
+          history(`/Home/Autos/EditCar/${id}`);
         } catch (error) {
           Swal.fire({
             icon: 'error',
@@ -107,7 +107,7 @@ export const EditCar = () => {
         cars.detalles = e.target.detalles.value;
         try {
           await editarAutoFilesController(id, cars);
-          history(`/EditCar/${id}`);
+          history(`/Home/Autos/EditCar/${id}`);
         } catch (error) {
           Swal.fire({
             icon: 'error',

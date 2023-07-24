@@ -2,6 +2,7 @@ import axios from 'axios';
 import { URL } from '../data/URL';
 
 export const registrarAuto = async (formData) => {
+  console.log(formData.get('fotos'))
   try {
     const response = await axios.post(`${URL}/autos`, formData);
     return response.data;

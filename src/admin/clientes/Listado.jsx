@@ -15,7 +15,7 @@ import SliderBar from '/src/admin/SliderBar.jsx'
 import { BtnClientes } from '../data/BtnAdmin.js'
 import customStyles from '../config/ConfigTable'
 import stil from './Clientes.module.css'
-import Button from '@mui/material/Button';
+  import Button from '@mui/material/Button';
 
 
 const Listado = () => {
@@ -150,7 +150,7 @@ const Listado = () => {
       name: 'Ver Historial',
       cell: (row) => (
         <Link to={`/Home/Clientes/Historial/${row.id_cliente}`}>
-          <Button variant="outlined" color="secondary" >Ver</Button>
+         <img className={stil.btnImage} src="https://cdn-icons-png.flaticon.com/512/3659/3659738.png" alt="" />
         </Link>
 
       ),

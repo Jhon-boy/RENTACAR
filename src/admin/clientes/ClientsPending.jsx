@@ -154,27 +154,32 @@ export const ClientsPending = () => {
 		},
 	];
 	return (
-		<div style={{width: '90%'}}>
+		<div style={{ width: '90%' }}>
 			<section className={stil.sectionTabla}>
-			<SliderBar btnDatos={BtnClientes} />
-			<div className={stil.contentTabla}>
-				{filteredReservas.length > 0 && (
-					<DataTable
-						columns={columns}
-						data={filteredReservas}
-						customStyles={customStyles}
-						title="Clientes Pendientes "
-						pagination
-						highlightOnHover
-						striped
-						dense
-						paginationPerPage={10}
-						paginationRowsPerPageOptions={[5, 10]}
-					/>
-				)}
-			</div>
-		</section>
+				<SliderBar btnDatos={BtnClientes} />
+				<div className={stil.contentTabla}>
+					{filteredReservas.length > 0 ? (
+						<DataTable
+							columns={columns}
+							data={filteredReservas}
+							customStyles={customStyles}
+							title="Clientes Pendientes "
+							pagination
+							highlightOnHover
+							striped
+							dense
+							paginationPerPage={10}
+							paginationRowsPerPageOptions={[5, 10]}
+						/>
+					) : (
+						<div className={stil.emptyTable}>
+							<img src='https://img.freepik.com/vector-premium/datos-carpeta-archivo-vacia-informacion-no-encontrada-oficinista-confundido-busqueda-documentos-lupa-almacenamiento-archivos-papeles-perdidos-encontrar-mal-funcionamiento-concepto-vectorial_533410-3459.jpg' alt="Tabla vacía" />
+							<p>No hay datos disponibles</p>
+						</div>
+					)}
+				</div>
+			</section>
 		</div>
-		
+
 	);
 };

@@ -193,13 +193,13 @@ export const TableReservas = () => {
 						variant="outlined"
 						className={stil.btn}
 						onClick={() => handleDelete(row.id_reserva)}>
-						<MdRestoreFromTrash className={stil.btnImage} style={{ color: 'red', height: '50px' }} src="https://www.svgrepo.com/show/522316/trash.svg" alt="" />
+						<MdRestoreFromTrash className={stil.btnImage} style={{ color: 'red', height: '50px' }} alt="" />
 					</Link>
 					<Link
 						to={`/Home/Reservas/InfoReserva/${row.id_reserva}`}
 						variant="outlined"
 						className={stil.btn}>
-						<MdEditNote className={stil.btnImage} style={{ color: 'blue', height: '50px' }} src="https://www.svgrepo.com/show/511904/edit-1479.svg" alt="" />
+						<MdEditNote className={stil.btnImage} style={{ color: 'blue', height: '50px' }} alt="" />
 					</Link>
 				</div>
 			),

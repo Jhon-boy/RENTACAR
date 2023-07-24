@@ -3,15 +3,13 @@ import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2';
-
-import { Modal } from '@mui/material';
+import Button from '@mui/material/Button';
+import { MdEditNote } from 'react-icons/md';
+import { Modal, TextField, Stack } from '@mui/material';
 
 import { URL } from '../data/URL';
 import { eliminarAuto } from '../database/controller';
 import { ModalChangeState } from './ModalChangeState';
-
-import { BtnAutos } from '../data/BtnAdmin';
-import SliderBar from '../SliderBar';
 import customStyles from '../config/ConfigTable'
 import stil from './Autos.module.css'
 
@@ -30,6 +28,42 @@ export const TableAutos = () => {
 	const handleCloseModal = () => {
 		setShowModal(false);
 	};
+	const getCurrentStatus = (row) => {
+		const buttonStyle = {
+			marginTop: '5px',
+			marginBottom: '2px',
+			borderRadius: '7px',
+			padding: '5px 10px',
+			fontWeight: 'bold',
+			fontSize: '8px',
+			width: '130px',
+			height: '25px',
+			color: row.estado === 'FUERA DE SERVICIO' ? 'white' : 'black',
+			backgroundColor:
+				row.estado === 'FUERA DE SERVICIO'
+					? 'red' // Color de fondo para "FUERA DE SERVICIO" en rojo
+					: row.estado === 'MANTENIMIENTO'
+						? 'orange' // Color de fondo para "MANTENIMIENTO" en verde claro
+						: row.estado === 'OCUPADO'
+							? '#fff2cc' // Color de fondo para "OCUPADO" en amarillo claro
+							: '#90EE85', // Color de fondo para "DISPONIBLE" en azul claro
+		};
+
+		return (
+			<>
+				<Button variant="contained" style={buttonStyle} onClick={() => { setTempId(row.id_auto); handleOpenModal(); }}>
+					{row.estado}
+					<MdEditNote style={{ color: 'purple', height: '70px' }} />
+				</Button>
+				<Modal open={showModal} onClose={handleCloseModal} className={stil.modal_container} >
+					<div className={stil.modal_container} style={modalStyle}>
+						<ModalChangeState idAuto={tempId} estado={row.estado} />
+					</div>
+				</Modal>
+			</>
+
+		);
+	};
 
 	const modalStyle = {
 		top: modalPosition.y,
@@ -40,8 +74,10 @@ export const TableAutos = () => {
 		display: 'flex',
 		flexDirection: 'column',
 		gap: '8px',
+		backgroundColor: '#ffffff', // Color blanco para el fondo del modal
+		borderRadius: '8px',
+		boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Agrega una sombra
 	};
-
 	useEffect(() => {
 		fetch(`${URL}/autos`)
 			.then(response => response.json())
@@ -50,27 +86,40 @@ export const TableAutos = () => {
 	}, []);
 
 	const handleDelete = async (id_auto) => {
-		try {
-			await eliminarAuto(id_auto);
-			Swal.fire({
-				position: 'center',
-				icon: 'success',
-				title: 'Auto Eliminado',
-				showConfirmButton: false,
-				timer: 1500
-			})
-		} catch (error) {
-			Swal.fire({
-				icon: 'error',
-				title: 'Algo Salio mal',
-				text: 'Error: ' + error.message,
-			});
-		}
+		Swal.fire({
+			title: 'Esta seguro de eliminar los datos del auto?',
+			text: "Puedes modificar los datos despues!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Si, Eliminar'
+		}).then(async (result) => {
+			if (result.isConfirmed) {
+				try {
+					await eliminarAuto(id_auto);
+					Swal.fire({
+						position: 'center',
+						icon: 'success',
+						title: 'Auto Eliminado',
+						showConfirmButton: false,
+						timer: 1500
+					})
+				} catch (error) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Algo Salio mal',
+						text: 'Error: ' + error.message,
+					});
+				}
+			}
+		})
 
 	};
+
 	const columns = [
 		{
-			name: 'Id',
+			name: 'ID',
 			selector: 'id_auto',
 			sortable: true,
 			width: '70px'
@@ -103,19 +152,7 @@ export const TableAutos = () => {
 			selector: 'estado',
 			sortable: true,
 			width: '225px',
-			cell: (row) => (
-				<article className=''>
-					<button onClick={() => { setTempId(row.id_auto); handleOpenModal(); }}>
-						{row.estado}
-						<img className={stil.btnImageReverse} src="https://www.svgrepo.com/show/511904/edit-1479.svg"/>
-					</button>
-					<Modal open={showModal} onClose={handleCloseModal} className=''>
-						<div className="modal-container" style={modalStyle}>
-							<ModalChangeState idAuto={tempId} estado={row.estado} />
-						</div>
-					</Modal>
-				</article>
-			),
+			cell: (row) => getCurrentStatus(row),
 		},
 
 		{
@@ -137,40 +174,62 @@ export const TableAutos = () => {
 					<Link
 						className={stil.btn}
 						onClick={() => handleDelete(row.id_auto)}>
-						<img className={stil.btnImage} src="https://www.svgrepo.com/show/522316/trash.svg" alt="" />
+						<img className={stil.btnImage} src="https://cdn-icons-png.flaticon.com/512/4734/4734087.png" alt="" />
 					</Link>
-					<Link 
+					<Link
 						className={stil.btn}
-						to={`/Home/Autos/EditCar/${row.id_auto}`}>  
-						<img className={stil.btnImage} src="https://www.svgrepo.com/show/511904/edit-1479.svg" alt="" />
+						to={`/Home/Autos/EditCar/${row.id_auto}`}>
+						<img className={stil.btnImage} src="https://cdn-icons-png.flaticon.com/512/1160/1160515.png" alt="" />
 					</Link>
-					<Link 
+					<Link
 						className={stil.btn}
 						to={`/Home/Autos/${row.id_auto}`}>
-						<img className={stil.btnImage} src="https://www.svgrepo.com/show/514119/eye.svg" alt="" />
+						<img className={stil.btnImage} src="https://cdn-icons-png.flaticon.com/512/3659/3659738.png" alt="" />
 					</Link>
 				</article>
 			),
-			width:`130px`
+			width: `130px`
 		},
 	];
 
 
 	return (
 		<section className={stil.sectionTabla}>
-			<SliderBar btnDatos={BtnAutos} />
 			<div className={stil.contentTabla}>
+				<div style={{ marginTop: '15px', marginBottom: '10px', display: 'flex' }}>
+					<div>
+						<Link to='/Home/Autos/crearAuto'>
+							<Button size="meduim" variant="contained">Agregar Auto</Button>
+						</Link>
+					</div>
+					<div>
+						<div style={{ marginLeft: '50px', width: '100%' }}>
+							<Stack direction="row" spacing={1} alignItems="center">
+								<TextField
+									label="Buscar por placas"
+									variant="outlined"
+									style={{ width: '300px' }}
+								/>
+								<Button variant="outlined" >
+									Buscar
+								</Button>
+							</Stack>
+						</div>
+					</div>
+
+				</div>
+
 				<DataTable
-				columns={columns}
-				data={cars}
-				customStyles={customStyles}
-				title="Autos"
-				pagination
-				highlightOnHover
-				striped
-				dense
-				paginationPerPage={10}
-				paginationRowsPerPageOptions={[5, 10]}
+					columns={columns}
+					data={cars}
+					customStyles={customStyles}
+					title="Registro de todos los autos"
+					pagination
+					highlightOnHover
+					striped
+					dense
+					paginationPerPage={10}
+					paginationRowsPerPageOptions={[5, 10]}
 				/>
 			</div>
 		</section>

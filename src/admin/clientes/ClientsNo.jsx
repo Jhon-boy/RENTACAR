@@ -102,12 +102,12 @@ export const ClientsNo = () => {
 	return (
 		<section className={stil.sectionTabla}>
 			<SliderBar btnDatos={BtnClientes} />
-			<div className={stil.contentTabla}>
+			{filteredReservas.length > 0 ? (
 				<DataTable
+					title="Clientes No habilitados"
 					columns={columns}
 					data={filteredReservas}
 					customStyles={customStyles}
-					title="Clientes No habilitados "
 					pagination
 					highlightOnHover
 					striped
@@ -115,7 +115,12 @@ export const ClientsNo = () => {
 					paginationPerPage={10}
 					paginationRowsPerPageOptions={[5, 10]}
 				/>
-			</div>
+			) : (
+				<div className={stil.emptyTable}>
+				<p>No hay datos disponibles</p>
+					<img src='https://img.freepik.com/vector-premium/datos-carpeta-archivo-vacia-informacion-no-encontrada-oficinista-confundido-busqueda-documentos-lupa-almacenamiento-archivos-papeles-perdidos-encontrar-mal-funcionamiento-concepto-vectorial_533410-3459.jpg' alt="Tabla vacía" />
+				</div>
+			)}
 		</section>
 	);
 };

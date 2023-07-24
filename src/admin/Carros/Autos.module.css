@@ -30,13 +30,15 @@
 .contentTabla{
   width: 98%;
 }
-
-
-
-
-
-
-
+.modal_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent; /* Establece el fondo como completamente transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}   
 
 /*Modal Change State*/
 .pageContent{

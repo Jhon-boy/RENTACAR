@@ -228,7 +228,7 @@ export const TablePending = () => {
 		<section className={stil.sectionTabla}>
 			<SliderBar btnDatos={BtnReserva} />
 			<div className={stil.contentTabla}>
-				{filteredReservas.length > 0 && (
+				{filteredReservas.length > 0 ? (
 					<DataTable
 						title="Reservas Pendientes por confirmar"
 						columns={columns}
@@ -241,6 +241,11 @@ export const TablePending = () => {
 						paginationPerPage={10}
 						paginationRowsPerPageOptions={[5, 10]}
 					/>
+				) : (
+					<div className={stil.emptyTable}>
+						<img src='https://img.freepik.com/vector-premium/datos-carpeta-archivo-vacia-informacion-no-encontrada-oficinista-confundido-busqueda-documentos-lupa-almacenamiento-archivos-papeles-perdidos-encontrar-mal-funcionamiento-concepto-vectorial_533410-3459.jpg' alt="Tabla vacía" />
+						<p>No hay datos disponibles</p>
+					</div>
 				)}
 			</div>
 		</section>
