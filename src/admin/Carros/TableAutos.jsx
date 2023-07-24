@@ -13,7 +13,7 @@ import { ModalChangeState } from './ModalChangeState';
 import { BtnAutos } from '../data/BtnAdmin';
 import SliderBar from '../SliderBar';
 import customStyles from '../config/ConfigTable'
-import stil from './Autos.module.css'
+import stil from './TableAutos.module.css'
 
 export const TableAutos = () => {
 	const [cars, setCars] = useState([]);
@@ -104,13 +104,13 @@ export const TableAutos = () => {
 			sortable: true,
 			width: '225px',
 			cell: (row) => (
-				<article className=''>
-					<button onClick={() => { setTempId(row.id_auto); handleOpenModal(); }}>
+				<article>
+					<button className={stil.btnEstado} onClick={() => { setTempId(row.id_auto); handleOpenModal(); }}>
 						{row.estado}
 						<img className={stil.btnImageReverse} src="https://www.svgrepo.com/show/511904/edit-1479.svg"/>
 					</button>
 					<Modal open={showModal} onClose={handleCloseModal} className=''>
-						<div className="modal-container" style={modalStyle}>
+						<div className="" style={modalStyle}>
 							<ModalChangeState idAuto={tempId} estado={row.estado} />
 						</div>
 					</Modal>

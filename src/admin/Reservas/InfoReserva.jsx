@@ -199,50 +199,47 @@ export const InfoReserva = () => {
 
 	return (
 		<section className={stil.contentInfo}>
-			<article className={stil.InfoFotos}>
-				<img src={`${IMAGE}/${autos.fotos}`} className={stil.FotoCarro} />
-				<img src={`${IMAGE}/${clientes.foto}`} className={stil.FotoCedula} />
-			</article>
-			<section className={stil.Info}>
-				<article className={stil.InfoSuperior}>
-					<form className={stil.contentLabels}>
-						<span className={stil.Separador}>Información del cliente</span>
-						<div className={stil.Labels}>
-							<label htmlFor='nombre' className={stil.formLabel}>
-								Solicitante:
-								<input type='text' id='nombre' value={clientes.nombre + ' ' + clientes.apellido} readOnly className={stil.in}/>
-							</label>
-							<label htmlFor='apellido' className={stil.formLabel}>
-								Cedula:
-								<input type='text' id='apellido' value={clientes.cedula} readOnly className={stil.in}/>
-							</label>
-							<label htmlFor='correo' className={stil.formLabel}>
-								Estado:
-								{clientes.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
-							</label>
-							<label htmlFor='correo' className={stil.formLabel}>
-								Licencia:
-								{licencias.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
-							</label>
-						</div>
-							<Link to={`/Home/InfoClient/${clientes.id_cliente}`} variant="outlined">
-								<Button variant="outlined">Ver Perfil</Button>
-							</Link>
-					</form>
-					<form className={stil.contentLabels}>
-						<span className={stil.Separador}>Información del vehículo</span>
-						<div className={stil.Labels}>
+				<form className={stil.form}>
+					<div className={stil.contentImg}>
+						<img src={`${IMAGE}/${clientes.foto}`} className={stil.FotoCedula} />
+					</div>
+					<span className={stil.Separador}>Información del cliente</span>
+						<label htmlFor='nombre' className={stil.formLabel}>
+							Solicitante:
+							<input type='text' id='nombre' value={clientes.nombre + ' ' + clientes.apellido} readOnly className={stil.in} />
+						</label>
+						<label htmlFor='apellido' className={stil.formLabel}>
+							Cedula:
+							<input type='text' id='apellido' value={clientes.cedula} readOnly className={stil.in} />
+						</label>
+						<label htmlFor='correo' className={stil.formLabel}>
+							Estado:
+							{clientes.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
+						</label>
+						<label htmlFor='correo' className={stil.formLabel}>
+							Licencia:
+							{licencias.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
+						</label>
+					<Link to={`/Home/Clientes/InfoClient/${clientes.id_cliente}`} variant="outlined" className={stil.btn}>
+						<Button variant="outlined">Ver Perfil</Button>
+					</Link>
+				</form>
+				<form className={stil.form}>
+					<div className={stil.contentImg}>
+						<img src={`${IMAGE}/${autos.fotos}`} className={stil.FotoCarro} />
+					</div>
+					<span className={stil.Separador}>Información del vehículo</span>
 						<label htmlFor='genero' className={stil.formLabel}>
 							Marca:
-							<input type='text' id='genero' value={autos.marca} readOnly className={stil.in}/>
+							<input type='text' id='genero' value={autos.marca} readOnly className={stil.in} />
 						</label>
 						<label htmlFor='estado' className={stil.formLabel}>
 							Modelo:
-							<input type='text' id='estado' value={autos.modelo} readOnly className={stil.in}/>
+							<input type='text' id='estado' value={autos.modelo} readOnly className={stil.in} />
 						</label>
 						<label htmlFor='licencia' className={stil.formLabel}>
 							Placas:
-							<input type='text' id='licencia' value={autos.placas} readOnly className={stil.in}/>
+							<input type='text' id='licencia' value={autos.placas} readOnly className={stil.in} />
 						</label>
 						<label htmlFor='categoria' className={stil.formLabel}>
 							Costo:
@@ -255,81 +252,79 @@ export const InfoReserva = () => {
 							{autos.estado === 'FUERA DE SERVICIO' && <BlockIcon color='error' className='IconsP' />}
 							{autos.estado === 'OCUPADO' && <BusinessIcon color='primary' className='IconsP' />}
 						</label>
-						</div>
-						<Link to={`/Home/Autos/${autos.id_auto}`}>
-							<Button variant="outlined">Ver Perfil</Button>
-						</Link>
-					</form>
-				</article>
-				<form className={stil.contentLabels}>
-					<span className={stil.Separador}>Detalles de la reserva</span>
-					<div className={stil.Labels}>
+					<Link to={`/Home/Autos/${autos.id_auto}`} className={stil.btn}>
+						<Button variant="outlined">Ver Perfil</Button>
+					</Link>
+				</form>
+				<form className={stil.form}>
 
-					<label htmlFor='fecha_caducidad' className={stil.formLabel}>
-						Desde:
-						<input type="date" value={reservas.fecha_entrega} className={stil.in}/>
-					</label>
-					<label htmlFor='licencia_estado' className={stil.formLabel}>
-						Hasta:
-						<input type='date' id='licencia_estado' value={reservas.fecha_devolucion} className={stil.in}/>
-					</label>
-					<label htmlFor='fecha_caducidad' className={stil.formLabel}>Costo Sin Iva:</label>
-					<label htmlFor='licencia_estado' className={stil.formLabel}>
-						Costo Total:
-						<label>{reservas.monto}</label>
-					</label>
-					<label htmlFor='fecha_caducidad' className={stil.formLabel}>
-						Estado:
-						<input type="text" value={reservas.estado} className={stil.in}/>
-					</label>
-					<div className={stil.formLabel}>
-						{reservas.estado === 'PENDIENTE' ? (
-							<FormControl sx={{ m: 1, minWidth: 120 }}>
-								<InputLabel id="demo-simple-select-helper-label">Pago</InputLabel>
-								<Select
-									labelId="demo-simple-select-helper-label"
-									id="demo-simple-select-helper"
-									value={tipoPago}
-									label="Age"
-									onChange={handleChange}
+					<span className={stil.Separador}>Detalles de la reserva</span>
+
+						<label htmlFor='fecha_caducidad' className={stil.formLabel}>
+							Desde:
+							<input type="date" value={reservas.fecha_entrega} className={stil.in} />
+						</label>
+						<label htmlFor='licencia_estado' className={stil.formLabel}>
+							Hasta:
+							<input type='date' id='licencia_estado' value={reservas.fecha_devolucion} className={stil.in} />
+						</label>
+						<label htmlFor='fecha_caducidad' className={stil.formLabel}>Costo Sin Iva:</label>
+						<label htmlFor='licencia_estado' className={stil.formLabel}>
+							Costo Total:
+							<label>{reservas.monto}</label>
+						</label>
+						<label htmlFor='fecha_caducidad' className={stil.formLabel}>
+							Estado:
+							<input type="text" value={reservas.estado} className={stil.in} />
+						</label>
+						<div className={stil.formLabel}>
+							{reservas.estado === 'PENDIENTE' ? (
+								<FormControl sx={{ m: 1, minWidth: 120 }}>
+									<InputLabel id="demo-simple-select-helper-label">Pago</InputLabel>
+									<Select
+										labelId="demo-simple-select-helper-label"
+										id="demo-simple-select-helper"
+										value={tipoPago}
+										label="Age"
+										onChange={handleChange}
 									>
-									<MenuItem value="">
-										<em>None</em>
-									</MenuItem>
-									<MenuItem value="FISICO">Pago Fisico</MenuItem>
-									<MenuItem value="TRASNFERENCIA">Transferencia</MenuItem>
-									<MenuItem value="OTRO">Otro</MenuItem>
-								</Select>
-								<FormHelperText>Seleccione el tipo de Pago</FormHelperText>
-							</FormControl>
-						) : (
-							reservas.estado === 'CANCELADO' ? (
-								<label style={{ color: 'red' }}>No se llevó a cabo la Reserva</label>
+										<MenuItem value="">
+											<em>None</em>
+										</MenuItem>
+										<MenuItem value="FISICO">Pago Fisico</MenuItem>
+										<MenuItem value="TRASNFERENCIA">Transferencia</MenuItem>
+										<MenuItem value="OTRO">Otro</MenuItem>
+									</Select>
+									<FormHelperText>Seleccione el tipo de Pago</FormHelperText>
+								</FormControl>
+							) : (
+								reservas.estado === 'CANCELADO' ? (
+									<label style={{ color: 'red' }}>No se llevó a cabo la Reserva</label>
 								) : (
 									<label style={{ color: 'green' }}>Pago Confirmado</label>
-									)
-									)}
-					</div>
-					<label htmlFor='fecha_caducidad' className={stil.formLabel}>Añade un comentario:</label>
-					<TextareaAutosize
-						minRows={1} style={{ background: 'white', color: 'black', width: '300px' }}
-						value={comentario}
-						onChange={(e) => setComentario(e.target.value)} />
+								)
+							)}
 						</div>
-				{reservas.estado === 'PENDIENTE' ? (
-					<>
-						<Stack spacing={10} direction="row">
-							<Button variant="text" onClick={() => cancelarPago('CANCELADO')}>CANCELAR RESERVA</Button>
-							<Button variant="contained" onClick={() => editarEstado('CONCRETADO')}>CONCRETAR RESERVA</Button>
-							<Button variant="outlined" onClick={() => editarEstado('PENDIENTE')}>MANTENER EN PENDIENTE</Button>
-						</Stack>
+						<label htmlFor='fecha_caducidad' className={stil.formLabel}>Añade un comentario:</label>
+						<TextareaAutosize
+							minRows={1} style={{ background: 'white', color: 'black', width: '300px' }}
+							value={comentario}
+							onChange={(e) => setComentario(e.target.value)} />
+					{reservas.estado === 'PENDIENTE' ? (
+						<>
+							<Stack spacing={10} direction="row">
+								<Button variant="text" onClick={() => cancelarPago('CANCELADO')}>CANCELAR RESERVA</Button>
+								<Button variant="contained" onClick={() => editarEstado('CONCRETADO')}>CONCRETAR RESERVA</Button>
+								<Button variant="outlined" onClick={() => editarEstado('PENDIENTE')}>MANTENER EN PENDIENTE</Button>
+							</Stack>
 
-					</>
-				) : (
-					<Button variant="outlined" onClick={() => navigateTo('/Reservas')} style={{ backgroundColor: 'yellow', color: 'black' }}>VOLVER</Button>
+						</>
+					) : (
+						<Link className={stil.btn} to={'/Home/Reservas'}>
+							<Button variant="outlined" style={{ backgroundColor: 'yellow', color: 'black' }}>VOLVER</Button>
+						</Link>
 					)}
-				</form>
-			</section>
+			</form>
 		</section>
 	)
 }
