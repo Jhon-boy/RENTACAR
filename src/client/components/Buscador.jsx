@@ -10,9 +10,9 @@ export default function Buscador() {
                     <h1>¿Buscas rentar un vehículo?</h1>
                     <div className="search-box">
                         <span className="text">Fecha alquiler: </span>
-                        <input type="date" placeholder="Fecha de inicio" style={{textAlign:'center',color:'black'}} />
+                        <input type="date" placeholder="Fecha de inicio" style={{textAlign:'center'}} />
                         <span className="text">Fecha devolución: </span>
-                        <input type="date" placeholder="Fecha de fin" style={{textAlign:'center',color:'black'}} />
+                        <input type="date" placeholder="Fecha de fin" style={{textAlign:'center'}} />
                         <span className="text">Tipo de vehículo</span>
                         <select className='box-tip'>
                             <option value="">Tipo de vehículo</option>

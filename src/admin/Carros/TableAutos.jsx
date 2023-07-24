@@ -11,7 +11,7 @@ import { URL } from '../data/URL';
 import { eliminarAuto } from '../database/controller';
 import { ModalChangeState } from './ModalChangeState';
 import customStyles from '../config/ConfigTable'
-import stil from './Autos.module.css'
+import stil from './TableAutos.module.css'
 
 export const TableAutos = () => {
 	const [cars, setCars] = useState([]);

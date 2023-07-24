@@ -71,13 +71,12 @@
 .btn-primary{
     background-color: rgb(7, 177, 210);
     margin-bottom: 12px;
-}   
-.btn-primary:hover{
-    background-color: rgba(7, 133, 164, 0.753);
-    height: 50px;
-    width: 140px;
-    transition: 0.10 ms ease-in-out;
-}
+} 
+
+.btn-primar{
+    background-color: red;
+    margin-bottom: 12px;
+}  
 
 .recuperar{
     margin-top: 10px;
@@ -93,7 +92,6 @@
 }
 .form-control:hover{
     border: 3px solid black;
-
 }
  
 .form-label{

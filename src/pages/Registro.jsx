@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import '../client/styles/Registro.css';
 import {
@@ -17,6 +16,8 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import StepContent from '@mui/material/StepContent';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 
 const Registro = () => {
     // step
@@ -115,7 +116,7 @@ const Registro = () => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Algo salio mal. Vuelva a intentarlo' + error.message
+                text: 'Algo salio mal. Vuelva a intentarlo'
             })
         }
     }
@@ -163,248 +164,253 @@ const Registro = () => {
 
     return (
         <div className='formData'>
-            <Box sx={{ maxWidth: 1000 }} >
-                <h1>¡Bienvenido!</h1>
-                <p className='info'>Para comenzar, ingrese sus datos: </p>
-                <form className='Formulario' encType='multipart/form-data' onSubmit={handleSubmit}>
-                    <Stepper activeStep={activeStep} orientation="vertical">
-                        <Step>
-                            <StepLabel>Registremos tus credenciales </StepLabel>
-                            <StepContent>
-                                <div className='entrada'>
-                                    <div className='input-label'>
-                                        <label className='form-label'>Correo</label>
-                                        <input type="email" value={correo}
-                                            onChange={(e) => {
-                                                const correoAux = e.target.value;
-                                                setCorreo(e.target.value);
-                                                setcorreoValido(verificarCorreo(correoAux))
-                                            }}
-                                        />
-                                    </div>
-                                    <div className="error">
-                                        {!correoValido && (
-                                            <div>
-                                                <h6 className="ErroresInput3">*Formato invalido</h6>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                                <div className='entrada'>
-                                    <div className='input-label'>
-                                        <label className='form-label'>Contraseña: </label>
-                                        <input type="password" name="password"
-                                            value={contrasena}
-                                            onChange={(e) => {
-                                                const contraAux = e.target.value;
-                                                setContrasena(e.target.value)
-                                                setcontrasenaValida(verificarContrasena(contraAux))
-                                            }} />
-                                    </div>
-                                    <div className="error">
-                                        {!contrasenaValida && (
-                                            <div>
-                                                <h6 className="ErroresInput3">*Formato invalido [Password_2231]</h6>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            </StepContent>
-                        </Step>
-                        <Step>
-                        <StepLabel>Registremos tus datos Personales </StepLabel>
-                            <StepContent>
-                                <div className="container-personal">
-
-                                    <p className='info'>Datos personales: </p>
+            <div className="container-formData">
+                <Box sx={{ maxWidth: 1000 }} >
+                    <button className="regresar-btn1" onClick={() => window.history.back()}>
+                    <ArrowBackIcon /> Regresar
+                    </button>
+                    <h1>¡Bienvenido!</h1>
+                    <p className='info'>Para comenzar, ingrese sus datos: </p>
+                    <form className='Formulario' encType='multipart/form-data' onSubmit={handleSubmit}>
+                        <Stepper activeStep={activeStep} orientation="vertical">
+                            <Step>
+                                <StepLabel>Registremos tus credenciales </StepLabel>
+                                <StepContent>
                                     <div className='entrada'>
                                         <div className='input-label'>
-                                            <label className='form-label'>Nombres:</label>
-                                            <input type="text" value={nombre} onChange={(e) => {
-                                                const nombreAux = e.target.value;
-                                                setNombre(e.target.value)
-                                                setNombreValido(verificarNombre(nombreAux))
-                                            }
-                                            } />
+                                            <label className='form-label'>Correo</label>
+                                            <input type="email" value={correo}
+                                                onChange={(e) => {
+                                                    const correoAux = e.target.value;
+                                                    setCorreo(e.target.value);
+                                                    setcorreoValido(verificarCorreo(correoAux))
+                                                }}
+                                            />
                                         </div>
                                         <div className="error">
-                                            {!nombreValido && (
+                                            {!correoValido && (
                                                 <div>
-                                                    <h6 className="ErroresInput3">*El nombre debe tener al menos 3 letras sin simbolos</h6>
+                                                    <h6 className="ErroresInput3">*Formato invalido</h6>
                                                 </div>
                                             )}
                                         </div>
                                     </div>
                                     <div className='entrada'>
                                         <div className='input-label'>
-                                            <label className='form-label'>Apellidos: </label>
-                                            <input type="text" value={apellido}
+                                            <label className='form-label'>Contraseña: </label>
+                                            <input type="password" name="password"
+                                                value={contrasena}
                                                 onChange={(e) => {
-                                                    const apellidoAux = e.target.value;
-                                                    setApellido(e.target.value)
-                                                    setApellidoValido(verificarNombre(apellidoAux))
+                                                    const contraAux = e.target.value;
+                                                    setContrasena(e.target.value)
+                                                    setcontrasenaValida(verificarContrasena(contraAux))
                                                 }} />
                                         </div>
                                         <div className="error">
-                                            {!apellidoValido && (
+                                            {!contrasenaValida && (
                                                 <div>
-                                                    <h6 className="ErroresInput3">*El apellido deben tener al menos 3 letras sin simbolos</h6>
+                                                    <h6 className="ErroresInput3">*Formato invalido [Password_2231]</h6>
                                                 </div>
                                             )}
                                         </div>
                                     </div>
-                                    <div className='entrada'>
-                                        <div className='input-label'>
-                                            <label className='form-label'>Cédula: </label>
-                                            <input type="text" value={cedula}
-                                                onChange={(e) => {
-                                                    const cedulaAux = e.target.value;
-                                                    setCedula(e.target.value)
-                                                    setCedulaValido(verificarCedula(cedulaAux));
-                                                }} />
-                                        </div>
-                                        <div className="error">
-                                            {!cedulaValido && (
-                                                <div>
-                                                    <h6 className="ErroresInput3">*Cedula incorrecta. Debe contener 10 diguitos</h6>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
+                                </StepContent>
+                            </Step>
+                            <Step>
+                                <StepLabel>Registremos tus datos Personales </StepLabel>
+                                <StepContent>
+                                    <div className="container-personal">
 
-                                    <div className='entrada'>
-                                        <div className='input-label'>
-                                            <label className="form-label">Género: </label>
-                                            <select className="genero" id="genero"
-                                                value={genero}
-                                                onChange={(e) => setGenero(e.target.value)}
-                                            >
-
-                                                <option value="MASCULINO">Masculino</option>
-                                                <option value="FEMENINO">Femenino</option>
-                                                <option value="OTRO">Otro</option>
-                                            </select>
-                                        </div>
-                                        <div className="error">
-                                            {error === 'Género inválido' && <div className="alert alert-danger p-1">{error}</div>}
-                                        </div>
-                                    </div>
-                                    <div className='entrada'>
-                                        <div className='input-label'>
-                                            <label htmlFor="foto">Foto de cédula: </label>
-                                            <div>
-                                                <input
-                                                    type="file"
-                                                    name="foto"
-                                                    accept="image/*"
-                                                    onChange={(e) => {
-                                                        setFotolicencia(e.target.files[0]);
-                                                        mostrarFoto(e);
-                                                    }}
-                                                />
-                                                <CardMedia
-                                                    component="img"
-                                                    height="140"
-                                                    id="imagenFotocedula"
-                                                    alt=""
-                                                />
-
+                                        <p className='info'>Datos personales: </p>
+                                        <div className='entrada'>
+                                            <div className='input-label'>
+                                                <label className='form-label'>Nombres:</label>
+                                                <input type="text" value={nombre} onChange={(e) => {
+                                                    const nombreAux = e.target.value;
+                                                    setNombre(e.target.value)
+                                                    setNombreValido(verificarNombre(nombreAux))
+                                                }
+                                                } />
+                                            </div>
+                                            <div className="error">
+                                                {!nombreValido && (
+                                                    <div>
+                                                        <h6 className="ErroresInput3">*El nombre debe tener al menos 3 letras sin simbolos</h6>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
-                                        <div className="error">
-                                            {error === 'Extensión de foto inválida' && <div className="alert alert-danger p-1">{error}</div>}
-                                        </div>
-                                    </div>
-                                </div>
-                            </StepContent>
-
-                        </Step>
-                        <Step>
-                            <StepLabel>Datos de licencia</StepLabel>
-                            <StepContent>
-                                <div className="licencia">
-                                    <p className='info'>Datos de licencia: </p>
-                                    <div className='entrada'>
-                                        <div className='input-label'>
-                                            <label htmlFor="fechaCaducidad">Fecha de Caducidad:</label>
-                                            <input type="date" name="fechaCaducidad" value={fechaCaducidad} onChange={(e) => setFechaCaducidad(e.target.value)} />
-                                        </div>
-                                        <div className="error">
-                                            {error === 'Fechas de licencia inválidas' && <div className="alert alert-danger p-1">{error}</div>}
-                                        </div>
-                                    </div>
-                                    <div className='entrada'>
-                                        <div className='input-label'>
-                                            <label htmlFor="tipoLicencia">Tipo de licencia: </label>
-                                            <select id="tipoLicencia" name="tipoLicencia"
-                                                value={categoria}
-                                                onChange={(e) => setCategoria(e.target.value)}
-                                            >
-                                                <option value="B">Tipo B</option>
-                                                <option value="C">Tipo C</option>
-                                                <option value="C1">Tipo C1</option>
-                                                <option value="D">Tipo D</option>
-                                                <option value="D1">Tipo D1</option>
-                                                <option value="E">Tipo E</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className='entrada'>
-                                        <div className='input-label'>
-                                            <label htmlFor="foto">Foto licencia: </label>
-                                            <div>
-                                                <input type="file"
-                                                    name="foto"
-                                                    accept="image/*"
+                                        <div className='entrada'>
+                                            <div className='input-label'>
+                                                <label className='form-label'>Apellidos: </label>
+                                                <input type="text" value={apellido}
                                                     onChange={(e) => {
-                                                        setFoto(e.target.files[0]);
-                                                        mostrarFotoLicencia(e);
+                                                        const apellidoAux = e.target.value;
+                                                        setApellido(e.target.value)
+                                                        setApellidoValido(verificarNombre(apellidoAux))
                                                     }} />
-                                                <CardMedia
-                                                    component="img"
-                                                    height="140"
-                                                    id="imagenFotolicencia"
-                                                    alt=""
-                                                />
                                             </div>
-
+                                            <div className="error">
+                                                {!apellidoValido && (
+                                                    <div>
+                                                        <h6 className="ErroresInput3">*El apellido deben tener al menos 3 letras sin simbolos</h6>
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
-                                        <div className="error">
-                                            {error === 'Extensión de foto inválida' && <div className="alert alert-danger p-1">{error}</div>}
+                                        <div className='entrada'>
+                                            <div className='input-label'>
+                                                <label className='form-label'>Cédula: </label>
+                                                <input type="text" value={cedula}
+                                                    onChange={(e) => {
+                                                        const cedulaAux = e.target.value;
+                                                        setCedula(e.target.value)
+                                                        setCedulaValido(verificarCedula(cedulaAux));
+                                                    }} />
+                                            </div>
+                                            <div className="error">
+                                                {!cedulaValido && (
+                                                    <div>
+                                                        <h6 className="ErroresInput3">*Cedula incorrecta. Debe contener 10 diguitos</h6>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <div className='entrada'>
+                                            <div className='input-label'>
+                                                <label className="form-label">Género: </label>
+                                                <select className="genero" id="genero"
+                                                    value={genero}
+                                                    onChange={(e) => setGenero(e.target.value)}
+                                                >
+
+                                                    <option value="MASCULINO">Masculino</option>
+                                                    <option value="FEMENINO">Femenino</option>
+                                                    <option value="OTRO">Otro</option>
+                                                </select>
+                                            </div>
+                                            <div className="error">
+                                                {error === 'Género inválido' && <div className="alert alert-danger p-1">{error}</div>}
+                                            </div>
+                                        </div>
+                                        <div className='entrada'>
+                                            <div className='input-label'>
+                                                <label htmlFor="foto">Foto de cédula: </label>
+                                                <div>
+                                                    <input
+                                                        type="file"
+                                                        name="foto"
+                                                        accept="image/*"
+                                                        onChange={(e) => {
+                                                            setFotolicencia(e.target.files[0]);
+                                                            mostrarFoto(e);
+                                                        }}
+                                                    />
+                                                    <CardMedia
+                                                        component="img"
+                                                        height="140"
+                                                        id="imagenFotocedula"
+                                                        alt=""
+                                                    />
+
+                                                </div>
+                                            </div>
+                                            <div className="error">
+                                                {error === 'Extensión de foto inválida' && <div className="alert alert-danger p-1">{error}</div>}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </StepContent>
+                                </StepContent>
 
-                        </Step>
-                    </Stepper>
+                            </Step>
+                            <Step>
+                                <StepLabel>Datos de licencia</StepLabel>
+                                <StepContent>
+                                    <div className="licencia">
+                                        <p className='info'>Datos de licencia: </p>
+                                        <div className='entrada'>
+                                            <div className='input-label'>
+                                                <label htmlFor="fechaCaducidad">Fecha de Caducidad:</label>
+                                                <input type="date" name="fechaCaducidad" value={fechaCaducidad} onChange={(e) => setFechaCaducidad(e.target.value)} />
+                                            </div>
+                                            <div className="error">
+                                                {error === 'Fechas de licencia inválidas' && <div className="alert alert-danger p-1">{error}</div>}
+                                            </div>
+                                        </div>
+                                        <div className='entrada'>
+                                            <div className='input-label'>
+                                                <label htmlFor="tipoLicencia">Tipo de licencia: </label>
+                                                <select id="tipoLicencia" name="tipoLicencia"
+                                                    value={categoria}
+                                                    onChange={(e) => setCategoria(e.target.value)}
+                                                >
+                                                    <option value="B">Tipo B</option>
+                                                    <option value="C">Tipo C</option>
+                                                    <option value="C1">Tipo C1</option>
+                                                    <option value="D">Tipo D</option>
+                                                    <option value="D1">Tipo D1</option>
+                                                    <option value="E">Tipo E</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className='entrada'>
+                                            <div className='input-label'>
+                                                <label htmlFor="foto">Foto licencia: </label>
+                                                <div>
+                                                    <input type="file"
+                                                        name="foto"
+                                                        accept="image/*"
+                                                        onChange={(e) => {
+                                                            setFoto(e.target.files[0]);
+                                                            mostrarFotoLicencia(e);
+                                                        }} />
+                                                    <CardMedia
+                                                        component="img"
+                                                        height="140"
+                                                        id="imagenFotolicencia"
+                                                        alt=""
+                                                    />
+                                                </div>
+
+                                            </div>
+                                            <div className="error">
+                                                {error === 'Extensión de foto inválida' && <div className="alert alert-danger p-1">{error}</div>}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </StepContent>
+
+                            </Step>
+                        </Stepper>
 
 
-                    <div className="botones">
-                        <Button disabled={activeStep === 0} onClick={handleBack}>
-                            Atrás
-                        </Button>
-                        {activeStep === 0 ? (
-                            <Button onClick={handleNext} className="btn1 btn-warning mt-1 w-100"
-                            disabled={!correoValido || !contrasenaValida}
-                            >
-                                Siguiente
+                        <div className="botones">
+                            <Button disabled={activeStep === 0} onClick={handleBack}>
+                                Atrás
                             </Button>
-                        ) : activeStep === 1 ? (
-                            <Button onClick={handleNext}
-                              disabled={ !cedulaValido || !nombreValido ||  !apellidoValido }
-                             className="btn1 btn-warning mt-1 w-100">
-                                Siguiente
-                            </Button>
-                        ) : (
-                            <button className='btn1 btn-warning mt-1 w-100' onClick={Confirmar}
-                                disabled={!correoValido || !contrasenaValida || !cedulaValido || !nombreValido ||  !apellidoValido }
-                            >Crear cuenta</button>
-                        )}
-                        <button className='btn2 btn-warning mt-1 w-100' onClick={() => window.history.back()}>Cancelar </button>
-                    </div>
-                </form>
-            </Box>
+                            {activeStep === 0 ? (
+                                <Button onClick={handleNext} className="btn1 btn-warning mt-1 w-100"
+                                    disabled={!correoValido || !contrasenaValida}
+                                >
+                                    Siguiente
+                                </Button>
+                            ) : activeStep === 1 ? (
+                                <Button onClick={handleNext}
+                                    disabled={!cedulaValido || !nombreValido || !apellidoValido}
+                                    className="btn1 btn-warning mt-1 w-100">
+                                    Siguiente
+                                </Button>
+                            ) : (
+                                <button className='btn1 btn-warning mt-1 w-100' onClick={Confirmar}
+                                    disabled={!correoValido || !contrasenaValida || !cedulaValido || !nombreValido || !apellidoValido}
+                                >Crear cuenta</button>
+                            )}
+                            <button className='btn2 btn-warning mt-1 w-100' onClick={() => window.history.back()}>Cancelar </button>
+                        </div>
+                    </form>
+                </Box>
+            </div>
         </div>
 
     );
