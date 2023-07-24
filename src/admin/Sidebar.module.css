@@ -72,6 +72,18 @@
   color: white;
   border-bottom: 2px solid black;
 }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo semitransparente */
+  z-index: 9999; /* Asegura que el overlay esté por encima de todo el contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /*
 .sidebar {
   top: 20px;

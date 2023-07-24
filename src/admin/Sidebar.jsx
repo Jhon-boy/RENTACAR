@@ -14,7 +14,7 @@ import { Typography, Button } from '@mui/material/';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-const imgUser = 'https://www.pngmart.com/files/21/Admin-Profile-PNG-Image.png'
+const imgUser = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwsmzoPsDikVf7cXv6e9W0Uo5hqcj0UK2O5SgMRwsIF3JI_6RfPxD5P3q3QCRBnM09t4I&usqp=CAU'
 
 export default function Sidebar({ correo }) {
   const [expanded, setExpaned] = useState(true)
@@ -81,6 +81,7 @@ export default function Sidebar({ correo }) {
           <center>
             <Loader />
           </center>
+
         ) : (
           <section className={stil.menu}>
             <article className={stil.contentImgUser}>
@@ -122,7 +123,7 @@ export default function Sidebar({ correo }) {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-                MenuListProps={{'aria-labelledby': 'basic-button',}}>
+                MenuListProps={{ 'aria-labelledby': 'basic-button', }}>
                 <Link to='/Perfil'>
                   <MenuItem onClick={handleClose}>Perfil</MenuItem>
                 </Link>

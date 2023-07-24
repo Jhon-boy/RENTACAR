@@ -19,6 +19,7 @@ import { ContactForm } from './client/components/ContactForm';
 
 import { EditPerfil } from './client/components/EditPerfil';
 import { RecuperacionContrasena } from './pages/RecuperacionContrasena ';
+import { ContactosG } from './pages/ContactosG';
 
 function App() {
   // Obtener el usuario del almacenamiento local
@@ -85,6 +86,7 @@ function App() {
         <Route path='/registro' element={<Registro />} />
         <Route path='/recuperarContraseña' element={<RecuperacionContrasena />} />
         <Route path='*' element={<Error />} />
+        <Route path='/contacts' element={<ContactosG />} />
       </Routes>
     </>
   );

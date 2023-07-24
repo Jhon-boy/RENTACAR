@@ -51,8 +51,8 @@ export default function Product(props) {
         const pricePerDay = parseFloat(data.precio);
         const totalPrice = diffDays * pricePerDay;
         const precioIva = totalPrice + totalPrice * config.iva;
-        setTotalPrice(totalPrice);
-        setIvaPrice(precioIva);
+        setTotalPrice(totalPrice.toFixed(2));
+        setIvaPrice(precioIva.toFixed(2));
       }
     };
 
@@ -130,12 +130,13 @@ export default function Product(props) {
 
   const ShowProduct = () => {
     return (
-      <div className="container-general">
+      <div className="container-general" style={{marginTop: '20px'}}> 
         <div className="container-main">
           <div className="container-img">
             <img src={`${IMAGE}/${data.fotos}`} alt={data.title} />
           </div>
           <div className='Global'>
+          <h4>Cotiza tu Auto</h4>
             <div className="container-info-autos">
               <div className="titles">
                 <h4 className="text-uppercase">

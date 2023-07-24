@@ -29,7 +29,7 @@ const Registro = () => {
     const [correo, setCorreo] = useState('');
     const [contrasena, setContrasena] = useState('');
     const [foto, setFoto] = useState('');
-    const [estadoCliente, setEstadoCliente] = useState('');
+    const [estadoCliente, setEstadoCliente] = useState('PENDIENTE');
     const [fotolicencia, setFotolicencia] = useState('');
     const [fechaCaducidad, setFechaCaducidad] = useState('');
     const [error, setError] = useState('');
