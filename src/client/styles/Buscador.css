@@ -32,7 +32,7 @@
 .search-box input,
 .search-box select {
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 10px;
 }
 
@@ -46,10 +46,6 @@
 }
 .box-tip{
     padding: 5px;
-    background-color: rgba(0, 0, 0, 0);
     color: black;
     border: 1px solid black;
 }
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(100%);
-  }

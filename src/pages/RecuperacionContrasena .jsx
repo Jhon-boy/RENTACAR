@@ -13,6 +13,7 @@ import { CircularProgress, Snackbar } from '@mui/material/';
 import { useNavigate } from 'react-router-dom'
 import Alert from '@mui/material/Alert';
 import Swal from 'sweetalert2';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export const RecuperacionContrasena = () => {
     const [activeStep, setActiveStep] = useState(0);
@@ -122,65 +123,70 @@ export const RecuperacionContrasena = () => {
 
     return (
         <div className="formData">
-            <Box sx={{ maxWidth: 400 }} >
-                <div className="formulario-recuperacion">
-                    <h2>Recuperación de Contraseña</h2>
-                    <form onSubmit={revision} className='Formulario' encType='multipart/form-data'>
+            <div className="container-formData">
+                <Box sx={{ maxWidth: 400 }} >
+                <button className="regresar-btn1" onClick={() => window.history.back()}>
+                    <ArrowBackIcon /> Regresar
+                    </button>
+                    <div className="formulario-recuperacion">
+                        <h2>Recuperación de Contraseña</h2>
+                        <form onSubmit={revision} className='Formulario' encType='multipart/form-data'>
 
-                        <Stepper activeStep={activeStep} orientation="vertical">
-                            <Step>
-                                <StepLabel>Ingrese su correo</StepLabel>
-                                <StepContent>
-                                    <div className="step-content">
-                                        <TextField
-                                            label="Correo electrónico"
-                                            value={correo}
-                                            onChange={(e) => setCorreo(e.target.value)}
-                                            error={!correoValido}
-                                            helperText={!correoValido && 'Correo inválido'}
-                                        />
-                                    </div>
-                                    <div className="step-actions">
-                                        <Button disabled={activeStep === 0} onClick={handleBack}>
-                                            Atrás
-                                        </Button>
-                                        <Button onClick={handleNext} className="btn-siguiente" variant="outline" color="primary">
-                                            Siguiente
-                                        </Button>
-                                    </div>
-                                </StepContent>
-                            </Step>
-                            <Step>
-                                <StepLabel>Ingrese su cédula de registro</StepLabel>
-                                <StepContent>
-                                    <div className="step-content">
-                                        <TextField
-                                            label="Cédula"
-                                            value={cedula}
-                                            onChange={(e) => setCedula(e.target.value)}
-                                            error={!cedulaValida}
-                                            helperText={!cedulaValida && 'Cédula inválida'}
-                                        />
-                                    </div>
-                                    <div className="step-actions">
-                                        <Button disabled={activeStep === 0} onClick={handleBack}>
-                                            Atrás
-                                        </Button>
-                                        <Button sx={{ marginTop: '10px' }} onClick={handleNext} className="btn-solicitar-contrasena" variant="contained" color="primary">
-                                            Restablecer
-                                        </Button>
-                                    </div>
-                                </StepContent>
-                            </Step>
-                        </Stepper>
-                    </form>
-                    <Snackbar open={snackbarOpen} autoHideDuration={8000} onClose={() => setSnackbarOpen(false)}>
-                        <Alert severity={snackbarSeverity}>{snackbarMessage}</Alert>
-                    </Snackbar>
-                    {isLoading && <CircularProgress />}
-                </div>
+                            <Stepper activeStep={activeStep} orientation="vertical">
+                                <Step>
+                                    <StepLabel>Ingrese su correo</StepLabel>
+                                    <StepContent>
+                                        <div className="step-content">
+                                            <TextField
+                                                label="Correo electrónico"
+                                                value={correo}
+                                                onChange={(e) => setCorreo(e.target.value)}
+                                                error={!correoValido}
+                                                helperText={!correoValido && 'Correo inválido'}
+                                            />
+                                        </div>
+                                        <div className="step-actions">
+                                            <Button disabled={activeStep === 0} onClick={handleBack}>
+                                                Atrás
+                                            </Button>
+                                            <Button onClick={handleNext} className="btn-siguiente" variant="outline" color="primary">
+                                                Siguiente
+                                            </Button>
+                                        </div>
+                                    </StepContent>
+                                </Step>
+                                <Step>
+                                    <StepLabel>Ingrese su cédula de registro</StepLabel>
+                                    <StepContent>
+                                        <div className="step-content">
+                                            <TextField
+                                                label="Cédula"
+                                                value={cedula}
+                                                onChange={(e) => setCedula(e.target.value)}
+                                                error={!cedulaValida}
+                                                helperText={!cedulaValida && 'Cédula inválida'}
+                                            />
+                                        </div>
+                                        <div className="step-actions">
+                                            <Button disabled={activeStep === 0} onClick={handleBack}>
+                                                Atrás
+                                            </Button>
+                                            <Button sx={{ marginTop: '10px' }} onClick={handleNext} className="btn-solicitar-contrasena" variant="contained" color="primary">
+                                                Restablecer
+                                            </Button>
+                                        </div>
+                                    </StepContent>
+                                </Step>
+                            </Stepper>
+                        </form>
+                        <Snackbar open={snackbarOpen} autoHideDuration={8000} onClose={() => setSnackbarOpen(false)}>
+                            <Alert severity={snackbarSeverity}>{snackbarMessage}</Alert>
+                        </Snackbar>
+                        {isLoading && <CircularProgress />}
+                    </div>
 
-            </Box>
+                </Box>
+            </div>
         </div >
     );
 };

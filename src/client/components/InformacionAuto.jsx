@@ -139,37 +139,37 @@ export default function Product(props) {
           <div>
             <div className="container-info-autos">
               <div className="titles">
-                <h4 className="text-uppercase text-black-50" style={{color: '#f07e13'}}>
+                <h4 className="text-uppercase">
                   Marca Auto:
                 </h4>
-                <h4 className="text-uppercase text-black-50" style={{color: '#f07e13'}}>
+                <h4 className="text-uppercase">
                   Modelo:
                 </h4>
-                <h4 className="lead" style={{color: '#f07e13'}}>
+                <h4 className="lead">
                   Detalles vehiculo:
                 </h4>
-                <h4 className="lead" style={{color: '#f07e13'}}>
+                <h4 className="lead">
                   Estado:
                 </h4>
-                <h4 className="lead" style={{color: '#f07e13'}}>
+                <h4 className="lead">
                   Tipo auto:
                 </h4>
-                <h4 className="display-6 fw-bold my-4" style={{color: '#f07e13', marginTop: '10px'}}>
+                <h4 className="display-6 fw-bold my-4">
                   Precio diario:
                 </h4>
-                <h4 className="display-6 fw-bold" style={{color: '#f07e13'}}>
+                <h4 className="display-6 fw-bold">
                   Total:
                 </h4>
-                <h4 className="display-6 fw-bold" style={{color: '#f07e13'}}>
+                <h4 className="display-6 fw-bold" >
                   Total incluido IVA:
                   {' '}
                 </h4>
               </div>
               <div className="info">
-                <h4 className="text-uppercase text-black-50">
+                <h4 className="text-uppercase ">
                   {data.marca}
                 </h4>
-                <h4 className="text-uppercase text-black-50">
+                <h4 className="text-uppercase ">
                   {data.modelo}
                 </h4>
                 <h4 className="lead">
