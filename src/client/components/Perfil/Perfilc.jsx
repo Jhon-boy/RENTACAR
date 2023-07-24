@@ -106,7 +106,7 @@ export const Perfilc = (props) => {
                                 setcorreoValido(validarCorreo(correoAux))
                             }}
                             disabled={!editable}
-                            style={{ height: '20px' }}
+                            style={{ height: '20px', width: '230px' }}
                         />
                     </div>
                     {!correoValido && (
@@ -206,18 +206,18 @@ export const Perfilc = (props) => {
                     {editable ? (
                         <>
                             <Button variant="contained" className='btns'
-                                style={{ marginTop: '50px' }}
+                                style={{ marginTop: '25px', marginLeft: '3%' }}
                                 onClick={handleGuardarClick}
                                 disabled={!correoValido || !nuevaContrasenaValida || !confirmarContrasenaValida}>
                                 Guardar
                             </Button>
-                            <Button variant="outlined" className='btns' style={{ marginTop: '50px' }} color="error" onClick={() => setEditable(false)}>
+                            <Button variant="outlined" className='btns' style={{ marginTop: '25px', marginLeft: '2%' }} color="error" onClick={() => setEditable(false)}>
                                 Cancelar
                             </Button>
                         </>
 
                     ) : (
-                        <Button variant="contained" style={{ marginLeft: '7%', marginTop: '50px' }} onClick={handleEditarClick}>
+                        <Button variant="contained" style={{ marginLeft: '3%', marginTop: '25px' }} onClick={handleEditarClick}>
                             Editar
                         </Button>
                     )}

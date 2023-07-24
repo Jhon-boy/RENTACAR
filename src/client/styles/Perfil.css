@@ -1,7 +1,23 @@
+:root {
+  --primary-color: #373a3b;
+  --success-color: green;
+  --error-color: red;
+  --form-width: 1000px;
+  --form-border: 2px solid var(--primary-color);
+  --form-padding: 30px;
+  --form-border-radius: 10px;
+  --info-text-color: #000;
+  --info-text-padding-bottom: 15px;
+  --info-text-font-style: italic;
+  --select-padding: 5px 43px;
+  --select-border-radius: 5px;
+  --btn-margin-left: 20px;
+  --box-shadow: 1px 3px 7px 2px rgb(100, 98, 98);
+}
 .Perfil-Container {
   margin-top: 120px;
   color: black;
-  width: 90vw;
+  width: 100vw;
   margin-left: 50px;
   flex-wrap: wrap;
   align-items: center;
@@ -9,13 +25,17 @@
 }
 .home-container2{
   margin: 15px;
+  max-width: 70vw;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  background-color: white;
+  border-radius: var(--form-border-radius);
 }
 
 .EditInfo {
   width: auto;
   max-height: 350px;
   justify-content: center;
-  margin-left: 50px;
   margin-top: 15px;
 }
 
@@ -53,6 +73,7 @@
 .inputs {
   display: flex;
   margin-bottom: 30px;
+  padding-top: 15px;
 }
 
 .ErroresInput2 {
@@ -99,4 +120,9 @@
   margin-top: -13px;
   font-size: 7px;
   color: red;
+}
+
+.title-perfil{
+  font-size: 30px;
+  margin-left: 3%;
 }

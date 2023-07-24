@@ -99,14 +99,14 @@ export const InfoC = (props) => {
                                     height="144"
                                     src={fotoPreview ? fotoPreview : `${IMAGE}/${foto}`}
                                     alt={`${nombre} ${apellido}`}
-                                    sx={{ width: 300, height: 190, marginLeft: 1 }}
+                                    sx={{ width: 300, height: 190 }}
                                 />
                                 {editableC && (
                                     <FormControl fullWidth>
                                         <input
                                             required
                                             type="file" accept="image/*"
-                                            name="foto"
+                                            classNamename="foto"
                                             onChange={(e) => {
                                                 const archivo = e.target.files[0];
                                                 setFoto(e.target.files[0]);
@@ -125,7 +125,7 @@ export const InfoC = (props) => {
                                     </FormControl>
                                 )}
                             </Grid>
-                            <div style={{ marginLeft: '20px', display: 'flex ', marginTop: '15px' }}>
+                            <div style={{ marginLeft: '9%', display: 'flex ', marginTop: '15px' }}>
                                 Estado:     <Estado estado={clienteData.estado} />
                             </div>
                         </div>
@@ -209,18 +209,21 @@ export const InfoC = (props) => {
                         {editableC ? (
                             <>
                                 <Button variant="contained"
+                                    style={{ marginTop: '25px', marginLeft: '3%' }}
                                     onClick={handleGuardarCambiosClick}
                                     disabled={!nombreValido || !apellidoValido || !cedulaValido}
                                 >
                                     Guardar
                                 </Button>
-                                <Button variant="outlined" className='btns' color="error" onClick={() => setEditableC(false)}>
+                                <Button
+                                    style={{ marginTop: '25px', marginLeft: '2%' }}
+                                    variant="outlined" className='btns' color="error" onClick={() => setEditableC(false)}>
                                     Cancelar
                                 </Button>
                             </>
 
                         ) : (
-                            <Button style={{ marginLeft: '10px', marginTop: '10px' }} variant="contained" onClick={handleEditarClienteClick}>
+                            <Button style={{ marginLeft: '3%', marginTop: '10px' }} variant="contained" onClick={handleEditarClienteClick}>
                                 Editar
                             </Button>
                         )}

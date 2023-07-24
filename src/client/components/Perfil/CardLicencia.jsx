@@ -28,8 +28,8 @@ export const CardLicencia = (props) => {
     const [foto, setFoto] = useState(licenciaData.fotolicencia);
 
     //validaciones 
-    const [fechaValida, setFechaCaducidadValida ]= useState(true);
-    const [ licenciaValida, setLicenciaValida ] = useState(true);
+    const [fechaValida, setFechaCaducidadValida] = useState(true);
+    const [licenciaValida, setLicenciaValida] = useState(true);
     // eslint-disable-next-line no-unused-vars
     const [imageFile, setImageFile] = useState(null);
 
@@ -42,7 +42,7 @@ export const CardLicencia = (props) => {
 
     const handleGuardarCambiosClick = async () => {
         setEditableC(false);
-      
+
         const formData = new FormData();
         formData.append('id', licencia);
         formData.append('fecha_caducidad', fecha_Caducidad);
@@ -102,27 +102,27 @@ export const CardLicencia = (props) => {
                             alt={`${licenciaData.id_licencia} ${licenciaData.categoria}`}
                             sx={{ width: 300, height: 190, marginLeft: 1 }}
                         />
-                        <p style={{ marginLeft: '30px', fontSize: '16px', margin:'15px' }}>Estado:    {licenciaData.estado ? <CheckCircle style={{ color: 'green' }} /> : <Block style={{ color: 'red' }} />}</p>
                         {editableC && (
                             <FormControl fullWidth>
                                 <input type="file" accept="image/*"
-                                 onChange={(e) => {
-                                                const archivo = e.target.files[0];
-                                                setFoto(e.target.files[0]);
-                                                const file = e.target.files[0];
-                                                const reader = new FileReader();
-                                                reader.onloadend = () => {
-                                                    setFotoPreview(reader.result);
-                                                };
-                                                reader.readAsDataURL(archivo);
-                                                if (file) {
-                                                    reader.readAsDataURL(file);
-                                                    setImageFile(file);
-                                                }
+                                    onChange={(e) => {
+                                        const archivo = e.target.files[0];
+                                        setFoto(e.target.files[0]);
+                                        const file = e.target.files[0];
+                                        const reader = new FileReader();
+                                        reader.onloadend = () => {
+                                            setFotoPreview(reader.result);
+                                        };
+                                        reader.readAsDataURL(archivo);
+                                        if (file) {
+                                            reader.readAsDataURL(file);
+                                            setImageFile(file);
+                                        }
 
-                                            }}  />
+                                    }} />
                             </FormControl>
                         )}
+                        <p style={{ marginLeft: '12%', fontSize: '16px', margin: '15px' }}>Estado:    {licenciaData.estado ? <CheckCircle style={{ color: 'green' }} /> : <Block style={{ color: 'red' }} />}</p>
                     </Grid>
                 </div>
 
@@ -136,26 +136,26 @@ export const CardLicencia = (props) => {
                             }}
                             name="Licencia"
                             value={licencia}
-                          
+
                             style={{ height: '20px', width: '230px', marginTop: '-4%' }}
-                            onChange={(e) =>{
+                            onChange={(e) => {
                                 const licenciaAux = e.target.value;
                                 setLicencia(e.target.value)
                                 setLicenciaValida(verificarLicencias(licenciaAux))
                             }}
-                             disabled={!editableC}
+                            disabled={!editableC}
                         />
-                          {!licenciaValida && (
-                                <div>
-                                    <h6 className="ErroresInput5">*Licencia incorrecta. Debe contener 10 diguitos validos</h6>
-                                </div>
-                            )}
+                        {!licenciaValida && (
+                            <div>
+                                <h6 className="ErroresInput5">*Licencia incorrecta. Debe contener 10 diguitos validos</h6>
+                            </div>
+                        )}
                         <FormControl component="fieldset"
                             style={{ height: '20px', width: '230px', marginTop: '-4%', marginLeft: '20px' }}>
                             <Select
                                 name="categoria"
                                 value={categoria}
-                                onChange={(e) =>{
+                                onChange={(e) => {
                                     setCategoria(e.target.value);
                                 }}
                                 disabled={!editableC}
@@ -176,41 +176,44 @@ export const CardLicencia = (props) => {
                                 name="fechaCaducidad"
                                 value={fechaCaducidadISO}
                                 disabled={!editableC}
-                                onChange={(e) =>{
-                                const fechaAux = e.target.value;
-                                setFecha_Caducidad(e.target.value)
-                                setFechaCaducidadValida(verificarFechas(fechaAux))
-                            }}
+                                onChange={(e) => {
+                                    const fechaAux = e.target.value;
+                                    setFecha_Caducidad(e.target.value)
+                                    setFechaCaducidadValida(verificarFechas(fechaAux))
+                                }}
                             /></FormControl>
-                             {!fechaValida && (
-                                <div>
-                                    <h6 className="ErroresInput5">*La fecha debe ser valida</h6>
-                                </div>
-                            )}
+                        {!fechaValida && (
+                            <div>
+                                <h6 className="ErroresInput5">*La fecha debe ser valida</h6>
+                            </div>
+                        )}
                     </div>
-                </Grid>         
+                </Grid>
             </Grid>
             <div className='btnEdit'>
-                    {editableC ? (
-                        <>
-                            <Button variant="contained" 
+                {editableC ? (
+                    <>
+                        <Button variant="contained"
+                            style={{ marginTop: '10px', marginLeft: '3%' }}
                             onClick={handleGuardarCambiosClick}
-                            disabled={!fechaValida  || !licenciaValida}
-                            >
-                                Guardar
-                            </Button>
-                            <Button variant="outlined" className='btns' color="error" onClick={() => setEditableC(false)}>
-                                Cancelar
-                            </Button>
-                        </>
-
-
-                    ) : (
-                        <Button style={{ marginLeft: '10px' }} variant="contained" onClick={handleEditarlicenciaClick}>
-                            Editar
+                            disabled={!fechaValida || !licenciaValida}
+                        >
+                            Guardar
                         </Button>
-                    )}
-                </div>
+                        <Button
+                            style={{ marginTop: '10px', marginLeft: '2%' }}
+                            variant="outlined" className='btns' color="error" onClick={() => setEditableC(false)}>
+                            Cancelar
+                        </Button>
+                    </>
+
+
+                ) : (
+                    <Button style={{ marginLeft: '4%' }} variant="contained" onClick={handleEditarlicenciaClick}>
+                        Editar
+                    </Button>
+                )}
+            </div>
         </div>
     )
 }

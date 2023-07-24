@@ -29,27 +29,52 @@ const SidebarFilter = ({ applyFilters }) => {
         <div>
           <div>
             <div>
-              <h3 className="a-title active">CATEGORÍA</h3>
+              <h3 className="a-title active">CATEGORÍAS DISPONIBLES</h3>
               <div className="a-content">
                 <div className="input-wrapper">
-                  <input type="checkbox" className="checkbox-mini" value="MINI" onChange={handleCategoryFilterChange} />
-                  <label htmlFor="checkbox-mini">MINI</label>
+                  <label className='labeltext' htmlFor="checkbox-mini">SEDAN</label>
                 </div>
                 <div className="input-wrapper">
-                  <input type="checkbox" className="checkbox-economico" value="ECONÓMICO" onChange={handleCategoryFilterChange} />
-                  <label htmlFor="checkbox-economico">ECONÓMICO</label>
+                  <label className='labeltext' htmlFor="checkbox-economico">COUPE</label>
                 </div>
                 <div className="input-wrapper">
-                  <input type="checkbox" className="checkbox-economico" value="ECONÓMICO" onChange={handleCategoryFilterChange} />
-                  <label htmlFor="checkbox-economico">COMPACTO</label>
+                  <label className='labeltext' htmlFor="checkbox-economico">CONVERTIBLE</label>
                 </div>
                 <div className="input-wrapper">
-                  <input type="checkbox" className="checkbox-economico" value="ECONÓMICO" onChange={handleCategoryFilterChange} />
-                  <label htmlFor="checkbox-economico">INTERMEDIO</label>
+                  <label className='labeltext' htmlFor="checkbox-economico">HATCHBACK</label>
                 </div>
                 <div className="input-wrapper">
-                  <input type="checkbox" className="checkbox-economico" value="ECONÓMICO" onChange={handleCategoryFilterChange} />
-                  <label htmlFor="checkbox-economico">PREMIUN</label>
+                  <label className='labeltext' htmlFor="checkbox-economico">STATION WAGON</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">MINIVAN</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">UTILITARIO</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">LIMOSINA</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">CAMIONETA</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">FURGONETA DE PASAJEROS</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">MICROBUS</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">MINIBUS</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">CAMIÓN LIGERO</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">CAMIÓN MEDIANO</label>
+                </div>
+                <div className="input-wrapper">
+                  <label className='labeltext' htmlFor="checkbox-economico">CAMIÓN PESADO</label>
                 </div>
               </div>
             </div>
@@ -59,12 +84,10 @@ const SidebarFilter = ({ applyFilters }) => {
               <h3 className="a-title active">TRANSMISIÓN</h3>
               <div className="a-content">
                 <div className="input-wrapper">
-                  <input type="checkbox" className="checkbox-AUTOMATICA" value="AUTOMATICA" onChange={handleTransmissionFilterChange} />
-                  <label htmlFor="checkbox-AUTOMATICA">AUTOMATICA</label>
+                  <label className='labeltext' htmlFor="checkbox-AUTOMATICA">AUTOMATICA</label>
                 </div>
                 <div className="input-wrapper">
-                  <input type="checkbox" className="checkbox-MANUAL" value="MANUAL" onChange={handleTransmissionFilterChange} />
-                  <label htmlFor="checkbox-MANUAL">MANUAL</label>
+                  <label className='labeltext' htmlFor="checkbox-MANUAL">MANUAL</label>
                 </div>
                 {/* Agrega el resto de transmisiones aquí */}
               </div>

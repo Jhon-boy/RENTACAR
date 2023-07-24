@@ -125,8 +125,8 @@ export const RecuperacionContrasena = () => {
         <div className="formData">
             <div className="container-formData">
                 <Box sx={{ maxWidth: 400 }} >
-                <button className="regresar-btn1" onClick={() => window.history.back()}>
-                    <ArrowBackIcon /> Regresar
+                    <button className="regresar-btn1" onClick={() => window.history.back()}>
+                        <ArrowBackIcon /> Regresar
                     </button>
                     <div className="formulario-recuperacion">
                         <h2>Recuperación de Contraseña</h2>

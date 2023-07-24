@@ -8,7 +8,6 @@ import { IMAGE } from '../data/URL';
 import PaypalButton from './PaypalButon';
 import { CrearReserva } from '../controllers/reserva.controller';
 import { CardClient } from './CardClient';
-import Footer from './Footer';
 
 export default function Product(props) {
   const { id_auto } = useParams();
@@ -136,7 +135,7 @@ export default function Product(props) {
           <div className="container-img">
             <img src={`${IMAGE}/${data.fotos}`} alt={data.title} />
           </div>
-          <div>
+          <div className='Global'>
             <div className="container-info-autos">
               <div className="titles">
                 <h4 className="text-uppercase">
@@ -151,10 +150,10 @@ export default function Product(props) {
                 <h4 className="lead">
                   Estado:
                 </h4>
-                <h4 className="lead">
+                <h4 className="lead" >
                   Tipo auto:
                 </h4>
-                <h4 className="display-6 fw-bold my-4">
+                <h4 className="display-6 fw-bold my-4" style={{marginTop:'10px'}}>
                   Precio diario:
                 </h4>
                 <h4 className="display-6 fw-bold">
@@ -296,9 +295,6 @@ export default function Product(props) {
             <CardClient cliente={cliente} />
           </div>
         </div>
-        <div className="footer">
-          <Footer />
-        </div>
       </div>
     );
   };
@@ -306,9 +302,7 @@ export default function Product(props) {
   return (
     <div>
       <div className="container-product">
-        <div className="row">
           {loading ? <Loading /> : <ShowProduct />}
-        </div>
       </div>
     </div>
   );
