@@ -120,7 +120,7 @@ export const verificarPrecio = (precio) =>{
     if(isNaN(anioAux)){
         return false;
     }
-    if(anioAux <0 || anioAux > 10000){
+    if(anioAux <=0 || anioAux > 10000){
         return false;
     }
     return true;

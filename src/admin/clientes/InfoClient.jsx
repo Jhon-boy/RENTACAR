@@ -3,10 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 //import '../Home.css';
 //import '../styles/Cliente.css'
-import Divider from '@mui/material/Divider';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import Chip from '@mui/material/Chip';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -33,23 +29,37 @@ export const InfoClient = () => {
 			});
 			return;
 		}
-		try {
-			await editarEstadoClient(id, estado2);
-			Swal.fire({
-				position: 'top-end',
-				icon: 'success',
-				title: 'Your work has been saved',
-				showConfirmButton: false,
-				timer: 1500
-			})
-		} catch (error) {
-			Swal.fire({
-				icon: 'error',
-				title: 'Valores Incorrectos',
-				text: 'ERROR DE TIPO: ' + error.message,
-			});
-		}
+		Swal.fire({
+			title: 'Estas seguro de esta acción?',
+			text: "Estas por actualizar la cuenta!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Si, actualizar!'
+		}).then(async (result) => {
+			if (result.isConfirmed) {
+				try {
+
+					await editarEstadoClient(id, estado2);
+					Swal.fire({
+						position: 'center',
+						icon: 'success',
+						title: 'Editado Existosamente',
+						showConfirmButton: false,
+						timer: 1500
+					})
+				} catch (error) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Valores Incorrectos',
+						text: 'ERROR DE TIPO: ' + error.message,
+					});
+				}
+			}
+		})
 	}
+
 	useEffect(() => {
 		const fetchData = async () => {
 			let dataLoaded = false;
@@ -87,40 +97,40 @@ export const InfoClient = () => {
 				<button className={stil.formBtn} onClick={() => editarEstado(id, 'PENDIENTE')}>MANTENER EN PENDIENTE</button>
 			</article>
 			<article className={stil.contentForm}>
-			<form className={stil.form}>
-				<span className={stil.separador}>Información del Cliente</span>
-				<label className={stil.labelForm} htmlFor='nombre'>Nombre:
-					<input className={stil.in} type='text' id='nombre' value={clientes.nombre} readOnly />
-				</label>
-				<label className={stil.labelForm} htmlFor='apellido'>Apellido:
-					<input className={stil.in} type='text' id='apellido' value={clientes.apellido} readOnly />
-				</label>
-				<label className={stil.labelForm} htmlFor='correo'>Correo:
-					<input className={stil.in} type='text' id='correo' value={user.correo} readOnly />
-				</label>
-				<label className={stil.labelForm} htmlFor='cedula'>Cédula:
-					<input className={stil.in} type='text' id='cedula' value={clientes.cedula} readOnly />
-				</label>
-				<label className={stil.labelForm} htmlFor='genero'>Género:
-					<input className={stil.in} type='text' id='genero' value={clientes.genero} readOnly />
-				</label>
-				<label className={stil.labelForm} htmlFor='estado'>Estado:
-					<input className={stil.in} type='text' id='estado' value={estado} readOnly />
-				</label>
-				<span className={stil.separador}>Información de Licencia</span>
-				<label className={stil.labelForm} htmlFor='licencia'>Licencia:
-					<input className={stil.in} type='text' id='licencia' value={licencias.id_licencia} readOnly />
-				</label>
-				<label className={stil.labelForm} htmlFor='categoria'>Categoría:
-					<input className={stil.in} type='text' id='categoria' value={licencias.categoria} readOnly />
-				</label>
-				<label className={stil.labelForm} htmlFor='fecha_caducidad'>Fecha de Caducidad:
-					<input className={stil.in} type='text' id='fecha_caducidad' value={licencias.fecha_caducidad} readOnly />
-				</label>
-				<label className={stil.labelForm} htmlFor='licencia_estado'>Estado:
-					{licencias.estado ? <CheckCircleIcon color='success' className={stil.icon} /> : <CancelIcon color='error' />}
-				</label>
-			</form>
+				<form className={stil.form}>
+					<span className={stil.separador}>Información del Cliente</span>
+					<label className={stil.labelForm} htmlFor='nombre'>Nombre:
+						<input className={stil.in} type='text' id='nombre' value={clientes.nombre} readOnly />
+					</label>
+					<label className={stil.labelForm} htmlFor='apellido'>Apellido:
+						<input className={stil.in} type='text' id='apellido' value={clientes.apellido} readOnly />
+					</label>
+					<label className={stil.labelForm} htmlFor='correo'>Correo:
+						<input className={stil.in} type='text' id='correo' value={user.correo} readOnly />
+					</label>
+					<label className={stil.labelForm} htmlFor='cedula'>Cédula:
+						<input className={stil.in} type='text' id='cedula' value={clientes.cedula} readOnly />
+					</label>
+					<label className={stil.labelForm} htmlFor='genero'>Género:
+						<input className={stil.in} type='text' id='genero' value={clientes.genero} readOnly />
+					</label>
+					<label className={stil.labelForm} htmlFor='estado'>Estado:
+						<input className={stil.in} type='text' id='estado' value={estado} readOnly />
+					</label>
+					<span className={stil.separador}>Información de Licencia</span>
+					<label className={stil.labelForm} htmlFor='licencia'>Licencia:
+						<input className={stil.in} type='text' id='licencia' value={licencias.id_licencia} readOnly />
+					</label>
+					<label className={stil.labelForm} htmlFor='categoria'>Categoría:
+						<input className={stil.in} type='text' id='categoria' value={licencias.categoria} readOnly />
+					</label>
+					<label className={stil.labelForm} htmlFor='fecha_caducidad'>Fecha de Caducidad:
+						<input className={stil.in} type='text' id='fecha_caducidad' value={licencias.fecha_caducidad} readOnly />
+					</label>
+					<label className={stil.labelForm} htmlFor='licencia_estado'>Estado:
+						{licencias.estado ? <CheckCircleIcon color='success' className={stil.icon} /> : <CancelIcon color='error' />}
+					</label>
+				</form>
 			</article>
 		</section>
 	);

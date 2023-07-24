@@ -48,6 +48,7 @@ function App() {
   // Redireccionar al sistema si el usuario ya está logeado
   useEffect(() => {
     redirectToSystem();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

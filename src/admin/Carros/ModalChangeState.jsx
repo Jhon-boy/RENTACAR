@@ -34,7 +34,9 @@ export const ModalChangeState = ({ idAuto, estado }) => {
 		}
 		try {
 			await CambioStadoAuto(id, estado_);
-			history('/Home');
+
+			history(`/Home/Autos`);
+
 			Swal.fire({
 				position: 'top-end',
 				icon: 'success',
@@ -65,20 +67,28 @@ export const ModalChangeState = ({ idAuto, estado }) => {
 	};
 
 	return (
-		<section className={stil.contentChange}>
-				<article className="">
-					<h2 className={stil.title}>Seleccionar estado</h2>
-					<select className={stil.select} value={selectedEstado} onChange={(event) => setSelectedEstado(event.target.value)}>
-						{estado}
-						<option value="Disponible">DISPONIBLE</option>
-						<option value="Mantenimiento">MANTENIMIENTO</option>
-						<option value="Fuera de servicio">FUERA DE SERVICIO</option>
-					</select>
-					<button className={stil.formBtn} onClick={() => changeState(id, selectedEstado)}>
-						Guardar
-					</button>
-				</article>
-		</section>
+
+		<div style={{ width: '270px' }}>
+			<div style={{ width: '250px' }}>
+				<h2>Seleccionar estado</h2>
+  
+					<section className={stil.contentChange}>
+						<article className="">
+							<h2 className={stil.title}>Seleccionar estado</h2>
+							<select className={stil.select} value={selectedEstado} onChange={(event) => setSelectedEstado(event.target.value)}>
+
+								{estado}
+								<option value="Disponible">DISPONIBLE</option>
+								<option value="Mantenimiento">MANTENIMIENTO</option>
+								<option value="Fuera de servicio">FUERA DE SERVICIO</option>
+							</select>
+							<button className={stil.formBtn} onClick={() => changeState(id, selectedEstado)}>
+								Guardar
+							</button>
+						</article>
+					</section>	
+			</div>
+		</div>
 	);
 };
 

@@ -9,7 +9,9 @@ import Footer from '../client/components/Footer'
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import Ventaja from '../client/components/Virtudes'
+// eslint-disable-next-line no-unused-vars
 import ChatFuelScript from './ChatFuelScript';
+import WhatsAppChatButton from './WhatsAppChatButton';
 
 
 
@@ -50,6 +52,7 @@ export const Inicio = () => {
                             </Link>
                         </div>
                     </div>
+                    <WhatsAppChatButton destinationURL="https://m.me/117739954697866?ref=Product%20rec%20(Facebook%20Page)" />
                     <div className="ventajas">
                         <Ventaja />
                     </div>

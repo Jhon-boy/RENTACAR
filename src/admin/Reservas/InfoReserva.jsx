@@ -47,7 +47,7 @@ export const InfoReserva = () => {
 	const navigateTo = (path) => {
 		history(path);
 	}
-
+	const fechaHoy = new Date();
 	//EDITAR ESTADO
 	const editarEstado = async (estadoP) => {
 		var fechaActual = new Date();
@@ -101,7 +101,7 @@ export const InfoReserva = () => {
 						historial.id_pago = pagoEncontrado.id_pago;
 						await crearHistorial(historial)
 					}
-					history(`/Reservas`);
+					history(`/Home/Reservas/`);
 					Swal.fire(
 						'Datos actualizados',
 						'Puedes revisar las configuraciones',
@@ -136,7 +136,7 @@ export const InfoReserva = () => {
 							setEstadoAuto('DISPONIBLE');
 							await CambioStadoAuto(autos.id_auto, 'DISPONIBLE')
 						}
-						history(`/Reservas`);
+						history(`/Home/Reservas`);
 						Swal.fire(
 							'Datos actualizados',
 							'Puedes revisar las configuraciones',
@@ -199,131 +199,149 @@ export const InfoReserva = () => {
 
 	return (
 		<section className={stil.contentInfo}>
-				<form className={stil.form}>
-					<div className={stil.contentImg}>
-						<img src={`${IMAGE}/${clientes.foto}`} className={stil.FotoCedula} />
-					</div>
-					<span className={stil.Separador}>Información del cliente</span>
-						<label htmlFor='nombre' className={stil.formLabel}>
-							Solicitante:
-							<input type='text' id='nombre' value={clientes.nombre + ' ' + clientes.apellido} readOnly className={stil.in} />
-						</label>
-						<label htmlFor='apellido' className={stil.formLabel}>
-							Cedula:
-							<input type='text' id='apellido' value={clientes.cedula} readOnly className={stil.in} />
-						</label>
-						<label htmlFor='correo' className={stil.formLabel}>
-							Estado:
-							{clientes.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
-						</label>
-						<label htmlFor='correo' className={stil.formLabel}>
-							Licencia:
-							{licencias.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
-						</label>
-					<Link to={`/Home/Clientes/InfoClient/${clientes.id_cliente}`} variant="outlined" className={stil.btn}>
-						<Button variant="outlined">Ver Perfil</Button>
-					</Link>
-				</form>
-				<form className={stil.form}>
-					<div className={stil.contentImg}>
-						<img src={`${IMAGE}/${autos.fotos}`} className={stil.FotoCarro} />
-					</div>
-					<span className={stil.Separador}>Información del vehículo</span>
-						<label htmlFor='genero' className={stil.formLabel}>
-							Marca:
-							<input type='text' id='genero' value={autos.marca} readOnly className={stil.in} />
-						</label>
-						<label htmlFor='estado' className={stil.formLabel}>
-							Modelo:
-							<input type='text' id='estado' value={autos.modelo} readOnly className={stil.in} />
-						</label>
-						<label htmlFor='licencia' className={stil.formLabel}>
-							Placas:
-							<input type='text' id='licencia' value={autos.placas} readOnly className={stil.in} />
-						</label>
-						<label htmlFor='categoria' className={stil.formLabel}>
-							Costo:
-							<label type='text' id='categoria' value={autos.precio} readOnly >{autos.precio} </label>
-						</label>
-						<label htmlFor='categoria' className={stil.formLabel}>
-							Estado:
-							{autos.estado === 'DISPONIBLE' && <CheckCircleIcon color='success' className='IconsP' />}
-							{autos.estado === 'MANTENIMIENTO' && <BuildIcon color='primary' className='IconsP' />}
-							{autos.estado === 'FUERA DE SERVICIO' && <BlockIcon color='error' className='IconsP' />}
-							{autos.estado === 'OCUPADO' && <BusinessIcon color='primary' className='IconsP' />}
-						</label>
-					<Link to={`/Home/Autos/${autos.id_auto}`} className={stil.btn}>
-						<Button variant="outlined">Ver Perfil</Button>
-					</Link>
-				</form>
-				<form className={stil.form}>
+			<form className={stil.form}>
+				<div className={stil.contentImg}>
+					<img src={`${IMAGE}/${clientes.foto}`} className={stil.FotoCedula} />
+				</div>
+				<h6 className={stil.Separador}>Información del cliente</h6>
+				<h4 htmlFor='nombre' className={stil.formLabel}>
+					Solicitante:
+					<input type='text' id='nombre' value={clientes.nombre + ' ' + clientes.apellido} readOnly className={stil.in} />
+				</h4>
+				<h4 htmlFor='apellido' className={stil.formLabel}>
+					Cedula:
+					<input type='text' id='apellido' value={clientes.cedula} readOnly className={stil.in} />
+				</h4>
+				<h4 htmlFor='correo' className={stil.formLabel}>
+					Estado:
+					{clientes.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
+				</h4>
+				<h4 htmlFor='correo' className={stil.formLabel}>
+					Licencia:
+					{licencias.estado ? <CheckCircleIcon color='success' className='IconsP' /> : <CancelIcon color='error' />}
+				</h4>
+				<Link to={`/Home/Clientes/InfoClient/${clientes.id_cliente}`} variant="outlined" className={stil.btn}>
+					<Button variant="outlined">Ver Perfil</Button>
+				</Link>
+			</form>
+			<form className={stil.form}>
+				<div className={stil.contentImg}>
+					<img src={`${IMAGE}/${autos.fotos}`} className={stil.FotoCarro} />
+				</div>
+				<h6 className={stil.Separador}>Información del vehículo</h6>
+				<h4 htmlFor='genero' className={stil.formLabel}>
+					Marca:
+					<input type='text' id='genero' value={autos.marca} readOnly className={stil.in} />
+				</h4>
+				<h4 htmlFor='estado' className={stil.formLabel}>
+					Modelo:
+					<input type='text' id='estado' value={autos.modelo} readOnly className={stil.in} />
+				</h4>
+				<h4 htmlFor='licencia' className={stil.formLabel}>
+					Placas:
+					<input type='text' id='licencia' value={autos.placas} readOnly className={stil.in} />
+				</h4>
+				<h4 htmlFor='categoria' className={stil.formLabel}>
+					Costo:
+					<label type='text' id='categoria' value={autos.precio} readOnly >{autos.precio} </label>
+				</h4>
+				<h4 htmlFor='categoria' className={stil.formLabel}>
+					Estado:
+					{autos.estado === 'DISPONIBLE' && <CheckCircleIcon color='success' className='IconsP' />}
+					{autos.estado === 'MANTENIMIENTO' && <BuildIcon color='primary' className='IconsP' />}
+					{autos.estado === 'FUERA DE SERVICIO' && <BlockIcon color='error' className='IconsP' />}
+					{autos.estado === 'OCUPADO' && <BusinessIcon color='primary' className='IconsP' />}
+				</h4>
+				<Link to={`/Home/Autos/${autos.id_auto}`} className={stil.btn}>
+					<Button variant="outlined">Ver Perfil</Button>
+				</Link>
+			</form>
+			<form className={stil.form}>
 
-					<span className={stil.Separador}>Detalles de la reserva</span>
+				<h6 className={stil.Separador}>Detalles de la reserva</h6>
 
-						<label htmlFor='fecha_caducidad' className={stil.formLabel}>
-							Desde:
-							<input type="date" value={reservas.fecha_entrega} className={stil.in} />
-						</label>
-						<label htmlFor='licencia_estado' className={stil.formLabel}>
-							Hasta:
-							<input type='date' id='licencia_estado' value={reservas.fecha_devolucion} className={stil.in} />
-						</label>
-						<label htmlFor='fecha_caducidad' className={stil.formLabel}>Costo Sin Iva:</label>
-						<label htmlFor='licencia_estado' className={stil.formLabel}>
-							Costo Total:
-							<label>{reservas.monto}</label>
-						</label>
-						<label htmlFor='fecha_caducidad' className={stil.formLabel}>
-							Estado:
-							<input type="text" value={reservas.estado} className={stil.in} />
-						</label>
-						<div className={stil.formLabel}>
-							{reservas.estado === 'PENDIENTE' ? (
-								<FormControl sx={{ m: 1, minWidth: 120 }}>
-									<InputLabel id="demo-simple-select-helper-label">Pago</InputLabel>
-									<Select
-										labelId="demo-simple-select-helper-label"
-										id="demo-simple-select-helper"
-										value={tipoPago}
-										label="Age"
-										onChange={handleChange}
-									>
-										<MenuItem value="">
-											<em>None</em>
-										</MenuItem>
-										<MenuItem value="FISICO">Pago Fisico</MenuItem>
-										<MenuItem value="TRASNFERENCIA">Transferencia</MenuItem>
-										<MenuItem value="OTRO">Otro</MenuItem>
-									</Select>
-									<FormHelperText>Seleccione el tipo de Pago</FormHelperText>
-								</FormControl>
-							) : (
-								reservas.estado === 'CANCELADO' ? (
-									<label style={{ color: 'red' }}>No se llevó a cabo la Reserva</label>
-								) : (
-									<label style={{ color: 'green' }}>Pago Confirmado</label>
-								)
-							)}
-						</div>
-						<label htmlFor='fecha_caducidad' className={stil.formLabel}>Añade un comentario:</label>
-						<TextareaAutosize
-							minRows={1} style={{ background: 'white', color: 'black', width: '300px' }}
-							value={comentario}
-							onChange={(e) => setComentario(e.target.value)} />
+				<h4 htmlFor='fecha_caducidad' className={stil.formLabel}>
+					Desde:
+					<input type="date" value={reservas.fecha_entrega} className={stil.in} />
+				</h4>
+				<h4 htmlFor='licencia_estado' className={stil.formLabel}>
+					Hasta:
+					<input type='date' id='licencia_estado' value={reservas.fecha_devolucion} className={stil.in} />
+				</h4>
+				<h4 htmlFor='licencia_estado' className={stil.formLabel}>
+					Costo Total:
+					<span><label>{reservas.monto}</label> </span>
+
+				</h4>
+				<h4 htmlFor='fecha_caducidad' className={stil.formLabel}>
+					Estado:
+					<input type="text" value={reservas.estado} className={stil.in} />
+				</h4>
+				<div className={stil.formLabel}>
 					{reservas.estado === 'PENDIENTE' ? (
-						<>
-							<Stack spacing={10} direction="row">
-								<Button variant="text" onClick={() => cancelarPago('CANCELADO')}>CANCELAR RESERVA</Button>
-								<Button variant="contained" onClick={() => editarEstado('CONCRETADO')}>CONCRETAR RESERVA</Button>
-								<Button variant="outlined" onClick={() => editarEstado('PENDIENTE')}>MANTENER EN PENDIENTE</Button>
-							</Stack>
-
-						</>
+						<FormControl sx={{ m: 1, minWidth: 120 }}>
+							<InputLabel id="demo-simple-select-helper-label">Pago</InputLabel>
+							<Select
+								labelId="demo-simple-select-helper-label"
+								id="demo-simple-select-helper"
+								value={tipoPago}
+								label="Age"
+								onChange={handleChange}
+							>
+								<MenuItem value="">
+									<em>None</em>
+								</MenuItem>
+								<MenuItem value="FISICO">Pago Fisico</MenuItem>
+								<MenuItem value="TRASNFERENCIA">Transferencia</MenuItem>
+								<MenuItem value="OTRO">Otro</MenuItem>
+							</Select>
+							<FormHelperText>Seleccione el tipo de Pago</FormHelperText>
+						</FormControl>
 					) : (
+						reservas.estado === 'CANCELADO' ? (
+							<label style={{ color: 'red' }}>No se llevó a cabo la Reserva</label>
+						) : (
+							<label style={{ color: 'green' }}>Pago Confirmado</label>
+						)
+					)}
+				</div>
+				<h6 htmlFor='fecha_caducidad' className={stil.formLabel}>Añade un comentario:</h6>
+				<TextareaAutosize
+					minRows={2} style={{ background: 'white', color: 'black', width: '300px', borderRadius: '4px' }}
+					value={comentario}
+					onChange={(e) => setComentario(e.target.value)} />
+				{reservas.estado === 'PENDIENTE' ? (
+					<>
+						{new Date(reservas.fecha_entrega) >= fechaHoy ? (
+							<>
+								<Stack spacing={1} style={{ marginTop: '20px' }}>
+									<Button variant="contained" color="primary" onClick={() => editarEstado('CONCRETADO')}>
+										CONCRETAR RESERVA
+									</Button>
+									<Button variant="text" color="secondary" onClick={() => cancelarPago('CANCELADO')}>
+										CANCELAR RESERVA
+									</Button>
+									<Button variant="outlined" style={{ backgroundColor: 'purple', color: 'white' }} onClick={() => editarEstado('PENDIENTE')}>
+										MANTENER EN PENDIENTE
+									</Button>
+								</Stack>
+							</>
+						) : (
+							<>
+								<h6>No se puede concretar la reserva ya que la fecha de entrega aún no ha llegado.</h6>
+								<Link className={stil.btn} to={'/Home/Reservas'}>
+									<Button variant="outlined" style={{ backgroundColor: 'yellow', color: 'black' }}>VOLVER</Button>
+								</Link>
+							</>
+						)}
+					</>
+				) : (
+					<>
 						<Link className={stil.btn} to={'/Home/Reservas'}>
 							<Button variant="outlined" style={{ backgroundColor: 'yellow', color: 'black' }}>VOLVER</Button>
 						</Link>
-					)}
+					</>
+				)}
 			</form>
 		</section>
 	)

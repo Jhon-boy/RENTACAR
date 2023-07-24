@@ -21,7 +21,6 @@ const SliderBar = ({ btnDatos }) => {
 	)
 }
 
-
 SliderBar.propTypes = {
 	btnDatos: PropTypes.arrayOf(
 	PropTypes.oneOfType([

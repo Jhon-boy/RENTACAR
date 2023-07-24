@@ -2,14 +2,9 @@
 import { useState, useEffect } from 'react';
 //import '../../Home.css';
 //import '../../styles/Autos.css';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
 import Swal from 'sweetalert2';
 import { verificarPlaca, campoEstaVacio, estados, verificarAnio, verificarExtensionFoto, verificarPrecio, verificarTipo } from '../hooks/Autos';
-// import TextField from '@mui/material/TextField';
-// import Autocomplete from '@mui/material/Autocomplete';
-// import { obtenerModelosAutos } from '../data/APIS.js'
+import { Box, Grid, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 
 import { registrarAuto } from '../database/controller';
 import { useNavigate } from 'react-router-dom'
@@ -26,6 +21,7 @@ export const CreateCar = () => {
 	const [tipo, setTipo] = useState('');
 	const [detalles, setDetalles] = useState('');
 	const [fotos, setFotos] = useState('');
+	const [fotos2, setFotos2] = useState('');
 	const [estado, setEstado] = useState('');
 
 	const [esPlacaValida, setEsPlacaValida] = useState(true);
@@ -37,8 +33,6 @@ export const CreateCar = () => {
 	const [esEstadoValida, setEstadoValida] = useState(true);
 	const [esDetallesValida, setDetallesValida] = useState(true);
 	const [esTipoValida, setTipoValida] = useState(true);
-
-	// const [modelosAutos, setModelosAutos] = useState([]);
 
 	//FUNCION DE NAVEGACION 
 	const history = useNavigate();
@@ -75,13 +69,13 @@ export const CreateCar = () => {
 			await registrarAuto(formData);
 			// console.log('DATOS RECIBIDOS'+ car.detalles + ' FOTO:' + car.fotos);
 			Swal.fire({
-				position: 'top-end',
+				position: 'center',
 				icon: 'success',
-				title: 'Your work has been saved',
+				title: 'Registrado Exitosamente',
 				showConfirmButton: false,
 				timer: 1500
 			})
-			history('/Autos');
+			history('/Home/Autos');
 		} catch (error) {
 			Swal.fire({
 				icon: 'error',
@@ -91,147 +85,214 @@ export const CreateCar = () => {
 		}
 	}
 
-	// useEffect(() => {
-	//     const obtenerDatos = async () => {
-	//         const modelos = await obtenerModelosAutos();
-	//         setModelosAutos(modelos);
-	//         console.log(modelos);
-	//     };
-
-	//     obtenerDatos();
-	// }, []);
 
 	return (
 		<section className={stil.contentCreate}>
 			<form onSubmit={crearAuto} method="POST" className={stil.form} >
-				<label>Marca
-					<input className={stil.in} type="text" placeholder="Mazda" value={marca}
-						onChange={(e) => {
-							setMarca(e.target.value)
-							setMarcaValida(e.target.value.trim() !== '')
-						}}
-						onBlur={() => setMarcaValida(marca.trim() !== '')}
-						required />
-					{!esMarcaValida && (
-						<span className={stil.Error}>* Campo Obligatorio</span>
-					)}
-				</label>
-				<label>Modelo
-					<input className={stil.in} type="text" placeholder="Raptor" value={modelo}
-						onChange={(e) => {
-							setModelo(e.target.value);
-							setModeloValida(e.target.value.trim() !== '')
-						}}
-						onBlur={() => setModeloValida(modelo.trim() !== '')}
-						required/>
-					{!esModeloValida && (
-						<span className={stil.Error}>* Campo Obligatorio</span>
+				<div style={{ display: 'flex' }}>
+					<div>
+						<label htmlFor="images" className="drop-container">
+							<span className="drop-title">Arrastra tu imagen</span>
+							<input className={stil.in} required type="file" name='fotos' id="images"
+								onChange={(e) => {
+									const archivo = e.target.files[0];
+									setFotos(e.target.files[0]);
+									setFotos2(URL.createObjectURL(archivo));
+									setExtension(verificarExtensionFoto(archivo.name));
+								}} size="lg" />
+							{fotos ? (
+								<img src={fotos2} alt="Imagen cargada" style={{ width: '350px', height: 'auto' }} />
+							) : (
+								<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc-hpNaBjRjxd0GLK6Ni8lfEv_-347l7VdJg&usqp=CAU' alt="Imagen por defecto" style={{ width: '350px', height: 'auto' }} />
+							)}
+						</label>
+						{!esExtension && (
+							<span className={stil.Error}>* Solo se aceptan fotos tipo: png, jpg, jpeg</span>
+						)}
+					</div>
+					<div>
+						<Grid container spacing={2}>
+							<Grid item xs={6}>
+								<FormControl fullWidth variant="outlined" margin="normal">
+									<TextField
+										required
+										type="text"
+										label="Marca"
+										value={marca}
+										onChange={(e) => {
+											setMarca(e.target.value);
+											setMarcaValida(e.target.value.trim() !== '');
+										}}
+										onBlur={() => setMarcaValida(marca.trim() !== '')}
+										error={!esMarcaValida}
+										helperText={!esMarcaValida && 'Campo Obligatorio'}
+									/>
+								</FormControl>
+							</Grid>
 
-					)}
-				</label>
-				<label>Placas
-					<input className={stil.in} required type="text" placeholder="CHW-2015" value={placas}
-						onChange={(e) => {
-							const nuevaPlaca = e.target.value;
-							setPlacas(e.target.value);
-							setEsPlacaValida(verificarPlaca(nuevaPlaca));
-						}}/>
-					{!esPlacaValida && (
-						<span className={stil.Error}>Formato inválido de placas<br />Ejemplo: CHW-4587</span>
-					)}
-				</label>
-				<label>Tipo
-					<select className={stil.in} required placeholder="Ingrese el Tipo" value={tipo}
-						onChange={(e) => {
-							const tipoAux = e.target.value;
-							setTipo(e.target.value)
-							setTipoValida(verificarTipo(tipoAux));
-						}}
-						defaultValue="CAMIONETA">
-						<option value=""></option>
-						<option value="CAMIONETA">CAMIONETA</option>
-						<option value="CAMIÓN LIGERO">CAMIÓN LIGERO</option>
-						<option value="SEDAN">SEDAN</option>
-						<option value="COUPE">COUPE</option>
-						<option value="CONVERTIBLE">CONVERTIBLE</option>
-						<option value="HATCHBACK">HATCHBACK</option>
-						<option value="STATION WAGON">STATION WAGON</option>
-						<option value="MINIVAN">MINIVAN</option>
-						<option value="UTILITARIO">UTILITARIO</option>
-						<option value="LIMOSINA">LIMOSINA</option>
-						<option value="FURGONETA DE PASAJEROS">FURGONETA DE PASAJEROS</option>
-						<option value="MICROBUS">MICROBUS</option>
-						<option value="MINIBUS">MINIBUS</option>
-						<option value="CAMIÓN MEDIANO">CAMIÓN MEDIANO</option>
-						<option value="CAMIÓN PESADO">CAMIÓN PESADO</option>
-					</select>
-					{!esTipoValida && (
-						<span className={stil.Error}>* Campo Obligatorio. Seleccione una</span>
-					)}
-				</label>
-				<label>Estado
-					<select className={stil.in} required type="text" placeholder="Ingrese el Estado" value={estado}
-						onChange={(e) => {
-							const estadoAux = e.target.value;
-							setEstado(e.target.value)
-							setEstadoValida(estados(estadoAux));
-						}}
-						defaultValue="INFUERA DE SERVICIOACTIVO">
-						<option value=""></option>
-						<option value="DISPONIBLE">Disponible</option>
-						<option value="OCUPADO">Ocupado</option>
-						<option value="FUERA DE SERVICIO">Fuera de servicio</option>
-						<option value="MANTENIMIENTO">Mantenimiento </option>
-					</select>
-					{!esEstadoValida && (
-						<span className={stil.Error}>* Campo Obligatorio. Seleccione una</span>
-					)}
-				</label>
-				<label>Año
-					<input className={stil.in} required type="number" min={1960} max={2024} value={anio}
-						onChange={(e) => {
-							const anioAux = e.target.value;
-							setAnio(e.target.value)
-							setAnioValida(verificarAnio(anioAux))
-						}}/>
-					{!esAnioValida && (
-						<span className={stil.Error}>* Campo Obligatorio. Año inválido</span>
-					)}
-				</label>
-				<label>Precio
-					<input className={stil.in} required type="number" placeholder="$" value={precio}
-						onChange={(e) => {
-							const precioAux = e.target.value;
-							setPrecio(e.target.value)
-							setPrecioValida(verificarPrecio(precioAux));
-						}}/>
-					{!esPrecioValida && <span className={stil.Error}>* Campo Obligatorio. Precio inválido</span>}
-				</label>
-				<label htmlFor="images" className="drop-container">
-					<span className="drop-title">Arrastra tu imagen</span>
-					<input className={stil.in} required type="file" name='fotos' id="images"
-						onChange={(e) => {
-							const archivo = e.target.files[0];
-							setFotos(e.target.files[0]);
-							setExtension(verificarExtensionFoto(archivo.name));
-						}} size="lg" />
-				</label>
-				{!esExtension && (
-					<span className={stil.Error}>* Solo se aceptan fotos tipo: png, jpg, jpeg</span>
-				)}
-				<label>Detalles del Auto
-					<input className={stil.in} required placeholder="" value={detalles}
-						onChange={(e) => {
-							setDetalles(e.target.value)
-							setDetallesValida(e.target.value.trim() !== '')
-						}}
-						onBlur={() => setDetallesValida(detalles.trim() !== '')}
-						rows={3} />
-					{!esDetallesValida && (
-						<span className={stil.Error}>* Campo Obligatorio</span>
-					)}
-				</label>
-				<button className={stil.formBtn} onClick={crearAuto}>Registrar Auto</button>
+							<Grid item xs={6}>
+								<FormControl fullWidth variant="outlined" margin="normal">
+									<TextField
+										required
+										type="text"
+										label="Modelo"
+										value={modelo}
+										onChange={(e) => {
+											setModelo(e.target.value);
+											setModeloValida(e.target.value.trim() !== '');
+										}}
+										onBlur={() => setModeloValida(modelo.trim() !== '')}
+										error={!esModeloValida}
+										helperText={!esModeloValida && 'Campo Obligatorio'}
+									/>
+								</FormControl>
+							</Grid>
+						</Grid>
+						<Grid container spacing={2}>
+							<Grid item xs={6}>
+								<FormControl fullWidth variant="outlined" margin="normal">
+									<InputLabel>Tipo</InputLabel>
+									<Select
+										className={stil.in}
+										required
+										placeholder="Ingrese el Tipo"
+										value={tipo}
+										onChange={(e) => {
+											const tipoAux = e.target.value;
+											setTipo(e.target.value);
+											setTipoValida(verificarTipo(tipoAux));
+										}}
+										defaultValue="CAMIONETA"
+										error={!esTipoValida}
+										label="Tipo"
+									>
+										<MenuItem value=""></MenuItem>
+										<MenuItem value="CAMIONETA">CAMIONETA</MenuItem>
+										<MenuItem value="CAMIÓN LIGERO">CAMIÓN LIGERO</MenuItem>
+										<MenuItem value="SEDAN">SEDAN</MenuItem>
+										<MenuItem value="COUPE">COUPE</MenuItem>
+										<MenuItem value="CONVERTIBLE">CONVERTIBLE</MenuItem>
+										<MenuItem value="HATCHBACK">HATCHBACK</MenuItem>
+										<MenuItem value="STATION WAGON">STATION WAGON</MenuItem>
+										<MenuItem value="MINIVAN">MINIVAN</MenuItem>
+										<MenuItem value="UTILITARIO">UTILITARIO</MenuItem>
+										<MenuItem value="LIMOSINA">LIMOSINA</MenuItem>
+										<MenuItem value="FURGONETA DE PASAJEROS">FURGONETA DE PASAJEROS</MenuItem>
+										<MenuItem value="MICROBUS">MICROBUS</MenuItem>
+										<MenuItem value="MINIBUS">MINIBUS</MenuItem>
+										<MenuItem value="CAMIÓN MEDIANO">CAMIÓN MEDIANO</MenuItem>
+										<MenuItem value="CAMIÓN PESADO">CAMIÓN PESADO</MenuItem>
+									</Select>
+									{!esTipoValida && <span className={stil.Error}>* Campo Obligatorio. Seleccione una</span>}
+								</FormControl>
+							</Grid>
+
+							<Grid item xs={6}>
+								<FormControl fullWidth variant="outlined" margin="normal">
+									<InputLabel>Estado</InputLabel>
+									<Select
+										className={stil.in}
+										required
+										placeholder="Ingrese el Estado"
+										value={estado}
+										onChange={(e) => {
+											const estadoAux = e.target.value;
+											setEstado(e.target.value);
+											setEstadoValida(estados(estadoAux));
+										}}
+										defaultValue="INFUERA DE SERVICIO ACTIVO"
+										error={!esEstadoValida}
+										label="Estado"
+									>
+										<MenuItem value=""></MenuItem>
+										<MenuItem value="DISPONIBLE">Disponible</MenuItem>
+										<MenuItem value="OCUPADO">Ocupado</MenuItem>
+										<MenuItem value="FUERA DE SERVICIO">Fuera de servicio</MenuItem>
+										<MenuItem value="MANTENIMIENTO">Mantenimiento</MenuItem>
+										{/* Resto de opciones */}
+									</Select>
+									{!esEstadoValida && <span className={stil.Error}>* Campo Obligatorio. Seleccione una</span>}
+								</FormControl>
+							</Grid>
+						</Grid>
+						<Grid container spacing={2}>
+							<Grid item xs={12} sm={6}>
+								<FormControl fullWidth variant="outlined" margin="normal">
+									<TextField
+										className={stil.in}
+										required
+										type="text"
+										label="Placas"
+										value={placas}
+										onChange={(e) => {
+											const nuevaPlaca = e.target.value;
+											setPlacas(e.target.value);
+											setEsPlacaValida(verificarPlaca(nuevaPlaca));
+										}}
+										onBlur={() => setEsPlacaValida(modelo.trim() !== '')}
+										error={!esPlacaValida}
+										helperText={!esPlacaValida && 'Campo Obligatorio'}
+									/>
+								</FormControl>
+							</Grid>
+
+							<Grid item xs={4} sm={3} style={{ marginTop: '15px' }}>
+								<TextField
+									className={stil.in}
+									required
+									type="number"
+									label="Año"
+									value={anio}
+									onChange={(e) => {
+										const anioAux = e.target.value;
+										setAnio(e.target.value);
+										setAnioValida(verificarAnio(anioAux));
+									}}
+									error={!esAnioValida}
+									helperText={!esAnioValida && 'Campo Obligatorio. Año inválido'}
+								/>
+							</Grid>
+
+							<Grid item xs={6} sm={3} style={{ marginTop: '15px' }}>
+								<TextField
+									className={stil.in}
+									required
+									type="number"
+									label="Precio"
+									value={precio}
+									onChange={(e) => {
+										const precioAux = e.target.value;
+										setPrecio(e.target.value);
+										setPrecioValida(verificarPrecio(precioAux));
+									}}
+									error={!esPrecioValida}
+									helperText={!esPrecioValida && 'Campo Obligatorio. Precio inválido'}
+								/>
+							</Grid>
+						</Grid>
+						<Grid item xs={12}>
+							<FormControl fullWidth variant="outlined" margin="normal">
+								<TextField
+									required
+									multiline
+									label="Detalles del Auto"
+									value={detalles}
+									onChange={(e) => {
+										setDetalles(e.target.value);
+										setDetallesValida(e.target.value.trim() !== '');
+									}}
+									onBlur={() => setDetallesValida(detalles.trim() !== '')}
+									rows={3}
+									error={!esDetallesValida}
+									helperText={!esDetallesValida && 'Campo Obligatorio'}
+								/>
+							</FormControl>
+						</Grid>
+						<button className={stil.formBtn} onClick={crearAuto}>Registrar Auto</button>
+					</div>
+
+				</div>
+
 			</form>
 		</section>
 	)

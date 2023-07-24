@@ -26,3 +26,6 @@
 .contentTabla{
   width: 98%;
 }
+.btnImage:hover{
+  cursor: pointer;
+}

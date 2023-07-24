@@ -41,6 +41,11 @@
   width: 90%;
   border-radius: 7px;
 }
+.menuItem:active{
+  background-color: #64d3f8;
+  color: white;
+  border-bottom: 2px solid black;
+}
 
 .menuItemActive{
   width: 90%;
@@ -62,7 +67,11 @@
 }
 
 
-
+.menuItemActive:active{
+  background-color: #64d3f8;
+  color: white;
+  border-bottom: 2px solid black;
+}
 /*
 .sidebar {
   top: 20px;

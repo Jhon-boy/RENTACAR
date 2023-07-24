@@ -44,7 +44,7 @@ export const Historial = () => {
   
     const renderTable = () => {
       if (historial.length === 0) {
-        return <p>No hay historial disponible</p>;
+        return <p>Este cliente no tiene nungun Historial que mostrar</p>;
       }
   
       return (
@@ -84,7 +84,10 @@ export const Historial = () => {
     return (
       <div className="page-content">
         <div className="home-container">
-          <h2>Historial</h2>
+        <center>
+           <h2>Historial</h2>
+        </center>
+         
           {renderTable()}
         </div>
       </div>
