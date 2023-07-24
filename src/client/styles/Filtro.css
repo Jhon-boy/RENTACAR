@@ -12,7 +12,7 @@
 }
 .input-wrapper{
     display: flex;
-    padding: 10px 0 5px 25px;
+    padding: 10px 0 5px 15px;
     font-size: 14px;
 }
 
@@ -39,3 +39,25 @@
 .checkbox-MANUAL{
     margin-right: 10px;
 }
+#filterButton {
+    color: rgb(114, 113, 113); /* Color del ícono */
+    font-size: 20px;
+    width: 40px;
+    height: 60px;
+    font-size: 30px;
+    margin-left: 10px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 50px;
+    margin-top: -60px;
+  }
+  
+  #asideContent.collapsed .container-filtro {
+    display: none;
+  }
+  
+  #asideContent.collapsed {
+    width: 50px; /* Ancho reducido del <aside> cuando está colapsado */
+  }
+  

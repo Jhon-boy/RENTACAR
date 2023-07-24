@@ -1,11 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import '../styles/Filtro.css';
+import '../styles/Filtro.css';///BsFillFilterSquareFill 
+import { BsFillFilterSquareFill } from "react-icons/bs";
 
 const SidebarFilter = ({ applyFilters }) => {
   const [categoryFilters, setCategoryFilters] = useState([]);
   const [transmissionFilters, setTransmissionFilters] = useState([]);
+  const [collapsed, setCollapsed] = useState(false);
+
+  const toggleFilter = () => {
+    setCollapsed(!collapsed);
+  };
+
 
   const handleCategoryFilterChange = (event) => {
     const selectedCategory = event.target.value;
@@ -26,7 +33,11 @@ const SidebarFilter = ({ applyFilters }) => {
   };
 
   return (
-    <aside id=" ">
+    <>
+      <div id="filterButton" onClick={toggleFilter}>
+        <BsFillFilterSquareFill />
+      </div>
+      <aside id="asideContent" className={collapsed ? 'collapsed' : ''}>
       <div className="container-filtro">
         <div>
           <div>
@@ -92,6 +103,8 @@ const SidebarFilter = ({ applyFilters }) => {
         </div>
       </div>
     </aside>
+    </>
+    
   );
 };
 
