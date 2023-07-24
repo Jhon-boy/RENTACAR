@@ -5,7 +5,7 @@ import { URL } from '/src/admin/data/URL.js';
 import Swal from 'sweetalert2';
 import { EditConfig } from '/src/admin/database/ControllerConfig';
 import stil from './Config.module.css'
-
+import { useNavigate } from 'react-router-dom';
 const imgAnuncio = 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/car-rent-design-template-64ff332fd3dda524f0892559080bb95a_screen.jpg?ts=1620865657'
 
 export const Config = () => {
@@ -32,10 +32,14 @@ export const Config = () => {
 	const handleEstadoChange = (e) => {
 		setEstado(e.target.value);
 	};
-
+	const history = useNavigate();
+	// eslint-disable-next-line no-unused-vars
+	const navigateTo = (path) => {
+		history(path);
+	}
 	const handleSubmit2 = (e) => {
 		e.preventDefault();
-		// Aquí puedes hacer algo con el estado y la imagen seleccionados, como enviarlos a una API o almacenarlos en el estado global de tu aplicación
+	
 	};
 
 
@@ -59,7 +63,7 @@ export const Config = () => {
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
-			confirmButtonText: 'Si, Hagalo :v'
+			confirmButtonText: 'Si, actualizar'
 		}).then(async (result) => {
 			if (result.isConfirmed) {
 				try {
@@ -69,6 +73,7 @@ export const Config = () => {
 						'Puedes revisar las configuraciones',
 						'success'
 					);
+					history(`/Home/Configuracion`);
 				} catch (error) {
 					console.error(error);
 					Swal.fire(
@@ -195,8 +200,8 @@ export const Config = () => {
 					<div className={stil.formContentBtn}>
 						<button type="button" onClick={handleEditModeToggle} className={stil.formBtn}>
 							{editMode ? 'CANCELAR' : 'EDITAR'}
-							{editMode && <button type="submit" className={stil.formBtn}>GUARDAR</button>}
 						</button>
+						{editMode && <button type="submit" className={stil.formBtn} style={{ marginLeft: '10px' }} onClick={handleSubmit}>GUARDAR</button>}
 					</div>
 				</form>
 				<form onSubmit={handleSubmit2} className={stil.form}>

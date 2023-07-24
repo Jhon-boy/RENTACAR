@@ -71,12 +71,20 @@
 .btn-primary{
     background-color: rgb(7, 177, 210);
     margin-bottom: 12px;
+    margin-top: 10px;
 } 
 
 .btn-primar{
     background-color: red;
     margin-bottom: 12px;
+    margin-top: 10px;
 }  
+.btn-primary:hover {
+    background-color: white;
+    color:rgb(7, 177, 210);
+    border-radius: 3px;
+    border: 2px solid rgb(7, 177, 210)  ;
+}
 
 .recuperar{
     margin-top: 10px;

@@ -30,3 +30,21 @@ export const editarEstadoReserva = async (id_, estadoA) => {
         alert('ALGO FUE MAL');
     }
 };
+
+export const cancelarPago = async (pago, cliente, mensaje) => {
+    console.log('ID: ' + cliente + ' id pago: ' + pago + ' mensaje: ' + mensaje);
+
+    try {
+        // Ajusta la URL según la ruta correcta de tu servidor y el recurso para cancelar el pago
+        const response = await axios.delete(`${URL}/pagos/${pago}`, {
+            data: {
+                cliente: cliente,
+                mensaje: mensaje
+            }
+        });
+
+        console.log('Respuesta del servidor:', response.data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};

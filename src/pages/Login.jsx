@@ -155,9 +155,9 @@ export const Login = (props) => {
                                                     )
                                                 }
                                             </div>
-                                            <button type='submit' className='btn btn-primary mb-3'>Ingresar</button>
+                                            <button type='submit' className='btn-primary'>Ingresar</button>
                                             {isSubmitting ? (<p>Sending....</p>) : null}
-                                            <button className='btn btn-primar mb-3' style={{ marginLeft: '10px' }} onClick={() => window.history.back()}>Regresar</button>
+                                            <button className='btn-primar' style={{ marginLeft: '10px' }} onClick={() => window.history.back()}>Regresar</button>
                                             <br></br>
                                             <Link to="/registro" className='NewCount'> ¿No tienes Cuenta? Crea una! </Link>
                                             <div className='recuperar'>

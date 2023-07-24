@@ -9,6 +9,7 @@ import { Pagos } from './Pagos/pagos'
 
 import Sidebar from './Sidebar'
 import { HomeData } from './Datos/HomeData';
+import { Analisis } from './Analisis/Analisis';
 
 // eslint-disable-next-line no-unused-vars
 export default function HomeAdmin({ correo, id_user }) {
@@ -23,6 +24,7 @@ export default function HomeAdmin({ correo, id_user }) {
             <Route path='/Autos/*' element={<Autos />} />
             <Route path='/Clientes/*' element={<Clientes />} />
             <Route path='/Reservas/*' element={<Reservas />} />
+            <Route path='/Analisis/*' element={<Analisis />} />
             <Route index  element={<HomeData />} />
             <Route path='/Pagos' element={<Pagos />} />
 

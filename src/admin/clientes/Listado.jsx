@@ -15,7 +15,6 @@ import SliderBar from '/src/admin/SliderBar.jsx'
 import { BtnClientes } from '../data/BtnAdmin.js'
 import customStyles from '../config/ConfigTable'
 import stil from './Clientes.module.css'
-  import Button from '@mui/material/Button';
 
 
 const Listado = () => {

@@ -8,6 +8,7 @@ import { Button } from "@mui/material";
 import { MdEditNote } from 'react-icons/md';
 import { MdRestoreFromTrash } from "react-icons/md";
 import SliderBar from '../SliderBar';
+import Swal from "sweetalert2";
 
 import { BtnReserva } from '../data/BtnAdmin'
 
@@ -136,7 +137,14 @@ export const TableReservas = () => {
 		);
 	};
 
-	const handleDelete = async (id) => { alert(id); }
+	const handleDelete = async () => {
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'No puedes realizar esta acción. El esta concretado',
+			footer: '<a href="">Why do I have this issue?</a>'
+		})
+	}
 	const columns = [
 		{
 			name: 'Reserva',
