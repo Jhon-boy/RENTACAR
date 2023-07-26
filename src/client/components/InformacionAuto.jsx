@@ -268,12 +268,12 @@ export default function Product(props) {
                     <label>PayPal</label>
                   </div>
                   <div className="OpcionesPago">
-                    {selectedPayment !== 'Paypal' && data.estado === 'DISPONIBLE' && (
+                    {selectedPayment !== 'Paypal'  (
                       <button className="btn btn-outline-dark ms-2" onClick={Pagar}>
                         Pagar
                       </button>
                     )}
-                    {selectedPayment === 'Paypal' && data.estado === 'DISPONIBLE' && (
+                    {selectedPayment === 'Paypal'(
                       <div className="PayPal" style={{ width: '450px' }}>
                         <PaypalButton
                           totalValue={IvaPrice}

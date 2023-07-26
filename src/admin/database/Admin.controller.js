@@ -15,6 +15,7 @@ export const Salir = async () => {
         console.error(error.response.data.message); // Mensaje de error
     }
 };
+
 //ACTUALIZAR PERFIL 
 export const ActualizarAdmin = async (id_Admin, admin) => {
     try {

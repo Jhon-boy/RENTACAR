@@ -167,7 +167,7 @@ const Registro = () => {
             <div className="container-formData">
                 <Box sx={{ maxWidth: 1000 }} >
                     <button className="regresar-btn1" onClick={() => window.history.back()}>
-                    <ArrowBackIcon /> Regresar
+                        <ArrowBackIcon /> Regresar
                     </button>
                     <h1>¡Bienvenido!</h1>
                     <p className='info'>Para comenzar, ingrese sus datos: </p>
@@ -284,7 +284,7 @@ const Registro = () => {
                                                     value={genero}
                                                     onChange={(e) => setGenero(e.target.value)}
                                                 >
-
+                                                    <option value="">OTRO</option>
                                                     <option value="MASCULINO">Masculino</option>
                                                     <option value="FEMENINO">Femenino</option>
                                                     <option value="OTRO">Otro</option>
@@ -345,6 +345,7 @@ const Registro = () => {
                                                     value={categoria}
                                                     onChange={(e) => setCategoria(e.target.value)}
                                                 >
+                                                    <option value="">Seleccione</option>
                                                     <option value="B">Tipo B</option>
                                                     <option value="C">Tipo C</option>
                                                     <option value="C1">Tipo C1</option>

@@ -91,7 +91,7 @@ export default function Navbar({ usuario, cliente }) {
                                     <Contacts style={{ marginRight: '4px' }} />
                                     <Typography variant="subtitle1">Contactos</Typography>
                                 </Link>
-                                <Link to="#" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
+                                <Link to="/cliente/oficina2" style={{ color: 'white', textDecoration: 'none', marginRight: '30px', display: 'flex', alignItems: 'center' }}>
                                     <Business style={{ marginRight: '4px' }} />
                                     <Typography variant="subtitle1">Oficina</Typography>
                                 </Link>

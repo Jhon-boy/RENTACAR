@@ -20,6 +20,7 @@ import { ContactForm } from './client/components/ContactForm';
 import { EditPerfil } from './client/components/EditPerfil';
 import { RecuperacionContrasena } from './pages/RecuperacionContrasena ';
 import { ContactosG } from './pages/ContactosG';
+import Oficina from './client/components/Oficina';
 
 function App() {
   // Obtener el usuario del almacenamiento local
@@ -76,6 +77,7 @@ function App() {
                   <Route path='/cliente/misReservas' element={<ReservasC cliente={cliente}/>} />
                   <Route path='/cliente/editPerfil' element={<EditPerfil id={id_user}  cliente={cliente} />} />
                   <Route path='/cliente/vehiculos/:id_auto' element={<InformacionAuto cliente={cliente} />} />
+                  <Route path='/cliente/oficina2' element={<Oficina />} />
                 </Route>
               </Route>
             )}
@@ -86,6 +88,7 @@ function App() {
         <Route path='/registro' element={<Registro />} />
         <Route path='/recuperarContraseña' element={<RecuperacionContrasena />} />
         <Route path='*' element={<Error />} />
+        <Route path='/oficina' element={<Oficina />} />
         <Route path='/contacts' element={<ContactosG />} />
       </Routes>
     </>
